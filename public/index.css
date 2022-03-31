@@ -16,3 +16,20 @@ h1 {
   font-family: 'Prototype Regular';
 }
 
+.product-card {
+  background-color: grey;
+  width: 120px;
+  height: 200px;
+  margin: 15px;
+  display: inline-flex;
+}
+.related-products {
+  border: solid black 2px;
+  width: 80%;
+  margin: auto;
+}
+.related-products-carousel {
+  width: 600px;
+  margin: auto;
+  border: solid black 2px;
+}
