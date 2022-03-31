@@ -5,7 +5,9 @@ const Image = (props) => {
   const { slide } = props;
 
   return (
-    <img src={slide.image} key={slide.image} className="image"/>
+    <li>
+      <img src={slide.image} key={slide.image} className="image"/>
+    </li>
   )
 }
 
