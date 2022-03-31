@@ -23,7 +23,9 @@ const CompareModal = () => {
     <div>
       <table>
         <tr>
-          <th></th>
+          <th>{comparedProducts.current.name}</th>
+          <th>characteristic</th>
+          <th>{comparedProducts.compared.name}</th>
         </tr>
       </table>
     </div>
