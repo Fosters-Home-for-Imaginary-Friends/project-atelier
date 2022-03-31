@@ -1,5 +1,6 @@
 import React from "react";
 import { ImageData } from "./dummyImages.js";
+import Image from "./Image.jsx";
 
 const ImageCarousel = () => {
   return (
@@ -7,7 +8,7 @@ const ImageCarousel = () => {
       <ul className="image-carousel">
         {ImageData.map((image) => {
           return (
-            <img src={image.image} key={image} className="image"/>
+            <Image key={image} slide={image}/>
           )
         })}
       </ul>
