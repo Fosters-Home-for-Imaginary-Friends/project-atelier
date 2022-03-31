@@ -1,11 +1,11 @@
 import React from "react";
-import RelatedProducts from "./related/RelatedProducts.jsx";
+import ProductLists from "./related/ProductLists.jsx";
 
 const App = () => {
   return (
     <div>
       <h1>Hello Bradford</h1>
-      <RelatedProducts />
+      <ProductLists />
     </div>
   );
 }

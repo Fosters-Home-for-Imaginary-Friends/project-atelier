@@ -15,7 +15,7 @@ body {
 h1 {
   font-family: 'Prototype Regular';
 }
-.related-products {
+.product-list {
   height: 275px;
   width: 925px;
   margin: auto;
