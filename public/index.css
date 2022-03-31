@@ -16,3 +16,9 @@ h1 {
   font-family: 'Prototype Regular';
 }
 
+.product-card {
+  background-color: grey;
+  width: 160px;
+  height: 250px;
+  margin: 20px;
+}
