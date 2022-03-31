@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import ProductCard from './ProductCard.jsx';
 
 const RelatedProducts = () => {
+  const carouselRef = useRef(null);
 
   return (
     <div className="related-products">
