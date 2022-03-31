@@ -1,9 +1,5 @@
 import React from "react";
 import reactDOM from "react-dom";
-
-// Huzzah for jsx!
-const App = () => {
-  return <h1>Hello World</h1>
-}
+import App from "./components/App.jsx";
 
 reactDOM.render(<App />, document.getElementById("root"));
