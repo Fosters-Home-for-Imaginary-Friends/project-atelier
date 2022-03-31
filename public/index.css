@@ -15,7 +15,44 @@ body {
 h1 {
   font-family: 'Prototype Regular';
 }
-.related-products {
+
+.image-carousel {
+  list-style: none;
+  background-color: gray;
+  width: 265px;
+  height: 398px;
+  /* overflow: hidden; */
+  overflow-y: scroll;
+  scroll-snap-align: end;
+  scroll-behavior: smooth;
+  transform: translateY(0px);
+  transition: ease all 0.5s;
+  margin-left: 400px;
+  padding: 0px;
+}
+
+.image-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.image {
+  display: list-item;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: darkgray;
+  box-sizing: border-box;
+  height: 398px;
+  width: 265px;
+  list-style: none;
+}
+
+
+.product-list {
+
   height: 275px;
   width: 925px;
   margin: auto;
