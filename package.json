@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "jest": "^27.5.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "yarn": "^1.22.18"
+  },
+  "name": "project-atelier",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Fosters-Home-for-Imaginary-Friends/project-atelier.git",
+  "author": "Andrew Tran <amtran150@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@testing-library/react": "^13.0.0",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.1",
+    "cypress": "^9.5.3",
+    "eslint": "^8.12.0",
+    "eslint-plugin-react": "^7.29.4",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "scripts": {
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "dev": "webpack serve --open"
+  }
+}
