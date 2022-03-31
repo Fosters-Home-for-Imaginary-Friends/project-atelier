@@ -16,20 +16,37 @@ h1 {
   font-family: 'Prototype Regular';
 }
 
+
+.related-products {
+  height: 275px;
+  width: 900px;
+  margin: auto;
+}
+.carousel-container {
+  width: 900px;
+  height: 250px;
+  position: relative;
+  display:inline-flex;
+}
+.carousel-viewport {
+  width: 810px;
+  height: 250px;
+  margin: auto;
+  overflow-x: hidden;
+  margin: auto;
+}
+.carousel {
+  display:inline-flex;
+}
 .product-card {
   background-color: grey;
-  width: 120px;
-  height: 200px;
+  width: 130px;
+  height: 220px;
   margin: 15px;
-  display: inline-flex;
+  justify-content: flex-start;
 }
-.related-products {
-  border: solid black 2px;
-  width: 80%;
+.arrow {
+  width: 45px;
+  height: 45px;
   margin: auto;
-}
-.related-products-carousel {
-  width: 600px;
-  margin: auto;
-  border: solid black 2px;
 }
