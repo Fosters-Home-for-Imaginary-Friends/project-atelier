@@ -19,11 +19,11 @@ h1 {
 
 .related-products {
   height: 275px;
-  width: 900px;
+  width: 925px;
   margin: auto;
 }
 .carousel-container {
-  width: 900px;
+  width: 925px;
   height: 250px;
   position: relative;
   display:inline-flex;
@@ -47,6 +47,6 @@ h1 {
 }
 .arrow {
   width: 45px;
-  height: 45px;
+  height: 30px;
   margin: auto;
 }
