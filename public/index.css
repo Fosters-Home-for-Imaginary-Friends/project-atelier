@@ -50,7 +50,9 @@ h1 {
   list-style: none;
 }
 
-.related-products {
+
+.product-list {
+
   height: 275px;
   width: 925px;
   margin: auto;
