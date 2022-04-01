@@ -1,5 +1,4 @@
 import React, {useRef, useContext} from 'react';
-import ProductCard from './ProductCard.jsx';
 import {ListContext} from './ProductLists.jsx';
 
 const ProductList = () => {

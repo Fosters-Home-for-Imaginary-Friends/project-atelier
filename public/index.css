@@ -85,3 +85,6 @@ h1 {
   height: 30px;
   margin: auto;
 }
+.compare-modal {
+  position: absolute;
+}

@@ -1,32 +1,65 @@
-import React from 'react';
-
-const comparedProducts = {
-  current: {
-    name: "Red Bull",
-    characteristics: {
-      caffeine: true,
-      taurine: true
-    }
-  },
-  compared: {
-    name: "Monster",
-    characteristics: {
-      caffeine: true,
-      taurine: true,
-      guarana: true
-    }
-  }
-};
+/* eslint-disable no-unused-vars */
+import React, {useContext, useState} from 'react';
+import {CompareContext} from './ProductLists.jsx';
 
 const CompareModal = () => {
-  return (
-    <div>
-      <table>
+  const compare = useContext(CompareContext);
+  const [compared, setCompared] = useState([]);
+
+  const compareFeature = (feature) => {
+    return (
+      <React.Fragment>
         <tr>
-          <th>{comparedProducts.current.name}</th>
-          <th>characteristic</th>
-          <th>{comparedProducts.compared.name}</th>
+          <td>{feature.current.value}</td>
+          <td>{feature.name}</td>
+          <td>{feature.compared.value}</td>
         </tr>
+      </React.Fragment>
+    );
+  };
+
+  const getFeatures = () => { //Parses for features
+    let comparedFeatures = []; //Array of compared features
+    let currentFeats = compare.current.features; //currently viewed item
+    let compareFeats = compare.current.features; //selected item for comparison
+
+    for (let feature in currentFeats) { //Compares the currently viewed item's features
+      let comparedFeat = { //compared Feature to be pushed into array of compared features
+        name: feature,
+        current: currentFeats[feature],
+        compare: false
+      };
+      if (compareFeats[feature]) {
+        comparedFeat.compare = compareFeats[feature];
+      }
+      comparedFeatures.push(comparedFeat);
+    }
+
+    for (let feature in compareFeats) { //If the feature doesn't exist in current features, then add it to the table
+      if(!currentFeats[feature]) {
+        comparedFeatures.push({
+          name: feature,
+          current: false,
+          compare: compareFeats[feature]
+        });
+      }
+    }
+    return comparedFeatures;
+  };
+
+  return (
+    <div className="compare-modal">
+      <table>
+        <thead>
+          <tr>
+            <th>Something</th>
+            <th>characteristic</th>
+            <th>Something</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
       </table>
     </div>
   );
