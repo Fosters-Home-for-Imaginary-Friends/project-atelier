@@ -3,6 +3,7 @@ import CSSStyles from "./CSSStyles.jsx";
 import Overview from "./overview/Overview.jsx";
 import ProductLists from "./related/ProductLists.jsx";
 import Ratings from "./ratings/Ratings.jsx";
+import {fetchProducts} from "../helpers.js";
 
 const App = () => {
   return (
