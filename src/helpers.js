@@ -20,4 +20,5 @@ const fetchProduct = (product_id) => {
     .catch((err) => console.error(err));
 };
 
+
 export {fetchProducts, fetchProduct};
