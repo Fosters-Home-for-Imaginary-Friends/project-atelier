@@ -9,13 +9,15 @@ const options = {
 const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
 const fetchProducts = () => {
-  axios.get(host + '/products', options)
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
+  return axios.get(host + '/products', options)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+};
 
-export {fetchProducts};
+const fetchProduct = (product_id) => {
+  return axios.get(host + '/products/:' + product_id, options)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+};
+
+export {fetchProducts, fetchProduct};
