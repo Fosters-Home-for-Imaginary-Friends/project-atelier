@@ -1,36 +1,25 @@
 /* eslint-disable no-unused-vars */
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {CompareContext} from './ProductLists.jsx';
+import CompareModalRow from './CompareModalRow.jsx';
 
 const CompareModal = () => {
-  const compare = useContext(CompareContext);
-  const [compared, setCompared] = useState([]);
-
-  const compareFeature = (feature) => {
-    return (
-      <React.Fragment>
-        <tr>
-          <td>{feature.current.value}</td>
-          <td>{feature.name}</td>
-          <td>{feature.compared.value}</td>
-        </tr>
-      </React.Fragment>
-    );
-  };
+  const UncomparedData = useContext(CompareContext);
+  const [ComparedData, setComparedData] = useState([]);
 
   const getFeatures = () => { //Parses for features
     let comparedFeatures = []; //Array of compared features
-    let currentFeats = compare.current.features; //currently viewed item
-    let compareFeats = compare.current.features; //selected item for comparison
+    let currentFeats = UncomparedData.current.features; //currently viewed item
+    let compareFeats = UncomparedData.compared.features; //selected item for comparison
 
     for (let feature in currentFeats) { //Compares the currently viewed item's features
       let comparedFeat = { //compared Feature to be pushed into array of compared features
         name: feature,
         current: currentFeats[feature],
-        compare: false
+        compared: false
       };
       if (compareFeats[feature]) {
-        comparedFeat.compare = compareFeats[feature];
+        comparedFeat.compared = compareFeats[feature];
       }
       comparedFeatures.push(comparedFeat);
     }
@@ -40,25 +29,33 @@ const CompareModal = () => {
         comparedFeatures.push({
           name: feature,
           current: false,
-          compare: compareFeats[feature]
+          compared: compareFeats[feature]
         });
       }
     }
-    return comparedFeatures;
+    setComparedData(comparedFeatures);
   };
+
+  useEffect(() => { //If the data has been updated, re-sort features
+    getFeatures();
+  }, [UncomparedData]);
+
+
 
   return (
     <div className="compare-modal">
       <table>
         <thead>
           <tr>
-            <th>Something</th>
+            <th>{UncomparedData.current.name}</th>
             <th>characteristic</th>
-            <th>Something</th>
+            <th>{UncomparedData.compared.name}</th>
           </tr>
         </thead>
         <tbody>
-
+          {ComparedData.map((feature) => {
+            console.log(ComparedData);
+            return <CompareModalRow key={0} feature={feature} />})}
         </tbody>
       </table>
     </div>
