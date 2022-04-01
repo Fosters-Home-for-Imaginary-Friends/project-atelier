@@ -172,6 +172,16 @@ span.helpful-answer {
   height: 30px;
   margin: auto;
 }
+.ratings-reviews-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  width: 1000px;
+  height: 400px;
+  margin: auto;
+}
 .compare-modal {
   position: absolute;
   background-color: white;
