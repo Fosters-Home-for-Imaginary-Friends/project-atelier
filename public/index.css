@@ -98,6 +98,18 @@ span.helpful-answer {
   color: rgb(100, 100, 100)
 }
 
+/* START OF OVERVIEW */
+
+.overview {
+  display: flex;
+  justify-content: center;
+}
+
+.overview-product-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .image-carousel {
   list-style: none;
   background-color: gray;
@@ -109,8 +121,6 @@ span.helpful-answer {
   scroll-behavior: smooth;
   transform: translateY(0px);
   transition: ease all 0.5s;
-  margin-top: 100px;
-  margin-left: 400px;
   padding: 0px;
 }
 
@@ -137,6 +147,23 @@ span.helpful-answer {
   transition-duration: 2s;
 }
 
+.style-selector {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.style {
+  background-color: lightgray;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
 
 .product-list {
 
