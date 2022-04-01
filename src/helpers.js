@@ -20,4 +20,10 @@ const fetchProduct = (product_id) => {
     .catch((err) => console.error(err));
 };
 
-export {fetchProducts, fetchProduct};
+const fetchReviews = () => {
+  return axios.get(host + '/reviews', options)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+}
+
+export {fetchProducts, fetchProduct, fetchReviews};
