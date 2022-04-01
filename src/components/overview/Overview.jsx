@@ -1,10 +1,12 @@
 import React from "react";
 import ImageCarousel from './ImageCarousel.jsx';
+import ProductInformation from './ProductInformation.jsx';
 
 const Overview = () => {
   return (
-    <div>
+    <div className="overview">
       <ImageCarousel />
+      <ProductInformation />
     </div>
   )
 }
