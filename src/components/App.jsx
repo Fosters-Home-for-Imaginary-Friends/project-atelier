@@ -1,4 +1,5 @@
 import React from "react";
+import Styles from "./Styles.jsx";
 import Overview from "./overview/Overview.jsx";
 import ProductLists from "./related/ProductLists.jsx";
 import Ratings from "./ratings/Ratings.jsx";
@@ -6,7 +7,7 @@ import Ratings from "./ratings/Ratings.jsx";
 const App = () => {
   return (
     <div>
-      <h1>Hello Bradford</h1>
+      <Styles />
       <Overview />
       <ProductLists />
       <Ratings />
