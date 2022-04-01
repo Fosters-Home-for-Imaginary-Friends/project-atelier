@@ -25,7 +25,7 @@ const ProductList = () => {
       <button onClick={scrollLeft} className="arrow">Left</button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         <div className="carousel"> {/* The part that scrolls when you press a button */}
-          {list.map((num) => <ProductCard num={num} key={num} />)}
+          {list}
         </div>
       </div>
       <button onClick={scrollRight} className="arrow">Right</button>

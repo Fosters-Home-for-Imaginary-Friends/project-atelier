@@ -49,6 +49,9 @@ h1 {
   width: 265px;
   list-style: none;
   scroll-snap-align: start;
+  scroll-behavior: smooth;
+  transition-property: scroll-snap-align;
+  transition-duration: 2s;
 }
 
 
