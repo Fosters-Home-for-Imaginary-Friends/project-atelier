@@ -1,5 +1,4 @@
 import React, {useRef, useContext} from 'react';
-import ProductCard from './ProductCard.jsx';
 import {ListContext} from './ProductLists.jsx';
 
 const ProductList = () => {
@@ -20,6 +19,7 @@ const ProductList = () => {
       behavior: "smooth"
     });
   }
+
   return (
     <div className="carousel-container"> {/* This holds the carousel viewport and the buttons */}
       <button onClick={scrollLeft} className="arrow">Left</button>
