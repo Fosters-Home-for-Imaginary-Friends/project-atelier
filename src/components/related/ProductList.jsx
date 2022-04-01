@@ -19,6 +19,7 @@ const ProductList = () => {
       behavior: "smooth"
     });
   }
+
   return (
     <div className="carousel-container"> {/* This holds the carousel viewport and the buttons */}
       <button onClick={scrollLeft} className="arrow">Left</button>

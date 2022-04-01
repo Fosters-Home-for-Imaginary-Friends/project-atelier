@@ -36,7 +36,7 @@ const CompareModal = () => {
     setComparedData(comparedFeatures);
   };
 
-  useEffect(() => { //If the data has been updated, re-sort features
+  useEffect(() => { //If the data has been updated, get new features
     getFeatures();
   }, [UncomparedData]);
 
@@ -54,7 +54,6 @@ const CompareModal = () => {
         </thead>
         <tbody>
           {ComparedData.map((feature) => {
-            console.log(ComparedData);
             return <CompareModalRow key={0} feature={feature} />})}
         </tbody>
       </table>
