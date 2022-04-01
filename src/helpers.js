@@ -15,7 +15,7 @@ const fetchProducts = () => {
 };
 
 const fetchProduct = (product_id) => {
-  return axios.get(host + '/products/:' + product_id, options)
+  return axios.get(host + '/products/' + product_id, options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
 };
