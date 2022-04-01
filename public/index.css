@@ -23,7 +23,7 @@ h1 {
   height: 398px;
   /* overflow: hidden; */
   overflow-y: scroll;
-  scroll-snap-align: end;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   transform: translateY(0px);
   transition: ease all 0.5s;
@@ -48,6 +48,10 @@ h1 {
   height: 398px;
   width: 265px;
   list-style: none;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  transition-property: scroll-snap-align;
+  transition-duration: 2s;
 }
 
 
