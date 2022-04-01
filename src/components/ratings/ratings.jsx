@@ -1,1 +1,0 @@
-//Primary component for ratings and reviews widget.
