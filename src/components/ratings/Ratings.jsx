@@ -6,8 +6,8 @@ import tempProduct from './SeedData.js';
 // import NewReview from './NewReview.jsx';
 import {fetchReviews} from '../../helpers.js';
 
-let currentReviews = fetchReviews(40344);
-console.log(currentReviews);
+// let currentReviews = fetchReviews(40344);
+
 
 
 
