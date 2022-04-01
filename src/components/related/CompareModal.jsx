@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, {useContext, useState, useEffect} from 'react';
-import {CompareContext} from './ProductLists.jsx';
+import {ModalContext} from './ProductLists.jsx';
 import CompareModalRow from './CompareModalRow.jsx';
 
 const CompareModal = () => {
-  const UncomparedData = useContext(CompareContext);
+  const UncomparedData = useContext(ModalContext);
   const [ComparedData, setComparedData] = useState([]);
 
   const getFeatures = () => { //Parses for features

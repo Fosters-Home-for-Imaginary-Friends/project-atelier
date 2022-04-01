@@ -16,7 +16,7 @@ const listContexts = {
 const ListContext = React.createContext(listContexts);
 
 //Placeholder data for the compare-modal
-const comparedProducts = {
+const modalContext = {
   current: {
     name: "Red Bull",
     features: {
@@ -31,10 +31,10 @@ const comparedProducts = {
       taurine: true,
       guarana: true
     }
-  }
+  },
+  selected: false
 };
-const CompareContext = React.createContext(comparedProducts);
-
+const ModalContext = React.createContext(modalContext);
 
 const ProductLists = () => {
   return (
@@ -52,13 +52,13 @@ const ProductLists = () => {
           <ProductList />
         </ListContext.Provider>
       </div>
-      <CompareContext.Provider value={comparedProducts}>
+      <ModalContext.Provider value={modalContext}>
         <CompareModal />
-      </CompareContext.Provider>
+      </ModalContext.Provider>
     </React.Fragment>
 
   );
 };
 
 export default ProductLists;
-export {ListContext, CompareContext};
+export {ListContext, ModalContext};
