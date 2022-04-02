@@ -167,14 +167,17 @@ const getAnswers = (question_id, page = 1, count = 5) => {
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Posts a question for a product
+Return: Promise resolving to the server response
+Parameter Requirements: questionObject
 Parameter Descriptions:
+  questionObject: A question data object
 */
 
-const postQuestion = () => {
-
+const postQuestion = (questionObject) => {
+  axios.post(host + `/qa/questions`, questionObject, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
 };
 
 /*
