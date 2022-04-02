@@ -134,19 +134,22 @@ const putReviewHelpful = (review_id) => {
 /*------------------------ Questions and Answers ------------------------ */
 /*------------------------ Questions and Answers ------------------------ */
 
-//API call helper function documentation template
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Fetches all questions for a queried product
+Return: Promise resolving to an array of question data objects
+Parameter Requirements: product_id
 Parameter Descriptions:
+  product_id: product to query for (id property of product data object)
+  page: query page
+  count: # of items per page
 */
 
-const getQuestions = () => {
-
+const getQuestions = (product_id, page = 1, count = 5) => {
+  return axios.get(host + `/qa/questions/?product_id=${product_id}&page=${page}&count=${count}`)
+    .then((res) => res.data.results)
+    .catch((err) => console.error(err));
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -158,7 +161,6 @@ const getAnswers = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -170,7 +172,6 @@ const postQuestion = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -182,7 +183,6 @@ const postAnswer = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -194,7 +194,6 @@ const putQuestionHelpful = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -206,7 +205,6 @@ const putQuestionReport = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
@@ -218,7 +216,6 @@ const putAnswerHelpful = () => {
 
 };
 
-//API call helper function documentation template
 /*
 Function Description:
 Return: Promise resolving to
