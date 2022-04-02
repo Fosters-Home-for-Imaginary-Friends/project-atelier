@@ -18,7 +18,7 @@ const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
 /*
 Function Description: Fetches product data for all products in database
-Return: Array of product data objects
+Return: Promise resolving to an array of product data objects
 Parameter Requirements: None
 Parameter Descriptions:
   page: query page
@@ -33,7 +33,7 @@ const fetchProducts = (page = 1, count = 5) => {
 
 /*
 Function Description: Fetches product data for a queried product (queried using product_id)
-Return: Product data object
+Return: Promise resolving to a product data object
 Parameter Requirements: product_id
 Parameter Descriptions:
   product_id: product to query for (id property of product data object)
@@ -46,7 +46,7 @@ const fetchProduct = (product_id) => {
 
 /*
 Function Description: Fetches style data for a queried product
-Return: Array of style data objects
+Return: Promise resolving to an array of style data objects
 Parameter Requirements: product_id
 Parameter Descriptions:
   product_id: product to query for (id property of product data object)
@@ -59,7 +59,7 @@ const fetchStyles = (product_id) => {
 
 /*
 Function Description: Fetches product_id of products related to a queried product
-Return: Array of product_id integers
+Return: Promise resolving to an array of product_id integers
 Parameter Requirements: product_id
 Parameter Descriptions:
   product_id: product to query for (id property of product data object)
@@ -76,7 +76,7 @@ const fetchRelated = (product_id) => {
 
 /*
 Function Description: Fetches all review data for a queried product
-Return: Array of review data objects
+Return: Promise resolving to an array of review data objects
 Parameter Requirements: product_id
 Parameter Descriptions:
   product_id: product to query for (id property of product data object)
@@ -90,5 +90,52 @@ const fetchReviews = (product_id, page = 1, count = 5, sort = "helpful") => {
     .catch((err) => console.error(err));
 };
 
+/*
+Function Description: Fetches review meta data for a queried product
+Return: Promise resolving to a review meta data object
+Parameter Requirements: product_id
+Parameter Descriptions:
+  product_id: product to query for (id property of product data object)
+*/
+const fetchReviewMetadata = (product_id) => {
+  return axios.get(host + `/reviews/meta/?product_id=${product_id}`, options)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+};
+
+/*
+Function Description: Post a review by feeding it a review object
+Return: Promise resolving to the post response
+Parameter Requirements: reviewObject
+Parameter Descriptions:
+  reviewObject: A review data object
+*/
+const postReview = (reviewObject) => {
+  return axios.post(host + `/reviews`, reviewObject, options) //! NOT WORKING: Not sure where to put the options object. Check axios docs
+    .then((res) => res)
+    .catch((err) => console.error(err));
+};
+
+/*
+Function Description: Marks a review as helpful
+Return: Promise resolving to the server response
+Parameter Requirements: review_id
+Parameter Descriptions:
+  review_id: review to mark as helpful
+*/
+const putReviewHelpful = (review_id) => {
+  return axios.put(host + `reviews/${review_id}/helpful`, {}, options) //! NOT WORKING: Not sure where to put the options object. Check axios docs
+    .then((res) => res)
+    .catch((err) => console.error(err));
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
 export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
-export {fetchReviews};
+export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful};
