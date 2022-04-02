@@ -130,6 +130,106 @@ const putReviewHelpful = (review_id) => {
     .catch((err) => console.error(err));
 };
 
+/*------------------------ Questions and Answers ------------------------ */
+/*------------------------ Questions and Answers ------------------------ */
+/*------------------------ Questions and Answers ------------------------ */
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const getQuestions = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const getAnswers = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const postQuestion = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const postAnswer = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const putQuestionHelpful = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const putQuestionReport = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const putAnswerHelpful = () => {
+
+};
+
+//API call helper function documentation template
+/*
+Function Description:
+Return: Promise resolving to
+Parameter Requirements:
+Parameter Descriptions:
+*/
+
+const putReportAnswer = () => {
+
+};
+
 //API call helper function documentation template
 /*
 Function Description:
@@ -140,3 +240,4 @@ Parameter Descriptions:
 
 export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
 export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful};
+export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putReportAnswer}
