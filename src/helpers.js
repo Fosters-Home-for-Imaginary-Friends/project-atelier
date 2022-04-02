@@ -196,14 +196,17 @@ const postAnswer = (question_id, answerObject) => {
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Mark a question as helpful
+Return: Promise resolving to the server response
+Parameter Requirements: question_id
 Parameter Descriptions:
+  question_id: ID of question to mark as helpful
 */
 
-const putQuestionHelpful = () => {
-
+const putQuestionHelpful = (question_id) => {
+  axios.put(host + `/qa/questions/${question_id}/helpful`, {}, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
 };
 
 /*
