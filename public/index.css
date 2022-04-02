@@ -117,9 +117,9 @@ span.helpful-answer {
 .image-carousel {
   list-style: none;
   background-color: gray;
-  width: 265px;
-  height: 398px;
-  /* overflow: hidden; */
+  width: 260px;
+  height: 390px;
+  overflow: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -142,13 +142,45 @@ span.helpful-answer {
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 398px;
-  width: 265px;
+  height: 390px;
+  width: 260px;
   list-style: none;
   scroll-snap-align: start;
   scroll-behavior: smooth;
   transition-property: scroll-snap-align;
   transition-duration: 2s;
+  object-fit: cover;
+}
+
+.image-bar {
+  display: flex;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 1px;
+  background-color: darkgray;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.progress-bar-progress {
+  height: 10%;
+  width: 1px;
+  background-color: #1f1f1f;
+}
+
+.thumbnails {
+  display: block;
+}
+
+.thumbnail {
+  height: 24px;
+  width: 16px;
+  display: list-item;
+  list-style: none;
+  object-fit: cover;
+  padding-bottom: 5px;
 }
 
 .style-selector {

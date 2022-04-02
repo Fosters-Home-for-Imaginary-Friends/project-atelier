@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ImageCarousel from './ImageCarousel.jsx';
+import ImageBar from "./ImageBar.jsx";
 import ProductInformation from './ProductInformation.jsx';
-// import { fetchProducts, fetchStyles } from "../../helpers.js";
 
 
 const Overview = () => {
@@ -18,20 +18,10 @@ const Overview = () => {
     updated_at: "2021-08-13T14:38:44.509Z"
   };
 
-  // fetchProducts()
-  //   .then((response) => {
-  //     var currentProduct = response[0];
-  //     // console.log(currentProduct);
-  //     // setCurrentProduct(response[0]);
-  //     // console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   })
-
   return (
     <div className="overview">
       <ImageCarousel />
+      <ImageBar />
       <ProductInformation product={product}/>
     </div>
   )
