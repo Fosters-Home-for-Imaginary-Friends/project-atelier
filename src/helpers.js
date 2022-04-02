@@ -254,4 +254,4 @@ Parameter Descriptions:
 
 export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
 export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful};
-export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putReportAnswer}
+export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putAnswerReport}
