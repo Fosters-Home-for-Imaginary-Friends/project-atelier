@@ -175,20 +175,24 @@ Parameter Descriptions:
 */
 
 const postQuestion = (questionObject) => {
-  axios.post(host + `/qa/questions`, questionObject, options)
+  return axios.post(host + `/qa/questions`, questionObject, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Post an answer to a question
+Return: Promise resolving to the server response
+Parameter Requirements: question_id, answerObject
 Parameter Descriptions:
+  question_id: Question to add an answer to
+  answerObject: An answer data object
 */
 
-const postAnswer = () => {
-
+const postAnswer = (question_id, answerObject) => {
+  return axios.post(host + `/qa/questions/${question_id}/answers`, answerObject, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
 };
 
 /*
