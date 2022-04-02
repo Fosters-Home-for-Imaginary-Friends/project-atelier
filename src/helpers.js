@@ -125,10 +125,24 @@ Parameter Descriptions:
   review_id: review to mark as helpful
 */
 const putReviewHelpful = (review_id) => {
-  return axios.put(host + `/reviews/${review_id}/helpful`, {review_id: review_id}, options)
+  return axios.put(host + `/reviews/${review_id}/helpful`, {}, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
+
+/*
+Function Description: Marks a review as helpful
+Return: Promise resolving to the server response
+Parameter Requirements: review_id
+Parameter Descriptions:
+  review_id: review to mark as helpful
+*/
+const reportReview = (review_id) => {
+  return axios.put(host + `/reviews/${review_id}/report`, {}, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
+};
+
 
 //API call helper function documentation template
 /*
@@ -139,4 +153,4 @@ Parameter Descriptions:
 */
 
 export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
-export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful};
+export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful, reportReview};
