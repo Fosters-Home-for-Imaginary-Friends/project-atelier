@@ -10,6 +10,7 @@ const options = {
     'Authorization': `${config.TOKEN}`
   }
 };
+
 const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
 /*------------------------ PRODUCTS ------------------------ */
@@ -111,7 +112,7 @@ Parameter Descriptions:
   reviewObject: A review data object
 */
 const postReview = (reviewObject) => {
-  return axios.post(host + `/reviews`, reviewObject, options) //! NOT WORKING: Not sure where to put the options object. Check axios docs
+  return axios.post(host + `/reviews`, reviewObject, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
@@ -124,7 +125,7 @@ Parameter Descriptions:
   review_id: review to mark as helpful
 */
 const putReviewHelpful = (review_id) => {
-  return axios.put(host + `reviews/${review_id}/helpful`, {}, options) //! NOT WORKING: Not sure where to put the options object. Check axios docs
+  return axios.put(host + `/reviews/${review_id}/helpful`, {review_id: review_id}, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
