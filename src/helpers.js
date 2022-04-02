@@ -151,14 +151,19 @@ const getQuestions = (product_id, page = 1, count = 5) => {
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Fetches all answers for a queried product question
+Return: Promise resolving to an array of answer data objects
+Parameter Requirements: question_id
 Parameter Descriptions:
+  question_id: question to query answers for
+  page: query page
+  count: # of items per page
 */
 
-const getAnswers = () => {
-
+const getAnswers = (question_id, page = 1, count = 5) => {
+  return axios.get(host + `/qa/questions/${question_id}/answers/?page=${page}&count=${count}`)
+  .then((res) => res.data.results)
+  .catch((err) => console.error(err));
 };
 
 /*
