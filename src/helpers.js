@@ -227,19 +227,21 @@ Parameter Descriptions:
 */
 
 const putAnswerHelpful = (answer_id) => {
-  return axios.put(host + `/qa/questions/${answer_id}/helpful`)
+  return axios.put(host + `/qa/answers/${answer_id}/helpful`, {}, options)
     .catch((err) => console.error(err));
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Report an answer
+Return: Promise resolving to the server response
+Parameter Requirements: answer_id
 Parameter Descriptions:
+  answer_id: ID of answer to report
 */
 
-const putReportAnswer = () => {
-
+const putReportAnswer = (answer_id) => {
+  return axios.put(host + `/qa/answers/${answer_id}/report`, {}, options)
+    .catch((err) => console.error(err));
 };
 
 //API call helper function documentation template
