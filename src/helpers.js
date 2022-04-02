@@ -113,7 +113,6 @@ Parameter Descriptions:
 */
 const postReview = (reviewObject) => {
   return axios.post(host + `/reviews`, reviewObject, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 };
 
@@ -126,7 +125,6 @@ Parameter Descriptions:
 */
 const putReviewHelpful = (review_id) => {
   return axios.put(host + `/reviews/${review_id}/helpful`, {review_id: review_id}, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 };
 
@@ -176,7 +174,6 @@ Parameter Descriptions:
 
 const postQuestion = (questionObject) => {
   return axios.post(host + `/qa/questions`, questionObject, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 };
 
@@ -191,7 +188,6 @@ Parameter Descriptions:
 
 const postAnswer = (question_id, answerObject) => {
   return axios.post(host + `/qa/questions/${question_id}/answers`, answerObject, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 };
 
@@ -205,7 +201,6 @@ Parameter Descriptions:
 
 const putQuestionHelpful = (question_id) => {
   return axios.put(host + `/qa/questions/${question_id}/helpful`, {}, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 };
 
@@ -214,25 +209,26 @@ Function Description: Report a question
 Return: Promise resolving to the server response
 Parameter Requirements: question_id
 Parameter Descriptions:
-  question_id
+  question_id: ID of question to mark as helpful
 */
 
 const putQuestionReport = (question_id) => {
   return axios.put(host + `/qa/questions/${question_id}/report`, {}, options)
-    .then((res) => res)
     .catch((err) => console.error(err));
 
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Mark an answer as helpful
+Return: Promise resolving to the server response
+Parameter Requirements: answer_id
 Parameter Descriptions:
+  answer_id: ID of answer to mark as helpful
 */
 
-const putAnswerHelpful = () => {
-
+const putAnswerHelpful = (answer_id) => {
+  return axios.put(host + `/qa/questions/${answer_id}/helpful`)
+    .catch((err) => console.error(err));
 };
 
 /*
