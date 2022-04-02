@@ -204,19 +204,23 @@ Parameter Descriptions:
 */
 
 const putQuestionHelpful = (question_id) => {
-  axios.put(host + `/qa/questions/${question_id}/helpful`, {}, options)
+  return axios.put(host + `/qa/questions/${question_id}/helpful`, {}, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
 
 /*
-Function Description:
-Return: Promise resolving to
-Parameter Requirements:
+Function Description: Report a question
+Return: Promise resolving to the server response
+Parameter Requirements: question_id
 Parameter Descriptions:
+  question_id
 */
 
-const putQuestionReport = () => {
+const putQuestionReport = (question_id) => {
+  return axios.put(host + `/qa/questions/${question_id}/report`, {}, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
 
 };
 
