@@ -20,9 +20,11 @@ const Overview = () => {
 
   return (
     <div className="overview">
-      <ImageCarousel />
-      <ImageBar />
-      <ProductInformation product={product}/>
+      <section className="overview-images">
+        <ImageCarousel />
+        <ImageBar />
+      </section>
+        <ProductInformation product={product}/>
     </div>
   )
 }

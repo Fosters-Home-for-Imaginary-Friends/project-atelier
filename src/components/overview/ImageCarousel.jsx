@@ -90,8 +90,4 @@ var currentStyle = {
   )
 }
 
-ImageCarousel.propTypes = {
-  currentStyles: PropTypes.array.isRequired
-}
-
 export default ImageCarousel;
