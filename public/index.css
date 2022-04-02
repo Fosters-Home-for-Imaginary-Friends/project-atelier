@@ -228,3 +228,11 @@ span.helpful-answer {
   height: 400px;
   margin: auto;
 }
+.individual-review-container {
+  border-bottom: 1px solid black;
+  margin: 5px;
+}
+
+.review-report {
+  text-decoration: underline;
+}
