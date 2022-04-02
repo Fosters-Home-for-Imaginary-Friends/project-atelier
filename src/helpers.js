@@ -85,7 +85,7 @@ Parameter Descriptions:
   count: # of items per page
   sort: sorts results by "newest", "helpful", or "relevant"
 */
-const fetchReviews = (product_id, page = 1, count = 5, sort = "helpful") => {
+const fetchReviews = (product_id, page = 1, count = 2, sort = "relevant") => {
   return axios.get(host + `/reviews/?product_id=${product_id}&page=${page}&count=${count}&sort=${sort}`, options)
     .then((res) => res.data.results)
     .catch((err) => console.error(err));
@@ -244,6 +244,20 @@ const putAnswerReport = (answer_id) => {
     .catch((err) => console.error(err));
 };
 
+/*
+Function Description: Reports a review (no longer returned in query)
+Return: Promise resolving to the server response
+Parameter Requirements: review_id
+Parameter Descriptions:
+  review_id: review to report
+*/
+const reportReview = (review_id) => {
+  return axios.put(host + `/reviews/${review_id}/report`, {}, options)
+    .then((res) => res)
+    .catch((err) => console.error(err));
+};
+
+
 //API call helper function documentation template
 /*
 Function Description:
@@ -253,5 +267,5 @@ Parameter Descriptions:
 */
 
 export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
-export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful};
+export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful, reportReview};
 export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putAnswerReport};
