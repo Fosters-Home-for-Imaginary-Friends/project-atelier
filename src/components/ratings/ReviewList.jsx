@@ -2,11 +2,14 @@
 import React from 'react';
 import IndividualReview from './IndividualReview.jsx';
 
-let ReviewList = () => {
+let ReviewList = (props) => {
+
 return (
   <div className= "review-list-container"> {/*this container holds all individual reviews*/}
     <h3> This is where the review list begins </h3>
-    <IndividualReview />
+    {props.reviews.map((review, i) => {
+      return <IndividualReview className="individual-review" review={review} key={i}/>
+    })}
   </div>
 );
 }
