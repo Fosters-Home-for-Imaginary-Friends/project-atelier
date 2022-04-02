@@ -84,7 +84,7 @@ Parameter Descriptions:
   count: # of items per page
   sort: sorts results by "newest", "helpful", or "relevant"
 */
-const fetchReviews = (product_id, page = 1, count = 5, sort = "helpful") => {
+const fetchReviews = (product_id, page = 1, count = 2, sort = "relevant") => {
   return axios.get(host + `/reviews/?product_id=${product_id}&page=${page}&count=${count}&sort=${sort}`, options)
     .then((res) => res.data.results)
     .catch((err) => console.error(err));
