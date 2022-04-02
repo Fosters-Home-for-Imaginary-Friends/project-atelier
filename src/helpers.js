@@ -239,7 +239,7 @@ Parameter Descriptions:
   answer_id: ID of answer to report
 */
 
-const putReportAnswer = (answer_id) => {
+const putAnswerReport = (answer_id) => {
   return axios.put(host + `/qa/answers/${answer_id}/report`, {}, options)
     .catch((err) => console.error(err));
 };
