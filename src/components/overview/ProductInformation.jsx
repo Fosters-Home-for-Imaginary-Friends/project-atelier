@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import StyleSelector from './StyleSelector.jsx';
-import {fetchProducts} from "../../helpers.js";
 
-const ProductInformation = () => {
-  const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    fetchProducts()
-      .then((response) => {
-        setProduct(response[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, []);
-
-  console.log(product);
-
+const ProductInformation = ({ currentProduct }) => {
+  console.log(currentProduct);
   return (
     <div className="overview-product-info">
-      <h1>{product.name}</h1>
-      <section className="body-text">{product.description}</section>
-      <section className="body-text">$369</section>
+      <h1>{ currentProduct.name }</h1>
+      <section className="body-text">{ currentProduct.description }</section>
+      <section className="body-text">{ currentProduct.default_price }</section>
       <section className="body-text">STYLE</section>
       <StyleSelector />
       <div>
@@ -34,6 +21,10 @@ const ProductInformation = () => {
       </div>
     </div>
   )
+}
+
+ProductInformation.propTypes = {
+  currentProduct: PropTypes.object.isRequired
 }
 
 export default ProductInformation;

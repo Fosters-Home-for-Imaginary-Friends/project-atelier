@@ -111,6 +111,7 @@ span.helpful-answer {
   padding-left: 20px;
   padding-bottom: 20px;
   align-self: flex-end;
+  width: 400px;
 }
 
 .image-carousel {
@@ -205,16 +206,6 @@ span.helpful-answer {
   height: 30px;
   margin: auto;
 }
-.ratings-reviews-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: baseline;
-  width: 1000px;
-  height: 400px;
-  margin: auto;
-}
 .compare-modal {
   position: absolute;
   background-color: white;
@@ -225,4 +216,16 @@ span.helpful-answer {
   left: 200px;
   display: flex;
   justify-content: space-around;
+}
+
+/* Start of Ratings/Reviews *****************/
+.ratings-reviews-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  width: 1000px;
+  height: 400px;
+  margin: auto;
 }
