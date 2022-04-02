@@ -131,11 +131,11 @@ const putReviewHelpful = (review_id) => {
 };
 
 /*
-Function Description: Marks a review as helpful
+Function Description: Reports a review (no longer returned in query)
 Return: Promise resolving to the server response
 Parameter Requirements: review_id
 Parameter Descriptions:
-  review_id: review to mark as helpful
+  review_id: review to report
 */
 const reportReview = (review_id) => {
   return axios.put(host + `/reviews/${review_id}/report`, {}, options)
