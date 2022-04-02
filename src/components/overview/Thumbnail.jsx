@@ -1,11 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Thumbnail = ({slide}) => {
+const Thumbnail = ({thumbnail}) => {
   return (
     <li>
-      <img src={slide.url} key={slide.image} className="thumbnail"/>
+      <img src={thumbnail.thumbnail_url} className="thumbnail"/>
     </li>
   )
+}
+
+Thumbnail.propTypes = {
+  thumbnail: PropTypes.object.isRequired
 }
 
 export default Thumbnail;

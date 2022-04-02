@@ -69,8 +69,8 @@ const ImageBar = () => {
       <div className="progress-bar-progress"></div>
     </div>
     <ul className="thumbnails">
-      {currentStyle.photos.map(image =>
-        <Thumbnail key={image.id} slide={image}/>
+      {currentStyle.photos.map(thumbnail =>
+        <Thumbnail key={thumbnail.thumbnail_url} thumbnail={thumbnail}/>
       )}
     </ul>
   </div>
