@@ -20,6 +20,9 @@ const Overview = () => {
 
   return (
     <div className="overview">
+      {/* <div className="slogan-container">
+        <section className="slogan">{product.slogan.toUpperCase()}</section>
+      </div> */}
       <section className="overview-images">
         <ImageCarousel />
         <ImageBar />
