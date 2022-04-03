@@ -87,7 +87,7 @@ button.info-button {
 section.body-text {
   font-size: 10px;
   font-weight: 200;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 span.user-data {
@@ -139,29 +139,28 @@ button.style-button {
 
 .style-buttons {
   display: flex;
-  /* border-style: solid;
-  border-radius: 10px;
-  border-color: #1f1f1f; */
   flex-flow: row wrap;
   justify-content: flex-start;
   border: 2px solid white;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px #1f1f1f;
+  box-shadow: 0 0 0 1px darkgray;
   margin: 3px;
 }
 
+.style-buttons:hover {
+  box-shadow: 0 0 0 1px #1f1f1f;
+}
+
 .style-color {
-  height: 30px;
-  width: 15px;
+  height: 24px;
+  width: 12px;
 }
 
 .side1 {
-  /* background-color: #1f1f1f; */
   border-radius: 100% 0 0 100%/50% 0 0 50%;
 }
 
 .side2 {
-  /* background-color: rgb(12, 59, 43); */
   border-radius: 0 100% 100% 0/0 50% 50% 0;
 }
 
@@ -188,8 +187,8 @@ button.add {
 .image-carousel {
   list-style: none;
   background-color: gray;
-  width: 260px;
-  height: 390px;
+  height: 60vh;
+  width: 40vh;
   overflow: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
@@ -210,8 +209,8 @@ button.add {
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 390px;
-  width: 260px;
+  height: 60vh;
+  width: 40vh;
   list-style: none;
   scroll-snap-align: start;
   scroll-behavior: smooth;
