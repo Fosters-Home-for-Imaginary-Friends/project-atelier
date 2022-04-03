@@ -60,6 +60,7 @@ body {
 h1 {
   font-size: 24px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -79,11 +80,14 @@ button.info-button {
   padding: 10px;
   border-radius: 0px;
   border-width: 1px;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
 }
 
 section.body-text {
   font-size: 10px;
   font-weight: 200;
+  margin-bottom: 5px;
 }
 
 span.user-data {
@@ -105,27 +109,42 @@ span.helpful-answer {
   justify-content: center;
 }
 
+.overview-images {
+  display: flex;
+  justify-content: center;
+}
+
+.overview-images:hover .thumbnails{
+  opacity: 100;
+}
+
 .overview-product-info {
   display: block;
   flex-direction: column;
   padding-left: 20px;
   padding-bottom: 20px;
   align-self: flex-end;
+  width: 200px;
+}
+
+button.add {
+  width: 100%;
 }
 
 .image-carousel {
   list-style: none;
   background-color: gray;
-  width: 265px;
-  height: 398px;
-  /* overflow: hidden; */
+  width: 260px;
+  height: 390px;
+  overflow: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  transform: translateY(0px);
-  transition: ease all 0.5s;
-  padding: 0px;
 }
+
+/* .image-carousel:hover .thumbnails {
+  opacity: 100;
+} */
 
 .image-carousel::-webkit-scrollbar {
   display: none;
@@ -141,34 +160,72 @@ span.helpful-answer {
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 398px;
-  width: 265px;
+  height: 390px;
+  width: 260px;
   list-style: none;
   scroll-snap-align: start;
   scroll-behavior: smooth;
   transition-property: scroll-snap-align;
   transition-duration: 2s;
+  object-fit: cover;
+}
+
+.image-bar {
+  display: flex;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 1px;
+  background-color: darkgray;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.progress-bar-progress {
+  height: 10%;
+  width: 1px;
+  background-color: #1f1f1f;
+}
+
+.thumbnails {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* .thumbnails:hover {
+  opacity: 100;
+} */
+
+.thumbnail {
+  height: 24px;
+  width: 16px;
+  display: list-item;
+  list-style: none;
+  object-fit: cover;
+  padding-bottom: 5px;
 }
 
 .style-selector {
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 250px;
 }
 
 .style {
   background-color: lightgray;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+  height: 48px;
+  width: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
   border-style: solid;
-  border-color: #1f1f1f;
+  border-color: lightgray;
   border-width: 1px;
+  object-fit: cover;
 }
 
 .product-list {
