@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import Image from "./Image.jsx";
-import {fetchProducts} from "../../helpers.js";
+import {fetchStyles} from "../../helpers.js";
+import {OverviewContext} from "./Overview.jsx";
 
 
-const ImageCarousel = ({ currentStyles }) => {
+const ImageCarousel = () => {
 
 var currentStyle = {
   style_id: 240500,
@@ -68,10 +69,15 @@ var currentStyle = {
 
   const imageCarouselRef = useRef(null);
   const [images, setImages] = useState([]);
+  // const [productId, setProductId] = useState(product_id);
+
+  const {productId} = useContext(OverviewContext);
+  console.log(productId);
 
   useEffect(() => {
-    fetchProducts()
+    fetchStyles(productId)
       .then((response) => {
+        console.log(response);
         setImages(response);
       })
       .catch((error) => {
@@ -88,6 +94,10 @@ var currentStyle = {
       </ul>
     </div>
   )
+}
+
+ImageCarousel.propTypes = {
+  product_id: PropTypes.number.isRequired
 }
 
 export default ImageCarousel;
