@@ -4,27 +4,37 @@ let moment = require('moment');
 
 let IndividualReview = (props) => {
   //variable for individual review to clean up code
-  let r = props.review;
+
+  const {reviewer_name, date, summary, body, response, recommend} = props.review;
 
   //returns individual review to the reviewlist.jsx
   return (
     <div className= "individual-review-container">
-      <div className= "temp-container">
-        <span className= "review-username-date"> {r.reviewer_name} {moment(r.date).format('MMMM Do YYYY')} </span>
-        <h2 className= "review-summary"> {r.summary}</h2>
-        <span className= "review-body"> {r.body} </span>
+        <div className="individual-review-element-conatainers">
+          <div className="username-date-container">
+            <span className= "review-username-date"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </span>
+          </div>
+        </div>
+        <div className="individual-review-element-conatainers">
+          <span className= "review-summary"> {summary}</span>
+        </div>
+        <div className="individual-review-element-conatainers">
+          <h2 className= "review-body"> {body} </h2>
+        </div>
         <div className= "review-recommend">
-          {(r.recommend) && <span> I recommend this product. </span>}
+          {(recommend) && <span> I recommend this product. </span>}
         </div>
         <div className="review-response-container">
-          {(r.response) && <span> {r.response} </span>}
+          {(response) && <span> {response} </span>}
         </div>
-        <span> Helpful? </span>
-        <span className= "review-helpful-link"> Yes </span>
-        <span className= "review-helpful-link"> No </span>
-        <span className= "review-report"> | Report </span>
+        <div className="review-helpful-container">
+        <h3 id="review-helpful-text"> Helpful? </h3>
+          <h3 id= "review-helpful-link"> Yes </h3>
+          <h3 id= "review-helpful-link"> No </h3>
+          <h3 id= "review-report"> | Report </h3>
+        </div>
 
-      </div>
+
 
         {/*this space is for the checkmark icon if it's a verified seller*/}
 
