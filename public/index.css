@@ -284,6 +284,12 @@ button.add {
   width: 100%;
 }
 
+
+/*-------------------- Related Products and Outfit List --------------------*/
+/*-------------------- Related Products and Outfit List --------------------*/
+/*-------------------- Related Products and Outfit List --------------------*/
+
+/*---------- Carousel ----------*/
 .product-list {
 
   height: 275px;
@@ -306,6 +312,13 @@ button.add {
 .carousel {
   display:inline-flex;
 }
+.arrow {
+  width: 45px;
+  height: 30px;
+  margin: auto;
+}
+
+/*---------- Product Card ----------*/
 .product-card {
   background-color: grey;
   width: 130px;
@@ -313,11 +326,8 @@ button.add {
   margin: 15px;
   justify-content: flex-start;
 }
-.arrow {
-  width: 45px;
-  height: 30px;
-  margin: auto;
-}
+
+/*---------- Comparison Modal ----------*/
 .compare-modal {
   position: absolute;
   background-color: white;
