@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ProductList from './ProductList.jsx';
 import ProductCard from './ProductCard.jsx';
 import CompareModal from './CompareModal.jsx';
-import {fetchRelated, fetchProduct} from '../../helpers.js';
+import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
 //Placeholder data for the compare-modal
 const modalContext = {};
@@ -12,15 +12,15 @@ const ProductLists = () => {
   const [relatedCards, setRelatedCards] = useState([]);
   const [outfitCards, setOutfitCards] = useState([]);
 
-  const createRelatedCards = (product_id) => {
+  const createRelatedCards = (product_id) => { //Returns an array of Product Cards
     return fetchRelated(product_id)
-      .then((data) => {
-        console.log(data);
-        return data.map((id) => fetchProduct(id));
-      })
-      .then((promises) => Promise.all(promises))
-      .then((products) => products.map((product, key) => <ProductCard key={key} product={product} />))
-      .then((cards) => setRelatedCards(cards))
+      .then((data) => Promise.all(data.map((id) => fetchProduct(id) //Returns an array of objects with product and style info
+            .then((product) => fetchStyles(id)
+              .then((styles) => {
+                return {product: product, styles: styles};
+              }))
+            .catch((err) => console.error(err)))))
+      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} product={item.product} styles={item.styles} />)))
       .catch((err) => console.error(err));
   }
   useEffect(() => {
