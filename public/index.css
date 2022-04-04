@@ -353,17 +353,96 @@ button.add {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
   width: 1000px;
   height: 400px;
   margin: auto;
 }
+.review-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 40vw;
+  height: auto;
+}
+.more-review-and-add-reviews {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.more-reviews-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 125px;
+  height: 40px;
+  border: 2px solid black;
+}
+#more-reviews-text {
+  margin-top: 10px;
+}
+.add-a-review-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 50px;
+  width: 125px;
+  height: 40px;
+  border: 2px solid black;
+}
+#add-a-review-text {
+  margin-top: 10px;
+}
 .individual-review-container {
   border-bottom: 1px solid black;
   margin: 5px;
 }
+#review-helpful-link {
+  margin-right: 8px;
+}
+#review-helpful-text {
+  margin-right: 8px;
+}
 
 .review-report {
   text-decoration: underline;
+}
+.review-body {
+margin-top: 20px;
+}
+.single-star-outline {
+  height: 36px;
+  width: 31px;
+}
+.single-star-fill {
+  /* position: relative; */
+  display: inline-block;
+  height: 36px;
+  background-color: #333333;
+}
+.single-star-container {
+  height: 36px;
+  width: 31px;
+  display: inline-block;
+}
+.individual-review-element-conatainers {
+  margin-bottom: 10px;
+}
+.review-recommend {
+  margin-bottom: 10px;
+}
+.username-date-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.review-response-container {
+  margin-bottom: 10px;
+}
+.review-helpful-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }

@@ -9,8 +9,8 @@ const modalContext = {};
 const ModalContext = React.createContext(modalContext);
 
 const ProductLists = () => {
+  // TODO: Create an outfit list state
   const [relatedCards, setRelatedCards] = useState([]);
-  const [outfitCards, setOutfitCards] = useState([]);
 
   const createRelatedCards = (product_id) => {
     return fetchRelated(product_id)
@@ -23,6 +23,7 @@ const ProductLists = () => {
       .then((cards) => setRelatedCards(cards))
       .catch((err) => console.error(err));
   }
+  // TODO: Make sure it rerenders when the currently viewed product changes
   useEffect(() => {
     createRelatedCards(40344);
   }, []);
