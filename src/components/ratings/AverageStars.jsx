@@ -1,6 +1,5 @@
 import React from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
-import starOutline from '../../../public/assets/starOutline.png';
 let AverageStars = (props) => {
 
 //temp variable to progress while api call having issues with timing
@@ -57,7 +56,7 @@ while (numOfStars.length < 5 ) {
           <div className="single-star-container" key={i}>
             <div className="single-star-fill" style={{"width" : `${parseInt(star * 31)}px`}}>
               {/* <AiOutlineStar className="single-star-outline"/> */}
-              <img className="single-star-outline" src={starOutline} alt="stars alt"></img>
+              <AiOutlineStar />
             </div>
           </div>
         );
