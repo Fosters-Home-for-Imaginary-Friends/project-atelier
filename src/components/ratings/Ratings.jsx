@@ -30,12 +30,13 @@ let averageRating = (ratingObj) => {
 
   useEffect(() => {
     fetchReviews(40387).then(res => {
-      console.log(res);
+      // console.log(res);
       setReviews(res);
     });
   }, []);
   useEffect(() => {
     fetchReviewMetadata(40387).then(res => {
+      console.log(res)
       setMetaRating(res);
 
     })

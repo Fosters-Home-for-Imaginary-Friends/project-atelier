@@ -1,9 +1,11 @@
 //this is the component for the review list that houses individual reviews
-import React from 'react';
+import React, {useState} from 'react';
 import IndividualReview from './IndividualReview.jsx';
 
 let ReviewList = (props) => {
   let emptyReview = [];
+
+  const [moreReviews, setMoreReviews] = useState(false);
 
 return (
   <div className= "review-list-container">
@@ -13,7 +15,7 @@ return (
       })}
       <div className="more-review-and-add-reviews">
       <div className="more-reviews-container">
-       {(emptyReview) && <h2 id="more-reviews-text"> More Reviews </h2> }
+       {(emptyReview.length > 2) && <h2 id="more-reviews-text"> More Reviews </h2> }
       </div>
       <div className="add-a-review-container">
         <h2 id="add-a-review-text"> Add A Review + </h2>
