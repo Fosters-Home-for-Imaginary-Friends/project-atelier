@@ -328,6 +328,7 @@ button.add {
 }
 .related-image {
   height: 60%;
+  width: 200px;
   background-color: grey;
 }
 .related-info {
