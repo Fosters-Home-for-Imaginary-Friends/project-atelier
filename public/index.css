@@ -284,21 +284,27 @@ button.add {
   width: 100%;
 }
 
+
+/*-------------------- Related Products and Outfit List --------------------*/
+/*-------------------- Related Products and Outfit List --------------------*/
+/*-------------------- Related Products and Outfit List --------------------*/
+
+/*---------- Carousel ----------*/
 .product-list {
 
-  height: 275px;
+  height: 370px;
   width: 925px;
   margin: auto;
 }
 .carousel-container {
   width: 925px;
-  height: 250px;
+  height: 340px;
   position: relative;
   display:inline-flex;
 }
 .carousel-viewport {
-  width: 810px;
-  height: 250px;
+  width: 960px;
+  height: 340px;
   margin: auto;
   overflow-x: hidden;
   margin: auto;
@@ -306,18 +312,30 @@ button.add {
 .carousel {
   display:inline-flex;
 }
-.product-card {
-  background-color: grey;
-  width: 130px;
-  height: 220px;
-  margin: 15px;
-  justify-content: flex-start;
-}
 .arrow {
   width: 45px;
   height: 30px;
   margin: auto;
 }
+
+/*---------- Product Card ----------*/
+.product-card {
+  background-color: black;
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  justify-content: flex-start;
+}
+.related-image {
+  height: 60%;
+  background-color: grey;
+}
+.related-info {
+  height: 40%;
+  background-color: white;
+}
+
+/*---------- Comparison Modal ----------*/
 .compare-modal {
   position: absolute;
   background-color: white;
