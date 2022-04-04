@@ -25,9 +25,10 @@ let averageRating = (ratingObj) => {
     return (totalScore / totalVotes);
   }
 }
-
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
+
+
 
   useEffect(() => {
     fetchReviewMetadata(40387).then(res => {
