@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import StyleSelector from './StyleSelector.jsx';
 import { OverviewContext } from "./Overview.jsx";
 
@@ -18,10 +17,6 @@ const ProductInformation = () => {
       </div>
     </div>
   )
-}
-
-ProductInformation.propTypes = {
-  product: PropTypes.object.isRequired
 }
 
 export default ProductInformation;

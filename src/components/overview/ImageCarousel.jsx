@@ -68,22 +68,18 @@ var currentStyle = {
 }
 
   const imageCarouselRef = useRef(null);
-  const [images, setImages] = useState([]);
-  // const [productId, setProductId] = useState(product_id);
 
   const {productId} = useContext(OverviewContext);
-  console.log(productId);
 
-  useEffect(() => {
-    fetchStyles(productId)
-      .then((response) => {
-        console.log(response);
-        setImages(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, []);
+  // useEffect(() => {
+  //   fetchStyles(productId)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  // }, []);
 
   return (
     <div className="overview-images">
@@ -94,10 +90,6 @@ var currentStyle = {
       </ul>
     </div>
   )
-}
-
-ImageCarousel.propTypes = {
-  product_id: PropTypes.number.isRequired
 }
 
 export default ImageCarousel;

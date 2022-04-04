@@ -4,7 +4,11 @@ import ImageBar from "./ImageBar.jsx";
 import ProductInformation from './ProductInformation.jsx';
 import {fetchProducts, fetchProduct, fetchStyles, fetchRelated} from "../../helpers.js";
 
-export const OverviewContext = createContext(null);
+export const OverviewContext = createContext({
+  product: null,
+  productId: null,
+  loading: true
+});
 
 const Overview = () => {
 
@@ -24,28 +28,41 @@ const Overview = () => {
   const [productId, setProductId] = useState();
 
   useEffect(() => {
-    fetchProduct(40344)
-      .then((response) => {
-        console.log(response);
-        setProduct(response);
-        setProductId(response.id);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    // fetchProduct(40344)
+    //   .then((response) => {
+    //     setProduct(response);
+    //     setProductId(response.id);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
+    const fetchData = async () => {
+      const data = await (fetchProduct(40344))
+      setProduct(data);
+      setProductId(data.id);
+    }
+
+    fetchData()
+      .catch(console.error);
   }, []);
+
+  // console.log(product);
+  console.log(productId);
+
+  // const fetchProduct = (product_id) => {
+  //   return axios.get(host + '/products/' + product_id, options)
+  //     .then((res) => res.data)
+  //     .catch((err) => console.error(err));
+  // };
 
   return (
     <OverviewContext.Provider value={{ product, productId }}>
       <div className="overview">
-        {/* <div className="slogan-container">
-          <section className="slogan">{product.slogan.toUpperCase()}</section>
-        </div> */}
         <section className="overview-images">
           <ImageCarousel />
           <ImageBar />
         </section>
-          <ProductInformation product={product}/>
+          <ProductInformation />
       </div>
     </OverviewContext.Provider>
   )
