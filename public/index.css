@@ -292,19 +292,19 @@ button.add {
 /*---------- Carousel ----------*/
 .product-list {
 
-  height: 275px;
+  height: 370px;
   width: 925px;
   margin: auto;
 }
 .carousel-container {
   width: 925px;
-  height: 250px;
+  height: 340px;
   position: relative;
   display:inline-flex;
 }
 .carousel-viewport {
-  width: 810px;
-  height: 250px;
+  width: 960px;
+  height: 340px;
   margin: auto;
   overflow-x: hidden;
   margin: auto;
@@ -320,11 +320,19 @@ button.add {
 
 /*---------- Product Card ----------*/
 .product-card {
-  background-color: grey;
-  width: 130px;
-  height: 220px;
-  margin: 15px;
+  background-color: black;
+  width: 200px;
+  height: 300px;
+  margin: 20px;
   justify-content: flex-start;
+}
+.related-image {
+  height: 60%;
+  background-color: grey;
+}
+.related-info {
+  height: 40%;
+  background-color: white;
 }
 
 /*---------- Comparison Modal ----------*/
