@@ -73,7 +73,6 @@ var currentStyle = {
     return <div className="loading-page">Loading...</div>;
   }
 
-  console.log(styles[0]);
   return (
   <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">

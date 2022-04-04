@@ -8,6 +8,7 @@ export const OverviewContext = createContext({
   product: null,
   productId: null,
   styles: null,
+  currentStyle: null,
   loading: true
 });
 
@@ -16,6 +17,7 @@ const Overview = () => {
   const [product, setProduct] = useState({});
   const [productId, setProductId] = useState(0);
   const [styles, setStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({});
   const [loading, setLoading] = useState(true);
 
   const getProductData = (product_id) => {
@@ -30,6 +32,16 @@ const Overview = () => {
       })
       .then((styleData) => {
         setStyles(styleData);
+        return styleData;
+      })
+      .then((styleData) => {
+        console.log(styleData);
+        for (let i = 0; i < styleData.length; i++) {
+          let style = styleData[i];
+          if (style['default?']) {
+            setCurrentStyle(style);
+          }
+        }
       })
       .then(() => {
         setLoading(false);
@@ -44,7 +56,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />
