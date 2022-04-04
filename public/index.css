@@ -339,11 +339,14 @@ button.add {
 .compare-modal-container {
   position: absolute;
   top: 600px;
+  left: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
   z-index: 10;
   background-color: white;
   color: black;
   width: 300px;
-  height: 200px;
+  height: 300px;
   animation: compare-modal-animation 0.3s;
 }
 
