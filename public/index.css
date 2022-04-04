@@ -271,6 +271,9 @@ span.helpful-answer {
 #review-helpful-link {
   margin-right: 8px;
 }
+#review-helpful-text {
+  margin-right: 8px;
+}
 
 .review-report {
   text-decoration: underline;

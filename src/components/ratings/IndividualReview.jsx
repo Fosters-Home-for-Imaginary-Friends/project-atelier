@@ -28,7 +28,7 @@ let IndividualReview = (props) => {
           {(response) && <span> {response} </span>}
         </div>
         <div className="review-helpful-container">
-        <span> Helpful? </span>
+        <h3 id="review-helpful-text"> Helpful? </h3>
           <h3 id= "review-helpful-link"> Yes </h3>
           <h3 id= "review-helpful-link"> No </h3>
           <h3 id= "review-report"> | Report </h3>
