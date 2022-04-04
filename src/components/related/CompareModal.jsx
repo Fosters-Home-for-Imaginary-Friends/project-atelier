@@ -1,24 +1,20 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import ReactDom from 'react-dom';
 
 const CompareModal = () => {
 
   const modalRef = useRef();
+  const [modalView, setModalView] = useState({visibility: 'visible'});
 
-  const closeModal = (e) => {
-    if (e.target === modalRef.current) {
-      // setShowModal(false);
-    }
-  };
-  const style = {
-    visibility: 'hidden'
+  const closeModal = () => {
+      setModalView({visibility: 'hidden'});
   };
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef} onClick={closeModal}>
+    <div className="compare-modal-container" ref={modalRef} style={modalView}>
       <div className="compare-modal">
         <h2>This is a Modal</h2>
-        <button onClick={() => {}}>X</button>
+        <button onClick={closeModal}>X</button>
       </div>
     </div>,
     document.getElementById("root")
