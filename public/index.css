@@ -204,6 +204,10 @@ span.helpful-answer {
   display: none;
 }
 
+.image-carousel.loading {
+  background-color: #f1f1f1;
+}
+
 .image {
   display: list-item;
   border: 0;
