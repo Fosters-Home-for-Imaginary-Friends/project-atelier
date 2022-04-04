@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {AiOutlineStar} from 'react-icons/ai';
+import starOutline from '../../../public/assets/starOutline.png';
 let AverageStars = (props) => {
 
 //temp variable to progress while api call having issues with timing
@@ -13,11 +14,11 @@ while (numOfStars.length < 5 ) {
     numOfStars.push(1);
     //once below 1 total star, create values for each quarter star
   } else if ( averageRating > 0) {
-    let zero = Math.abs(0 - rating);
-    let oneQuarter = Math.abs(.25 - rating);
-    let half = Math.abs(.5 - rating);
-    let threeQuarters = Math.abs(.75 - rating);
-    let max = Math.abs(1 - rating);
+    let zero = Math.abs(0 - averageRating);
+    let oneQuarter = Math.abs(.25 - averageRating);
+    let half = Math.abs(.5 - averageRating);
+    let threeQuarters = Math.abs(.75 - averageRating);
+    let max = Math.abs(1 - averageRating);
     //find the closest quarter star
     let closestPercent = Math.min(zero, oneQuarter, half, threeQuarters, max);
     // create a switch statement for each option
@@ -54,12 +55,12 @@ while (numOfStars.length < 5 ) {
       {numOfStars.map((star, i) => {
         return (
           <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{"width" : `${parseInt(star * 30)}px`}}>
-
-
+            <div className="single-star-fill" style={{"width" : `${parseInt(star * 31)}px`}}>
+              {/* <AiOutlineStar className="single-star-outline"/> */}
+              <img className="single-star-outline" src={starOutline} alt="stars alt"></img>
             </div>
           </div>
-        )
+        );
       })}
     </div>
   )
