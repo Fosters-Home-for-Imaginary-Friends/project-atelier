@@ -83,8 +83,8 @@ var currentStyle = {
   return (
     <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">
-        {currentStyle.photos.map(image =>
-          <Image key={image.id} slide={image}/>
+        {currentStyle.photos.map((image, index) =>
+          <Image key={index} slide={image}/>
         )}
       </ul>
     </div>
