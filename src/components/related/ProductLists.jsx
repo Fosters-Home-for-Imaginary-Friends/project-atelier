@@ -32,7 +32,9 @@ const ProductLists = () => {
 
   return (
     <React.Fragment>
-      <div className="product-list">
+      <CompareModal />
+      <div className="product-list" id="related-products">
+
         <span>Related Products</span>
           <ProductList cards={relatedCards} />
       </div>
