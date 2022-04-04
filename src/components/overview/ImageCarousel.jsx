@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useRef } from "react";
 import Image from "./Image.jsx";
-import {fetchStyles} from "../../helpers.js";
-import {OverviewContext} from "./Overview.jsx";
+// import {fetchStyles} from "../../helpers.js";
+// import {OverviewContext} from "./Overview.jsx";
 
 
 const ImageCarousel = () => {
@@ -69,7 +68,7 @@ var currentStyle = {
 
   const imageCarouselRef = useRef(null);
 
-  const {productId} = useContext(OverviewContext);
+  // const {productId} = useContext(OverviewContext);
 
   // useEffect(() => {
   //   fetchStyles(productId)

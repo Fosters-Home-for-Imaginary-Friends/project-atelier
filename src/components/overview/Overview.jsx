@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageBar from "./ImageBar.jsx";
 import ProductInformation from './ProductInformation.jsx';
-import {fetchProducts, fetchProduct, fetchStyles, fetchRelated} from "../../helpers.js";
+import {fetchProduct} from "../../helpers.js";
 
 export const OverviewContext = createContext({
   product: null,
