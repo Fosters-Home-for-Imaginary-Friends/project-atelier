@@ -7,7 +7,7 @@ const ImageBar = () => {
   const { currentStyle, loading } = useContext(OverviewContext);
 
   if (loading) {
-      return <div>Loading...</div>
+      return <div className="image-bar loading"></div>
   }
 
   return (

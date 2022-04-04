@@ -101,11 +101,16 @@ span.helpful-answer {
   color: rgb(100, 100, 100)
 }
 
+.styles-template {
+  margin-top: 300px;
+}
+
 /* START OF OVERVIEW */
 
 .overview {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -128,6 +133,80 @@ span.helpful-answer {
 .overview-images:hover .thumbnails{
   opacity: 100;
   transition: opacity 0.2s ease-in;
+}
+
+/* IMAGE CAROUSEL */
+
+.image-carousel {
+  list-style: none;
+  background-color: gray;
+  height: 75vh;
+  width: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.image-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.loading {
+  background-color: #f1f1f1;
+}
+
+.image {
+  display: list-item;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: darkgray;
+  box-sizing: border-box;
+  height: 75vh;
+  width: 50vh;
+  list-style: none;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  transition-property: scroll-snap-align;
+  transition-duration: 2s;
+  object-fit: cover;
+}
+
+.image-bar {
+  display: flex;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 1px;
+  background-color: darkgray;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.progress-bar-progress {
+  height: 10%;
+  width: 1px;
+  background-color: #1f1f1f;
+}
+
+.thumbnails {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.thumbnail {
+  height: 3.75vh;
+  width: 2.5vh;
+  display: list-item;
+  list-style: none;
+  object-fit: cover;
+  padding-bottom: 5px;
 }
 
 .overview-product-info {
@@ -210,7 +289,6 @@ span.helpful-answer {
 
 .sky-blue {
   background-color: rgb(55, 135, 185);
-
 }
 
 .white {
@@ -221,85 +299,11 @@ span.helpful-answer {
   background-color: rgb(75, 75, 75);
 }
 
-/* IMAGE CAROUSEL */
-
-.image-carousel {
-  list-style: none;
-  background-color: gray;
-  height: 60vh;
-  width: 40vh;
-  overflow: hidden;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-.image-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.image-carousel.loading {
-  background-color: #f1f1f1;
-}
-
-.image {
-  display: list-item;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  background-color: darkgray;
-  box-sizing: border-box;
-  height: 60vh;
-  width: 40vh;
-  list-style: none;
-  scroll-snap-align: start;
-  scroll-behavior: smooth;
-  transition-property: scroll-snap-align;
-  transition-duration: 2s;
-  object-fit: cover;
-}
-
-.image-bar {
-  display: flex;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 1px;
-  background-color: darkgray;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.progress-bar-progress {
-  height: 10%;
-  width: 1px;
-  background-color: #1f1f1f;
-}
-
-.thumbnails {
-  display: block;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-.thumbnail {
-  height: 3.75vh;
-  width: 2.5vh;
-  display: list-item;
-  list-style: none;
-  object-fit: cover;
-  padding-bottom: 5px;
-}
-
 .style-selector {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 250px;
+  width: 136px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

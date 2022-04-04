@@ -12,10 +12,10 @@ const App = () => {
 
   return (
     <div>
-      <CSSStyles />
       <Overview />
       <ProductLists />
       <Ratings />
+      <CSSStyles />
     </div>
   );
 }
