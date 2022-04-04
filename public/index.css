@@ -289,9 +289,8 @@ button.add {
 /*-------------------- Related Products and Outfit List --------------------*/
 /*-------------------- Related Products and Outfit List --------------------*/
 
-/*---------- Carousel ----------*/
+/*---------- Product Lists ----------*/
 .product-list {
-
   height: 370px;
   width: 925px;
   margin: auto;
@@ -337,14 +336,18 @@ button.add {
 }
 
 /*---------- Comparison Modal ----------*/
-.compare-modal {
+.compare-modal-container {
   position: absolute;
+  top: 600px;
+  z-index: 10;
   background-color: white;
   color: black;
   width: 300px;
   height: 200px;
-  top: 100px;
-  left: 200px;
+}
+
+.compare-modal {
+
   display: flex;
   justify-content: space-around;
 }

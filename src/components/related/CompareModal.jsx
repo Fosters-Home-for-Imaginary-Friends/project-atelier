@@ -11,12 +11,12 @@ const CompareModal = () => {
     }
   };
   const style = {
-    visbility: 'hidden'
+    visibility: 'hidden'
   };
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef} onClick={closeModal} style={style}>
-      <div className="compare-modal" style={style}>
+    <div className="compare-modal-container" ref={modalRef} onClick={closeModal}>
+      <div className="compare-modal">
         <h2>This is a Modal</h2>
         <button onClick={() => {}}>X</button>
       </div>
