@@ -11,16 +11,15 @@ let ReviewList = (props) => {
   const [moreReviews, setMoreReviews] = useState(true);
   const [reviews, setReviews] = useState([]);
   let [pageNum, setPageNum] = useState(1)
+  let [totalReviews, setTotalReviews] = useState(0);
 
-  let totalReviews = 0;
+  // let totalReviews = 0;
 
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
     setPageNum(pageNum += 1);
-    console.log(Math.round(totalReviews / 2));
     if ( pageNum < (Math.round(totalReviews / 2))) {
     fetchReviews(40387, pageNum).then(res => {
-      console.log(pageNum, res, moreReviews)
       setReviews(reviews.concat(res));
     })
   } else {
@@ -31,7 +30,6 @@ let ReviewList = (props) => {
   //this useEffect grabs our initial two reviews using the current product_id
   useEffect(() => {
     fetchReviews(40387).then(res => {
-      console.log(res);
       setReviews(res);
     }).catch(err => {
       console.error(err);
@@ -42,7 +40,7 @@ let ReviewList = (props) => {
     fetchReviewMetadata(40387).then(res => {
       let totalRatingsObj = res.ratings;
       for (let k in totalRatingsObj) {
-        totalReviews += parseInt(totalRatingsObj[k]);
+        setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 );
       }
       totalReviews -= 2;
     }).catch(err => {
