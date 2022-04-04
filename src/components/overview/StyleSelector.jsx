@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import Style from "./Style.jsx";
+import {OverviewContext} from "./Overview.jsx";
 
 const StyleSelector = () => {
   var styles = [
@@ -122,13 +123,15 @@ const StyleSelector = () => {
         }
     }];
 
-  return (
+    const { loading } = useContext(OverviewContext);
+
+    return (
     <div className="style-selector">
-      {styles.map(style =>
+        {styles.map(style =>
         <Style key={style.style_id} style={style}/>
-      )}
+        )}
     </div>
-  )
+    )
 }
 
 export default StyleSelector;
