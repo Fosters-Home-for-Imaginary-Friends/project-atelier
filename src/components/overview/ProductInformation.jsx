@@ -1,24 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 import StyleSelector from './StyleSelector.jsx';
 
-const ProductInformation = () => {
-
+const ProductInformation = ({ product }) => {
   return (
     <div className="overview-product-info">
-      <h1>Expanded Product Name</h1>
-      <section className="body-text">$369</section>
-      <section className="body-text">STYLE</section>
-      <StyleSelector />
+      <h1>{product.name}</h1>
+      <section className="body-text">{product.description}</section>
+      <section className="body-text price">{product.default_price} USD</section>
+      <StyleSelector productId={product.id}/>
       <div>
-        <button className="info-button">SELECT SIZE</button>
-        <button className="info-button">1</button>
-      </div>
-      <div>
-        <button className="info-button">ADD TO BAG</button>
-        <button className="info-button">*</button>
+        <button className="info-button add">ADD TO BAG</button>
       </div>
     </div>
   )
+}
+
+ProductInformation.propTypes = {
+  product: PropTypes.object.isRequired
 }
 
 export default ProductInformation;

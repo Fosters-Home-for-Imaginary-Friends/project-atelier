@@ -60,6 +60,7 @@ body {
 h1 {
   font-size: 24px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -79,6 +80,8 @@ button.info-button {
   padding: 10px;
   border-radius: 0px;
   border-width: 1px;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
 }
 
 section.body-text {
@@ -103,28 +106,98 @@ span.helpful-answer {
 .overview {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+.slogan-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.slogan {
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  color: #1f1f1f
+}
+
+.overview-images {
+  display: flex;
+  justify-content: center;
+}
+
+.overview-images:hover .thumbnails{
+  opacity: 100;
+  transition: opacity 0.2s ease-in;
 }
 
 .overview-product-info {
   display: block;
   flex-direction: column;
   padding-left: 20px;
-  padding-bottom: 20px;
   align-self: flex-end;
+  width: 200px;
 }
+
+.body-text.price {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.style-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px darkgray;
+  margin: 3px;
+}
+
+.style-buttons:hover {
+  box-shadow: 0 0 0 2px #1f1f1f;
+}
+
+.style-color {
+  height: 24px;
+  width: 12px;
+}
+
+.side1 {
+  border-radius: 100% 0 0 100%/50% 0 0 50%;
+}
+
+.side2 {
+  border-radius: 0 100% 100% 0/0 50% 50% 0;
+}
+
+.forest-green {
+  background-color: rgb(12, 59, 43);
+}
+
+.black {
+  background-color: #1f1f1f;
+}
+
+.desert-brown {
+  background-color: rgb(149, 110, 93);
+}
+
+.tan {
+  background-color: rgb(210, 180, 140);
+}
+
+
 
 .image-carousel {
   list-style: none;
   background-color: gray;
-  width: 265px;
-  height: 398px;
-  /* overflow: hidden; */
+  height: 60vh;
+  width: 40vh;
+  overflow: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  transform: translateY(0px);
-  transition: ease all 0.5s;
-  padding: 0px;
 }
 
 .image-carousel::-webkit-scrollbar {
@@ -141,34 +214,74 @@ span.helpful-answer {
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 398px;
-  width: 265px;
+  height: 60vh;
+  width: 40vh;
   list-style: none;
   scroll-snap-align: start;
   scroll-behavior: smooth;
   transition-property: scroll-snap-align;
   transition-duration: 2s;
+  object-fit: cover;
+}
+
+.image-bar {
+  display: flex;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 1px;
+  background-color: darkgray;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.progress-bar-progress {
+  height: 10%;
+  width: 1px;
+  background-color: #1f1f1f;
+}
+
+.thumbnails {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.thumbnail {
+  height: 3.75vh;
+  width: 2.5vh;
+  display: list-item;
+  list-style: none;
+  object-fit: cover;
+  padding-bottom: 5px;
 }
 
 .style-selector {
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .style {
   background-color: lightgray;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+  height: 48px;
+  width: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
   border-style: solid;
-  border-color: #1f1f1f;
+  border-color: lightgray;
   border-width: 1px;
+  object-fit: cover;
+}
+
+button.add {
+  width: 100%;
 }
 
 .product-list {
