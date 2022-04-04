@@ -39,15 +39,15 @@ const Overview = () => {
     const fetchData = async () => {
       const data = await (fetchProduct(40344))
       setProduct(data);
-      setProductId(data.id);
+      // setProductId(data.id);
     }
 
     fetchData()
       .catch(console.error);
   }, []);
 
-  // console.log(product);
-  console.log(productId);
+  console.log(product);
+  // console.log(productId);
 
   // const fetchProduct = (product_id) => {
   //   return axios.get(host + '/products/' + product_id, options)
