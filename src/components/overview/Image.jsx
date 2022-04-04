@@ -6,7 +6,7 @@ const Image = (props) => {
 
   return (
     <li>
-      <img src={slide.image} key={slide.image} className="image"/>
+      <img src={slide.url} key={slide.image} className="image"/>
     </li>
   )
 }
