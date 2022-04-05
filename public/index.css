@@ -334,6 +334,7 @@ button.add {
   width: 200px;
   height: 180px;
   position: absolute;
+  object-fit: cover;
 }
 .card-bot {
   height: 40%;
@@ -343,7 +344,6 @@ button.add {
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
   position: absolute;
-  top: 600px;
   border-radius: 10px;
   border: 2px solid black;
   z-index: 10;

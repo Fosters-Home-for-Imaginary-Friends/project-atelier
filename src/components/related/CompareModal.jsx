@@ -1,11 +1,36 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import ReactDom from 'react-dom';
 
-const CompareModal = ({toggleModalView, modalView, card}) => {
+const CompareModal = ({toggleModalView, modalView, card, overview}) => {
   const modalRef = useRef();
-  console.log("selected card: ", card);
   useEffect(() => {
-  }, [card]);
+  }, []);
+
+  const [features, setFeatures] = useState({});
+
+  const getFeatures = () => { //Parses for features
+    let modalTable = {};
+    let current = overview.features;
+    let selected = card.features;
+
+    for (let i = 0; i < current.length; i++) {
+      modalTable[current[i].feature] = {
+        current: current[i].value,
+        selected: false
+      };
+    }
+    for (let i = 0; i < selected.length; i++) {
+      if (modalTable[selected[i].feature]) {
+        modalTable[selected[i].feature].selected = selected[i].value;
+      } else {
+        modalTable[selected[i].feature] = {
+          current: false,
+          selected: selected[i].value
+        };
+      }
+    }
+    return modalTable;
+  };
 
   return ReactDom.createPortal(
     <div className="compare-modal-container" ref={modalRef} style={modalView}>
@@ -21,33 +46,5 @@ const CompareModal = ({toggleModalView, modalView, card}) => {
   );
 }
 
-// const getFeatures = () => { //Parses for features
-//   let comparedFeatures = []; //Array of compared features
-//   let currentFeats = UncomparedData.current.features; //currently viewed item
-//   let compareFeats = UncomparedData.compared.features; //selected item for comparison
-
-//   for (let feature in currentFeats) { //Compares the currently viewed item's features
-//     let comparedFeat = { //compared Feature to be pushed into array of compared features
-//       name: feature,
-//       current: currentFeats[feature],
-//       compared: false
-//     };
-//     if (compareFeats[feature]) {
-//       comparedFeat.compared = compareFeats[feature];
-//     }
-//     comparedFeatures.push(comparedFeat);
-//   }
-
-//   for (let feature in compareFeats) { //If the feature doesn't exist in current features, then add it to the table
-//     if(!currentFeats[feature]) {
-//       comparedFeatures.push({
-//         name: feature,
-//         current: false,
-//         compared: compareFeats[feature]
-//       });
-//     }
-//   }
-//   setComparedData(comparedFeatures);
-// };
 
 export default CompareModal;

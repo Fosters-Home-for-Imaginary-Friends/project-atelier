@@ -17,6 +17,7 @@ const ProductCard = ({product, styles, selectCard}) => {
     <div className="product-card">
       <div className="card-top" ref={cardRef}>
         <AiOutlineStar style={actionStyle} onClick={() => {
+          console.log(cardRef);
           selectCard(cardRef);
         }} />
         <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
