@@ -12,8 +12,13 @@ const Style = ({style}) => {
     }
   }
 
-  var side1 = `style-color side1 ${colors[0]}`;
-  var side2 = `style-color side2 ${colors[1]}`;
+  if (colors.length > 1) {
+    var side1 = `style-color side1 ${colors[0]}`;
+    var side2 = `style-color side2 ${colors[1]}`;
+  } else {
+    var side1 = `style-color side1 ${colors[0]}`;
+    var side2 = `style-color side2 ${colors[0]}`;
+  }
 
   return (
     <div className="style-buttons">
