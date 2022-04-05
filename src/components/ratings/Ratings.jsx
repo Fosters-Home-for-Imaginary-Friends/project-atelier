@@ -11,20 +11,7 @@ import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
 //primary component that will attach to App.jsx
 let Ratings = () => {
 
-  let totalReviews = 0;
 
-
-//function to calculate the average rating for the product based on total ratings
-let averageRating = (ratingObj) => {
-  console.log(ratingObj);
-  let totalVotes = 0;
-  let totalScore = 0;
-  for ( let k in ratingObj) {
-    totalVotes += ratingObj[k];
-    totalScore += (ratingObj[k] * parseInt(k));
-    return (totalScore / totalVotes);
-  }
-}
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
 
@@ -39,7 +26,7 @@ let averageRating = (ratingObj) => {
   return (
 <div className="ratings-reviews-container">
   <RatingsBreakdown metaRating= {metaRating}/>
-  <ReviewList totalReviews= {totalReviews} />
+  <ReviewList />
 
 
 </div>

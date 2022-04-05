@@ -473,8 +473,8 @@ margin-top: 20px;
 }
 .new-review-container .modal {
   z-index: 1;
-  width: 1200px;
-  height: 754px;
+  width: 75vw;
+  height: 80vh;
   background: white;
   display: flex;
   align-items: center;

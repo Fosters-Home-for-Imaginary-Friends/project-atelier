@@ -19,7 +19,7 @@ let ReviewList = (props) => {
   let moreReviewsClick = () => {
     setPageNum(pageNum += 1);
     if ( pageNum < (Math.round(totalReviews / 2))) {
-    fetchReviews(40387, pageNum).then(res => {
+    fetchReviews(40384, pageNum).then(res => {
       setReviews(reviews.concat(res));
     })
   } else {
@@ -29,15 +29,17 @@ let ReviewList = (props) => {
 
   //this useEffect grabs our initial two reviews using the current product_id
   useEffect(() => {
-    fetchReviews(40387).then(res => {
+    fetchReviews(40384).then(res => {
       setReviews(res);
     }).catch(err => {
       console.error(err);
     });
   }, []);
 
+  //this useffect grabs the metaData ratings obj from the api and then factors the total
+  //number of reviews. We use this to make sure we don't try to grab reviews past the total.
   useEffect(() => {
-    fetchReviewMetadata(40387).then(res => {
+    fetchReviewMetadata(40384).then(res => {
       let totalRatingsObj = res.ratings;
       for (let k in totalRatingsObj) {
         setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 );
