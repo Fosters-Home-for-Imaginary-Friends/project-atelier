@@ -346,17 +346,37 @@ button.add {
   position: absolute;
   border-radius: 10px;
   border: 2px solid black;
+  top: 740px;
+  left: 100px;
   z-index: 10;
   background-color: white;
   color: black;
-  width: 300px;
+  width: 310px;
   height: 300px;
   animation: compare-modal-animation 0.3s;
 }
-
-.compare-modal {
+.modal-header {
+  font-size: 15px;
+  height: 20px;
+  padding: auto;
+  margin: 5px;
+}
+.modal-title {
+  float: left;
+}
+.modal-button {
+  float: right;
+}
+.feature-container {
+  margin: 5px;
+}
+.feature-table {
   display: flex;
-  justify-content: space-around;
+  padding: auto;
+
+}
+th {
+  width: 100px;
 }
 @keyframes compare-modal-animation {
   from {

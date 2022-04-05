@@ -11,14 +11,13 @@ const ProductCard = ({product, styles, selectCard}) => {
     height: '25px'
   };
 
-  const cardRef = useRef()
+  const cardRef = useRef();
 
   return (
     <div className="product-card">
       <div className="card-top" ref={cardRef}>
         <AiOutlineStar style={actionStyle} onClick={() => {
-          console.log(cardRef);
-          selectCard(cardRef);
+          selectCard(product);
         }} />
         <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
       </div>
