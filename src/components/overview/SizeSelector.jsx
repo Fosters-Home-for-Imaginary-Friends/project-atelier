@@ -10,8 +10,11 @@ const SizeSelector = () => {
     return <div>Loading ...</div>
   }
 
-  console.log(Object.keys(currentStyle.skus));
   let inventory = currentStyle.skus;
+
+  if (inventory.null) {
+    return <div></div>
+  }
 
   return (
     <div className="size-selector">

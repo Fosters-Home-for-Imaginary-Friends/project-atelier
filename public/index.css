@@ -156,6 +156,13 @@ span.helpful-answer {
   background-color: #f1f1f1;
 }
 
+.no-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+}
+
 .image {
   display: list-item;
   border: 0;
