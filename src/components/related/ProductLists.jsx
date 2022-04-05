@@ -25,7 +25,7 @@ const ProductLists = () => {
   }
   // TODO: Make sure it rerenders when the currently viewed product changes
   useEffect(() => {
-    createRelatedCards(40344);
+    createRelatedCards(40356);
   }, []);
 
 
@@ -34,11 +34,11 @@ const ProductLists = () => {
     <React.Fragment>
       <div className="product-list">
         <span>Related Products</span>
-          <ProductList cards={relatedCards} />
+        <ProductList cards={relatedCards} />
       </div>
       <div className="product-list">
         <span>Outfit List</span>
-          <ProductList cards={relatedCards} />
+        <ProductList cards={relatedCards} />
       </div>
     </React.Fragment>
   );

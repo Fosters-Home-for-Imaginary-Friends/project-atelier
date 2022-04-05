@@ -293,7 +293,7 @@ button.add {
 .product-list {
 
   height: 370px;
-  width: 925px;
+  width: 820px;
   margin: auto;
 }
 .carousel-container {
@@ -303,7 +303,7 @@ button.add {
   display:inline-flex;
 }
 .carousel-viewport {
-  width: 960px;
+  width: 720px;
   height: 340px;
   margin: auto;
   overflow-x: hidden;
@@ -326,12 +326,18 @@ button.add {
   margin: 20px;
   justify-content: flex-start;
 }
-.related-image {
-  height: 60%;
+.card-top {
+  position: relative;
+  height: 180px;
   width: 200px;
   background-color: grey;
 }
-.related-info {
+.related-image {
+  width: 200px;
+  height: 180px;
+  position: absolute;
+}
+.card-bot {
   height: 40%;
   background-color: white;
 }
