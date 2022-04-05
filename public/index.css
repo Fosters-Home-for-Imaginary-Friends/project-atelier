@@ -289,7 +289,7 @@ button.add {
 /*-------------------- Related Products and Outfit List --------------------*/
 /*-------------------- Related Products and Outfit List --------------------*/
 
-/*---------- Carousel ----------*/
+/*---------- Product Lists ----------*/
 .product-list {
   width: 820px;
   height: 370px;
@@ -341,16 +341,31 @@ button.add {
 }
 
 /*---------- Comparison Modal ----------*/
-.compare-modal {
+.compare-modal-container {
   position: absolute;
+  top: 600px;
+  left: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  z-index: 10;
   background-color: white;
   color: black;
   width: 300px;
-  height: 200px;
-  top: 100px;
-  left: 200px;
+  height: 300px;
+  animation: compare-modal-animation 0.3s;
+}
+
+.compare-modal {
   display: flex;
   justify-content: space-around;
+}
+@keyframes compare-modal-animation {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* Start of Ratings/Reviews *****************/
