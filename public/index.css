@@ -156,6 +156,13 @@ span.helpful-answer {
   background-color: #f1f1f1;
 }
 
+.no-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+}
+
 .image {
   display: list-item;
   border: 0;
@@ -226,29 +233,35 @@ span.helpful-answer {
 /* STYLE BUTTONS */
 
 .style-selector {
-  display: flex;
-  flex-flow: row wrap;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 136px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transform: translateX(-3px);
 }
 
 .style-buttons {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  border: 2px solid white;
+  border: 2px solid #f1f1f1;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px darkgray;
+  box-shadow: 0 0 1px 1px darkgray;
   margin: 3px;
+  cursor: pointer;
 }
 
 .style-buttons:hover {
-  box-shadow: 0 0 0 2px #1f1f1f;
+  box-shadow: 0 0 2px 1px #1f1f1f;
 }
 
 .style-color {
   height: 24px;
   width: 12px;
-  filter: saturate(75%);
-  opacity: 90%;
+  filter: saturate(70%);
 }
 
 .side1 {
@@ -304,31 +317,89 @@ span.helpful-answer {
   background-color: rgb(75, 75, 75);
 }
 
-.style-selector {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 136px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.black-lenses {
+  background-color: #1f1f1f;
 }
 
-.style {
-  background-color: lightgray;
-  height: 48px;
-  width: 32px;
+.black-frame {
+  background-color: #1f1f1f;
+}
+
+.gold-lenses {
+  background-color: rgb(212, 175, 55);
+}
+
+.gold-frame {
+  background-color: rgb(212, 175, 55);
+}
+
+.goldenrod {
+  background-color: rgb(218, 165, 32);
+}
+
+.maroon {
+  background-color: rgb(128, 0, 0);
+}
+
+.chartreuse {
+  background-color: rgb(187, 204, 76);
+}
+
+.olive-green {
+  background-color: rgb(85, 107, 47);
+}
+
+.red {
+  background-color: rgb(130, 15, 15);
+}
+
+.pinstripe {
+  background: linear-gradient( 90deg, rgb(63, 86, 107), rgb(63, 86, 107) 23%, rgb(250, 250, 250) 23%, rgb(250, 250, 250) 33%, rgb(63, 86, 107) 33%, rgb(63, 86, 107) 67%, rgb(250, 250, 250) 67%, rgb(250, 250, 250) 77%, rgb(63, 86, 107) 77% );
+}
+
+.khaki {
+  background-color: rgb(192, 173, 140);
+}
+
+.plaid {
+  background: linear-gradient( 90deg, #1f1f1f 50%, rgb(130, 15, 15) 50% );
+}
+
+/* SIZES */
+
+.size-selector {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 204px;
+  margin-bottom: 10px;
+  transform: translateX(-3px);
+}
+
+.size-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
-  border-style: solid;
-  border-color: lightgray;
-  border-width: 1px;
-  object-fit: cover;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 1px 1px darkgray;
+  border-radius: 3px;
+  height: 24px;
+  margin: 0 3px 0 3px;
+  cursor: pointer;
+}
+
+.size-button:hover {
+  box-shadow: 0 0 3px 0px #1f1f1f;
+}
+
+.size-text {
+  color: #1f1f1f;
+  padding: 5px;
 }
 
 button.add {
   width: 100%;
+  cursor: pointer;
 }
 
 
