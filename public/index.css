@@ -447,6 +447,7 @@ button.add {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-right: 50px;
   width: 125px;
   height: 40px;
   border: 2px solid black;
@@ -458,7 +459,6 @@ button.add {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 50px;
   width: 125px;
   height: 40px;
   border: 2px solid black;
@@ -516,4 +516,49 @@ margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+}
+.new-review-container button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 8px, 11px;
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+#newReview .new-review-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+.new-review-container .modal {
+  z-index: 1;
+  width: 75vw;
+  height: 80vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+}
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
 }

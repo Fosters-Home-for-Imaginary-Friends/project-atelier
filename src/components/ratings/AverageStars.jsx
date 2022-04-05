@@ -54,7 +54,7 @@ while (numOfStars.length < 5 ) {
       {numOfStars.map((star, i) => {
         return (
           <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{"width" : `${parseInt(star * 31)}px`}}>
+            <div className="single-star-fill" style={{"width" : `${parseInt(star * 20)}px`}}>
               {/* <AiOutlineStar className="single-star-outline"/> */}
               <AiOutlineStar />
             </div>
