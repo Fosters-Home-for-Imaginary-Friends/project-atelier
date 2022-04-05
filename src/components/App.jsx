@@ -2,6 +2,7 @@ import React from "react";
 import CSSStyles from "./CSSStyles.jsx";
 import Overview from "./overview/Overview.jsx";
 import ProductLists from "./related/ProductLists.jsx";
+import Qna from "./qna/Qna.jsx";
 import Ratings from "./ratings/Ratings.jsx";
 import {fetchProducts, fetchProduct, fetchStyles, fetchRelated} from "../helpers.js";
 import {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful} from "../helpers.js";
@@ -15,6 +16,7 @@ const App = () => {
       <CSSStyles />
       <Overview />
       <ProductLists />
+      <Qna />
       <Ratings />
     </div>
   );
