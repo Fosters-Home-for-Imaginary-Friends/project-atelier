@@ -28,7 +28,16 @@ const CompareModal = ({toggleModalView, modalView, features}) => {
 }
 
 const ModalTableBody = ({features}) => {
+  const renderFeatures = () => {
 
+  }
+  return (
+    <React.Fragment>
+      <tbody>
+
+      </tbody>
+    </React.Fragment>
+  );
 };
 
 
