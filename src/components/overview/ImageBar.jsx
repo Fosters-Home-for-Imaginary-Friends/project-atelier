@@ -16,8 +16,8 @@ const ImageBar = () => {
       <div className="progress-bar-progress"></div>
     </div>
     <ul className="thumbnails">
-      {currentStyle.photos.map(thumbnail =>
-        <Thumbnail key={thumbnail.thumbnail_url} thumbnail={thumbnail}/>
+      {currentStyle.photos.map((thumbnail, index) =>
+        <Thumbnail key={index} thumbnail={thumbnail}/>
       )}
     </ul>
   </div>
