@@ -1,13 +1,20 @@
-// import React from 'react';
+import React from 'react';
+import AnswersList from './AnswersList.jsx';
 
-// const Question = (props) => {
-//   return (
-//     Question
-//     Helpful Link
-//     Add Answer Link
-//     Answer List
-//     More answers button
-//   )
-// }
+const Question = (props) => {
+  return (
+    <div>
+      {/* Question */}
+      <h2>{'Q: ' + props.data.question_body}</h2>
+      {/* Helpful Link */}
+      {/* Add Answer Link */}
+      {/* Answer List */}
+      <div>
+        <AnswersList data={props.data.answers}/>
+      </div>
+      {/* More answers button */}
+    </div>
+  )
+}
 
-// export default Question;
+export default Question;
