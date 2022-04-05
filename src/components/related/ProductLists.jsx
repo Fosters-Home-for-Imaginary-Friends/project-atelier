@@ -27,7 +27,7 @@ const ProductLists = () => {
                 return {product: product, styles: styles};
               }))
             .catch((err) => console.error(err)))))
-      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} product={item.product} styles={item.styles} />)))
+      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} modalView={toggleModalView} product={item.product} styles={item.styles} />)))
       .catch((err) => console.error(err));
   }
 
