@@ -6,14 +6,12 @@ import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
 const ProductLists = () => {
   //Comparison Modal Context
-  const [modalView, setModalView] = useState({visibility: 'visible'});
+  const [modalView, setModalView] = useState({visibility: 'hidden'});
 
   const toggleModalView = () => {
-    if (modalView.visibility === 'visible') {
-      setModalView({visibility: 'hidden'});
-    } else {
-      setModalView({visibility: 'visible'});
-    }
+    setModalView((oldState) => {
+      return oldState.visibility === 'hidden' ? {visibility: 'visible'} : {visibility: 'hidden'};
+    });
   };
 
   //Product Cards
@@ -27,7 +25,7 @@ const ProductLists = () => {
                 return {product: product, styles: styles};
               }))
             .catch((err) => console.error(err)))))
-      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} modalView={toggleModalView} product={item.product} styles={item.styles} />)))
+      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} selectCard={toggleModalView} product={item.product} styles={item.styles} />)))
       .catch((err) => console.error(err));
   }
 

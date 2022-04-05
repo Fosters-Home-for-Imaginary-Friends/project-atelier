@@ -1,7 +1,7 @@
 import React from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 
-const ProductCard = ({product, styles}) => {
+const ProductCard = ({product, styles, selectCard}) => {
   const actionStyle = {
     right: 0,
     position: 'absolute',
@@ -14,7 +14,7 @@ const ProductCard = ({product, styles}) => {
   return (
     <div className="product-card">
       <div className="card-top">
-        <AiOutlineStar style={actionStyle} onClick={() => {}} />
+        <AiOutlineStar style={actionStyle} onClick={selectCard} />
         <img className="related-image" src={styles[0].photos[0].url} />
       </div>
       <div className="card-bot">
