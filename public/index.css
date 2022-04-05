@@ -351,7 +351,7 @@ button.add {
   z-index: 10;
   background-color: white;
   color: black;
-  width: 310px;
+  width: 320px;
   height: 300px;
   animation: compare-modal-animation 0.3s;
 }
@@ -359,7 +359,7 @@ button.add {
   font-size: 15px;
   height: 20px;
   padding: auto;
-  margin: 5px;
+  margin: 10px;
 }
 .modal-title {
   float: left;
@@ -368,15 +368,34 @@ button.add {
   float: right;
 }
 .feature-container {
-  margin: 5px;
+  margin: auto;
+  width: 300px;
+
 }
 .feature-table {
   display: flex;
+  flex-wrap:wrap;
+}
+th, td {
+  border-bottom: 1px solid black;
+  width: 100px;
+  height: 25px;
   padding: auto;
-
 }
 th {
-  width: 100px;
+  font-size: 20px;
+}
+td {
+  font-size: 15px;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
 }
 @keyframes compare-modal-animation {
   from {
