@@ -261,8 +261,7 @@ span.helpful-answer {
 .style-color {
   height: 24px;
   width: 12px;
-  filter: saturate(75%);
-  opacity: 90%;
+  filter: saturate(70%);
 }
 
 .side1 {
@@ -316,6 +315,22 @@ span.helpful-answer {
 
 .dark-grey {
   background-color: rgb(75, 75, 75);
+}
+
+.black-lenses {
+  background-color: #1f1f1f;
+}
+
+.black-frame {
+  background-color: #1f1f1f;
+}
+
+.gold-lenses {
+  background-color: rgb(212, 175, 55);
+}
+
+.gold-frame {
+  background-color: rgb(212, 175, 55);
 }
 
 .style {
