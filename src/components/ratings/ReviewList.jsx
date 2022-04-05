@@ -56,6 +56,10 @@ let ReviewList = (props) => {
 
 return (
   <div className= "review-list-container">
+    <span>
+      {`${totalReviews} reviews, sorted by`}
+
+    </span>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}
       {reviews.map((review, i) => {
         return <IndividualReview className="individual-review" review={review} key={i}/>

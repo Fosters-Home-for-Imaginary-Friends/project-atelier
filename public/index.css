@@ -475,21 +475,7 @@ button.add {
 .review-body {
 margin-top: 20px;
 }
-.single-star-outline {
-  height: 36px;
-  width: 31px;
-}
-.single-star-fill {
-  /* position: relative; */
-  display: inline-block;
-  height: 36px;
-  background-color: #333333;
-}
-.single-star-container {
-  height: 36px;
-  width: 31px;
-  display: inline-block;
-}
+
 .individual-review-element-conatainers {
   margin-bottom: 10px;
 }
@@ -508,6 +494,18 @@ margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+}
+#review-helpful-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#review-helpfulness-number {
+  position: relative;
+  right: 5px;
+}
+#review-report:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .new-review-container button {
   position: absolute;
