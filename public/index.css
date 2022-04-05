@@ -226,8 +226,13 @@ span.helpful-answer {
 /* STYLE BUTTONS */
 
 .style-selector {
-  display: flex;
-  flex-flow: row wrap;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 136px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .style-buttons {
@@ -304,15 +309,6 @@ span.helpful-answer {
   background-color: rgb(75, 75, 75);
 }
 
-.style-selector {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 136px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 .style {
   background-color: lightgray;
   height: 48px;
@@ -325,6 +321,33 @@ span.helpful-answer {
   border-color: lightgray;
   border-width: 1px;
   object-fit: cover;
+}
+
+/* SIZES */
+
+.size-selector {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 204px;
+  margin-bottom: 10px;
+}
+
+.size-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  border: 1px solid darkgray;
+  box-shadow: 0 0 1px #1f1f1f;
+  border-radius: 3px;
+  height: 24px;
+  margin: 0 2px 0 2px;
+}
+
+.size-text {
+  color: #1f1f1f;
+  padding: 5px;
 }
 
 button.add {
