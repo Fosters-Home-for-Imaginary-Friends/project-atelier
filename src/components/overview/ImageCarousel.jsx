@@ -13,6 +13,10 @@ const ImageCarousel = () => {
     return <div className="image-carousel loading"></div>;
   }
 
+  if (!currentStyle.photos[0].url) {
+    return <div className="image-carousel no-images">NO IMAGES AVAILABLE</div>
+  }
+
   return (
   <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">

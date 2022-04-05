@@ -21,8 +21,6 @@ const Style = ({style}) => {
 
   return (
     <div className="style-buttons">
-      {/* <img src={style.photos[0].thumbnail_url} className="style"/>
-      <button className="style-button"></button> */}
       <div className={ side1 }></div>
       <div className={ side2 }></div>
     </div>
