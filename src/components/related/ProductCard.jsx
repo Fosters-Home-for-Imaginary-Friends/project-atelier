@@ -11,11 +11,12 @@ const ProductCard = ({product, styles, selectCard}) => {
     height: '25px'
   };
 
+
   return (
     <div className="product-card">
       <div className="card-top">
         <AiOutlineStar style={actionStyle} onClick={selectCard} />
-        <img className="related-image" src={styles[0].photos[0].url} />
+        <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
       </div>
       <div className="card-bot">
         <span className="related-category">{product.category}</span><br />

@@ -17,6 +17,7 @@ const ProductLists = () => {
   //Product Cards
   // TODO: Create an outfit list state
   const [relatedCards, setRelatedCards] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState(40356);
   const createRelatedCards = (product_id) => { //Returns an array of Product Cards
     return fetchRelated(product_id)
       .then((data) => Promise.all(data.map((id) => fetchProduct(id) //Returns an array of objects with product and style info
@@ -31,8 +32,8 @@ const ProductLists = () => {
 
   // TODO: Make sure it rerenders when the currently viewed product changes
   useEffect(() => {
-    createRelatedCards(40356);
-  }, []);
+    createRelatedCards(currentProduct);
+  }, [currentProduct]);
 
   return (
     <React.Fragment>
