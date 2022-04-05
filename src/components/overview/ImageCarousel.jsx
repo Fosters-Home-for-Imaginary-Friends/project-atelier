@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import Image from "./Image.jsx";
-// import {fetchStyles} from "../../helpers.js";
-// import {OverviewContext} from "./Overview.jsx";
+import {OverviewContext} from "./Overview.jsx";
 
 
 const ImageCarousel = () => {
@@ -68,26 +67,20 @@ var currentStyle = {
 
   const imageCarouselRef = useRef(null);
 
-  // const {productId} = useContext(OverviewContext);
+  const { styles, loading } = useContext(OverviewContext);
 
-  // useEffect(() => {
-  //   fetchStyles(productId)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  // }, []);
+  if (loading) {
+    return <div className="loading-page">Loading...</div>;
+  }
 
   return (
-    <div className="overview-images">
+  <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">
-        {currentStyle.photos.map((image, index) =>
+      {styles[0].photos.map((image, index) =>
           <Image key={index} slide={image}/>
-        )}
+      )}
       </ul>
-    </div>
+  </div>
   )
 }
 

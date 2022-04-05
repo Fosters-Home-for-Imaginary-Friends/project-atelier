@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useContext} from "react";
 import Style from "./Style.jsx";
+import {OverviewContext} from "./Overview.jsx";
 
 const StyleSelector = () => {
-  var styles = [
+  var stylesData = [
     {
         "style_id": 240500,
         "name": "Forest Green & Black",
@@ -122,13 +123,19 @@ const StyleSelector = () => {
         }
     }];
 
-  return (
-    <div className="style-selector">
-      {styles.map(style =>
-        <Style key={style.style_id} style={style}/>
-      )}
-    </div>
-  )
+    const { styles, loading } = useContext(OverviewContext);
+
+    if (loading) {
+        return <div className="loading-page">Loading...</div>;
+    }
+
+    return (
+        <div className="style-selector">
+            {styles.map(style =>
+                <Style key={style.style_id} style={style}/>
+            )}
+        </div>
+    )
 }
 
 export default StyleSelector;
