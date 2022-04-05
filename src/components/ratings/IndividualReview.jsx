@@ -4,8 +4,10 @@ let moment = require('moment');
 import { AiOutlineCheck } from 'react-icons/ai';
 import { putReviewHelpful, reportReview } from '../../helpers.js';
 
+
 let IndividualReview = (props) => {
   //variable for individual review to clean up code
+
 
   const {review_id, reviewer_name, date, summary, body, response, recommend, helpfulness, photos} = props.review;
   const [product, setProduct] = useState(40384)
@@ -24,6 +26,7 @@ let IndividualReview = (props) => {
     setHelpfulChoiceMade(true);
     }
   }
+
 
   //if no is clicked it still displays the total helpfulness of review (there is no api for decrement)
   let helpfulNoClick = () => {
@@ -73,6 +76,7 @@ let IndividualReview = (props) => {
 
           {photos.map((photo, i) => {
             return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`}}/>)
+
           })}
         </div>
         {(recommend) && <div className= "review-recommend">
@@ -85,9 +89,11 @@ let IndividualReview = (props) => {
         <div className="review-helpful-container">
         <h3 id="review-helpful-text"> Helpful? </h3>
           {(helpfulChoice === 'yes' || helpfulChoice === '') && <h3 id= "review-helpful-link" onClick={helpfulYesClick}> Yes </h3>}
+
           {(helpfulChoice === 'no' || helpfulChoice === '') && <h3 id= "review-helpful-link" onClick={helpfulNoClick}> No </h3>}
           {(helpfulChoice === 'yes' || helpfulChoice === 'no') && <h3 id="review-helpfulness-number">{`(${helpfulness})`}</h3>}
           <h3 id= "review-report" onClick={reportClick}> | Report </h3>
+
         </div>
 
 

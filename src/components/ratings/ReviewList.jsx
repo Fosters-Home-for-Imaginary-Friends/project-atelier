@@ -3,7 +3,9 @@ import React, {useState, useEffect} from 'react';
 import IndividualReview from './IndividualReview.jsx';
 import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
 import NewReview from './NewReview.jsx';
+
 import SortDropdown from './SortDropdown.jsx';
+
 
 let ReviewList = (props) => {
   // let currentReviews = props.reviews;
@@ -14,6 +16,7 @@ let ReviewList = (props) => {
   let {currentReviews, setCurrentReviews} = useState([]);
   let [pageNum, setPageNum] = useState(1)
   let [totalReviews, setTotalReviews] = useState(0);
+
   const [currentSort, setCurrentSort] = useState('relevant');
 
 
@@ -21,11 +24,14 @@ let ReviewList = (props) => {
   // let totalReviews = 0;
 
 
+
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
     setPageNum(pageNum += 1);
     if ( pageNum < (Math.round(totalReviews / 2))) {
+
     fetchReviews(40384, pageNum, 2, currentSort).then(res => {
+
       setReviews(reviews.concat(res));
     })
   } else {
@@ -68,7 +74,9 @@ let ReviewList = (props) => {
 
   //this useEffect grabs our initial two reviews using the current product_id
   useEffect(() => {
+
     fetchReviews(40384, 1, 2, currentSort).then(res => {
+
       setReviews(res);
     }).catch(err => {
       console.error(err);

@@ -12,13 +12,15 @@ const Style = ({style}) => {
     }
   }
 
-  var side1 = `style-color side1 ${colors[0]}`;
-  var side2 = `style-color side2 ${colors[1]}`;
+  if (colors.length > 1) {
+    var side1 = `style-color side1 ${colors[0]}`;
+    var side2 = `style-color side2 ${colors[1]}`;
+  } else {
+    side1 = `style-color side1 ${colors[0]}`;
+  }
 
   return (
     <div className="style-buttons">
-      {/* <img src={style.photos[0].thumbnail_url} className="style"/>
-      <button className="style-button"></button> */}
       <div className={ side1 }></div>
       <div className={ side2 }></div>
     </div>

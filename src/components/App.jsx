@@ -13,11 +13,11 @@ const App = () => {
 
   return (
     <div>
-      <CSSStyles />
       <Overview />
       <ProductLists />
       <Qna />
       <Ratings />
+      <CSSStyles />
     </div>
   );
 }
