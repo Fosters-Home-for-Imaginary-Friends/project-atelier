@@ -2,7 +2,7 @@ import React from "react";
 
 const Styles = () => {
   return (
-    <div>
+    <div className="styles-template">
       <h1>This is reserved for the main header.</h1>
       <h2>This is the repeated bold sub-header.</h2>
       <h3>THIS IS THE WIDGET SUB-HEADER</h3>
