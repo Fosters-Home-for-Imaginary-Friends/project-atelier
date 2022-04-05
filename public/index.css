@@ -407,21 +407,19 @@ button.add {
 /*-------------------- Related Products and Outfit List --------------------*/
 /*-------------------- Related Products and Outfit List --------------------*/
 
-/*---------- Carousel ----------*/
+/*---------- Product Lists ----------*/
 .product-list {
-
+  width: 820px;
   height: 370px;
-  width: 925px;
   margin: auto;
 }
 .carousel-container {
-  width: 925px;
   height: 340px;
   position: relative;
   display:inline-flex;
 }
 .carousel-viewport {
-  width: 960px;
+  width: 720px;
   height: 340px;
   margin: auto;
   overflow-x: hidden;
@@ -444,28 +442,52 @@ button.add {
   margin: 20px;
   justify-content: flex-start;
 }
-.related-image {
-  height: 60%;
+.card-top {
+  position: relative;
   width: 200px;
+  height: 180px;
   background-color: grey;
 }
-.related-info {
+.related-image {
+  width: 200px;
+  height: 180px;
+  position: absolute;
+}
+.card-bot {
   height: 40%;
   background-color: white;
 }
 
 /*---------- Comparison Modal ----------*/
-.compare-modal {
+.compare-modal-container {
   position: absolute;
+  top: 600px;
+  left: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  z-index: 10;
   background-color: white;
   color: black;
   width: 300px;
-  height: 200px;
-  top: 100px;
-  left: 200px;
+  height: 300px;
+  animation: compare-modal-animation 0.3s;
+}
+
+.compare-modal {
   display: flex;
   justify-content: space-around;
 }
+
+@keyframes compare-modal-animation {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
 /* Start of Questions and Answers */
 .qna-container {
   display: flex;
@@ -495,6 +517,7 @@ button.add {
   width: 100%;
   height: 35px;
 }
+
 /* Start of Ratings/Reviews *****************/
 .ratings-reviews-container {
   display: flex;
@@ -513,6 +536,21 @@ button.add {
   align-items: flex-end;
   width: 40vw;
   height: auto;
+}
+.total-reviews-sort-dropdown-container {
+  display:flex;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  /* position: relative; */
+  width: 40vw;
+  height: auto;
+  /* right: 20vw; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+}
+#sort-dropdown {
+  border: none;
 }
 .more-review-and-add-reviews {
   display: flex;
@@ -559,21 +597,7 @@ button.add {
 .review-body {
 margin-top: 20px;
 }
-.single-star-outline {
-  height: 36px;
-  width: 31px;
-}
-.single-star-fill {
-  /* position: relative; */
-  display: inline-block;
-  height: 36px;
-  background-color: #333333;
-}
-.single-star-container {
-  height: 36px;
-  width: 31px;
-  display: inline-block;
-}
+
 .individual-review-element-conatainers {
   margin-bottom: 10px;
 }
@@ -592,6 +616,18 @@ margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+}
+#review-helpful-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#review-helpfulness-number {
+  position: relative;
+  right: 5px;
+}
+#review-report:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .new-review-container button {
   position: absolute;
