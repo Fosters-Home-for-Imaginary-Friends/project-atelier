@@ -18,9 +18,9 @@ const CompareModal = ({toggleModalView, modalView, features}) => {
         <table className="feature-table">
           <thead>
             <tr>
-              <th>Current</th>
+              <th className="left">{features.currentName}</th>
               <th></th>
-              <th>Selected</th>
+              <th className="right">{features.selectedName}</th>
             </tr>
           </thead>
           <ModalTableBody features={features.features} />
