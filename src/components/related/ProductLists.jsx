@@ -4,15 +4,17 @@ import ProductCard from './ProductCard.jsx';
 import CompareModal from './CompareModal.jsx';
 import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
-//Placeholder data for the compare-modal
-const ModalContext = React.createContext({});
-
 const ProductLists = () => {
-
-
-
   //Comparison Modal Context
-  const modalView = {visibility: 'hidden'};
+  const [modalView, setModalView] = useState({visibility: 'visible'});
+
+  const toggleModalView = () => {
+    if (modalView.visibility === 'visible') {
+      setModalView({visibility: 'hidden'});
+    } else {
+      setModalView({visibility: 'visible'});
+    }
+  };
 
   //Product Cards
   // TODO: Create an outfit list state
@@ -34,13 +36,9 @@ const ProductLists = () => {
     createRelatedCards(40344);
   }, []);
 
-
-
   return (
     <React.Fragment>
-      <ModalContext.Provider value={modalView}>
-        <CompareModal />
-      </ModalContext.Provider>
+        <CompareModal toggleModalView={toggleModalView} modalView={modalView} />
       <div className="product-list" id="related-products">
 
         <span>Related Products</span>
@@ -55,4 +53,3 @@ const ProductLists = () => {
 };
 
 export default ProductLists;
-export {ModalContext};
