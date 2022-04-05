@@ -9,11 +9,12 @@ const ProductCard = ({product, styles}) => {
     color: 'gold',
     width: '25px',
     height: '25px'
-  }
+  };
+
   return (
     <div className="product-card">
       <div className="card-top">
-        <AiOutlineStar style={actionStyle} />
+        <AiOutlineStar style={actionStyle} onClick={() => {}} />
         <img className="related-image" src={styles[0].photos[0].url} />
       </div>
       <div className="card-bot">
