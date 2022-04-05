@@ -430,6 +430,21 @@ button.add {
   width: 40vw;
   height: auto;
 }
+.total-reviews-sort-dropdown-container {
+  display:flex;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  /* position: relative; */
+  width: 40vw;
+  height: auto;
+  /* right: 20vw; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+}
+#sort-dropdown {
+  border: none;
+}
 .more-review-and-add-reviews {
   display: flex;
   flex-wrap: nowrap;
