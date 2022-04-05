@@ -6,11 +6,13 @@ import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
 const ProductLists = () => {
   //Comparison Modal Context
-  const [modalView, setModalView] = useState({visibility: 'hidden'});
+  const [modalView, setModalView] = useState({visibility: 'hidden', left: 0});
+  const [card, setCard] = useState(0);
 
   const toggleModalView = () => {
+    setCard((card) => card + 100);
     setModalView((oldState) => {
-      return oldState.visibility === 'hidden' ? {visibility: 'visible'} : {visibility: 'hidden'};
+      return oldState.visibility === 'hidden' ? {visibility: 'visible', left: card} : {visibility: 'hidden', left: card};
     });
   };
 
@@ -37,9 +39,8 @@ const ProductLists = () => {
 
   return (
     <React.Fragment>
-        <CompareModal toggleModalView={toggleModalView} modalView={modalView} />
       <div className="product-list" id="related-products">
-
+        <CompareModal toggleModalView={toggleModalView} modalView={modalView} card={card} />
         <span>Related Products</span>
         <ProductList cards={relatedCards} />
       </div>

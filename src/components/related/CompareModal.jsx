@@ -1,21 +1,25 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import ReactDom from 'react-dom';
 
-const CompareModal = ({toggleModalView, modalView}) => {
+const CompareModal = ({toggleModalView, modalView, card}) => {
   const modalRef = useRef();
+  console.log("selected card: ", card);
+  useEffect(() => {
+  }, [card]);
 
   return ReactDom.createPortal(
     <div className="compare-modal-container" ref={modalRef} style={modalView}>
       <div className="compare-modal">
         <h2>Comparing</h2>
-        <button onClick={toggleModalView}>X</button>
+        <button onClick={() => {
+          console.log("coordinates:", modalRef.current.offsetTop);
+          toggleModalView();
+        }}>X</button>
       </div>
     </div>,
     document.getElementById("root")
   );
 }
-// const UncomparedData = useContext(ModalContext);
-// const [ComparedData, setComparedData] = useState([]);
 
 // const getFeatures = () => { //Parses for features
 //   let comparedFeatures = []; //Array of compared features
@@ -45,9 +49,5 @@ const CompareModal = ({toggleModalView, modalView}) => {
 //   }
 //   setComparedData(comparedFeatures);
 // };
-
-// useEffect(() => { //If the data has been updated, get new features
-//   getFeatures();
-// }, [UncomparedData]);
 
 export default CompareModal;
