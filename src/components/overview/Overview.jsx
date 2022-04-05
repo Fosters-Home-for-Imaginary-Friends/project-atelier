@@ -51,7 +51,7 @@ const Overview = () => {
   }
 
   useEffect(() => {
-    getProductData(40344)
+    getProductData(40344);
   }, []);
 
   return (
