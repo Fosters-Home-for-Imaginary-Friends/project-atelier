@@ -1,53 +1,69 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import ReactDom from 'react-dom';
+import {BsCheckLg} from 'react-icons/bs';
 
-const CompareModal = ({toggleModalView, modalView}) => {
+const CompareModal = ({toggleModalView, modalView, features}) => {
   const modalRef = useRef();
+  useEffect(() => {
+
+  }, [features]);
 
   return ReactDom.createPortal(
     <div className="compare-modal-container" ref={modalRef} style={modalView}>
-      <div className="compare-modal">
-        <h2>Comparing</h2>
-        <button onClick={toggleModalView}>X</button>
+      <div className="modal-header">
+        <h2 className="modal-title">Comparing</h2>
+        <button onClick={toggleModalView} className="modal-button">X</button>
+      </div>
+      <div className="feature-container">
+        <table className="feature-table">
+          <thead>
+            <tr>
+              <th className="left">{features.currentName}</th>
+              <th></th>
+              <th className="right">{features.selectedName}</th>
+            </tr>
+          </thead>
+          <ModalTableBody features={features.features} />
+        </table>
       </div>
     </div>,
     document.getElementById("root")
   );
 }
-// const UncomparedData = useContext(ModalContext);
-// const [ComparedData, setComparedData] = useState([]);
 
-// const getFeatures = () => { //Parses for features
-//   let comparedFeatures = []; //Array of compared features
-//   let currentFeats = UncomparedData.current.features; //currently viewed item
-//   let compareFeats = UncomparedData.compared.features; //selected item for comparison
+const ModalTableBody = ({features}) => {
+  return (
+    <React.Fragment>
+      <tbody>
+        {Object.keys(features).map((feature, i) => <ModalTableRow key={i} name={feature} values={features[feature]} />)}
+      </tbody>
+    </React.Fragment>
+  );
+};
 
-//   for (let feature in currentFeats) { //Compares the currently viewed item's features
-//     let comparedFeat = { //compared Feature to be pushed into array of compared features
-//       name: feature,
-//       current: currentFeats[feature],
-//       compared: false
-//     };
-//     if (compareFeats[feature]) {
-//       comparedFeat.compared = compareFeats[feature];
-//     }
-//     comparedFeatures.push(comparedFeat);
-//   }
+const ModalTableRow = ({name, values}) => {
 
-//   for (let feature in compareFeats) { //If the feature doesn't exist in current features, then add it to the table
-//     if(!currentFeats[feature]) {
-//       comparedFeatures.push({
-//         name: feature,
-//         current: false,
-//         compared: compareFeats[feature]
-//       });
-//     }
-//   }
-//   setComparedData(comparedFeatures);
-// };
+  function parseValue (value) {
+    switch (value) {
+      case null:
+        return (<BsCheckLg />);
+      case false:
+        return "";
+      default:
+        return value.split('"')[1];
+    }
+  }
 
-// useEffect(() => { //If the data has been updated, get new features
-//   getFeatures();
-// }, [UncomparedData]);
+  return (
+    <React.Fragment>
+      <tr>
+        <td className="left">{parseValue(values.current)}</td>
+        <td className="center">{name}</td>
+        <td className="right">{parseValue(values.selected)}</td>
+      </tr>
+    </React.Fragment>
+  );
+}
+
 
 export default CompareModal;
