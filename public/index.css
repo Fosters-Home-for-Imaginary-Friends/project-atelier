@@ -537,6 +537,21 @@ button.add {
   width: 40vw;
   height: auto;
 }
+.total-reviews-sort-dropdown-container {
+  display:flex;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  /* position: relative; */
+  width: 40vw;
+  height: auto;
+  /* right: 20vw; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+}
+#sort-dropdown {
+  border: none;
+}
 .more-review-and-add-reviews {
   display: flex;
   flex-wrap: nowrap;
@@ -582,21 +597,7 @@ button.add {
 .review-body {
 margin-top: 20px;
 }
-.single-star-outline {
-  height: 36px;
-  width: 31px;
-}
-.single-star-fill {
-  /* position: relative; */
-  display: inline-block;
-  height: 36px;
-  background-color: #333333;
-}
-.single-star-container {
-  height: 36px;
-  width: 31px;
-  display: inline-block;
-}
+
 .individual-review-element-conatainers {
   margin-bottom: 10px;
 }
@@ -615,6 +616,18 @@ margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+}
+#review-helpful-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#review-helpfulness-number {
+  position: relative;
+  right: 5px;
+}
+#review-report:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .new-review-container button {
   position: absolute;

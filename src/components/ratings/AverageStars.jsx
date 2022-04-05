@@ -1,5 +1,5 @@
 import React from 'react';
-import {AiOutlineStar} from 'react-icons/ai';
+import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
 let AverageStars = (props) => {
 
 //temp variable to progress while api call having issues with timing
@@ -7,6 +7,9 @@ let averageRating = 3.7;
 
 //create an array to store stars from average rating
 let numOfStars = [];
+
+//star outlines
+
 //push an element for each whole star in the rating
 while (numOfStars.length < 5 ) {
   if ( averageRating > 1) {
@@ -49,20 +52,26 @@ while (numOfStars.length < 5 ) {
   averageRating = averageRating - 1
 }
 
+let star = () => {
   return (
     <div>
-      {numOfStars.map((star, i) => {
-        return (
-          <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{"width" : `${parseInt(star * 20)}px`}}>
-              {/* <AiOutlineStar className="single-star-outline"/> */}
-              <AiOutlineStar />
-            </div>
-          </div>
-        );
-      })}
+      <AiOutlineStar />
+      <AiFillStar className="test-star" style={{"width" : `${50}px`}} />
     </div>
+
   )
 }
+
+
+
+
+return (
+  <div>
+    {star()}
+  </div>
+);
+}
+
+
 
 export default AverageStars;
