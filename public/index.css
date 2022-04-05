@@ -452,6 +452,7 @@ button.add {
   width: 200px;
   height: 180px;
   position: absolute;
+  object-fit: cover;
 }
 .card-bot {
   height: 40%;
@@ -461,21 +462,60 @@ button.add {
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
   position: absolute;
-  top: 600px;
-  left: 200px;
   border-radius: 10px;
   border: 2px solid black;
+  top: 740px;
+  left: 100px;
   z-index: 10;
   background-color: white;
   color: black;
-  width: 300px;
+  width: 400px;
   height: 300px;
   animation: compare-modal-animation 0.3s;
 }
-
-.compare-modal {
-  display: flex;
-  justify-content: space-around;
+.modal-header {
+  font-size: 20px;
+  height: 20px;
+  padding: auto;
+  margin: 10px;
+}
+.modal-title {
+  float: left;
+}
+.modal-button {
+  float: right;
+}
+.feature-container {
+  margin: auto;
+  width: 390px;
+  height: 250px;
+  overflow: scroll;
+}
+.feature-table {
+  margin: auto;
+}
+tr {
+  border-bottom: 1px solid black;
+}
+th, td {
+  width: 100px;
+  vertical-align: middle;
+  padding: 5px;
+}
+th {
+  font-size: 20px;
+}
+td {
+  font-size: 15px;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
 }
 
 @keyframes compare-modal-animation {

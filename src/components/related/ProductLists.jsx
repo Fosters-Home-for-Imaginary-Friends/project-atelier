@@ -4,20 +4,93 @@ import ProductCard from './ProductCard.jsx';
 import CompareModal from './CompareModal.jsx';
 import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
-const ProductLists = () => {
-  //Comparison Modal Context
-  const [modalView, setModalView] = useState({visibility: 'hidden'});
+const CurrentProduct = {
+  "id": 40356,
+  "campus": "hr-rfp",
+  "name": "Kaylee 1000 Sunglasses",
+  "slogan": "Quo animi tempore.",
+  "description": "Quisquam a quibusdam non expedita deserunt eos necessitatibus. Dolores est et consectetur est doloribus. Ipsam voluptatem et excepturi. Suscipit sit placeat qui corrupti. Et laboriosam id molestiae suscipit ipsum est vel dolore nulla.",
+  "category": "Sunglasses",
+  "default_price": "420.00",
+  "created_at": "2021-08-13T14:38:44.588Z",
+  "updated_at": "2021-08-13T14:38:44.588Z",
+  "features": [
+      {
+          "feature": "Non-GMO",
+          "value": null
+      },
+      {
+          "feature": "Lens",
+          "value": "\"Ultrasheen Silver\""
+      },
+      {
+          "feature": "Lifetime Guarantee",
+          "value": null
+      },
+      {
+          "feature": "Fabric",
+          "value": "\"95% Cotton, 5% Elastic\""
+      }
+  ]
+}
 
-  const toggleModalView = () => {
+const ProductLists = () => {
+  const [relatedCards, setRelatedCards] = useState([]);
+  const [currentID, setcurrentID] = useState(40356);
+  const [currentProduct, setCurrentProduct] = useState(CurrentProduct);
+  const [card, setCard] = useState({});
+  const [modalView, setModalView] = useState({visibility: 'visible'});
+  const [features, setFeatures] = useState({
+    currentName: 'loading',
+    selectedName: 'loading',
+    features: {
+      newFeature: {
+        current: 'loading',
+        selected: 'loading'
+      }
+    }
+  });
+
+  //Comparison Modal
+  const toggleModalView = (newCard) => {
     setModalView((oldState) => {
       return oldState.visibility === 'hidden' ? {visibility: 'visible'} : {visibility: 'hidden'};
     });
+    getFeatures(newCard)
+    setCard(newCard);
+  };
+  const getFeatures = (newCard) => { //Parses for features
+    let featureObject = {
+      currentName: currentProduct.name,
+      selectedName: newCard.name,
+      features: {}
+    }
+    let featureList = featureObject.features;
+    let current = currentProduct.features;
+    let selected = newCard.features;
+
+    for (let i = 0; i < current.length; i++) {
+      featureList[current[i].feature] = {
+        current: current[i].value,
+        selected: false
+      };
+    }
+    for (let i = 0; i < selected.length; i++) {
+      if (featureList[selected[i].feature]) {
+        featureList[selected[i].feature].selected = selected[i].value;
+      } else {
+        featureList[selected[i].feature] = {
+          current: false,
+          selected: selected[i].value
+        };
+      }
+    }
+    setFeatures(featureObject);
   };
 
   //Product Cards
   // TODO: Create an outfit list state
-  const [relatedCards, setRelatedCards] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState(40356);
+
   const createRelatedCards = (product_id) => { //Returns an array of Product Cards
     return fetchRelated(product_id)
       .then((data) => Promise.all(data.map((id) => fetchProduct(id) //Returns an array of objects with product and style info
@@ -32,14 +105,13 @@ const ProductLists = () => {
 
   // TODO: Make sure it rerenders when the currently viewed product changes
   useEffect(() => {
-    createRelatedCards(currentProduct);
-  }, [currentProduct]);
+    createRelatedCards(currentID);
+  }, [currentID]);
 
   return (
     <React.Fragment>
-        <CompareModal toggleModalView={toggleModalView} modalView={modalView} />
       <div className="product-list" id="related-products">
-
+        <CompareModal toggleModalView={toggleModalView} modalView={modalView} features={features} />
         <span>Related Products</span>
         <ProductList cards={relatedCards} />
       </div>
