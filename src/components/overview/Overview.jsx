@@ -35,7 +35,6 @@ const Overview = () => {
         return styleData;
       })
       .then((styleData) => {
-        console.log(styleData);
         for (let i = 0; i < styleData.length; i++) {
           let style = styleData[i];
           if (style['default?']) {
