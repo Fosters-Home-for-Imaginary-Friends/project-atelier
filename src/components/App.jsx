@@ -4,7 +4,7 @@ import Overview from "./overview/Overview.jsx";
 import Lists from "./related/Lists.jsx";
 import Qna from "./qna/Qna.jsx";
 import Ratings from "./ratings/Ratings.jsx";
-import {currentPlaceholder} from './related/helpers.js';
+import {currentPlaceholder} from './related/relatedHelpers.js';
 
 
 const App = () => {

@@ -1,3 +1,4 @@
+import {fetchRelated, fetchStyles, fetchProduct} from '../../helpers.js';
 
 const getFeatures = (overview, card) => { //Parses for features
   let featureObject = {
