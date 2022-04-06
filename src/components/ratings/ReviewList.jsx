@@ -15,8 +15,7 @@ let ReviewList = (props) => {
   const [reviews, setReviews] = useState([]);
   let [pageNum, setPageNum] = useState(1)
   let [totalReviews, setTotalReviews] = useState(0);
-  let [totalScore, setTotalScore] = useState(0);
-  const [averageRating, setAverageRating] = useState(0);
+
 
   const [currentSort, setCurrentSort] = useState('relevant');
   let aScore = 0;
@@ -93,7 +92,7 @@ let ReviewList = (props) => {
 return (
   <div className= "review-list-container">
     <div className="total-reviews-sort-dropdown-container">
-      <span>{`${totalReviews} reviews, sorted by `}</span>
+      <span>{`${props.totalReviews} reviews, sorted by `}</span>
       <SortDropdown id="sort-dropdown" sortChange={sortChange} />
     </div>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}

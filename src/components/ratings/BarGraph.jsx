@@ -9,30 +9,39 @@ let BarGraph = () => {
 
   return (
     <div className="bar-graph-container">
-      <div className="star-bar">
-        <span>5 Star</span>
-        <div className="bar">
-
+      <div className="graph-title-bar">
+        <span className="bar-titles">5 Stars</span>
+        <div className="star-bar">
+          <div className="bar"></div>
+          <div className="scored-bar"></div>
         </div>
       </div>
-      <div className="star-bar">
-        <span>4 Star</span>
-        <div className="bar">
+      <div className="graph-title-bar">
+        <span className="bar-titles">4 Stars</span>
+        <div className="star-bar">
+          <div className="bar"></div>
+          <div className="scored-bar"></div>
         </div>
       </div>
-      <div className="star-bar">
-        <span>3 Star</span>
-        <div className="bar">
+      <div className="graph-title-bar">
+        <span className="bar-titles">3 Stars</span>
+        <div className="star-bar">
+          <div className="bar"></div>
+          <div className="scored-bar"></div>
         </div>
       </div>
-      <div className="star-bar">
-        <span>2 Star</span>
-        <div className="bar">
+      <div className="graph-title-bar">
+        <span className="bar-titles">2 Stars</span>
+        <div className="star-bar">
+          <div className="bar"></div>
+          <div className="scored-bar"></div>
         </div>
       </div>
-      <div className="star-bar">
-        <span>1 Star</span>
-        <div className="bar">
+      <div id="one-star-graph" className="graph-title-bar">
+        <span className="bar-titles">1 Stars</span>
+        <div className="star-bar">
+          <div className="bar"></div>
+          <div className="scored-bar"></div>
         </div>
       </div>
 
