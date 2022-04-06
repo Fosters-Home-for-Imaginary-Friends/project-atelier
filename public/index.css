@@ -610,6 +610,9 @@ Start of Questions and Answers
   justify-content: center;
   margin-bottom: 30px;
 }
+a.helpful:hover {
+  text-decoration: underline;
+}
 
 /* Start of Ratings/Reviews *****************/
 .ratings-reviews-container {

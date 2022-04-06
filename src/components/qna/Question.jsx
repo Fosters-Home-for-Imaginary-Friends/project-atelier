@@ -10,8 +10,8 @@ const Question = (props) => {
       <div>
         <span className="helpful-answer">
           Helpful?
-          <a>Yes</a>
-          ()
+          <a className="helpful">Yes</a>
+          ({props.data.question_helpfulness})
         </span>
       </div>
       {/* Add Answer Link */}

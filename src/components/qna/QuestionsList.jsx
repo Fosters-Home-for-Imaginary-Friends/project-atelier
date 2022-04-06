@@ -32,12 +32,11 @@ const QuestionsList = (props) => {
   }, [question])
 
   const handleMoreClick = () => {
-    console.log('clicked!');
+    console.log(init);
     getQuestions(65633, page, 2)
       .then((res) => {
         // init = init.concat(res);
         setInit(init.concat(res));
-        console.log(init);
         setPage(page + 1);
         if (res.length < 2) {
           setExtra(false);
