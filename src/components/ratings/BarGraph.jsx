@@ -13,8 +13,8 @@ let BarGraph = (props) => {
   let oneStarsPercent = (ratingsObj[1] / totalReviews);
 
 
-  let filterClick = () => {
-
+  let filterClick = (e) => {
+    // props.filterReviews(e.target.id);
   }
 
   return (

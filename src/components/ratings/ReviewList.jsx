@@ -1,37 +1,23 @@
 //this is the component for the review list that houses individual reviews
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
+import { fetchReviews, fetchReviewMetadata}  from '../../helpers.js';
 import NewReview from './NewReview.jsx';
-
 import SortDropdown from './SortDropdown.jsx';
+import { RatingsContext } from './Ratings.jsx';
 
 
 let ReviewList = (props) => {
-  // let currentReviews = props.reviews;
-
+  const {reviews, setReviews, totalReviews, currentSort, setCurrentSort, loading} = useContext(RatingsContext);
   const [showModal, setShowModal] = useState(false);
   const [moreReviews, setMoreReviews] = useState(true);
-  const [reviews, setReviews] = useState([]);
-  let [pageNum, setPageNum] = useState(1)
-  let [totalReviews, setTotalReviews] = useState(0);
-
-
-  const [currentSort, setCurrentSort] = useState('relevant');
-  let aScore = 0;
-
-
-  // let totalReviews = 0;
-
-
+  let [pageNum, setPageNum] = useState(1);
 
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
     setPageNum(pageNum += 1);
     if ( pageNum < (Math.round(totalReviews / 2))) {
-
     fetchReviews(40384, pageNum, 2, currentSort).then(res => {
-
       setReviews(reviews.concat(res));
     })
   } else {
@@ -39,10 +25,10 @@ let ReviewList = (props) => {
   }
   }
 
+  //this function handles the changing of the sort dropdown and displays results based on the new selection.
   let sortChange = (sort) => {
     console.log(sort);
     if ( sort === 'relevant') {
-      // setCurrentSort('relevant');
       fetchReviews(40384, 1, 2, 'relevant').then(res => {
         setReviews(res);
         setCurrentSort(sort);
@@ -50,8 +36,6 @@ let ReviewList = (props) => {
         console.error(err);
       });
     } else if ( sort === 'helpful') {
-      // setCurrentSort('helpful');
-      console.log('helpful is firigin')
       fetchReviews(40384, 1, 2, 'helpful').then(res => {
         setReviews(res);
         setCurrentSort(sort);
@@ -59,8 +43,6 @@ let ReviewList = (props) => {
         console.error(err);
       });
     } else if ( sort === 'newest') {
-      // setCurrentSort('newest');
-      console.log('newest is firing')
       fetchReviews(40384, 1, 2, 'newest').then(res => {
         setReviews(res);
         setCurrentSort(sort);
@@ -68,31 +50,23 @@ let ReviewList = (props) => {
         console.error(err);
       });
     }
-
-
   }
-
-  //this useEffect grabs our initial two reviews using the current product_id
-  useEffect(() => {
-
-    fetchReviews(40384, 1, 2, currentSort).then(res => {
-
-      setReviews(res);
-    }).catch(err => {
-      console.error(err);
-    });
-  }, []);
-
-
 
   const openModal = () => {
     setShowModal(true);
   }
 
+  if ( loading ) {
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
 return (
   <div className= "review-list-container">
     <div className="total-reviews-sort-dropdown-container">
-      <span>{`${props.totalReviews} reviews, sorted by `}</span>
+      <span>{`${totalReviews} reviews, sorted by `}</span>
       <SortDropdown id="sort-dropdown" sortChange={sortChange} />
     </div>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}

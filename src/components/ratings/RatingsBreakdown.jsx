@@ -1,10 +1,12 @@
 //Component for the ratings breakdown
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import AverageStars from './AverageStars.jsx';
-import { fetchReviewMetadata } from '../../helpers.js';
 import BarGraph from './BarGraph.jsx';
+import { RatingsContext } from './Ratings.jsx';
 
 let RatingsBreakdown = (props) => {
+
+  const {averageRating, metaRating, totalReviews} = useContext(RatingsContext)
 
   return (
     <div className= "rating-breakdown-container">
@@ -12,13 +14,13 @@ let RatingsBreakdown = (props) => {
         <h3> Ratings and Reviews</h3>
       </div>
       <div className="rating-and-stars">
-      <h3> {props.averageRating}</h3>
+      <h3> {averageRating}</h3>
       <div className="ratings-breakdown-avg-stars-container">
-        <AverageStars averageRating= {props.averageRating}/>
+        <AverageStars averageRating= {averageRating}/>
       </div>
       </div>
       <div className="bar-graph-container">
-        <BarGraph metaRating={props.metaRating} totalReviews={props.totalReviews}/>
+        <BarGraph metaRating={metaRating} totalReviews={totalReviews}/>
       </div>
     </div>
   );
