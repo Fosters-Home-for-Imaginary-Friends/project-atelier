@@ -4,13 +4,7 @@ import ImageBar from "./ImageBar.jsx";
 import ProductInformation from './ProductInformation.jsx';
 import { fetchProduct, fetchStyles } from "../../helpers.js";
 
-export const OverviewContext = createContext({
-  product: null,
-  productId: null,
-  styles: null,
-  currentStyle: null,
-  loading: true
-});
+export const OverviewContext = createContext({});
 
 const Overview = () => {
 
@@ -19,6 +13,7 @@ const Overview = () => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSize, setCurrentSize] = useState('');
+  const [currentPhoto, setCurrentPhoto] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const getProductData = (product_id) => {
@@ -56,7 +51,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />

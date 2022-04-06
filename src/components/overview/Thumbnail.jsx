@@ -2,9 +2,9 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import { OverviewContext } from "./Overview.jsx";
 
-const Thumbnail = ({thumbnail}) => {
+const Thumbnail = ({thumbnail, index}) => {
 
-  const { currentStyle, loading } = useContext(OverviewContext);
+  const { currentStyle, setCurrentPhoto, loading } = useContext(OverviewContext);
 
   if (loading) {
     return <div></div>;
@@ -16,13 +16,14 @@ const Thumbnail = ({thumbnail}) => {
 
   return (
     <li>
-      <img src={thumbnail.thumbnail_url} className="thumbnail"/>
+      <img src={thumbnail.thumbnail_url} className="thumbnail" onClick={() => setCurrentPhoto(index)}/>
     </li>
   )
 }
 
 Thumbnail.propTypes = {
-  thumbnail: PropTypes.object.isRequired
+  thumbnail: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired
 }
 
 export default Thumbnail;
