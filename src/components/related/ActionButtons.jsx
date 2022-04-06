@@ -3,7 +3,7 @@ import {AiOutlineStar} from 'react-icons/ai';
 import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './relatedHelpers.js';
 
-const CompareButton = ({current, selected}) => {
+const CompareButton = ({card, current}) => {
 
   const [modal, setModal] = useState(false);
 
@@ -13,8 +13,8 @@ const CompareButton = ({current, selected}) => {
   }
 
   const features = useMemo(() =>
-    getFeatures(current, selected),
-    [current.id, selected.id]);
+    getFeatures(current, card),
+    [current.id, card.id]);
 
   return (
     <div className="compare-button">
