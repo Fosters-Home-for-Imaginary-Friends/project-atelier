@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {CompareButton} from './ActionButtons.jsx';
 
-const ProductCard = ({product, styles, current, id}) => {
+const ProductCard = ({product, styles, current}) => {
   const actionStyle = {
     right: 0,
     position: 'absolute',
@@ -16,7 +16,7 @@ const ProductCard = ({product, styles, current, id}) => {
   return (
     <div className="product-card">
       <div className="card-top" ref={cardRef}>
-        <CompareButton id={id} />
+        <CompareButton />
         <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
       </div>
       <div className="card-bot">

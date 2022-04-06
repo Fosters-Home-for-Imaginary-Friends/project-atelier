@@ -19,7 +19,7 @@ const ProductList = ({cards}) => {
   }
 
   return (
-    <div className="carousel-container"> {/* This holds the carousel viewport and the buttons */}
+    <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
       <button onClick={scrollLeft} className="arrow">Left</button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         <div className="carousel"> {/* The part that scrolls when you press a button */}

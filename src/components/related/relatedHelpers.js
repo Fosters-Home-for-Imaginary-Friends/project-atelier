@@ -70,4 +70,4 @@ const currentPlaceholder = {
   ]
 };
 
-export {findRelatedProducts, currentPlaceholder};
+export {findRelatedProducts, currentPlaceholder, getFeatures};
