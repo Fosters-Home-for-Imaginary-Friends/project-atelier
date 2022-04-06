@@ -1,4 +1,4 @@
-import {fetchRelated, fetchStyles, fetchProduct, fetchReviewMetadata} from '../../helpers.js';
+import {getRelated, getStyles, getProduct, getReviewMetadata} from '../../helpers.js';
 
 const getFeatures = (overview, card) => { //Parses for features
   let featureObject = {
@@ -30,13 +30,14 @@ const getFeatures = (overview, card) => { //Parses for features
 };
 
 const findRelatedProducts = (product_id) => { //Returns an array of related Product Data
-  return fetchRelated(product_id)
-    .then((data) => Promise.all(data.map((id) => fetchProduct(id) //Returns an array of objects with product and style info
-          .then((product) => fetchStyles(id)
-            .then((styles) => fetchReviewMetadata(id)
+  return getRelated(product_id)
+    .then((data) => Promise.all(data.map((id) => getProduct(id) //Returns an array of objects with product and style info
+          .then((product) => getStyles(id)
+            .then((styles) => getReviewMetadata(id)
               .then((reviews) => ({product: product, styles: styles, reviews: reviews})))))))
     .catch((err) => console.error(err));
 };
+
 const currentPlaceholder = {
   "id": 40356,
   "campus": "hr-rfp",
@@ -67,4 +68,14 @@ const currentPlaceholder = {
   ]
 };
 
-export {findRelatedProducts, currentPlaceholder, getFeatures};
+var generateKey = function(str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = (hash << 5) + hash + str.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+    hash = Math.abs(hash);
+  }
+  return hash;
+};
+
+export {findRelatedProducts, currentPlaceholder, getFeatures, generateKey};
