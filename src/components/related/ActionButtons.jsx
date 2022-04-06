@@ -1,8 +1,9 @@
-import React, {useState, useMemo, useEffect} from 'react';
+import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import CompareModal from './CompareModal.jsx';
+import {getFeatures} from './relatedHelpers.js';
 
-const CompareButton = ({current, selected, id}) => {
+const CompareButton = ({card, current}) => {
 
   const [modal, setModal] = useState(false);
 
@@ -11,19 +12,14 @@ const CompareButton = ({current, selected, id}) => {
     setModal(true);
   }
 
-  const compare = {
-    right: 0,
-    position: 'absolute',
-    zIndex: 9,
-    color: 'gold',
-    width: '25px',
-    height: '25px'
-  };
+  const features = useMemo(() =>
+    getFeatures(current, card),
+    [current.id, card.id]);
 
   return (
-    <div id={id} style={compare}>
+    <div className="compare-button">
       <AiOutlineStar onClick={openModal} />
-      {modal ? <CompareModal closeModal={() => setModal(false)} id={id} /> : null }
+      {modal ? <CompareModal closeModal={() => setModal(false)} features={features} /> : null }
     </div>
   );
 };
