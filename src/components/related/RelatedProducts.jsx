@@ -10,7 +10,7 @@ const RelatedProducts = ({current, product_id}) => {
   useEffect(() => {
     findRelatedProducts(product_id)
         .then((items) => items.map((item, key) =>
-        <ProductCard key={key} card={item.product} current={current} styles={item.styles} />))
+        <ProductCard key={key} card={item.product} current={current} styles={item.styles} reviews={item.reviews} />))
         .then((newCards) => setCards(newCards))
         .catch((err) => {
           console.error(err);
