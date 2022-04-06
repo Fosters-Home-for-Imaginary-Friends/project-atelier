@@ -491,6 +491,7 @@ button.add {
 }
 .card-bot {
   height: 40%;
+  position: relative;
   background-color: white;
 }
 .compare-button {
