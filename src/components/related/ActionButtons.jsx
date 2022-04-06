@@ -1,14 +1,12 @@
 import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import CompareModal from './CompareModal.jsx';
-import {getFeatures} from './relatedHelpers.js';
+import {getFeatures} from './RelatedHelpers.js';
 
 const CompareButton = ({card, current}) => {
 
   const [modal, setModal] = useState(false);
-
   const openModal = () => {
-    console.log("Open!");
     setModal(true);
   }
 

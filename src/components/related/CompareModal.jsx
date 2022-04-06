@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
-import {generateKey} from './relatedHelpers.js';
+import {generateKey} from './RelatedHelpers.js';
 
 const CompareModal = ({closeModal, features}) => {
   const modalRef = useRef();
@@ -62,6 +62,5 @@ const ModalTableRow = ({name, values}) => {
     </React.Fragment>
   );
 }
-
 
 export default CompareModal;

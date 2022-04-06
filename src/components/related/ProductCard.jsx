@@ -18,7 +18,6 @@ const ProductCard = ({card, styles, current, reviews}) => {
         <span className="related-price">{card.default_price}</span> <br />
         <AverageStars />
       </div>
-
     </div>
   );
 };
