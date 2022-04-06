@@ -18,7 +18,7 @@ let RatingsBreakdown = (props) => {
       </div>
       </div>
       <div className="bar-graph-container">
-        <BarGraph />
+        <BarGraph metaRating={props.metaRating} totalReviews={props.totalReviews}/>
       </div>
     </div>
   );

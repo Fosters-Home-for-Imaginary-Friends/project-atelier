@@ -50,8 +50,8 @@ let Ratings = () => {
 
   return (
 <div className="ratings-reviews-container">
-  <RatingsBreakdown metaRating= {metaRating} averageRating={averageRating} />
-  <ReviewList totalReviews={totalReviews}/>
+  <RatingsBreakdown metaRating= {metaRating} averageRating={averageRating} totalReviews={totalReviews}/>
+  <ReviewList totalReviews={totalReviews} />
 </div>
   );
 }
