@@ -761,12 +761,21 @@ margin-top: 20px;
   width: 30vw;
   height: auto;
 }
+.rating-and-stars {
+  display: flex;
+}
+.rating-breakdown-title {
+  position: relative;
+}
 .bar-graph-container {
   display: flex;
   flex-direction: column;
 
 }
-
+.graph-title-bar {
+  display: flex;
+  justify-content: space-between;
+}
 .star-bar {
   display: flex;
   flex-direction: row;
@@ -781,6 +790,21 @@ margin-top: 20px;
   background-color: silver;
   border: 2px;
   margin-bottom: 20px;
+}
+.scored-bar {
+  height: 3vh;
+  background-color: lime;
+  border: 2px;
+  margin-bottom: 20px;
+  position: absolute;
+}
+.bar-titles {
+  text-decoration: underline;
+}
+.bar-titles:hover {
+  cursor: pointer;
+}
+#one-star-graph {
 }
 .average-star-container {
   display: flex;
