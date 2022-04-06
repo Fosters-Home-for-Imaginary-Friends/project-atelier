@@ -7,7 +7,7 @@ const SizeSelector = () => {
   const { currentStyle, loading } = useContext(OverviewContext);
 
   if (loading) {
-    return <div>Loading ...</div>
+    return <div className="size-selector loading"></div>
   }
 
   let inventory = currentStyle.skus;
