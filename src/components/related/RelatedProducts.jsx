@@ -1,15 +1,14 @@
-import React, {useState, useEffect, useMemo} from 'react';
-import CompareModal from './CompareModal.jsx';
+import React, {useMemo} from 'react';
 import {findRelatedProducts} from './relatedHelpers.js';
 import ProductList from './ProductList.jsx';
 import ProductCard from './ProductCard.jsx';
 
-const RelatedProducts = ({current, toggleModal}) => {
+const RelatedProducts = ({current}) => {
 
   const createProductCards = (product_id) => {
     return findRelatedProducts(product_id)
       .then((items) => items.map((item, key) =>
-      <ProductCard key={key} selectCard={toggleModal} product={item.product} styles={item.styles} />));
+      <ProductCard key={key} product={item.product} styles={item.styles} />));
   };
 
   //Returns a memoized list of relatedCards unless the currently view product changes
@@ -20,7 +19,6 @@ const RelatedProducts = ({current, toggleModal}) => {
 
   return (
     <div className="product-list" id="related-products">
-      <CompareModal toggleModal={toggleModal} modalView={modalView} features={features} />
       <span>Related Products</span>
       <ProductList cards={relatedCards} />
   </div>
