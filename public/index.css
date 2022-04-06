@@ -464,8 +464,6 @@ button.add {
   position: absolute;
   border-radius: 10px;
   border: 2px solid black;
-  top: 740px;
-  left: 100px;
   z-index: 10;
   background-color: white;
   color: black;
