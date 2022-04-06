@@ -5,7 +5,7 @@ const Lists = ({current}) => {
 
   return (
     <React.Fragment>
-      <RelatedProducts current={current} />
+      <RelatedProducts current={current} product_id={current.id} />
     </React.Fragment>
   );
 };
