@@ -1,64 +1,76 @@
-/* eslint-disable no-unused-vars */
-import React, {useContext, useState, useEffect} from 'react';
-import {ModalContext} from './ProductLists.jsx';
-import CompareModalRow from './CompareModalRow.jsx';
+import React, {useRef} from 'react';
+import ReactDom from 'react-dom';
+import {BsCheckLg} from 'react-icons/bs';
 
-const CompareModal = () => {
-  const UncomparedData = useContext(ModalContext);
-  const [ComparedData, setComparedData] = useState([]);
+const CompareModal = ({closeModal, id}) => {
+  const modalRef = useRef();
 
-  const getFeatures = () => { //Parses for features
-    let comparedFeatures = []; //Array of compared features
-    let currentFeats = UncomparedData.current.features; //currently viewed item
-    let compareFeats = UncomparedData.compared.features; //selected item for comparison
-
-    for (let feature in currentFeats) { //Compares the currently viewed item's features
-      let comparedFeat = { //compared Feature to be pushed into array of compared features
-        name: feature,
-        current: currentFeats[feature],
-        compared: false
-      };
-      if (compareFeats[feature]) {
-        comparedFeat.compared = compareFeats[feature];
-      }
-      comparedFeatures.push(comparedFeat);
-    }
-
-    for (let feature in compareFeats) { //If the feature doesn't exist in current features, then add it to the table
-      if(!currentFeats[feature]) {
-        comparedFeatures.push({
-          name: feature,
-          current: false,
-          compared: compareFeats[feature]
-        });
-      }
-    }
-    setComparedData(comparedFeatures);
-  };
-
-  useEffect(() => { //If the data has been updated, get new features
-    getFeatures();
-  }, [UncomparedData]);
-
-
-
-  return (
-    <div className="compare-modal">
-      <table>
-        <thead>
-          <tr>
-            <th>{UncomparedData.current.name}</th>
-            <th>characteristic</th>
-            <th>{UncomparedData.compared.name}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ComparedData.map((feature) => {
-            return <CompareModalRow key={0} feature={feature} />})}
-        </tbody>
-      </table>
-    </div>
+  return ReactDom.createPortal(
+    <div className="compare-modal-container" ref={modalRef}>
+    </div>,
+    document.getElementById(id)
   );
 }
+
+// const CompareModal = ({toggleModal, key}) => {
+//   const modalRef = useRef();
+
+//   return ReactDom.createPortal(
+//     <div className="compare-modal-container" ref={modalRef}>
+//       <div className="modal-header">
+//         <h2 className="modal-title">Comparing</h2>
+//         <button onClick={toggleModal} className="modal-button">X</button>
+//       </div>
+//       <div className="feature-container">
+//         <table className="feature-table">
+//           <thead>
+//             <tr>
+//               <th className="left">{features.currentName}</th>
+//               <th></th>
+//               <th className="right">{features.selectedName}</th>
+//             </tr>
+//           </thead>
+//           <ModalTableBody features={features.features} />
+//         </table>
+//       </div>
+//     </div>,
+//     document.getElementById(key)
+//   );
+// }
+
+const ModalTableBody = ({features}) => {
+  return (
+    <React.Fragment>
+      <tbody>
+        {Object.keys(features).map((feature, i) => <ModalTableRow key={i} name={feature} values={features[feature]} />)}
+      </tbody>
+    </React.Fragment>
+  );
+};
+
+const ModalTableRow = ({name, values}) => {
+
+  function parseValue (value) {
+    switch (value) {
+      case null:
+        return (<BsCheckLg />);
+      case false:
+        return "";
+      default:
+        return value.split('"')[1];
+    }
+  }
+
+  return (
+    <React.Fragment>
+      <tr>
+        <td className="left">{parseValue(values.current)}</td>
+        <td className="center">{name}</td>
+        <td className="right">{parseValue(values.selected)}</td>
+      </tr>
+    </React.Fragment>
+  );
+}
+
 
 export default CompareModal;

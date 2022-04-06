@@ -1,19 +1,30 @@
-import React, { useRef } from "react";
-import { ImageData } from "./dummyImages.js";
+import React, { useRef, useContext } from "react";
 import Image from "./Image.jsx";
+import {OverviewContext} from "./Overview.jsx";
+
 
 const ImageCarousel = () => {
 
   const imageCarouselRef = useRef(null);
 
+  const { currentStyle, loading } = useContext(OverviewContext);
+
+  if (loading) {
+    return <div className="image-carousel loading"></div>;
+  }
+
+  if (!currentStyle.photos[0].url) {
+    return <div className="image-carousel no-images">NO IMAGES AVAILABLE</div>
+  }
+
   return (
-    <div className="overview-images">
+  <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">
-        {ImageData.map(image =>
-          <Image key={image} slide={image}/>
+        {currentStyle.photos.map((image, index) =>
+            <Image key={index} slide={image}/>
         )}
       </ul>
-    </div>
+  </div>
   )
 }
 

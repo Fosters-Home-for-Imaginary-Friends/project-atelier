@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyleSelector from './StyleSelector.jsx';
+import SizeSelector from './SizeSelector.jsx';
+import { OverviewContext } from "./Overview.jsx";
 
 const ProductInformation = () => {
 
+  const { product } = useContext(OverviewContext);
+
   return (
     <div className="overview-product-info">
-      <h1>Expanded Product Name</h1>
-      <section className="body-text">$369</section>
-      <section className="body-text">STYLE</section>
+      <h1>{product.name}</h1>
+      <section className="body-text">{product.description}</section>
+      <section className="body-text price">{product.default_price} USD</section>
       <StyleSelector />
+      <SizeSelector />
       <div>
-        <button className="info-button">SELECT SIZE</button>
-        <button className="info-button">1</button>
-      </div>
-      <div>
-        <button className="info-button">ADD TO BAG</button>
-        <button className="info-button">*</button>
+        <button className="info-button add">ADD TO BAG</button>
       </div>
     </div>
   )

@@ -1,14 +1,9 @@
 import React, { useState, useEffect }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
-import {fetchReviews} from '../../helpers.js';
+import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
 
-// let currentReviews = [];
-// fetchReviews(40344).then(res => {
-//   currentReviews = res;
-//   console.log(currentReviews);
-// });
-// // console.log(currentReviews);
+
 
 
 
@@ -16,18 +11,22 @@ import {fetchReviews} from '../../helpers.js';
 //primary component that will attach to App.jsx
 let Ratings = () => {
 
+
   const [reviews, setReviews] = useState([]);
+  const [metaRating, setMetaRating] = useState({});
+
+
 
   useEffect(() => {
-    fetchReviews(40344).then(res => {
-      console.log(res);
-      setReviews(res);
-    });
-  }, []);
+    fetchReviewMetadata(40387).then(res => {
+      setMetaRating(res);
+
+    })
+  }, [])
   return (
 <div className="ratings-reviews-container">
-  <RatingsBreakdown />
-  <ReviewList reviews= {reviews} />
+  <RatingsBreakdown metaRating= {metaRating}/>
+  <ReviewList />
 
 
 </div>
