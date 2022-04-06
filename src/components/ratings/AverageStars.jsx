@@ -13,7 +13,7 @@ let numOfStars = [];
 //push an element for each whole star in the rating
   while (numOfStars.length < 5 ) {
     if ( averageRating > 1) {
-      numOfStars.push(1);
+      numOfStars.push(20);
       //once below 1 total star, create values for each quarter star
     } else if ( averageRating > 0) {
       let zero = Math.abs(0 - averageRating);
@@ -29,16 +29,16 @@ let numOfStars = [];
         numOfStars.push(0);
         break;
           case(oneQuarter):
-        numOfStars.push(.25);
+        numOfStars.push(9);
         break;
           case(half):
-        numOfStars.push(.5);
+        numOfStars.push(11);
         break;
           case(threeQuarters):
-        numOfStars.push(.75);
+        numOfStars.push(13);
         break;
           case(max):
-        numOfStars.push(1);
+        numOfStars.push(20);
         break;
           default:
         console.log('How did this happen');
@@ -60,12 +60,12 @@ let numOfStars = [];
 
 }
 
-const Star = () => {
+const Star = ({fill}) => {
 
   return (
     <div className="star-container">
       <div className="empty-star">☆</div>
-      <div className="full-star">★</div>
+      <div className="full-star" style={{width: fill}}>★</div>
     </div>
   );
 };
