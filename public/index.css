@@ -243,7 +243,7 @@ span.helpful-answer {
   transform: translateX(-3px);
 }
 
-.style-buttons {
+.style-button {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -254,8 +254,12 @@ span.helpful-answer {
   cursor: pointer;
 }
 
-.style-buttons:hover {
+.style-button:hover {
   box-shadow: 0 0 2px 1px #1f1f1f;
+}
+
+.style-button.true {
+  box-shadow: 0 0 3px 1px #1f1f1f;
 }
 
 .style-color {
@@ -381,6 +385,7 @@ span.helpful-answer {
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
+  color: #1f1f1f;
   box-shadow: 0 0 1px 1px darkgray;
   border-radius: 3px;
   height: 24px;
@@ -393,11 +398,11 @@ span.helpful-answer {
 }
 
 .size-button.true {
-  box-shadow: 0 0 3px 1px #1f1f1f;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
 }
 
 .size-text {
-  color: #1f1f1f;
   padding: 5px;
 }
 
