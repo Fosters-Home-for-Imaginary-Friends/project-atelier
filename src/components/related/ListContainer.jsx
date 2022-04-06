@@ -1,7 +1,7 @@
 import React from 'react';
 import RelatedProducts from './RelatedProducts.jsx';
 
-const Lists = ({current}) => {
+const ListContainer = ({current}) => {
 
   return (
     <React.Fragment>
@@ -10,4 +10,4 @@ const Lists = ({current}) => {
   );
 };
 
-export default Lists;
+export default ListContainer;
