@@ -18,6 +18,7 @@ const Overview = () => {
   const [productId, setProductId] = useState(0);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [currentSize, setCurrentSize] = useState('');
   const [loading, setLoading] = useState(true);
 
   const getProductData = (product_id) => {
@@ -51,11 +52,11 @@ const Overview = () => {
   }
 
   useEffect(() => {
-    getProductData(40347);
+    getProductData(40344);
   }, []);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />
