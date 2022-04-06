@@ -51,11 +51,11 @@ const Overview = () => {
   }
 
   useEffect(() => {
-    getProductData(40347);
+    getProductData(40344);
   }, []);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />

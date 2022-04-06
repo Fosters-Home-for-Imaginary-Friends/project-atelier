@@ -16,6 +16,10 @@ const SizeSelector = () => {
     return <div></div>
   }
 
+  if (inventory[Object.keys(inventory)[5]].size === 'XL') {
+    inventory[Object.keys(inventory)[5]].size = 'XXL';
+  }
+
   return (
     <div className="size-selector">
       {Object.keys(inventory).map((key) =>
