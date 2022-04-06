@@ -549,6 +549,8 @@ td {
   margin: 30px;
   display: flex;
   flex-direction: column;
+  max-height: 80vh;
+  overflow: scroll;
 }
 .answer {
   display: flex;
@@ -562,6 +564,11 @@ td {
   margin-top: 20px;
   width: 100%;
   height: 35px;
+}
+.questions-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 /* Start of Ratings/Reviews *****************/
