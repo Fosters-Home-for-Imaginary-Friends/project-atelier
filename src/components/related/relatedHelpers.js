@@ -1,4 +1,4 @@
-import {fetchRelated, fetchStyles, fetchProduct} from '../../helpers.js';
+import {fetchRelated, fetchStyles, fetchProduct, fetchReviewMetadata} from '../../helpers.js';
 
 const getFeatures = (overview, card) => { //Parses for features
   let featureObject = {
@@ -33,10 +33,8 @@ const findRelatedProducts = (product_id) => { //Returns an array of related Prod
   return fetchRelated(product_id)
     .then((data) => Promise.all(data.map((id) => fetchProduct(id) //Returns an array of objects with product and style info
           .then((product) => fetchStyles(id)
-            .then((styles) => {
-              return {product: product, styles: styles};
-            }))
-          .catch((err) => console.error(err)))))
+            .then((styles) => fetchReviewMetadata(id)
+              .then((reviews) => ({product: product, styles: styles, reviews: reviews})))))))
     .catch((err) => console.error(err));
 };
 

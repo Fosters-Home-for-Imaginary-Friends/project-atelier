@@ -1,15 +1,8 @@
 import React, {useRef} from 'react';
 import {CompareButton} from './ActionButtons.jsx';
+import AverageStars from '../ratings/AverageStars.jsx';
 
-const ProductCard = ({card, styles, current}) => {
-  const actionStyle = {
-    right: 0,
-    position: 'absolute',
-    zIndex: 9,
-    color: 'gold',
-    width: '25px',
-    height: '25px'
-  };
+const ProductCard = ({card, styles, current, reviews}) => {
 
   const cardRef = useRef();
 
@@ -23,7 +16,7 @@ const ProductCard = ({card, styles, current}) => {
         <span className="related-category">{card.category}</span><br />
         <span className="related-name">{card.name}</span><br />
         <span className="related-price">{card.default_price}</span> <br />
-        <span className="related-rating">stars</span>
+        <AverageStars />
       </div>
 
     </div>
