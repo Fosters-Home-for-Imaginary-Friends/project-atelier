@@ -10,13 +10,20 @@ export const QnaContext = createContext(data);
 const Qna = (props) => {
   const [question, setQuestion] = useState('');
   const [qnaList, setList] = useState([]);
+  const [extra, setExtra] = useState(false);
 
   useEffect(() => {
     getQuestions(65632)
       .then((res) => {
-        console.log(res);
-        data = res;
+        // console.log("Get request from QnA");
+        data = res.slice(0, 4);
+        // setInit(res.slice(0, 4));
+        if (res.length > 4) {
+          setExtra(true);
+        }
+        setList(data);
       })
+      .catch((err) => console.log(err));
   }, [])
 
   // useEffect(() => {
@@ -36,7 +43,7 @@ const Qna = (props) => {
 
 
   return (
-    <QnaContext.Provider value={{question, setQuestion, qnaList, setList}} className="qna-container">
+    <QnaContext.Provider value={{question, setQuestion, qnaList, setList, extra, setExtra}} className="qna-container">
       <h3 className="qna-title">Questions and Answers</h3>
       {/* Search Bar */}
       <Search />

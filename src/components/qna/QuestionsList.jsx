@@ -1,16 +1,23 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Question from './Question.jsx';
 import {QnaContext} from './Qna.jsx';
+import {getQuestions} from '../../helpers.js';
 
 const QuestionsList = (props) => {
   // let init = props.data.slice(0, 4);
   const {question} = useContext(QnaContext);
   const {qnaList} = useContext(QnaContext);
   const {setList} = useContext(QnaContext);
+  const {extra} = useContext(QnaContext);
+  const {setExtra} = useContext(QnaContext);
+
+  const [init, setInit]= useState(props.data);
+  // let init = props.data;
+  // console.log(init);
+  const [page, setPage] = useState(3);
 
   useEffect(() => {
     if (question.length > 3) {
-      console.log(question.length);
       let newList = [];
       for (let i = 0; i < qnaList.length; i++) {
         if (qnaList[i].question_body.toLowerCase().indexOf(question.toLowerCase()) !== -1) {
@@ -19,10 +26,24 @@ const QuestionsList = (props) => {
       }
       setList(newList)
     } else {
-      setList(props.data.results);
+      setList(init);
     }
   }, [question])
 
+  const handleMoreClick = () => {
+    console.log('clicked!');
+    getQuestions(65632, page, 2)
+      .then((res) => {
+        // init = init.concat(res);
+        setInit(init.concat(res));
+        console.log(init);
+        setPage(page + 1);
+        if (res.length < 2) {
+          setExtra(false);
+        }
+        setList(init);
+      })
+  }
   return(
     <div>
       <div className="questions-list">
@@ -30,15 +51,13 @@ const QuestionsList = (props) => {
           <Question data={product} key={product.question_id}/>
         )}
       </div>
-      <div>
-        <span className="helpful-answer">
-          Helpful?
-          <a>Yes</a>
-          ()
-        </span>
-      </div>
       <div className="questions-buttons">
-        <button>More Answered Questions</button>
+        {extra &&
+        <button
+          onClick={() => {
+            handleMoreClick()
+          }}
+        >More Answered Questions</button>}
         <button>Add a Question</button>
       </div>
     </div>

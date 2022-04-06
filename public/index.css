@@ -570,7 +570,11 @@ td {
 }
 
 
-/* Start of Questions and Answers */
+/**
+
+Start of Questions and Answers
+
+**/
 .qna-container {
   display: flex;
   /* height: 275px;

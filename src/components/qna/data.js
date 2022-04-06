@@ -213,40 +213,40 @@ var data = {
         "reported": false,
         "answers": {}
     },
-    {
-        "question_id": 573872,
-        "question_body": "Where is this product made?",
-        "question_date": "2018-01-24T00:00:00.000Z",
-        "asker_name": "iluvcatz",
-        "question_helpfulness": 0,
-        "reported": false,
-        "answers": {
-            "5361386": {
-                "id": 5361386,
-                "body": "Michigan",
-                "date": "2018-01-24T00:00:00.000Z",
-                "answerer_name": "iluvbirds",
-                "helpfulness": 45,
-                "photos": []
-            },
-            "5361390": {
-                "id": 5361390,
-                "body": "Made locally!",
-                "date": "2018-11-24T00:00:00.000Z",
-                "answerer_name": "Seller",
-                "helpfulness": 50,
-                "photos": []
-            },
-            "5361463": {
-                "id": 5361463,
-                "body": "Product of the USA!",
-                "date": "2018-12-24T00:00:00.000Z",
-                "answerer_name": "Seller",
-                "helpfulness": 21,
-                "photos": []
-            }
-        }
-    }
+    // {
+    //     "question_id": 573872,
+    //     "question_body": "Where is this product made?",
+    //     "question_date": "2018-01-24T00:00:00.000Z",
+    //     "asker_name": "iluvcatz",
+    //     "question_helpfulness": 0,
+    //     "reported": false,
+    //     "answers": {
+    //         "5361386": {
+    //             "id": 5361386,
+    //             "body": "Michigan",
+    //             "date": "2018-01-24T00:00:00.000Z",
+    //             "answerer_name": "iluvbirds",
+    //             "helpfulness": 45,
+    //             "photos": []
+    //         },
+    //         "5361390": {
+    //             "id": 5361390,
+    //             "body": "Made locally!",
+    //             "date": "2018-11-24T00:00:00.000Z",
+    //             "answerer_name": "Seller",
+    //             "helpfulness": 50,
+    //             "photos": []
+    //         },
+    //         "5361463": {
+    //             "id": 5361463,
+    //             "body": "Product of the USA!",
+    //             "date": "2018-12-24T00:00:00.000Z",
+    //             "answerer_name": "Seller",
+    //             "helpfulness": 21,
+    //             "photos": []
+    //         }
+    //     }
+    // }
   ]
 };
 
