@@ -720,3 +720,20 @@ margin-top: 20px;
     transform: scale(1);
   }
 }
+
+/*---------- Stars ----------*/
+.average-star-container {
+  display: flex;
+}
+.star-container {
+  display: flex;
+  font-size: 25px;
+}
+.empty-star {
+
+}
+.full-star {
+  overflow: hidden;
+  position: absolute;
+  width: 0px;
+}
