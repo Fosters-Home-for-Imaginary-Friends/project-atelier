@@ -400,9 +400,11 @@ span.helpful-answer {
 
 .size-selector {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
+  width: 210px;
   transform: translateX(-3px);
 }
 
@@ -415,7 +417,7 @@ span.helpful-answer {
   box-shadow: 0 0 1px 1px darkgray;
   border-radius: 3px;
   height: 24px;
-  margin: 0 3px 0 3px;
+  margin: 5px 3px 0 3px;
   cursor: pointer;
 }
 
