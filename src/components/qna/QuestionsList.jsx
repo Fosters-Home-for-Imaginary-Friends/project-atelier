@@ -10,10 +10,11 @@ const QuestionsList = (props) => {
   const {setList} = useContext(QnaContext);
   const {extra} = useContext(QnaContext);
   const {setExtra} = useContext(QnaContext);
+  const {init} = useContext(QnaContext);
+  const {setInit} = useContext(QnaContext);
 
-  const [init, setInit]= useState(props.data);
+  // const [init, setInit]= useState(props.data);
   // let init = props.data;
-  // console.log(init);
   const [page, setPage] = useState(3);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const QuestionsList = (props) => {
 
   const handleMoreClick = () => {
     console.log('clicked!');
-    getQuestions(65632, page, 2)
+    getQuestions(65633, page, 2)
       .then((res) => {
         // init = init.concat(res);
         setInit(init.concat(res));

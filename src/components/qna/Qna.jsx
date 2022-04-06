@@ -4,23 +4,25 @@ import QuestionsList from './QuestionsList.jsx';
 import Search from './Search.jsx';
 import {getQuestions} from '../../helpers.js';
 
-let data = [];
-export const QnaContext = createContext(data);
+// let data = [];
+export const QnaContext = createContext([]);
 
 const Qna = (props) => {
   const [question, setQuestion] = useState('');
   const [qnaList, setList] = useState([]);
   const [extra, setExtra] = useState(false);
+  const [init, setInit] = useState([]);
 
   useEffect(() => {
-    getQuestions(65632)
+    getQuestions(65633)
       .then((res) => {
         // console.log("Get request from QnA");
-        data = res.slice(0, 4);
+        let data = res.slice(0, 4);
         // setInit(res.slice(0, 4));
         if (res.length > 4) {
           setExtra(true);
         }
+        setInit(data);
         setList(data);
       })
       .catch((err) => console.log(err));
@@ -43,13 +45,13 @@ const Qna = (props) => {
 
 
   return (
-    <QnaContext.Provider value={{question, setQuestion, qnaList, setList, extra, setExtra}} className="qna-container">
+    <QnaContext.Provider value={{question, setQuestion, qnaList, setList, extra, setExtra, init, setInit}} className="qna-container">
       <h3 className="qna-title">Questions and Answers</h3>
       {/* Search Bar */}
       <Search />
       {/* Questions List */}
       {/* <QuestionsList data={data.results}/> */}
-      <QuestionsList data={data}/>
+      <QuestionsList data={init}/>
       {/* See more questions button */}
       {/* Add a question button */}
     </QnaContext.Provider >
