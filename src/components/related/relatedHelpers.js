@@ -37,6 +37,7 @@ const findRelatedProducts = (product_id) => { //Returns an array of related Prod
               .then((reviews) => ({product: product, styles: styles, reviews: reviews})))))))
     .catch((err) => console.error(err));
 };
+
 const currentPlaceholder = {
   "id": 40356,
   "campus": "hr-rfp",

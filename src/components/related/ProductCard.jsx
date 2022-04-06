@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {CompareButton} from './ActionButtons.jsx';
-import AverageStars, {Star} from '../ratings/AverageStars.jsx';
+import AverageStars from '../ratings/AverageStars.jsx';
 
 const ProductCard = ({card, styles, current, reviews}) => {
 
