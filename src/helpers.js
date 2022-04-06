@@ -142,13 +142,8 @@ Parameter Descriptions:
   count: # of items per page
 */
 
-<<<<<<< HEAD
-const getQuestions = (product_id, page = 1, count = 4) => {
-  return axios.get(host + `/qa/questions/?product_id=${product_id}&page=${page}&count=${count}`)
-=======
 const getQuestions = (product_id, page = 1, count = 5) => {
   return axios.get(host + `/qa/questions/?product_id=${product_id}&page=${page}&count=${count}`, options)
->>>>>>> master
     .then((res) => res.data.results)
     .catch((err) => console.error(err));
 };
