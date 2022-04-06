@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
+import {generateKey} from './relatedHelpers.js';
 
 const CompareModal = ({closeModal, features}) => {
   const modalRef = useRef();
@@ -32,7 +33,7 @@ const ModalTableBody = ({features}) => {
   return (
     <React.Fragment>
       <tbody>
-        {Object.keys(features).map((feature, i) => <ModalTableRow key={i} name={feature} values={features[feature]} />)}
+        {Object.keys(features).map((feature) => <ModalTableRow key={generateKey(feature)} name={feature} values={features[feature]} />)}
       </tbody>
     </React.Fragment>
   );
