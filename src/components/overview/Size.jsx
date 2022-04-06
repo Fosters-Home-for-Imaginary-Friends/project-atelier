@@ -4,11 +4,15 @@ import { OverviewContext } from "./Overview.jsx";
 
 const Size = ({sizes}) => {
 
-  const { setCurrentSize } = useContext(OverviewContext);
+  const { currentSize, setCurrentSize } = useContext(OverviewContext);
   const [current, setCurrent] = useState(false);
 
   const setCurrentSizing = () => {
-    setCurrentSize(sizes);
+    if (currentSize === '') {
+      setCurrentSize(sizes);
+    } else {
+      setCurrentSize('');
+    }
     setCurrent(!current);
   }
 
