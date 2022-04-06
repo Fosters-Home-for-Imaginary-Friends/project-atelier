@@ -3,7 +3,8 @@ import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
 let AverageStars = (props) => {
 
 //temp variable to progress while api call having issues with timing
-let averageRating = 3.7;
+let averageRating = props.averageRating;
+console.log(averageRating);
 
 //create an array to store stars from average rating
 let numOfStars = [];

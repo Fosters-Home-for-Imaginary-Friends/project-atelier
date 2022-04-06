@@ -6,37 +6,16 @@ import BarGraph from './BarGraph.jsx';
 
 let RatingsBreakdown = (props) => {
 
-  const [loading, setLoading] = useState(true);
-  const [metaRatings, setMetaRatings] = useState({})
-
-  useEffect(() => {
-    fetchReviewMetadata(40384).then(res => {
-      setMetaRatings(res);
-      setLoading(false);
-    }).catch(err => {
-      console.error(err);
-    })
-  }, []);
-
-//having trouble with render firing before api calls, storing var to hold average rating while trying to fix
-let averageStar = 3.7;
-
-
-  if ( loading ) {
-    return (
-      <div>
-        Loading. . .
-      </div>
-    )
-  }
-
-
   return (
-
     <div className= "rating-breakdown-container">
-      <h3 className= "rating-breakdown-title"> Ratings and Reviews</h3>
+      <div className= "rating-breakdown-title">
+        <h3> Ratings and Reviews</h3>
+      </div>
+      <div className="rating-and-stars">
+      <h3> {props.averageRating}</h3>
       <div className="ratings-breakdown-avg-stars-container">
-        <AverageStars ratingsObj= {props.metaRating.ratings}/>
+        <AverageStars averageRating= {props.averageRating}/>
+      </div>
       </div>
       <div className="bar-graph-container">
         <BarGraph />

@@ -13,12 +13,13 @@ let ReviewList = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [moreReviews, setMoreReviews] = useState(true);
   const [reviews, setReviews] = useState([]);
-  let {currentReviews, setCurrentReviews} = useState([]);
   let [pageNum, setPageNum] = useState(1)
   let [totalReviews, setTotalReviews] = useState(0);
+  let [totalScore, setTotalScore] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
 
   const [currentSort, setCurrentSort] = useState('relevant');
-
+  let aScore = 0;
 
 
   // let totalReviews = 0;
@@ -83,19 +84,7 @@ let ReviewList = (props) => {
     });
   }, []);
 
-  //this useffect grabs the metaData ratings obj from the api and then factors the total
-  //number of reviews. We use this to make sure we don't try to grab reviews past the total.
-  useEffect(() => {
-    fetchReviewMetadata(40384).then(res => {
-      let totalRatingsObj = res.ratings;
-      for (let k in totalRatingsObj) {
-        setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 );
-      }
-      // totalReviews -= 2;
-    }).catch(err => {
-      console.error(err);
-    })
-  }, []);
+
 
   const openModal = () => {
     setShowModal(true);

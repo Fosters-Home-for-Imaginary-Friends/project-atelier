@@ -725,6 +725,12 @@ margin-top: 20px;
   width: 30vw;
   height: auto;
 }
+.rating-and-stars {
+  display: flex;
+}
+.rating-breakdown-title {
+  position: relative;
+}
 .bar-graph-container {
   display: flex;
   flex-direction: column;
