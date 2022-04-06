@@ -392,6 +392,10 @@ span.helpful-answer {
   box-shadow: 0 0 3px 0px #1f1f1f;
 }
 
+.size-button.true {
+  box-shadow: 0 0 3px 1px #1f1f1f;
+}
+
 .size-text {
   color: #1f1f1f;
   padding: 5px;
