@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { OverviewContext } from "./Overview.jsx";
 
 const Style = ({style}) => {
+
   var colors = style.name.split(' & ');
 
   for (let i = 0; i < colors.length; i++) {
@@ -19,8 +21,14 @@ const Style = ({style}) => {
     side1 = `style-color side1 ${colors[0]}`;
   }
 
+  const { currentStyle, setCurrentStyle } = useContext(OverviewContext);
+
+  const setCurrentStyling = () => {
+    setCurrentStyle(style);
+  }
+
   return (
-    <div className="style-buttons">
+    <div className={`style-button ${currentStyle === style}`} onClick={() => {setCurrentStyling()}}>
       <div className={ side1 }></div>
       <div className={ side2 }></div>
     </div>
