@@ -15,41 +15,7 @@ let Ratings = () => {
   let [totalScore, setTotalScore] = useState(0);
   let [totalReviews, setTotalReviews] = useState(0);
   let [averageRating, setAverageRating] = useState(0);
-  const [ratingsObj, setRatingsObj] = useState({});
-
-
-
-
-  //this useffect grabs the metaData ratings obj from the api and then factors the total
-  //number of reviews. We use this to make sure we don't try to grab reviews past the total.
-
-  // let dataFetch = () => {
-  //   fetchReviews(40384, 1, 2, currentSort)
-  //   .then((res) => {
-  //     setReviews(res);
-  //     return;
-  //   })
-  //   .then(() => {
-  //     console.log(reviews);
-  //     fetchReviewMetadata(40384)
-  //     .then(res => {
-  //       setMetaRating(res)
-  //           let totalRatingsObj = res.ratings;
-  //         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
-  //         for (let k in totalRatingsObj) {
-  //           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
-  //           setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 );
-  //         }
-  //         setAverageRating(totalScore / totalReviews);
-  //         console.log(totalScore, totalReviews, averageRating);
-  //       }).catch(err => {
-  //         console.error(err);
-  //       })
-  //       .then(() => {
-  //         setLoading(false);
-  //       })
-  //     })
-  // }
+  const [starFilters, setStarFilters] = useState({one_Star_Filter: false, two_Star_Filter: false, three_Star_Filter: false, four_Star_Filter: false, five_Star_Filter: false})
 
   let dataFetch = () => {
     fetchReviews(40384, 1, 2, currentSort)
@@ -72,10 +38,14 @@ let Ratings = () => {
         console.error(err);
       })
     })
-
   }
 
-    // //this useEffect grabs our initial two reviews using the current product_id
+  let filteredContent = (filter) => {
+    if ( filter === 'five_Star_Filter') {
+
+    }
+  }
+
     useEffect(() => {
       dataFetch();
     }, []);
@@ -90,7 +60,8 @@ let Ratings = () => {
   }
 
   return (
-<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating}}>
+<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
+                                 starFilters, setStarFilters}}>
   <div className="ratings-reviews-container">
     <RatingsBreakdown />
     <ReviewList />
