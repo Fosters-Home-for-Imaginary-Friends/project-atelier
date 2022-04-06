@@ -746,3 +746,17 @@ margin-top: 20px;
   border: 2px;
   margin-bottom: 20px;
 }
+.average-star-container {
+  display: flex;
+}
+.star-container {
+  display: flex;
+  font-size: 25px;
+}
+.empty-star {
+
+}
+.full-star {
+  overflow: hidden;
+  position: absolute;
+}
