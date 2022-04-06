@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageBar from "./ImageBar.jsx";
 import ProductInformation from './ProductInformation.jsx';
-import { fetchProduct, fetchStyles } from "../../helpers.js";
+import { getProduct, getStyles } from "../../helpers.js";
 
 export const OverviewContext = createContext({});
 
@@ -17,14 +17,14 @@ const Overview = () => {
   const [loading, setLoading] = useState(true);
 
   const getProductData = (product_id) => {
-    fetchProduct(product_id)
+    getProduct(product_id)
       .then((response) => {
         setProduct(response);
         setProductId(response.id);
         return response.id;
       })
       .then((response) => {
-        return fetchStyles(response);
+        return getStyles(response);
       })
       .then((styleData) => {
         setStyles(styleData);

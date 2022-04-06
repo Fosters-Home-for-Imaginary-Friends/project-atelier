@@ -1,7 +1,7 @@
 //this is the component for the review list that houses individual reviews
 import React, {useState, useEffect, useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import { fetchReviews, fetchReviewMetadata}  from '../../helpers.js';
+import { getReviews, getReviewMetadata}  from '../../helpers.js';
 import NewReview from './NewReview.jsx';
 import SortDropdown from './SortDropdown.jsx';
 import { RatingsContext } from './Ratings.jsx';
@@ -17,7 +17,7 @@ let ReviewList = (props) => {
   let moreReviewsClick = () => {
     setPageNum(pageNum += 1);
     if ( pageNum < (Math.round(totalReviews / 2))) {
-    fetchReviews(40384, pageNum, 2, currentSort).then(res => {
+    getReviews(40384, pageNum, 2, currentSort).then(res => {
       setReviews(reviews.concat(res));
     })
   } else {
@@ -29,21 +29,21 @@ let ReviewList = (props) => {
   let sortChange = (sort) => {
     console.log(sort);
     if ( sort === 'relevant') {
-      fetchReviews(40384, 1, 2, 'relevant').then(res => {
+      getReviews(40384, 1, 2, 'relevant').then(res => {
         setReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
         console.error(err);
       });
     } else if ( sort === 'helpful') {
-      fetchReviews(40384, 1, 2, 'helpful').then(res => {
+      getReviews(40384, 1, 2, 'helpful').then(res => {
         setReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
         console.error(err);
       });
     } else if ( sort === 'newest') {
-      fetchReviews(40384, 1, 2, 'newest').then(res => {
+      getReviews(40384, 1, 2, 'newest').then(res => {
         setReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
