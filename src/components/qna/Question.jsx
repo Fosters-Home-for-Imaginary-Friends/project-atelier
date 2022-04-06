@@ -7,6 +7,13 @@ const Question = (props) => {
       {/* Question */}
       <h2>{'Q: ' + props.data.question_body}</h2>
       {/* Helpful Link */}
+      <div>
+        <span className="helpful-answer">
+          Helpful?
+          <a>Yes</a>
+          ()
+        </span>
+      </div>
       {/* Add Answer Link */}
       {/* Answer List */}
       <div>
