@@ -17,26 +17,26 @@ const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 /*------------------------ PRODUCTS ------------------------ */
 /*------------------------ PRODUCTS ------------------------ */
 
-const fetchProducts = (page = 1, count = 5) => {
+const getProducts = (page = 1, count = 5) => {
 
   return axios.get(host + `/products?page=${page}&count=${count}`, options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
 };
 
-const fetchProduct = (product_id) => {
+const getProduct = (product_id) => {
   return axios.get(host + '/products/' + product_id, options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
 };
 
-const fetchStyles = (product_id) => {
+const getStyles = (product_id) => {
   return axios.get(host + '/products/' + product_id + '/styles', options)
     .then((res) => res.data.results)
     .catch((err) => console.error(err));
 };
 
-const fetchRelated = (product_id) => {
+const getRelated = (product_id) => {
   return axios.get(host + '/products/' + product_id + '/related', options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
@@ -46,13 +46,13 @@ const fetchRelated = (product_id) => {
 /*------------------------ REVIEWS ------------------------ */
 /*------------------------ REVIEWS ------------------------ */
 
-const fetchReviews = (product_id, page = 1, count = 2, sort = "relevant") => {
+const getReviews = (product_id, page = 1, count = 2, sort = "relevant") => {
   return axios.get(host + `/reviews/?product_id=${product_id}&page=${page}&count=${count}&sort=${sort}`, options)
     .then((res) => res.data.results)
     .catch((err) => console.error(err));
 };
 
-const fetchReviewMetadata = (product_id) => {
+const getReviewMetadata = (product_id) => {
   return axios.get(host + `/reviews/meta/?product_id=${product_id}`, options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
@@ -115,12 +115,12 @@ const putAnswerReport = (answer_id) => {
     .catch((err) => console.error(err));
 };
 
-const reportReview = (review_id) => {
+const putReviewReport = (review_id) => {
   return axios.put(host + `/reviews/${review_id}/report`, {}, options)
     .then((res) => res)
     .catch((err) => console.error(err));
 };
 
-export {fetchProducts, fetchProduct, fetchStyles, fetchRelated};
-export {fetchReviews, fetchReviewMetadata, postReview, putReviewHelpful, reportReview};
+export {getProducts, getProduct, getStyles, getRelated};
+export {getReviews, getReviewMetadata, postReview, putReviewHelpful, putReviewReport};
 export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putAnswerReport};

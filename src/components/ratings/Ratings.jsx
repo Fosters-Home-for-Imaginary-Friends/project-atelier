@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
-import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
+import {getReviews, getReviewMetadata} from '../../helpers.js';
 
 export const RatingsContext = createContext({});
 
@@ -24,14 +24,14 @@ let Ratings = () => {
   //number of reviews. We use this to make sure we don't try to grab reviews past the total.
 
   // let dataFetch = () => {
-  //   fetchReviews(40384, 1, 2, currentSort)
+  //   getReviews(40384, 1, 2, currentSort)
   //   .then((res) => {
   //     setReviews(res);
   //     return;
   //   })
   //   .then(() => {
   //     console.log(reviews);
-  //     fetchReviewMetadata(40384)
+  //     getReviewMetadata(40384)
   //     .then(res => {
   //       setMetaRating(res)
   //           let totalRatingsObj = res.ratings;
@@ -52,9 +52,9 @@ let Ratings = () => {
   // }
 
   let dataFetch = () => {
-    fetchReviews(40384, 1, 2, currentSort)
+    getReviews(40384, 1, 2, currentSort)
     .then((res) => {
-      fetchReviewMetadata(40384)
+      getReviewMetadata(40384)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
