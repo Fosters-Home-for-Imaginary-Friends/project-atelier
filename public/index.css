@@ -224,10 +224,30 @@ span.helpful-answer {
   width: 200px;
 }
 
+.sale-price-container {
+  display: flex;
+}
+
+.body-text.sale-price {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.body-text.original-price {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 10px;
+  color: darkgray;
+  text-decoration: line-through;
+}
+
 .body-text.price {
   font-weight: 400;
   font-size: 12px;
   margin-top: 10px;
+  margin-right: 10px;
 }
 
 /* STYLE BUTTONS */
