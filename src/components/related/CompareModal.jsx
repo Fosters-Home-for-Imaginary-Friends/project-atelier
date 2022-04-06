@@ -1,35 +1,42 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
 
-const CompareModal = ({toggleModalView, modalView, features}) => {
+const CompareModal = ({closeModal, id}) => {
   const modalRef = useRef();
-  useEffect(() => {
-
-  }, [features]);
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef} style={modalView}>
-      <div className="modal-header">
-        <h2 className="modal-title">Comparing</h2>
-        <button onClick={toggleModalView} className="modal-button">X</button>
-      </div>
-      <div className="feature-container">
-        <table className="feature-table">
-          <thead>
-            <tr>
-              <th className="left">{features.currentName}</th>
-              <th></th>
-              <th className="right">{features.selectedName}</th>
-            </tr>
-          </thead>
-          <ModalTableBody features={features.features} />
-        </table>
-      </div>
+    <div className="compare-modal-container" ref={modalRef}>
     </div>,
-    document.getElementById("root")
+    document.getElementById(id)
   );
 }
+
+// const CompareModal = ({toggleModal, key}) => {
+//   const modalRef = useRef();
+
+//   return ReactDom.createPortal(
+//     <div className="compare-modal-container" ref={modalRef}>
+//       <div className="modal-header">
+//         <h2 className="modal-title">Comparing</h2>
+//         <button onClick={toggleModal} className="modal-button">X</button>
+//       </div>
+//       <div className="feature-container">
+//         <table className="feature-table">
+//           <thead>
+//             <tr>
+//               <th className="left">{features.currentName}</th>
+//               <th></th>
+//               <th className="right">{features.selectedName}</th>
+//             </tr>
+//           </thead>
+//           <ModalTableBody features={features.features} />
+//         </table>
+//       </div>
+//     </div>,
+//     document.getElementById(key)
+//   );
+// }
 
 const ModalTableBody = ({features}) => {
   return (

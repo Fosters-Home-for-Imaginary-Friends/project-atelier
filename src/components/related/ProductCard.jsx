@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
-import {AiOutlineStar} from 'react-icons/ai';
+import {CompareButton} from './ActionButtons.jsx';
 
-const ProductCard = ({product, styles, selectCard}) => {
+const ProductCard = ({product, styles, current, id}) => {
   const actionStyle = {
     right: 0,
     position: 'absolute',
@@ -16,9 +16,7 @@ const ProductCard = ({product, styles, selectCard}) => {
   return (
     <div className="product-card">
       <div className="card-top" ref={cardRef}>
-        <AiOutlineStar style={actionStyle} onClick={() => {
-          selectCard(product);
-        }} />
+        <CompareButton id={id} />
         <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
       </div>
       <div className="card-bot">

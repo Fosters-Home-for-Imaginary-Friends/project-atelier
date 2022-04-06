@@ -4,6 +4,7 @@ import ProductCard from './ProductCard.jsx';
 import CompareModal from './CompareModal.jsx';
 import {fetchRelated, fetchProduct, fetchStyles} from '../../helpers.js';
 
+//Placeholder for the data from the currently view product in the overview component
 const CurrentProduct = {
   "id": 40356,
   "campus": "hr-rfp",
@@ -38,7 +39,6 @@ const ProductLists = () => {
   const [relatedCards, setRelatedCards] = useState([]);
   const [currentID, setcurrentID] = useState(40356);
   const [currentProduct, setCurrentProduct] = useState(CurrentProduct);
-  const [card, setCard] = useState({});
   const [modalView, setModalView] = useState({visibility: 'visible'});
   const [features, setFeatures] = useState({
     currentName: 'loading',
@@ -52,13 +52,13 @@ const ProductLists = () => {
   });
 
   //Comparison Modal
-  const toggleModalView = (newCard) => {
+  const toggleModal = (newCard) => {
     setModalView((oldState) => {
       return oldState.visibility === 'hidden' ? {visibility: 'visible'} : {visibility: 'hidden'};
     });
-    getFeatures(newCard)
-    setCard(newCard);
+    getFeatures(newCard);
   };
+
   const getFeatures = (newCard) => { //Parses for features
     let featureObject = {
       currentName: currentProduct.name,
@@ -99,7 +99,7 @@ const ProductLists = () => {
                 return {product: product, styles: styles};
               }))
             .catch((err) => console.error(err)))))
-      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} selectCard={toggleModalView} product={item.product} styles={item.styles} />)))
+      .then((items) => setRelatedCards(items.map((item, key) => <ProductCard key={key} selectCard={toggleModal} product={item.product} styles={item.styles} />)))
       .catch((err) => console.error(err));
   }
 
@@ -111,7 +111,7 @@ const ProductLists = () => {
   return (
     <React.Fragment>
       <div className="product-list" id="related-products">
-        <CompareModal toggleModalView={toggleModalView} modalView={modalView} features={features} />
+        <CompareModal toggleModal={toggleModal} modalView={modalView} features={features} />
         <span>Related Products</span>
         <ProductList cards={relatedCards} />
       </div>
