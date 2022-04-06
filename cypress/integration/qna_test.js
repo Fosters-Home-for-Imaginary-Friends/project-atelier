@@ -1,5 +1,7 @@
 describe('My First Test', () => {
-  it('Visits the Kitchen Sink', () => {
+  it('Visits localhost', () => {
     cy.visit('http://localhost:3000')
+
+    cy.contains('Questions and Answers')
   })
 })
