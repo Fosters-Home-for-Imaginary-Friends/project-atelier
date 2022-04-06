@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 
-const ProductList = (props) => {
+const ProductList = ({cards}) => {
   //points to the carousel-viewport DOM element
   const carouselRef = useRef(null);
 
@@ -19,11 +19,11 @@ const ProductList = (props) => {
   }
 
   return (
-    <div className="carousel-container"> {/* This holds the carousel viewport and the buttons */}
+    <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
       <button onClick={scrollLeft} className="arrow">Left</button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         <div className="carousel"> {/* The part that scrolls when you press a button */}
-          {props.cards}
+          {cards}
         </div>
       </div>
       <button onClick={scrollRight} className="arrow">Right</button>

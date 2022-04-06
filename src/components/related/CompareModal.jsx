@@ -1,18 +1,15 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
 
-const CompareModal = ({toggleModalView, modalView, features}) => {
+const CompareModal = ({closeModal, features}) => {
   const modalRef = useRef();
-  useEffect(() => {
-
-  }, [features]);
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef} style={modalView}>
+    <div className="compare-modal-container" ref={modalRef}>
       <div className="modal-header">
         <h2 className="modal-title">Comparing</h2>
-        <button onClick={toggleModalView} className="modal-button">X</button>
+        <button onClick={closeModal} className="modal-button">X</button>
       </div>
       <div className="feature-container">
         <table className="feature-table">
@@ -27,9 +24,9 @@ const CompareModal = ({toggleModalView, modalView, features}) => {
         </table>
       </div>
     </div>,
-    document.getElementById("root")
+    document.getElementById("modal")
   );
-}
+};
 
 const ModalTableBody = ({features}) => {
   return (
