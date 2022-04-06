@@ -458,19 +458,25 @@ button.add {
   height: 40%;
   background-color: white;
 }
+.compare-button {
+  right: 0;
+  position: absolute;
+  z-index: 9;
+  color: gold;
+  width: 25px;
+  height: 25px;
+}
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
   position: absolute;
   border-radius: 10px;
   border: 2px solid black;
-  top: 740px;
-  left: 100px;
   z-index: 10;
   background-color: white;
   color: black;
-  width: 400px;
-  height: 300px;
+  width: 550px;
+  height: 400px;
   animation: compare-modal-animation 0.3s;
 }
 .modal-header {
