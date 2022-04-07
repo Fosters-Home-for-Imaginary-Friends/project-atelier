@@ -5,7 +5,7 @@ import {generateKey} from './RelatedHelpers.js';
 
 const OutfitList = ({current}) => {
   const [cardData, setCardData] = useState([]);
-  //{card: <ProductCard />, product: product}
+  //{card: <ProductCard />, productData: getRelatedProductsData()}
   //TODO: optimize map function
 
   return (

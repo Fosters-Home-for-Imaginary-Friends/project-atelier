@@ -41,7 +41,7 @@ const AddProductCard = ({setCardData, current, cardData}) => {
   // TODO: Notify user that the card is already in their list
   const addProduct = () => {
     for (let i = 0; i < cardData.length; i++) {
-      if (cardData[i].product.id === current.id) {
+      if (cardData[i].productData.product.id === current.id) {
         console.log("Already in your list!");
         return;
       }
@@ -53,7 +53,7 @@ const AddProductCard = ({setCardData, current, cardData}) => {
       setCardData((newCardData) => {
         let newCards = newCardData;
         let newCard = {card: (<ProductCard setCardData={setCardData} card={newCardInfo} current={current} key={generateKey()} related={false} />),
-        product: newCardInfo.product}
+        productData: newCardInfo}
         newCards = newCards.concat([newCard]);
 
         return newCards;

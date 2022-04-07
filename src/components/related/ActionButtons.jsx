@@ -27,7 +27,7 @@ const RemoveButton = ({setCardData, card}) => {
   const removeCard = () => {
     setCardData((cardData) => {
       let newCardData = cardData.filter((item) => {
-        return item.product.id !== card.id;
+        return item.productData.product.id !== card.id;
       });
       return newCardData;
     });
