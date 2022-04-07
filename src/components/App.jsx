@@ -12,10 +12,15 @@ export const AppContext = createContext({});
 const App = () => {
 
   const [productId, setProductId] = useState(40344);
-  const appContextValue = useMemo(() => ({productId, setProductId}), [productId, setProductId]);
+  const [productData, setProductData] = useState(null);
+
+  useEffect(() => {
+    getProduct(40344)
+      .then((response) => setProductData(response));
+  }, []);
 
   return (
-    <AppContext.Provider value={appContextValue}>
+    <AppContext.Provider value={{productId, productData}}>
       <div>
         <Overview />
         <RelatedProducts product_id={40344} />
