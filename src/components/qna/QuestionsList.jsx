@@ -7,7 +7,7 @@ const QuestionsList = (props) => {
   // let init = props.data.slice(0, 4);
   const {question} = useContext(QnaContext);
   const {qnaList} = useContext(QnaContext);
-  const {setList} = useContext(QnaContext);
+  const {setQnaList} = useContext(QnaContext);
   const {extra} = useContext(QnaContext);
   const {setExtra} = useContext(QnaContext);
   const {init} = useContext(QnaContext);
@@ -25,24 +25,25 @@ const QuestionsList = (props) => {
           newList.push(qnaList[i])
         }
       }
-      setList(newList)
+      setQnaList(newList)
     } else {
-      setList(init);
+      setQnaList(init);
     }
   }, [question])
 
   const handleMoreClick = () => {
-    console.log(init);
     getQuestions(65633, page, 2)
       .then((res) => {
         // init = init.concat(res);
+        console.log(res);
         setInit(init.concat(res));
         setPage(page + 1);
         if (res.length < 2) {
           setExtra(false);
         }
-        setList(init);
+        setQnaList(init.concat(res));
       })
+      .catch((err) => console.log(err))
   }
   return(
     <div>

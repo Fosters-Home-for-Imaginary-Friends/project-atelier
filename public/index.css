@@ -604,15 +604,28 @@ Start of Questions and Answers
   margin: 30px;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
-  overflow: scroll;
+  max-height: 50vh;
+  overflow: auto;
+}
+.question-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .answer {
   display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.answer-list {
+  margin-left: 7px;
+}
+.answer-head {
   flex-direction: row;
+  display: flex;
   align-items: center;
 }
-.answer-heading {
+h2.answer-heading {
   margin-right: 7px;
 }
 .search-bar {

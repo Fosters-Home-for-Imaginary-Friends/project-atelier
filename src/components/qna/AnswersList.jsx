@@ -5,7 +5,7 @@ const AnswersList = (props) => {
   let answersArr = Object.values(props.data);
   let init = answersArr.slice(0, 2);
   return (
-    <div>
+    <div className="answer-list">
       {init.map((answer) =>
         <Answer data={answer} key={answer.id}/>
       )}
