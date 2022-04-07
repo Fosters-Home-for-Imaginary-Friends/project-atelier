@@ -38,7 +38,37 @@ const getAverageRating = (ratings) => {
     ratingCount++;
   }
 
-  return ratingTotal / ratingCount;
+  return ratingCount > 0 ? ratingTotal / ratingCount : false;
+};
+
+const getStarFill = (averageRating) => {
+
+  let stars = Array(5).fill(0);
+  let decimal = averageRating % 1;
+  let fullStars = averageRating - decimal;
+  let percent = (Math.round(decimal * 4) / 4).toFixed(2);
+  let lastStarFill = 0;
+
+  stars.fill(20, 0, fullStars);
+
+  switch (percent) {
+    case 1.00:
+      lastStarFill = 20;
+      break;
+    case 0.75:
+      lastStarFill = 13;
+      break;
+    case 0.5:
+      lastStarFill = 11;
+      break;
+    case 0.25:
+      lastStarFill = 9;
+      break;
+  }
+
+  stars[fullStars] = lastStarFill;
+
+  return stars;
 };
 
 //Creates an array of objects storing the product, style, and review data for related products
@@ -48,7 +78,7 @@ const getRelatedProductsData = (product_id) => {
     .then((data) => Promise.all(data.map((id) => getProduct(id)
           .then((product) => getStyles(id)
             .then((styles) => getReviewMetadata(id)
-              .then((reviews) => ({product: product, styles: styles, reviews: getAverageRating(reviews.meta)})))))))
+              .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings})))))))
     .catch((err) => console.error(err));
 };
 
@@ -92,4 +122,4 @@ var generateKey = function(str) {
   return hash;
 };
 
-export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating};
+export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill};

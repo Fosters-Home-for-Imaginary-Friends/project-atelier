@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {getRelatedProductsData} from './RelatedHelpers.js';
 import CardCarousel from './CardCarousel.jsx';
-import ProductCard from './ProductCard.jsx';
+import {ProductCard} from './ProductCard.jsx';
 
 const RelatedProducts = ({current}) => {
 
   const [cards, setCards] = useState([]);
 
+  // TODO: useMemo?
   useEffect(() => {
     getRelatedProductsData(current.id)
         .then((items) => items.map((item, key) =>
-        <ProductCard key={key} card={item.product} current={current} styles={item.styles} reviews={item.reviews} />))
+        <ProductCard key={key} card={item} current={current} />))
         .then((newCards) => setCards(newCards))
         .catch((err) => {
           console.error(err);

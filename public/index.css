@@ -826,9 +826,6 @@ margin-top: 20px;
   display: flex;
   font-size: 25px;
 }
-.empty-star {
-
-}
 .full-star {
   overflow: hidden;
   position: absolute;
