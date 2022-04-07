@@ -1,5 +1,6 @@
 import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
+import {IoMdRemoveCircleOutline} from 'react-icons/IoMd';
 import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
 
@@ -20,11 +21,23 @@ const CompareButton = ({card, current}) => {
   );
 };
 
-const removeButton = ({card}) => {
+const removeButton = ({setCardData, product}) => {
 
+  const removeCard = () => {
+    setCardData((cardData) => {
+      let newCards = cardData.cards;
+      newCards = newCards.filter((card, i) => {
+        return card.id !== product.id;
+      });
+      let newCardIDs = cardData.cardIDs;
+      newCardIDs[product.id] = false;
+
+      return {cards: newCards, cardIDs: newCardIDs};
+    });
+  }
   return (
-    <div className="remove-button">
-
+    <div className="remove-button" >
+      <IoMdRemoveCircleOutline onClick={removeCard} />
     </div>
   );
 };

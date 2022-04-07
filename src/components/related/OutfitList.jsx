@@ -8,10 +8,6 @@ const OutfitList = ({current}) => {
   useEffect(() => {
   }, []);
 
-  // const addProduct = (product) => {
-  //   setCards((cards) => cards.concat([product]));
-  // };
-
   return (
     <div className="product-list" id="outfit-list">
       <span>Your Outfit</span>
