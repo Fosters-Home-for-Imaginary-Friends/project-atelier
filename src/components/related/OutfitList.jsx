@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import CardCarousel from './CardCarousel.jsx';
-import {ProductCard, AddProductCard} from './ProductCards.jsx';
+import {AddProductCard} from './ProductCards.jsx';
+import {generateKey} from './RelatedHelpers.js';
 
 const OutfitList = ({current}) => {
-  const [cardData, setCardData] = useState({cards: [], cardIDs: {}});
-
-  useEffect(() => {
-  }, []);
+  const [cardData, setCardData] = useState([]);
+  //{card: <ProductCard />, product: product}
+  //TODO: optimize map function
 
   return (
     <div className="product-list" id="outfit-list">
       <span>Your Outfit</span>
-      <CardCarousel cards={[<AddProductCard key={new Date().getTime()}
-      setCardData={setCardData} current={current} cardIDs={cardData.cardIDs} />].concat(cardData.cards)} />
+      <CardCarousel cards={[<AddProductCard key={generateKey()}
+      setCardData={setCardData} current={current} cardData={cardData} />].concat(cardData.map((item) => item.card))} />
     </div>
   );
 };

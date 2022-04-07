@@ -496,13 +496,16 @@ button.add {
   position: relative;
   background-color: white;
 }
-.compare-button {
+.action-button {
   right: 0;
   position: absolute;
   z-index: 9;
+}
+.compare-button {
   color: gold;
-  width: 25px;
-  height: 25px;
+}
+.remove-button {
+  color: red;
 }
 #add-card {
   background-color: grey;

@@ -1,10 +1,10 @@
-import React, {useMemo, useState, useEffect} from 'react';
+import React, {useMemo} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
-import {CompareButton} from './ActionButtons.jsx';
+import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
 
-const ProductCard = ({card, current, position}) => {
+const ProductCard = ({card, current, position, related, setCardData}) => {
   let product = card.product;
   let style = card.styles[0];
   let imageUrl = style.photos[0].url;
@@ -14,7 +14,8 @@ const ProductCard = ({card, current, position}) => {
   return (
     <div className="product-card">
       <div className="card-top">
-        <CompareButton card={product} current={current} />
+        {related ? <CompareButton card={product} current={current} /> :
+        <RemoveButton setCardData={setCardData} card={product} />}
         <img className="related-image" src={imageUrl ? imageUrl : null} />
       </div>
       <div className="card-bot">
@@ -35,22 +36,27 @@ const ProductCard = ({card, current, position}) => {
   );
 };
 
-const AddProductCard = ({setCardData, current, cardIDs}) => {
+const AddProductCard = ({setCardData, current, cardData}) => {
 
+  // TODO: Notify user that the card is already in their list
   const addProduct = () => {
-    if (cardIDs[current.id]) {
-      console.log("Already Added!");
-      return;
+    for (let i = 0; i < cardData.length; i++) {
+      if (cardData[i].product.id === current.id) {
+        console.log("Already in your list!");
+        return;
+      }
     }
+    // TODO: fully utilize newCard from getProductInfo
+    // TODO: Make functions of OutfitList children shared
     getProductInfo(current)
-    .then((newCard) => {
-      setCardData((cardData) => {
-        let newCards = cardData.cards
-        newCards = newCards.concat([(<ProductCard card={newCard} current={current} key={generateKey()} position={newCards.length} />)]);
-        let newCardIDs = cardData.cardIDs;
-        newCardIDs[current.id] = true;
+    .then((newCardInfo) => {
+      setCardData((newCardData) => {
+        let newCards = newCardData;
+        let newCard = {card: (<ProductCard setCardData={setCardData} card={newCardInfo} current={current} key={generateKey()} related={false} />),
+        product: newCardInfo.product}
+        newCards = newCards.concat([newCard]);
 
-        return {cards: newCards, cardIDs: newCardIDs};
+        return newCards;
       })})
     .catch((err) => console.error(err));
   }

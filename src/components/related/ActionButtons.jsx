@@ -1,6 +1,6 @@
 import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
-import {IoMdRemoveCircleOutline} from 'react-icons/IoMd';
+import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
 
@@ -14,32 +14,29 @@ const CompareButton = ({card, current}) => {
     [card.id, current.id]);
 
   return (
-    <div className="compare-button">
-      <AiOutlineStar onClick={openModal} />
+    <div className="compare-button action-button">
+      <AiOutlineStar size={25} onClick={openModal} />
       {modal ? <CompareModal features={features} closeModal={() => setModal(false)} /> : null }
     </div>
   );
 };
 
-const removeButton = ({setCardData, product}) => {
+//! Look into map objects
+const RemoveButton = ({setCardData, card}) => {
 
   const removeCard = () => {
     setCardData((cardData) => {
-      let newCards = cardData.cards;
-      newCards = newCards.filter((card, i) => {
-        return card.id !== product.id;
+      let newCardData = cardData.filter((item) => {
+        return item.product.id !== card.id;
       });
-      let newCardIDs = cardData.cardIDs;
-      newCardIDs[product.id] = false;
-
-      return {cards: newCards, cardIDs: newCardIDs};
+      return newCardData;
     });
   }
   return (
-    <div className="remove-button" >
-      <IoMdRemoveCircleOutline onClick={removeCard} />
+    <div className="remove-button action-button" >
+      <CgRemove size={25} onClick={removeCard} />
     </div>
   );
 };
 
-export {CompareButton, removeButton};
+export {CompareButton, RemoveButton};

@@ -9,7 +9,7 @@ const RelatedProducts = ({current}) => {
   useEffect(() => { // TODO: useMemo?
     getRelatedProductsData(current.id)
         .then((items) => items.map((item, i) =>
-        <ProductCard key={generateKey()} card={item} current={current} position={i} />))
+        <ProductCard key={generateKey()} card={item} current={current} position={i} related={true} />))
         .then((newCards) => setCards(newCards))
         .catch((err) => {
           console.error(err);
