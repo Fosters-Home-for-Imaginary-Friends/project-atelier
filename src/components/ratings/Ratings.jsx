@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 
-import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
+import {getReviews, getReviewMetadata} from '../../helpers.js';
 
 export const RatingsContext = createContext({});
 
@@ -22,9 +22,9 @@ let Ratings = () => {
 
 
   let dataFetch = () => {
-    fetchReviews(40384, pageNum, 2, currentSort)
+    getReviews(40384, pageNum, 2, currentSort)
     .then((res) => {
-      fetchReviewMetadata(40384)
+      getReviewMetadata(40384)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
@@ -62,7 +62,7 @@ let Ratings = () => {
           setReviews(filteredArray);
         } else {
           setPageNum(1);
-          fetchReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+          getReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
         }
       }
       }
