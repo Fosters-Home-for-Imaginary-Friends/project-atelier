@@ -29,14 +29,69 @@ const getFeatures = (overview, card) => { //Parses for features
   return featureObject;
 };
 
-const findRelatedProducts = (product_id) => { //Returns an array of related Product Data
+const getAverageRating = (ratings) => {
+  let ratingTotal = 0;
+  let ratingCount = 0;
+
+  for (let score in ratings) {
+    ratingTotal += (parseInt(score) * parseInt(ratings[score]));
+    ratingCount++;
+  }
+
+  return ratingCount > 0 ? ratingTotal / ratingCount : false;
+};
+
+const getStarFill = (averageRating) => {
+  let stars = Array(5).fill(0);
+  let decimal = averageRating % 1;
+  let fullStars = averageRating - decimal;
+  let percent = (Math.round(decimal * 4) / 4).toFixed(2) * 100;
+  let lastStarFill = 0;
+  stars.fill(20, 0, fullStars);
+
+  switch (percent) {
+    case 100:
+      lastStarFill = 20;
+      break;
+    case 75:
+      lastStarFill = 13;
+      break;
+    case 50:
+      lastStarFill = 11;
+      break;
+    case 25:
+      lastStarFill = 9;
+      break;
+  }
+
+  if (fullStars < 5) {
+      stars[fullStars] = lastStarFill;
+  }
+  return stars;
+};
+
+//Creates an array of objects storing the product, style, and review data for related products
+// TODO: Change Function so that it only maps an array once
+const getRelatedProductsData = (product_id) => {
   return getRelated(product_id)
-    .then((data) => Promise.all(data.map((id) => getProduct(id) //Returns an array of objects with product and style info
+    .then((data) => Promise.all(data.map((id) => getProduct(id)
           .then((product) => getStyles(id)
             .then((styles) => getReviewMetadata(id)
-              .then((reviews) => ({product: product, styles: styles, reviews: reviews})))))))
+              .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings})))))))
     .catch((err) => console.error(err));
 };
+
+const getProductInfo = (product) => {
+  return getStyles(product.id)
+    .then((styles) => getReviewMetadata(product.id)
+      .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings})));
+};
+const getOutfitListData = (outfitList) => {
+  return Promise.all(outfitList.map((id) => getProduct(id)
+    .then((product) => getStyles(id)
+      .then((styles) => getReviewMetadata(id)
+        .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings}))))))
+}
 
 const currentPlaceholder = {
   "id": 40356,
@@ -68,7 +123,7 @@ const currentPlaceholder = {
   ]
 };
 
-var generateKey = function(str) {
+const generateHash = function(str) {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
     hash = (hash << 5) + hash + str.charCodeAt(i);
@@ -78,4 +133,8 @@ var generateKey = function(str) {
   return hash;
 };
 
-export {findRelatedProducts, currentPlaceholder, getFeatures, generateKey};
+const generateKey = () => {
+  return Math.floor(Math.random() * 10000000);
+};
+
+export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill, getProductInfo, getOutfitListData};
