@@ -400,9 +400,11 @@ span.helpful-answer {
 
 .size-selector {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
+  width: 210px;
   transform: translateX(-3px);
 }
 
@@ -415,7 +417,7 @@ span.helpful-answer {
   box-shadow: 0 0 1px 1px darkgray;
   border-radius: 3px;
   height: 24px;
-  margin: 0 3px 0 3px;
+  margin: 5px 3px 0 3px;
   cursor: pointer;
 }
 
@@ -494,13 +496,26 @@ button.add {
   position: relative;
   background-color: white;
 }
-.compare-button {
+.action-button {
   right: 0;
   position: absolute;
   z-index: 9;
+}
+.compare-button {
   color: gold;
-  width: 25px;
-  height: 25px;
+}
+.remove-button {
+  color: red;
+}
+#add-card {
+  background-color: grey;
+  display: flex;
+}
+#add-button {
+  color: white;
+  justify-content: center;
+  margin: auto;
+  padding: auto;
 }
 
 /*---------- Comparison Modal ----------*/
@@ -570,7 +585,11 @@ td {
 }
 
 
-/* Start of Questions and Answers */
+/**
+
+Start of Questions and Answers
+
+**/
 .qna-container {
   display: flex;
   /* height: 275px;
@@ -585,6 +604,8 @@ td {
   margin: 30px;
   display: flex;
   flex-direction: column;
+  max-height: 80vh;
+  overflow: scroll;
 }
 .answer {
   display: flex;
@@ -598,6 +619,11 @@ td {
   margin-top: 20px;
   width: 100%;
   height: 35px;
+}
+.questions-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 /* Start of Ratings/Reviews *****************/
@@ -812,9 +838,6 @@ margin-top: 20px;
 .star-container {
   display: flex;
   font-size: 25px;
-}
-.empty-star {
-
 }
 .full-star {
   overflow: hidden;

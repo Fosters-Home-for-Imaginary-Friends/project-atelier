@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 let moment = require('moment');
 import { AiOutlineCheck } from 'react-icons/ai';
+
 import { putReviewHelpful, reportReview } from '../../helpers.js';
 import IndividualReviewStars from './IndividualReviewStars.jsx';
+
 
 
 let IndividualReview = (props) => {
@@ -40,7 +42,7 @@ let IndividualReview = (props) => {
   }
 
   let reportClick = () => {
-    reportReview(review_id);
+    putReviewReport(review_id);
     alert ('Thank you for reporting this review. Our staff has been notified.');
   }
   //this function enlarges the thumbnail images on click, if the image is clicked again it returns to original scale

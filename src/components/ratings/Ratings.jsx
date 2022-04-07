@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
+
 import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
 
 export const RatingsContext = createContext({});
@@ -18,6 +19,7 @@ let Ratings = () => {
   let [averageRating, setAverageRating] = useState(0);
   let [pageNum, setPageNum] = useState(1);
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
+
 
   let dataFetch = () => {
     fetchReviews(40384, pageNum, 2, currentSort)
@@ -65,7 +67,6 @@ let Ratings = () => {
       }
       }
     }
-
     useEffect(() => {
       dataFetch();
     }, []);
@@ -82,6 +83,7 @@ let Ratings = () => {
   return (
 <RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
                                  starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
+
   <div className="ratings-reviews-container">
     <RatingsBreakdown />
     <ReviewList />

@@ -3,7 +3,9 @@ import { RatingsContext } from './Ratings.jsx';
 
 let BarGraph = (props) => {
 
+
   const {metaRating, totalReviews, filteredContent} = useContext(RatingsContext);
+
 
   //var declarations to set up % for colored bar graph portion.
   //total of all percents should equal 100
@@ -17,6 +19,10 @@ let BarGraph = (props) => {
 
   let filterClick = (e) => {
     filteredContent(e.target.id);
+  }
+
+  let filterClick = (e) => {
+    // props.filterReviews(e.target.id);
   }
 
   return (

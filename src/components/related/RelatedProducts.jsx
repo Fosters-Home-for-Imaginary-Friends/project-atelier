@@ -1,30 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {findRelatedProducts} from './relatedHelpers.js';
-import ProductList from './ProductList.jsx';
-import ProductCard from './ProductCard.jsx';
+import {getRelatedProductsData, generateKey} from './RelatedHelpers.js';
+import CardCarousel from './CardCarousel.jsx';
+import {ProductCard} from './ProductCards.jsx';
 
-const RelatedProducts = ({current, product_id}) => {
-
+const RelatedProducts = ({current}) => {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    findRelatedProducts(product_id)
-        .then((items) => items.map((item, key) =>
-        <ProductCard key={key} card={item.product} current={current} styles={item.styles} reviews={item.reviews} />))
+  useEffect(() => { // TODO: useMemo?
+    getRelatedProductsData(current.id)
+        .then((items) => items.map((item, i) =>
+        <ProductCard key={generateKey()} card={item} current={current} position={i} related={true} />))
         .then((newCards) => setCards(newCards))
         .catch((err) => {
           console.error(err);
-          setCards([]);
+          //TODO: Error catch
         });
-  }, [product_id]);
-
-
+  }, [current.id]);
 
   return (
-    <div className="product-list">
+    <div className="product-list" id="related-list">
       <span>Related Products</span>
-      <ProductList cards={cards} />
-  </div>
+      <CardCarousel cards={cards} />
+    </div>
   );
 }
 
