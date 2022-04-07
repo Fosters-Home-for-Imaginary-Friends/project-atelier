@@ -1,23 +1,19 @@
-import React, {useRef, useMemo, useState} from 'react';
+import React, {useMemo} from 'react';
 import {CompareButton} from './ActionButtons.jsx';
-import {Star} from '../ratings/AverageStars.jsx';
-import {getAverageRating, getStarFill} from './RelatedHelpers.js';
+import {getAverageRating} from './RelatedHelpers.js';
+import StarRating from './StarRating.jsx';
 
 const ProductCard = ({card, current}) => {
-
   let product = card.product;
-  let styles = card.styles;
+  let imageUrl = card.styles[0].photos[0].url;
   let ratings = card.reviews;
-
   const averageRating = useMemo(() => getAverageRating(ratings), [product.id]);
-
-  const cardRef = useRef();
 
   return (
     <div className="product-card">
-      <div className="card-top" ref={cardRef}>
+      <div className="card-top">
         <CompareButton card={product} current={current} />
-        <img className="related-image" src={styles[0].photos[0].url ? styles[0].photos[0].url : null} />
+        <img className="related-image" src={imageUrl ? imageUrl : null} />
       </div>
       <div className="card-bot">
         <span className="related-category">{product.category}</span><br />
@@ -29,20 +25,4 @@ const ProductCard = ({card, current}) => {
   );
 };
 
-//! CREATE UNIQUE KEY FOR EACH STAR
-const StarRating = ({averageRating}) => {
-
-
-  const starFill = useMemo(() => getStarFill(averageRating), [averageRating]);
-
-  console.log(averageRating);
-  console.log(starFill);
-  return (
-    <div className="average-star-container">
-      {starFill.map((fill, i) => <Star fill={fill} key={i} />)}
-    </div>
-  );
-};
-
-
-export {ProductCard, StarRating}
+export {ProductCard}
