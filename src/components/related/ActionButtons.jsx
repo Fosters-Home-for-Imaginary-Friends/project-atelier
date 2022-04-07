@@ -1,23 +1,22 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useContext, useEffect} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
-const CompareButton = ({cardFeatures, overviewFeatures}) => {
+
+const CompareButton = ({card}) => {
   const [modal, setModal] = useState(false);
-  const openModal = () => {
-    setModal(true);
+
+  const toggleModal = () => {
+    setModal(() => modal ? false : true);
   }
-  const features = useMemo(() =>
-    getFeatures(current, card),
-    [card.id, current.id]);
 
   return (
     <div className="compare-button action-button">
-      <AiOutlineStar size={25} onClick={openModal} />
-      {modal ? <CompareModal features={features} closeModal={() => setModal(false)} /> : null }
+      <AiOutlineStar size={25} onClick={toggleModal} />
+      {modal ? <CompareModal card={card} closeModal={toggleModal} /> : null }
     </div>
   );
 };

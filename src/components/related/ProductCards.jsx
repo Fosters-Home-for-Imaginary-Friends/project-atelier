@@ -6,17 +6,16 @@ import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
 
-const ProductCard = React.memo(function ProductCard({product_id}) {
+const ProductCard = React.memo(function ProductCard({product_id, related}) {
   const productInfo = useRef(null);
   const styleData = useRef(null);
   const reviewData = useRef(null);
-  const features = useRef(null);
   const [loadState, setLoadState] = useState(false);
 
   useEffect(() => {
     getProduct(product_id)
       .then((product) => {
-        productInfo.current = {category: product.category, name: product.name};
+        productInfo.current = {category: product.category, name: product.name, features: product.features};
         return getStyles(product_id);
       })
       .then((style) => {
@@ -44,7 +43,8 @@ const ProductCard = React.memo(function ProductCard({product_id}) {
       {loadState ?
       <React.Fragment>
         <div className="card-top">
-
+        {related ? <CompareButton card={productInfo.current} /> :
+        <RemoveButton setCardData={setCardData} card={product} />}
         <img className="related-image" src={styleData.current.image} />
       </div>
       <div className="card-bot">
@@ -66,10 +66,6 @@ const ProductCard = React.memo(function ProductCard({product_id}) {
     </div>
   );
 });
-/* {related ? <CompareButton card={product} current={current} /> :
-<RemoveButton setCardData={setCardData} card={product} />} */
-
-/* */
 
 const AddProductCard = ({setCardData, current, cardData}) => {
 
