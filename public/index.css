@@ -604,16 +604,35 @@ Start of Questions and Answers
   margin: 30px;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
-  overflow: scroll;
+  max-height: 50vh;
+  overflow: auto;
+}
+.question-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .answer {
   display: flex;
+  flex-direction: column;
+  margin: 7px;
+}
+.answer-list {
+  margin-left: 7px;
+}
+.answer-head {
   flex-direction: row;
+  display: flex;
   align-items: center;
 }
-.answer-heading {
+.answer-details {
+  margin-left: 20px;
+}
+h2.answer-heading {
   margin-right: 7px;
+}
+h3.answer-list {
+  margin: 10px;
 }
 .search-bar {
   margin-top: 20px;
@@ -624,6 +643,9 @@ Start of Questions and Answers
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+a.helpful:hover {
+  text-decoration: underline;
 }
 
 /* Start of Ratings/Reviews *****************/
