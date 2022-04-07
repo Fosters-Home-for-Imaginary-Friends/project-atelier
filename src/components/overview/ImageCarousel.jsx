@@ -7,7 +7,7 @@ const ImageCarousel = () => {
 
   const imageCarouselRef = useRef(null);
 
-  const { currentStyle, previousPhoto, currentPhoto, setCurrentPhoto, loading } = useContext(OverviewContext);
+  const { currentStyle, previousPhoto, currentPhoto, loading } = useContext(OverviewContext);
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
 
   useLayoutEffect(() => {
@@ -37,12 +37,20 @@ const ImageCarousel = () => {
   }
 
   // const handleScroll = () => {
-  //   console.log(imageCarouselRef.current.scrollTop)
+  //   if (!hasScrolled) {
+  //     if (imageCarouselRef.current.scrollTop > (dimensions.height * (currentPhoto - previousPhoto))) {
+  //       setCurrentPhoto(currentPhoto + 1)
+  //       setHasScrolled(true);
+  //     } else {
+  //       setCurrentPhoto(currentPhoto - 1)
+  //       setHasScrolled(true);
+  //     }
+  //   }
   // }
 
   return (
   <div className="overview-images">
-      <ul ref={imageCarouselRef} className="image-carousel" onScroll={handleScroll}>
+      <ul ref={imageCarouselRef} className="image-carousel">
         {currentStyle.photos.map((image) =>
             <Image key={image.url} slide={image}/>
         )}
