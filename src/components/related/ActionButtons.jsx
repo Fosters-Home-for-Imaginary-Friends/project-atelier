@@ -2,7 +2,6 @@ import React, {useState, useMemo, useContext, useEffect} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
-import {getFeatures} from './RelatedHelpers.js';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
 

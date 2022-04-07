@@ -1,7 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import CardCarousel from './CardCarousel.jsx';
-import {AddProductCard, ProductCard} from './ProductCards.jsx';
-import {generateKey, getOutfitListData} from './RelatedHelpers.js';
 import {getAllCookies, getCookie} from '../../Cookies.js';
 
 const OutfitList = ({product_id}) => {
