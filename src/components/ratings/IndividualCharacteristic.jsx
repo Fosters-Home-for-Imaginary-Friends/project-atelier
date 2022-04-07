@@ -7,7 +7,6 @@ let IndividualCharacteristic = (props) => {
 //transform: translateX(200px);
 //style={{"transform" : `translate(${char.Size.value * 80})` }}
   let char = props.char;
-  console.log(char);
   return (
   <div className="individual-characterstic-container">
     {(char.Size) &&
