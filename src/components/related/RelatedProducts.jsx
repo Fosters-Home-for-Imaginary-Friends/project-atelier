@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getRelatedProductsData} from './RelatedHelpers.js';
+import {getRelatedProductsData, generateKey} from './RelatedHelpers.js';
 import CardCarousel from './CardCarousel.jsx';
 import {ProductCard} from './ProductCards.jsx';
 
@@ -8,12 +8,12 @@ const RelatedProducts = ({current}) => {
 
   useEffect(() => { // TODO: useMemo?
     getRelatedProductsData(current.id)
-        .then((items) => items.map((item, key) =>
-        <ProductCard key={key} card={item} current={current} />))
+        .then((items) => items.map((item, i) =>
+        <ProductCard key={generateKey()} card={item} current={current} position={i} />))
         .then((newCards) => setCards(newCards))
         .catch((err) => {
           console.error(err);
-          setCards([]);
+          //TODO: Error catch
         });
   }, [current.id]);
 

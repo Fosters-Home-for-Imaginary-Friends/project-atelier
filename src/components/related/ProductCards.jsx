@@ -4,7 +4,7 @@ import {CompareButton} from './ActionButtons.jsx';
 import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
 
-const ProductCard = ({card, current, ActionButton}) => {
+const ProductCard = ({card, current, position}) => {
   let product = card.product;
   let style = card.styles[0];
   let imageUrl = style.photos[0].url;
@@ -46,7 +46,7 @@ const AddProductCard = ({setCardData, current, cardIDs}) => {
     .then((newCard) => {
       setCardData((cardData) => {
         let newCards = cardData.cards
-        newCards = newCards.concat([(<ProductCard card={newCard} current={current} key={generateKey()} />)]);
+        newCards = newCards.concat([(<ProductCard card={newCard} current={current} key={generateKey()} position={newCards.length} />)]);
         let newCardIDs = cardData.cardIDs;
         newCardIDs[current.id] = true;
 
