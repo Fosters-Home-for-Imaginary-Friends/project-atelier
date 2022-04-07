@@ -27,7 +27,7 @@ const ImageCarousel = () => {
   <div className="overview-images">
       <ul ref={imageCarouselRef} className="image-carousel">
         {currentStyle.photos.map((image, index) =>
-            <Image key={index} slide={image}/>
+            <Image key={image.url} slide={image}/>
         )}
       </ul>
   </div>
