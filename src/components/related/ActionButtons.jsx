@@ -1,27 +1,49 @@
 import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
+import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
-import {getFeatures} from './relatedHelpers.js';
+import {getFeatures} from './RelatedHelpers.js';
+import {setCookie, deleteCookie} from '../../Cookies.js';
 
 const CompareButton = ({card, current}) => {
-
   const [modal, setModal] = useState(false);
-
   const openModal = () => {
-    console.log("Open!");
     setModal(true);
   }
-
   const features = useMemo(() =>
     getFeatures(current, card),
-    [current.id, card.id]);
+    [card.id, current.id]);
 
   return (
-    <div className="compare-button">
-      <AiOutlineStar onClick={openModal} />
-      {modal ? <CompareModal closeModal={() => setModal(false)} features={features} /> : null }
+    <div className="compare-button action-button">
+      <AiOutlineStar size={25} onClick={openModal} />
+      {modal ? <CompareModal features={features} closeModal={() => setModal(false)} /> : null }
     </div>
   );
 };
 
-export {CompareButton};
+//! Look into map objects
+const RemoveButton = ({setCardData, card}) => {
+
+  const removeCard = () => {
+    setCardData((cardData) => {
+      let newCardData = cardData.filter((item) => {
+        return item.productData.product.id !== card.id;
+      });
+      if (newCardData.length > 0) {
+        setCookie("outfitList", JSON.stringify(newCardData.map((item) => item.productData.product.id)));
+      } else {
+        deleteCookie("outfitList");
+      }
+
+      return newCardData;
+    });
+  }
+  return (
+    <div className="remove-button action-button" >
+      <CgRemove size={25} onClick={removeCard} />
+    </div>
+  );
+};
+
+export {CompareButton, RemoveButton};

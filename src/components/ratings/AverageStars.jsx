@@ -75,3 +75,4 @@ const Star = ({fill}) => {
 
 
 export default AverageStars;
+export {Star};
