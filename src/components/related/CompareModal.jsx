@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
 import {generateKey} from './RelatedHelpers.js';
 
-const CompareModal = ({closeModal, features}) => {
+const CompareModal = ({features, closeModal}) => {
   const modalRef = useRef();
 
   return ReactDom.createPortal(
@@ -40,8 +40,7 @@ const ModalTableBody = ({features}) => {
 };
 
 const ModalTableRow = ({name, values}) => {
-
-  function parseValue (value) {
+  const parseValue = (value) => {
     switch (value) {
       case null:
         return (<BsCheckLg />);
@@ -50,7 +49,7 @@ const ModalTableRow = ({name, values}) => {
       default:
         return value.split('"')[1];
     }
-  }
+  };
 
   return (
     <React.Fragment>

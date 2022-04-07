@@ -4,11 +4,9 @@ import CardCarousel from './CardCarousel.jsx';
 import {ProductCard} from './ProductCard.jsx';
 
 const RelatedProducts = ({current}) => {
-
   const [cards, setCards] = useState([]);
 
-  // TODO: useMemo?
-  useEffect(() => {
+  useEffect(() => { // TODO: useMemo?
     getRelatedProductsData(current.id)
         .then((items) => items.map((item, key) =>
         <ProductCard key={key} card={item} current={current} />))

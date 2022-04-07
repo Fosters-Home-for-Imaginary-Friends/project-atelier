@@ -4,20 +4,18 @@ import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
 
 const CompareButton = ({card, current}) => {
-
   const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(true);
   }
-
   const features = useMemo(() =>
     getFeatures(current, card),
-    [current.id, card.id]);
+    [card.id, current.id]);
 
   return (
     <div className="compare-button">
       <AiOutlineStar onClick={openModal} />
-      {modal ? <CompareModal closeModal={() => setModal(false)} features={features} /> : null }
+      {modal ? <CompareModal features={features} closeModal={() => setModal(false)} /> : null }
     </div>
   );
 };
