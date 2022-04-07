@@ -3,17 +3,18 @@ import React, { useState } from 'react';
 let moment = require('moment');
 import { AiOutlineCheck } from 'react-icons/ai';
 import { putReviewHelpful, reportReview } from '../../helpers.js';
+import IndividualReviewStars from './IndividualReviewStars.jsx';
 
 
 let IndividualReview = (props) => {
   //variable for individual review to clean up code
 
 
-  const {review_id, reviewer_name, date, summary, body, response, recommend, helpfulness, photos} = props.review;
-  const [product, setProduct] = useState(40384)
+  const {review_id, rating, reviewer_name, date, summary, body, response, recommend, helpfulness, photos} = props.review;
   const [helpfulChoiceMade, setHelpfulChoiceMade] = useState(false);
   const [helpfulChoice, setHelpfulChoice] = useState('');
   const [imageEnlarged, setImageEnlarged] = useState(false);
+
 
   //if yes link is clicked for helpfulness this generates an api call to incrememnt helpfulness and displays the
   //total helpfulness number to the user
@@ -62,6 +63,9 @@ let IndividualReview = (props) => {
   return (
     <div className= "individual-review-container">
         <div className="individual-review-element-conatainers">
+          <div className="Individual-review-stars-container">
+          <IndividualReviewStars fill= {rating}/>
+          </div>
           <div className="username-date-container">
             <span className= "review-username-date"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </span>
           </div>

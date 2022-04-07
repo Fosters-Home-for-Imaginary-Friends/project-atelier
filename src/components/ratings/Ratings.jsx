@@ -12,13 +12,15 @@ let Ratings = () => {
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
   const [currentSort, setCurrentSort] = useState('relevant');
+  const [storedReviews, setStoredReviews] = useState([]);
   let [totalScore, setTotalScore] = useState(0);
   let [totalReviews, setTotalReviews] = useState(0);
   let [averageRating, setAverageRating] = useState(0);
-  const [starFilters, setStarFilters] = useState({one_Star_Filter: false, two_Star_Filter: false, three_Star_Filter: false, four_Star_Filter: false, five_Star_Filter: false})
+  let [pageNum, setPageNum] = useState(1);
+  const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
   let dataFetch = () => {
-    fetchReviews(40384, 1, 2, currentSort)
+    fetchReviews(40384, pageNum, 2, currentSort)
     .then((res) => {
       fetchReviewMetadata(40384)
       .then((meta) => {
@@ -41,10 +43,28 @@ let Ratings = () => {
   }
 
   let filteredContent = (filter) => {
-    if ( filter === 'five_Star_Filter') {
-
+    let filteredObj = starFilters;
+    for ( let k in starFilters) {
+      console.log(k, filter)
+      if (k === filter) {
+        filteredObj[k] = (!starFilters[k]);
+        setStarFilters(filteredObj);
+        if ( starFilters[k]) {
+          let filteredArray = [];
+          for ( let i = 0; i < reviews.length; i++) {
+              if ( reviews[i].rating === parseInt(filter)) {
+                filteredArray.push(reviews[i]);
+              }
+          }
+          console.log(filteredArray)
+          setReviews(filteredArray);
+        } else {
+          setPageNum(1);
+          fetchReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+        }
+      }
+      }
     }
-  }
 
     useEffect(() => {
       dataFetch();
@@ -61,7 +81,7 @@ let Ratings = () => {
 
   return (
 <RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
-                                 starFilters, setStarFilters}}>
+                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
   <div className="ratings-reviews-container">
     <RatingsBreakdown />
     <ReviewList />
