@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
+import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
 
 const ProductCard = ({card, current, position, related, setCardData}) => {
@@ -46,6 +47,7 @@ const AddProductCard = ({setCardData, current, cardData}) => {
         return;
       }
     }
+
     // TODO: fully utilize newCard from getProductInfo
     // TODO: Make functions of OutfitList children shared
     getProductInfo(current)
@@ -55,7 +57,8 @@ const AddProductCard = ({setCardData, current, cardData}) => {
         let newCard = {card: (<ProductCard setCardData={setCardData} card={newCardInfo} current={current} key={generateKey()} related={false} />),
         productData: newCardInfo}
         newCards = newCards.concat([newCard]);
-
+        // setCookie("outfitList", JSON.stringify(newCards));
+        setCookie("outfitList", JSON.stringify(newCards.map((card) => card.productData.product.id)))
         return newCards;
       })})
     .catch((err) => console.error(err));

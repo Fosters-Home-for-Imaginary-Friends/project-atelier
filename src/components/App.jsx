@@ -6,7 +6,6 @@ import OutfitList from './related/OutfitList.jsx';
 import Qna from "./qna/Qna.jsx";
 import Ratings from "./ratings/Ratings.jsx";
 import {currentPlaceholder} from './related/RelatedHelpers.js';
-import {createCookie, getAllCookies, deleteCookie} from '../cookies.js';
 
 const App = () => {
 

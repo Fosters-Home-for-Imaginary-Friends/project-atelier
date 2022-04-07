@@ -1,7 +1,7 @@
 //Cookie Helper Functions
 
 //Function: Creates a cookie
-const createCookie = (name, value, path = "") => {
+const setCookie = (name, value, path = "") => {
   //Sets cookie expiration date to 2 weeks after the moment of its creation
   let creationDate = new Date();
   creationDate.setTime(creationDate.getTime() + (1000 * 60 * 60 * 24 * 14));
@@ -36,4 +36,4 @@ const getCookie = (cookieName) => {
   return "";
 }
 
-export {createCookie, getAllCookies, deleteCookie, getCookie};
+export {setCookie, getAllCookies, deleteCookie, getCookie};

@@ -3,6 +3,7 @@ import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
+import {setCookie} from '../../Cookies.js';
 
 const CompareButton = ({card, current}) => {
   const [modal, setModal] = useState(false);
@@ -29,6 +30,7 @@ const RemoveButton = ({setCardData, card}) => {
       let newCardData = cardData.filter((item) => {
         return item.productData.product.id !== card.id;
       });
+      setCookie("outfitList", JSON.stringify(newCardData.map((item) => item.productData.product.id)))
       return newCardData;
     });
   }
