@@ -5,7 +5,8 @@ import StarRating from './StarRating.jsx';
 
 const ProductCard = ({card, current}) => {
   let product = card.product;
-  let imageUrl = card.styles[0].photos[0].url;
+  let style = card.styles[0];
+  let imageUrl = style.photos[0].url;
   let ratings = card.reviews;
   const averageRating = useMemo(() => getAverageRating(ratings), [product.id]);
 
@@ -16,10 +17,18 @@ const ProductCard = ({card, current}) => {
         <img className="related-image" src={imageUrl ? imageUrl : null} />
       </div>
       <div className="card-bot">
-        <span className="related-category">{product.category}</span><br />
-        <span className="related-name">{product.name}</span><br />
-        <span className="related-price">{product.default_price}</span> <br />
-        <div className="average-star-container">{averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}</div>
+        <section className="related-category">{product.category}</section>
+        <section className="related-name"><h2>{product.name}</h2></section>
+        {style.sale_price ?
+          <div className="sale-price-container">
+            <section className="body-text sale-price">{style.sale_price} USD</section>
+            <section className="body-text original-price">{style.original_price} USD</section>
+          </div> :
+          <section className="body-text price">{style.original_price} USD</section>
+        }
+        <section className="average-star-container">
+          {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
+        </section>
       </div>
     </div>
   );
