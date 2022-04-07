@@ -42,32 +42,31 @@ const getAverageRating = (ratings) => {
 };
 
 const getStarFill = (averageRating) => {
-
   let stars = Array(5).fill(0);
   let decimal = averageRating % 1;
   let fullStars = averageRating - decimal;
-  let percent = (Math.round(decimal * 4) / 4).toFixed(2);
+  let percent = (Math.round(decimal * 4) / 4).toFixed(2) * 100;
   let lastStarFill = 0;
-
   stars.fill(20, 0, fullStars);
 
   switch (percent) {
-    case 1.00:
+    case 100:
       lastStarFill = 20;
       break;
-    case 0.75:
+    case 75:
       lastStarFill = 13;
       break;
-    case 0.5:
+    case 50:
       lastStarFill = 11;
       break;
-    case 0.25:
+    case 25:
       lastStarFill = 9;
       break;
   }
 
-  stars[fullStars] = lastStarFill;
-
+  if (fullStars < 5) {
+      stars[fullStars] = lastStarFill;
+  }
   return stars;
 };
 

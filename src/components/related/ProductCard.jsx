@@ -23,7 +23,7 @@ const ProductCard = ({card, current}) => {
         <span className="related-category">{product.category}</span><br />
         <span className="related-name">{product.name}</span><br />
         <span className="related-price">{product.default_price}</span> <br />
-        <div className="average-star-container">{averageRating > 0 ? <StarRating /> : null}</div>
+        <div className="average-star-container">{averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}</div>
       </div>
     </div>
   );
@@ -32,8 +32,11 @@ const ProductCard = ({card, current}) => {
 //! CREATE UNIQUE KEY FOR EACH STAR
 const StarRating = ({averageRating}) => {
 
+
   const starFill = useMemo(() => getStarFill(averageRating), [averageRating]);
 
+  console.log(averageRating);
+  console.log(starFill);
   return (
     <div className="average-star-container">
       {starFill.map((fill, i) => <Star fill={fill} key={i} />)}
