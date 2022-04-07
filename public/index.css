@@ -830,8 +830,6 @@ margin-top: 20px;
 .bar-titles:hover {
   cursor: pointer;
 }
-#one-star-graph {
-}
 .average-star-container {
   display: flex;
 }
@@ -842,4 +840,38 @@ margin-top: 20px;
 .full-star {
   overflow: hidden;
   position: absolute;
+}
+.characteristics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.individual-characterstic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.char-bar {
+  height: 2vh;
+  width: 7vw;
+  border: 2px;
+  margin: 10px 11px 5px 11px;
+  background-color: gray;
+}
+.characteristic-bars-container {
+  display: flex;
+  flex-direction: row;
+}
+.characteristic-container {
+  margin-top: 25px;
+}
+.char-qualities {
+  margin: 0 43px 15px 33px;
+}
+.marker {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  color: rgb(34, 34, 34);
+
 }
