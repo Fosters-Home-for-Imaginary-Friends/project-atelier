@@ -615,7 +615,7 @@ Start of Questions and Answers
 .answer {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  margin: 7px;
 }
 .answer-list {
   margin-left: 7px;
@@ -625,8 +625,14 @@ Start of Questions and Answers
   display: flex;
   align-items: center;
 }
+.answer-details {
+  margin-left: 20px;
+}
 h2.answer-heading {
   margin-right: 7px;
+}
+h3.answer-list {
+  margin: 10px;
 }
 .search-bar {
   margin-top: 20px;

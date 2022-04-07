@@ -14,6 +14,7 @@ const Qna = (props) => {
   const [extra, setExtra] = useState(false);
   const [init, setInit] = useState([]);
   const {productId} = useContext(AppContext);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     // getQuestions(productId)
@@ -30,21 +31,6 @@ const Qna = (props) => {
       })
       .catch((err) => console.log(err));
   }, [])
-
-  // useEffect(() => {
-  //   if (question.length > 3) {
-  //     let newList = [];
-  //     for (let i = 0; i < qnaList.length; i++) {
-  //       if (qnaList[i].question_body.toLowerCase().indexOf(question.toLowerCase()) !== -1) {
-  //         newList.push(qnaList[i])
-  //       }
-  //     }
-  //     setList(newList)
-  //   } else {
-  //     setList(data.results);
-  //   }
-  // }, [question])
-
 
 
   return (
