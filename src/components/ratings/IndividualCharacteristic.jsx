@@ -8,13 +8,18 @@ let IndividualCharacteristic = (props) => {
   return (
   <div className="individual-characterstic-container">
     <div className="size-characteristic-container">
+      <h2>Goodnight Moon</h2>
       <div className="size-charactiersitic-bars-container">
-        <div className="size-bar"> </div>
+        <div className="size-bar"></div>
         <div className="size-bar"> </div>
         <div className="size-bar"> </div>
       </div>
+      <div>
+      <span>Too Big</span>
+      <span>Too Big</span>
+      <span>Too Big</span>
+      </div>
     </div>
-    Goodnight Moon
   </div>
   )
 }
