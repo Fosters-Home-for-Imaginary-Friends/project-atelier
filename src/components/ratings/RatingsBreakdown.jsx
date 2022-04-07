@@ -2,6 +2,7 @@
 import React, { useState, useContext } from 'react';
 import AverageStars from './AverageStars.jsx';
 import BarGraph from './BarGraph.jsx';
+import Characteristics from './Characteristics.jsx';
 import { RatingsContext } from './Ratings.jsx';
 
 let RatingsBreakdown = (props) => {
@@ -21,6 +22,9 @@ let RatingsBreakdown = (props) => {
       </div>
       <div className="bar-graph-container">
         <BarGraph metaRating={metaRating} totalReviews={totalReviews}/>
+      </div>
+      <div className="characteristics-container">
+        <Characteristics />
       </div>
     </div>
   );

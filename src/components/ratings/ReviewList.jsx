@@ -1,21 +1,21 @@
 //this is the component for the review list that houses individual reviews
-import React, {useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import { getReviews, getReviewMetadata}  from '../../helpers.js';
+import { getReviews }  from '../../helpers.js';
 import NewReview from './NewReview.jsx';
 import SortDropdown from './SortDropdown.jsx';
 import { RatingsContext } from './Ratings.jsx';
 
 
-let ReviewList = (props) => {
-  const {reviews, setReviews, totalReviews, currentSort, setCurrentSort, loading} = useContext(RatingsContext);
+let ReviewList = () => {
+  const {reviews, setReviews, totalReviews, currentSort, setCurrentSort, loading, setStoredReviews, pageNum, setPageNum} = useContext(RatingsContext);
   const [showModal, setShowModal] = useState(false);
   const [moreReviews, setMoreReviews] = useState(true);
-  let [pageNum, setPageNum] = useState(1);
+
 
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
-    setPageNum(pageNum += 1);
+    setPageNum(pageNum + 1);
     if ( pageNum < (Math.round(totalReviews / 2))) {
     getReviews(40384, pageNum, 2, currentSort).then(res => {
       setReviews(reviews.concat(res));
@@ -27,24 +27,27 @@ let ReviewList = (props) => {
 
   //this function handles the changing of the sort dropdown and displays results based on the new selection.
   let sortChange = (sort) => {
-    console.log(sort);
+    setPageNum(1);
     if ( sort === 'relevant') {
-      getReviews(40384, 1, 2, 'relevant').then(res => {
+      getReviews(40384, pageNum, 2, 'relevant').then(res => {
         setReviews(res);
+        setStoredReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
         console.error(err);
       });
     } else if ( sort === 'helpful') {
-      getReviews(40384, 1, 2, 'helpful').then(res => {
+      getReviews(40384, pageNum, 2, 'helpful').then(res => {
         setReviews(res);
+        setStoredReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
         console.error(err);
       });
     } else if ( sort === 'newest') {
-      getReviews(40384, 1, 2, 'newest').then(res => {
+      getReviews(40384, pageNum, 2, 'newest').then(res => {
         setReviews(res);
+        setStoredReviews(res);
         setCurrentSort(sort);
       }).catch(err => {
         console.error(err);

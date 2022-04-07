@@ -1,13 +1,24 @@
 import React from 'react';
+import moment from 'moment';
 
 const Answer = (props) => {
+
   return (
     <div className='answer'>
-      <h2 className='answer-heading'>A: </h2>
-      <section className="body-text">{props.data.body}</section>
+      <div className='answer-head'>
+        <h2 className="answer-heading">A: </h2>
+        <h3 className="body-text">{props.data.body}</h3>
+      </div>
       {/* Date */}
       {/* Helpful Link */}
       {/* report link */}
+      <div className="answer-details">
+        <span className="user-data">
+          {`by ${props.data.answerer_name}, ${moment(props.data.date).format('MMMM Do YYYY')} | Helpful? `}
+          <a className="helpful">Yes</a> ({props.data.helpfulness})
+          {' | '}<a className="helpful">Report</a>
+        </span>
+      </div>
     </div>
   )
 }

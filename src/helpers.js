@@ -45,6 +45,21 @@ const getRelated = (product_id) => {
 /*------------------------ REVIEWS ------------------------ */
 /*------------------------ REVIEWS ------------------------ */
 
+const getCart = () => {
+  return axios.get(host + '/cart', options)
+    .then((res) => res.data)
+    .catch((err) => console.error(err));
+}
+
+const postCart = (sku_id) => {
+  return axios.post(host + '/cart', {sku_id}, options)
+    .catch((err) => console.error(err))
+}
+
+/*------------------------ REVIEWS ------------------------ */
+/*------------------------ REVIEWS ------------------------ */
+/*------------------------ REVIEWS ------------------------ */
+
 const getReviews = (product_id, page = 1, count = 2, sort = "relevant") => {
   return axios.get(host + `/reviews/?product_id=${product_id}&page=${page}&count=${count}&sort=${sort}`, options)
     .then((res) => res.data.results)
@@ -101,7 +116,6 @@ const putQuestionHelpful = (question_id) => {
 const putQuestionReport = (question_id) => {
   return axios.put(host + `/qa/questions/${question_id}/report`, {}, options)
     .catch((err) => console.error(err));
-
 };
 
 const putAnswerHelpful = (answer_id) => {
@@ -121,5 +135,6 @@ const putReviewReport = (review_id) => {
 };
 
 export {getProducts, getProduct, getStyles, getRelated};
+export {getCart, postCart};
 export {getReviews, getReviewMetadata, postReview, putReviewHelpful, putReviewReport};
 export {getQuestions, getAnswers, postQuestion, postAnswer, putQuestionHelpful, putQuestionReport, putAnswerHelpful, putAnswerReport};

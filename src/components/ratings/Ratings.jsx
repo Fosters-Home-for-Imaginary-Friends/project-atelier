@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
+
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
 export const RatingsContext = createContext({});
@@ -12,47 +13,16 @@ let Ratings = () => {
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
   const [currentSort, setCurrentSort] = useState('relevant');
+  const [storedReviews, setStoredReviews] = useState([]);
   let [totalScore, setTotalScore] = useState(0);
   let [totalReviews, setTotalReviews] = useState(0);
   let [averageRating, setAverageRating] = useState(0);
-  const [ratingsObj, setRatingsObj] = useState({});
+  let [pageNum, setPageNum] = useState(1);
+  const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
-
-
-
-  //this useffect grabs the metaData ratings obj from the api and then factors the total
-  //number of reviews. We use this to make sure we don't try to grab reviews past the total.
-
-  // let dataFetch = () => {
-  //   getReviews(40384, 1, 2, currentSort)
-  //   .then((res) => {
-  //     setReviews(res);
-  //     return;
-  //   })
-  //   .then(() => {
-  //     console.log(reviews);
-  //     getReviewMetadata(40384)
-  //     .then(res => {
-  //       setMetaRating(res)
-  //           let totalRatingsObj = res.ratings;
-  //         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
-  //         for (let k in totalRatingsObj) {
-  //           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
-  //           setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 );
-  //         }
-  //         setAverageRating(totalScore / totalReviews);
-  //         console.log(totalScore, totalReviews, averageRating);
-  //       }).catch(err => {
-  //         console.error(err);
-  //       })
-  //       .then(() => {
-  //         setLoading(false);
-  //       })
-  //     })
-  // }
 
   let dataFetch = () => {
-    getReviews(40384, 1, 2, currentSort)
+    getReviews(40384, pageNum, 2, currentSort)
     .then((res) => {
       getReviewMetadata(40384)
       .then((meta) => {
@@ -72,10 +42,31 @@ let Ratings = () => {
         console.error(err);
       })
     })
-
   }
 
-    // //this useEffect grabs our initial two reviews using the current product_id
+  let filteredContent = (filter) => {
+    let filteredObj = starFilters;
+    for ( let k in starFilters) {
+      console.log(k, filter)
+      if (k === filter) {
+        filteredObj[k] = (!starFilters[k]);
+        setStarFilters(filteredObj);
+        if ( starFilters[k]) {
+          let filteredArray = [];
+          for ( let i = 0; i < reviews.length; i++) {
+              if ( reviews[i].rating === parseInt(filter)) {
+                filteredArray.push(reviews[i]);
+              }
+          }
+          console.log(filteredArray)
+          setReviews(filteredArray);
+        } else {
+          setPageNum(1);
+          getReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+        }
+      }
+      }
+    }
     useEffect(() => {
       dataFetch();
     }, []);
@@ -90,7 +81,9 @@ let Ratings = () => {
   }
 
   return (
-<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating}}>
+<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
+                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
+
   <div className="ratings-reviews-container">
     <RatingsBreakdown />
     <ReviewList />
