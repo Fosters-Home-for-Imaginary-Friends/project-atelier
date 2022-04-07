@@ -504,6 +504,16 @@ button.add {
   width: 25px;
   height: 25px;
 }
+#add-card {
+  background-color: grey;
+  display: flex;
+}
+#add-button {
+  color: white;
+  justify-content: center;
+  margin: auto;
+  padding: auto;
+}
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {

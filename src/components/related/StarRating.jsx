@@ -7,7 +7,7 @@ const StarRating = ({averageRating}) => {
 
   return (
     <div className="average-star-container">
-      {starFill.map((fill, i) => <Star fill={fill} key={i} />)}
+      {starFill.map((fill, i) => <Star fill={fill} key={new Date().getTime() + i} />)}
     </div>
   );
 };

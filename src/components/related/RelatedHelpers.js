@@ -81,6 +81,12 @@ const getRelatedProductsData = (product_id) => {
     .catch((err) => console.error(err));
 };
 
+const getProductInfo = (product) => {
+  return getStyles(product.id)
+    .then((styles) => getReviewMetadata(product.id)
+      .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings})));
+};
+
 const currentPlaceholder = {
   "id": 40356,
   "campus": "hr-rfp",
@@ -111,7 +117,7 @@ const currentPlaceholder = {
   ]
 };
 
-var generateKey = function(str) {
+const generateHash = function(str) {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
     hash = (hash << 5) + hash + str.charCodeAt(i);
@@ -121,4 +127,8 @@ var generateKey = function(str) {
   return hash;
 };
 
-export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill};
+const generateKey = () => {
+  return Math.floor(Math.random() * 10000000);
+};
+
+export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill, getProductInfo};

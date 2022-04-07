@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getRelatedProductsData} from './RelatedHelpers.js';
 import CardCarousel from './CardCarousel.jsx';
-import {ProductCard} from './ProductCard.jsx';
+import {ProductCard} from './ProductCards.jsx';
 
 const RelatedProducts = ({current}) => {
   const [cards, setCards] = useState([]);
@@ -18,7 +18,7 @@ const RelatedProducts = ({current}) => {
   }, [current.id]);
 
   return (
-    <div className="product-list">
+    <div className="product-list" id="related-list">
       <span>Related Products</span>
       <CardCarousel cards={cards} />
     </div>

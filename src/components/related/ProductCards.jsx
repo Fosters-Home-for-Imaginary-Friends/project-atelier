@@ -1,9 +1,10 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
+import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton} from './ActionButtons.jsx';
-import {getAverageRating} from './RelatedHelpers.js';
+import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
 
-const ProductCard = ({card, current}) => {
+const ProductCard = ({card, current, ActionButton}) => {
   let product = card.product;
   let style = card.styles[0];
   let imageUrl = style.photos[0].url;
@@ -34,4 +35,33 @@ const ProductCard = ({card, current}) => {
   );
 };
 
-export {ProductCard}
+const AddProductCard = ({setCardData, current, cardIDs}) => {
+
+  const addProduct = () => {
+    if (cardIDs[current.id]) {
+      console.log("Already Added!");
+      return;
+    }
+    getProductInfo(current)
+    .then((newCard) => {
+      setCardData((cardData) => {
+        let newCards = cardData.cards
+        newCards = newCards.concat([(<ProductCard card={newCard} current={current} key={generateKey()} />)]);
+        let newCardIDs = cardData.cardIDs;
+        newCardIDs[current.id] = true;
+
+        return {cards: newCards, cardIDs: newCardIDs};
+      })})
+    .catch((err) => console.error(err));
+  }
+
+  return (
+    <div className="product-card" id="add-card" onClick={addProduct}>
+      <div id="add-button">
+        <AiOutlinePlus size={150} />
+      </div>
+    </div>
+  );
+};
+
+export {ProductCard, AddProductCard};
