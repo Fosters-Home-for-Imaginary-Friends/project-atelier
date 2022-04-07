@@ -4,7 +4,6 @@ import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
-
 const CompareButton = ({card}) => {
   const [modal, setModal] = useState(false);
 
@@ -21,22 +20,23 @@ const CompareButton = ({card}) => {
 };
 
 //! Look into map objects
-const RemoveButton = ({setCardData, card}) => {
+const RemoveButton = ({setState, product_id}) => {
 
   const removeCard = () => {
-    setCardData((cardData) => {
-      let newCardData = cardData.filter((item) => {
-        return item.productData.product.id !== card.id;
+    setState((prev) => {
+      let newState = prev.filter((id) => {
+        return product_id !== id;
       });
-      if (newCardData.length > 0) {
-        setCookie("outfitList", JSON.stringify(newCardData.map((item) => item.productData.product.id)));
-      } else {
-        deleteCookie("outfitList");
-      }
 
-      return newCardData;
+    if (newState.length > 0) {
+      setCookie("outfitList", JSON.stringify(newState));
+    } else {
+      deleteCookie("outfitList");
+    }
+    return newState;
     });
   }
+
   return (
     <div className="remove-button action-button" >
       <CgRemove size={25} onClick={removeCard} />

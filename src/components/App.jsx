@@ -17,6 +17,7 @@ const App = () => {
       <div>
         <Overview />
         <RelatedProducts product_id={40344} />
+        <OutfitList product_id={40344} />
         <Qna />
         <Ratings />
         <CSSStyles />

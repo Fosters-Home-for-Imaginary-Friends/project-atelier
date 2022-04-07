@@ -6,7 +6,7 @@ import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
 
-const ProductCard = React.memo(function ProductCard({product_id, related}) {
+const ProductCard = React.memo(function ProductCard({product_id, related, setState}) {
   const productInfo = useRef(null);
   const styleData = useRef(null);
   const reviewData = useRef(null);
@@ -44,7 +44,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related}) {
       <React.Fragment>
         <div className="card-top">
         {related ? <CompareButton card={productInfo.current} /> :
-        <RemoveButton setCardData={setCardData} card={product} />}
+        <RemoveButton setState={setState} product_id={product_id} />}
         <img className="related-image" src={styleData.current.image} />
       </div>
       <div className="card-bot">
@@ -67,32 +67,12 @@ const ProductCard = React.memo(function ProductCard({product_id, related}) {
   );
 });
 
-const AddProductCard = ({setCardData, current, cardData}) => {
+const AddProductCard = ({product_id, setOutfitList}) => {
 
   // TODO: Notify user that the card is already in their list
   const addProduct = () => {
-    for (let i = 0; i < cardData.length; i++) {
-      if (cardData[i].productData.product.id === current.id) {
-        console.log("Already in your list!");
-        return;
-      }
+    setOutfitList((prev) => prev.includes(product_id) ? prev : prev.concat([product_id]))
     }
-
-    // TODO: fully utilize newCard from getProductInfo
-    // TODO: Make functions of OutfitList children shared
-    getProductInfo(current)
-    .then((newCardInfo) => {
-      setCardData((newCardData) => {
-        let newCards = newCardData;
-        let newCard = {card: (<ProductCard setCardData={setCardData} card={newCardInfo} current={current} key={generateKey()} related={false} />),
-        productData: newCardInfo}
-        newCards = newCards.concat([newCard]);
-        // setCookie("outfitList", JSON.stringify(newCards));
-        setCookie("outfitList", JSON.stringify(newCards.map((card) => card.productData.product.id)))
-        return newCards;
-      })})
-    .catch((err) => console.error(err));
-  }
 
   return (
     <div className="product-card" id="add-card" onClick={addProduct}>

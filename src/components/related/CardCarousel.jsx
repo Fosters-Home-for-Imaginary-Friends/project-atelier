@@ -1,7 +1,8 @@
-import React, {useRef, useEffect, useState, useMemo} from 'react';
+import React, {useRef, useEffect, useState, useMemo, useCallback} from 'react';
 import {getRelated} from '../../helpers.js';
 import {ProductCard, AddProductCard} from './ProductCards.jsx';
-import {getCookie} from './RelatedHelpers.js';
+import {getCookie} from '../../Cookies.js';
+import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 
 const CardCarousel = ({product_id, related}) => {
   const carouselRef = useRef(null);
@@ -61,8 +62,8 @@ const OutfitCards = React.memo(function OutfitCards({product_id}) {
 
   return (
     <div className="carousel"> {/* The part that scrolls when you press a button */}
-      {[<AddProductCard product_id={product_id} key={"addproductcard"} setOutfitList={setOutfitList} />]
-      .concat(outfitList.map((id) => <ProductCard key={id} related={false} />))}
+      {[<AddProductCard key={"addproductcard"} product_id={product_id} setOutfitList={setOutfitList} />]
+      .concat(outfitList.map((id) => <ProductCard key={id} product_id={id} related={false} setState={setOutfitList}  />))}
     </div>
   );
 });
