@@ -1,41 +1,75 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useRef, useEffect, useState} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
 import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
+import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
 
-const ProductCard = ({card, current, position, related, setCardData}) => {
-  let product = card.product;
-  let style = card.styles[0];
-  let imageUrl = style.photos[0].url;
-  let ratings = card.reviews;
-  const averageRating = useMemo(() => getAverageRating(ratings), [product.id]);
+const ProductCard = React.memo(function ProductCard({product_id}) {
+  const productInfo = useRef(null);
+  const styleData = useRef(null);
+  const reviewData = useRef(null);
+  const features = useRef(null);
+  const [loadState, setLoadState] = useState(false);
+
+  useEffect(() => {
+    getProduct(product_id)
+      .then((product) => {
+        productInfo.current = {category: product.category, name: product.name};
+        return getStyles(product_id);
+      })
+      .then((style) => {
+        styleData.current = {
+          image: style[0].photos[0].thumbnail_url,
+          salePrice: style[0].sale_price,
+          originalPrice: style[0].original_price
+        };
+        return getReviewMetadata(product_id);
+      })
+      .then((reviews) => {
+        reviewData.current = reviews.ratings;
+        setLoadState(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoadState(false);
+      });
+  }, [product_id]);
+
+  const averageRating = useMemo(() => getAverageRating(reviewData.current), [reviewData.current]);
 
   return (
     <div className="product-card">
-      <div className="card-top">
-        {related ? <CompareButton card={product} current={current} /> :
-        <RemoveButton setCardData={setCardData} card={product} />}
-        <img className="related-image" src={imageUrl ? imageUrl : null} />
+      {loadState ?
+      <React.Fragment>
+        <div className="card-top">
+
+        <img className="related-image" src={styleData.current.image} />
       </div>
       <div className="card-bot">
-        <section className="related-category">{product.category}</section>
-        <section className="related-name"><h2>{product.name}</h2></section>
-        {style.sale_price ?
+        <section className="related-category">{productInfo.current.category}</section>
+        <section className="related-name"><h2>{productInfo.current.name}</h2></section>
+        {styleData.current.salePrice ?
           <div className="sale-price-container">
-            <section className="body-text sale-price">{style.sale_price} USD</section>
-            <section className="body-text original-price">{style.original_price} USD</section>
+            <section className="body-text sale-price">{styleData.current.salePrice} USD</section>
+            <section className="body-text original-price">{styleData.current.originalPrice} USD</section>
           </div> :
-          <section className="body-text price">{style.original_price} USD</section>
+          <section className="body-text price">{styleData.current.originalPrice} USD</section>
         }
-        <section className="average-star-container">
+        <div className="average-star-container">
           {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
-        </section>
+        </div>
       </div>
+      </React.Fragment>
+      : null}
     </div>
   );
-};
+});
+/* {related ? <CompareButton card={product} current={current} /> :
+<RemoveButton setCardData={setCardData} card={product} />} */
+
+/* */
 
 const AddProductCard = ({setCardData, current, cardData}) => {
 

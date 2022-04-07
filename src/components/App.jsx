@@ -5,15 +5,14 @@ import RelatedProducts from "./related/RelatedProducts.jsx";
 import OutfitList from './related/OutfitList.jsx';
 import Qna from "./qna/Qna.jsx";
 import Ratings from "./ratings/Ratings.jsx";
-import {currentPlaceholder} from './related/RelatedHelpers.js';
 
 const App = () => {
 
   return (
     <div>
       <Overview />
-      <RelatedProducts current={currentPlaceholder} />
-      <OutfitList current={currentPlaceholder} />
+      <RelatedProducts product_id={40356} />
+      {/* <OutfitList current={currentPlaceholder} /> */}
       <Qna />
       <Ratings />
       <CSSStyles />

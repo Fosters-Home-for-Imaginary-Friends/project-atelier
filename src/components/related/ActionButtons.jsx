@@ -5,7 +5,7 @@ import CompareModal from './CompareModal.jsx';
 import {getFeatures} from './RelatedHelpers.js';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
-const CompareButton = ({card, current}) => {
+const CompareButton = ({cardFeatures, overviewFeatures}) => {
   const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(true);

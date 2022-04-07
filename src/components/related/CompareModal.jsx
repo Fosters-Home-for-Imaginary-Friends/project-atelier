@@ -29,7 +29,7 @@ const CompareModal = ({features, closeModal}) => {
   );
 };
 
-const ModalTableBody = ({features}) => {
+const ModalTableBody = React.memo(function ModalTableBody({features}) {
   return (
     <React.Fragment>
       <tbody>
@@ -37,7 +37,7 @@ const ModalTableBody = ({features}) => {
       </tbody>
     </React.Fragment>
   );
-};
+});
 
 const ModalTableRow = ({name, values}) => {
   const parseValue = (value) => {

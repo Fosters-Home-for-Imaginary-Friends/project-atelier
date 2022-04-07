@@ -473,7 +473,7 @@ button.add {
 
 /*---------- Product Card ----------*/
 .product-card {
-  background-color: black;
+  background-color: grey;
   width: 200px;
   height: 300px;
   margin: 20px;
