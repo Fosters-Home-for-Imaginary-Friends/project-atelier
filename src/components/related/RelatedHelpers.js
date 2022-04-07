@@ -86,6 +86,12 @@ const getProductInfo = (product) => {
     .then((styles) => getReviewMetadata(product.id)
       .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings})));
 };
+const getOutfitListData = (outfitList) => {
+  return Promise.all(outfitList.map((id) => getProduct(id)
+    .then((product) => getStyles(id)
+      .then((styles) => getReviewMetadata(id)
+        .then((reviews) => ({product: product, styles: styles, reviews: reviews.ratings}))))))
+}
 
 const currentPlaceholder = {
   "id": 40356,
@@ -131,4 +137,4 @@ const generateKey = () => {
   return Math.floor(Math.random() * 10000000);
 };
 
-export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill, getProductInfo};
+export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating, getStarFill, getProductInfo, getOutfitListData};
