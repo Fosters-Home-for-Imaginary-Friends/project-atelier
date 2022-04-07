@@ -71,8 +71,15 @@ const AddProductCard = ({product_id, setOutfitList}) => {
 
   // TODO: Notify user that the card is already in their list
   const addProduct = () => {
-    setOutfitList((prev) => prev.includes(product_id) ? prev : prev.concat([product_id]))
-    }
+    setOutfitList((prev) => {
+      if (prev.includes(product_id)) {
+        return prev;
+      }
+      let newList = prev.concat([product_id]);
+      setCookie("outfitList", JSON.stringify(newList));
+      return newList;
+    });
+  }
 
   return (
     <div className="product-card" id="add-card" onClick={addProduct}>
