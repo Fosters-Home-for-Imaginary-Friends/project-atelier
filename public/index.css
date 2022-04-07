@@ -851,14 +851,27 @@ margin-top: 20px;
   flex-direction: column;
   justify-content: space-between;
 }
-.size-bar {
+.char-bar {
   height: 2vh;
   width: 7vw;
   border: 2px;
-  margin: 10px 11px 25px 11px;
+  margin: 10px 11px 5px 11px;
   background-color: gray;
 }
-.size-charactiersitic-bars-container {
+.characteristic-bars-container {
   display: flex;
   flex-direction: row;
+}
+.characteristic-container {
+  margin-top: 25px;
+}
+.char-qualities {
+  margin: 0 43px 15px 33px;
+}
+.marker {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  color: rgb(34, 34, 34);
+
 }
