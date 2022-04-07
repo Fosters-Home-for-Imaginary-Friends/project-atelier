@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import StyleSelector from './StyleSelector.jsx';
 import SizeSelector from './SizeSelector.jsx';
 import { OverviewContext } from "./Overview.jsx";
+import { postCart } from '../../helpers.js';
 
 const ProductInformation = () => {
 
-  const { product, currentStyle, loading } = useContext(OverviewContext);
+  const { product, currentStyle, currentSize, loading } = useContext(OverviewContext);
 
   if (loading) {
     return <div className="overview-product-info loading"></div>
@@ -25,7 +26,7 @@ const ProductInformation = () => {
       <StyleSelector />
       <SizeSelector />
       <div>
-        <button className="info-button add">ADD TO BAG</button>
+        <button className="info-button add" onClick={() => postCart(currentSize)}>ADD TO BAG</button>
       </div>
     </div>
   )
