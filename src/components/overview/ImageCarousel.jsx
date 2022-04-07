@@ -7,7 +7,7 @@ const ImageCarousel = () => {
 
   const imageCarouselRef = useRef(null);
 
-  const { currentStyle, previousPhoto, currentPhoto, carouselTop, setCarouselTop, loading } = useContext(OverviewContext);
+  const { currentStyle, previousPhoto, currentPhoto, setCurrentPhoto, loading } = useContext(OverviewContext);
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
 
   useLayoutEffect(() => {
@@ -36,9 +36,13 @@ const ImageCarousel = () => {
     return <div className="image-carousel no-images">NO IMAGES AVAILABLE</div>
   }
 
+  // const handleScroll = () => {
+  //   console.log(imageCarouselRef.current.scrollTop)
+  // }
+
   return (
   <div className="overview-images">
-      <ul ref={imageCarouselRef} className="image-carousel">
+      <ul ref={imageCarouselRef} className="image-carousel" onScroll={handleScroll}>
         {currentStyle.photos.map((image) =>
             <Image key={image.url} slide={image}/>
         )}
