@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {findRelatedProducts} from './RelatedHelpers.js';
+import {getRelatedProductsData} from './RelatedHelpers.js';
 import CardCarousel from './CardCarousel.jsx';
 import ProductCard from './ProductCard.jsx';
 
@@ -8,7 +8,7 @@ const RelatedProducts = ({current}) => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    findRelatedProducts(current.id)
+    getRelatedProductsData(current.id)
         .then((items) => items.map((item, key) =>
         <ProductCard key={key} card={item.product} current={current} styles={item.styles} reviews={item.reviews} />))
         .then((newCards) => setCards(newCards))

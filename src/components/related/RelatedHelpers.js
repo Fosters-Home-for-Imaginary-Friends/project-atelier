@@ -29,12 +29,26 @@ const getFeatures = (overview, card) => { //Parses for features
   return featureObject;
 };
 
-const findRelatedProducts = (product_id) => { //Returns an array of related Product Data
+const getAverageRating = (ratings) => {
+  let ratingTotal = 0;
+  let ratingCount = 0;
+
+  for (let score in ratings) {
+    ratingTotal += (parseInt(score) * parseInt(ratings[score]));
+    ratingCount++;
+  }
+
+  return ratingTotal / ratingCount;
+};
+
+//Creates an array of objects storing the product, style, and review data for related products
+// TODO: Change Function so that it only maps an array once
+const getRelatedProductsData = (product_id) => {
   return getRelated(product_id)
-    .then((data) => Promise.all(data.map((id) => getProduct(id) //Returns an array of objects with product and style info
+    .then((data) => Promise.all(data.map((id) => getProduct(id)
           .then((product) => getStyles(id)
             .then((styles) => getReviewMetadata(id)
-              .then((reviews) => ({product: product, styles: styles, reviews: reviews})))))))
+              .then((reviews) => ({product: product, styles: styles, reviews: getAverageRating(reviews.meta)})))))))
     .catch((err) => console.error(err));
 };
 
@@ -78,4 +92,4 @@ var generateKey = function(str) {
   return hash;
 };
 
-export {findRelatedProducts, currentPlaceholder, getFeatures, generateKey};
+export {getRelatedProductsData, currentPlaceholder, getFeatures, generateKey, getAverageRating};
