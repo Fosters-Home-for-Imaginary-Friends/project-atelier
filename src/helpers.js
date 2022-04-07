@@ -18,7 +18,6 @@ const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 /*------------------------ PRODUCTS ------------------------ */
 
 const getProducts = (page = 1, count = 5) => {
-
   return axios.get(host + `/products?page=${page}&count=${count}`, options)
     .then((res) => res.data)
     .catch((err) => console.error(err));
