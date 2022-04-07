@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 
-import {fetchReviews, fetchReviewMetadata} from '../../helpers.js';
+import {getReviews, getReviewMetadata} from '../../helpers.js';
 
 export const RatingsContext = createContext({});
 
@@ -21,10 +21,10 @@ let Ratings = () => {
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
 
-  let dataFetch = () => {
-    fetchReviews(40384, pageNum, 2, currentSort)
+  let dataget = () => {
+    getReviews(40384, pageNum, 2, currentSort)
     .then((res) => {
-      fetchReviewMetadata(40384)
+      getReviewMetadata(40384)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
@@ -62,13 +62,13 @@ let Ratings = () => {
           setReviews(filteredArray);
         } else {
           setPageNum(1);
-          fetchReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+          getReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
         }
       }
       }
     }
     useEffect(() => {
-      dataFetch();
+      dataget();
     }, []);
 
 

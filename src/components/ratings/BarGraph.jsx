@@ -21,9 +21,9 @@ let BarGraph = (props) => {
     filteredContent(e.target.id);
   }
 
-  let filterClick = (e) => {
-    // props.filterReviews(e.target.id);
-  }
+  // let filterClick = (e) => {
+  //   // props.filterReviews(e.target.id);
+  // }
 
   return (
     <div className="bar-graph-container">

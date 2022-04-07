@@ -14,6 +14,7 @@ const Overview = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSize, setCurrentSize] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [previousPhoto, setPreviousPhoto] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const { productId } = useContext(AppContext);
@@ -52,7 +53,7 @@ const Overview = () => {
   }, [productId]);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />
