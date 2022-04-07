@@ -23,7 +23,7 @@ const SizeSelector = () => {
   return (
     <div className="size-selector">
       {Object.keys(inventory).map((key) =>
-        <Size key={key} sizes={inventory[key]}/>
+        <Size key={key} sizes={inventory[key]} sku={key}/>
       )}
     </div>
   )

@@ -23,12 +23,8 @@ const Style = ({style}) => {
 
   const { currentStyle, setCurrentStyle } = useContext(OverviewContext);
 
-  const setCurrentStyling = () => {
-    setCurrentStyle(style);
-  }
-
   return (
-    <div className={`style-button ${currentStyle === style}`} onClick={() => {setCurrentStyling()}}>
+    <div className={`style-button ${currentStyle === style}`} onClick={() => setCurrentStyle(style)}>
       <div className={ side1 }></div>
       <div className={ side2 }></div>
     </div>
