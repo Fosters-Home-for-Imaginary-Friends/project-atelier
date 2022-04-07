@@ -33,7 +33,7 @@ const OutfitList = ({product_id}) => {
     </div>
   );
 };
-      /* <CardCarousel cards={[<AddProductCard key={generateKey()}
-      setCardData={setCardData} current={current} cardData={cardData} />].concat(cardData.map((item) => item.card))} />
+{/* <CardCarousel cards={[<AddProductCard key={generateKey()}
+setCardData={setCardData} current={current} cardData={cardData} />].concat(cardData.map((item) => item.card))} /> */}
 
 export default OutfitList;

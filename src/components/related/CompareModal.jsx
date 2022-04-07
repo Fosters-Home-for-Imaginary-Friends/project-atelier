@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
 import {generateKey} from './RelatedHelpers.js';
 
-const CompareModal = ({features, closeModal}) => {
+const CompareModal = React.memo (function CompareModal ({features, closeModal}) {
   const modalRef = useRef();
 
   return ReactDom.createPortal(
@@ -27,7 +27,7 @@ const CompareModal = ({features, closeModal}) => {
     </div>,
     document.getElementById("modal")
   );
-};
+});
 
 const ModalTableBody = React.memo(function ModalTableBody({features}) {
   return (
