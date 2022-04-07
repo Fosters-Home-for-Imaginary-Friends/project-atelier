@@ -20,4 +20,13 @@ const CompareButton = ({card, current}) => {
   );
 };
 
-export {CompareButton};
+const removeButton = ({card}) => {
+
+  return (
+    <div className="remove-button">
+
+    </div>
+  );
+};
+
+export {CompareButton, removeButton};
