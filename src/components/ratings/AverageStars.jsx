@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
+import {RatingsContext} from './Ratings.jsx';
+
+
 let AverageStars = (props) => {
+  const{averageRating} = useContext(RatingsContext)
 
-//temp variable to progress while api call having issues with timing
-let averageRating = 3.7;
-
+  let avgRating = averageRating
 //create an array to store stars from average rating
 let numOfStars = [];
 
@@ -12,15 +14,15 @@ let numOfStars = [];
 
 //push an element for each whole star in the rating
   while (numOfStars.length < 5 ) {
-    if ( averageRating > 1) {
+    if ( avgRating > 1) {
       numOfStars.push(20);
       //once below 1 total star, create values for each quarter star
-    } else if ( averageRating > 0) {
-      let zero = Math.abs(0 - averageRating);
-      let oneQuarter = Math.abs(.25 - averageRating);
-      let half = Math.abs(.5 - averageRating);
-      let threeQuarters = Math.abs(.75 - averageRating);
-      let max = Math.abs(1 - averageRating);
+    } else if ( avgRating > 0) {
+      let zero = Math.abs(0 - avgRating);
+      let oneQuarter = Math.abs(.25 - avgRating);
+      let half = Math.abs(.5 - avgRating);
+      let threeQuarters = Math.abs(.75 - avgRating);
+      let max = Math.abs(1 - avgRating);
       //find the closest quarter star
       let closestPercent = Math.min(zero, oneQuarter, half, threeQuarters, max);
       // create a switch statement for each option
@@ -49,7 +51,7 @@ let numOfStars = [];
     } else {
       numOfStars.push(0);
     }
-    averageRating = averageRating - 1
+    avgRating = avgRating - 1
   }
 
   return (
@@ -73,3 +75,4 @@ const Star = ({fill}) => {
 
 
 export default AverageStars;
+export {Star};
