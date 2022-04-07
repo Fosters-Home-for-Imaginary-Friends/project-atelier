@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 
-const ProductList = ({cards}) => {
+const CardCarousel = ({cards}) => {
   //points to the carousel-viewport DOM element
   const carouselRef = useRef(null);
 
@@ -31,4 +31,4 @@ const ProductList = ({cards}) => {
   );
 };
 
-export default ProductList;
+export default CardCarousel;
