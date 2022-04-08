@@ -142,9 +142,9 @@ span.helpful-answer {
   background-color: gray;
   height: 75vh;
   width: 50vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
 }
 
