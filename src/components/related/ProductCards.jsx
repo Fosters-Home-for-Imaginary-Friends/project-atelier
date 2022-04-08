@@ -1,84 +1,67 @@
-import React, {useMemo, useRef, useEffect, useState} from 'react';
+import React, {useMemo} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
 import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
-import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
 
-const ProductCard = React.memo(function ProductCard({product_id, related, setState}) {
-  const productInfo = useRef(null);
-  const styleData = useRef(null);
-  const reviewData = useRef(null);
-  const [loadState, setLoadState] = useState(false);
-
-  useEffect(() => {
-    getProduct(product_id)
-      .then((product) => {
-        productInfo.current = {category: product.category, name: product.name, features: product.features};
-        return getStyles(product_id);
-      })
-      .then((style) => {
-        styleData.current = {
-          image: style[0].photos[0].thumbnail_url,
-          salePrice: style[0].sale_price,
-          originalPrice: style[0].original_price
-        };
-        return getReviewMetadata(product_id);
-      })
-      .then((reviews) => {
-        reviewData.current = reviews.ratings;
-        setLoadState(true);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoadState(false);
-      });
-  }, [product_id]);
-
-  const averageRating = useMemo(() => getAverageRating(reviewData.current), [reviewData.current]);
+const ProductCard = ({card, current, position, related, setCardData}) => {
+  let product = card.product;
+  let style = card.styles[0];
+  let imageUrl = style.photos[0].url;
+  let ratings = card.reviews;
+  const averageRating = useMemo(() => getAverageRating(ratings), [product.id]);
 
   return (
     <div className="product-card">
-      {loadState ?
-      <React.Fragment>
-        <div className="card-top">
-        {related ? <CompareButton card={productInfo.current} /> :
-        <RemoveButton setState={setState} product_id={product_id} />}
-        <img className="related-image" src={styleData.current.image} />
+      <div className="card-top">
+        {related ? <CompareButton card={product} current={current} /> :
+        <RemoveButton setCardData={setCardData} card={product} />}
+        <img className="related-image" src={imageUrl ? imageUrl : null} />
       </div>
       <div className="card-bot">
-        <section className="related-category">{productInfo.current.category}</section>
-        <section className="related-name"><h2>{productInfo.current.name}</h2></section>
-        {styleData.current.salePrice ?
+        <section className="related-category">{product.category}</section>
+        <section className="related-name"><h2>{product.name}</h2></section>
+        {style.sale_price ?
           <div className="sale-price-container">
-            <section className="body-text sale-price">{styleData.current.salePrice} USD</section>
-            <section className="body-text original-price">{styleData.current.originalPrice} USD</section>
+            <section className="body-text sale-price">{style.sale_price} USD</section>
+            <section className="body-text original-price">{style.original_price} USD</section>
           </div> :
-          <section className="body-text price">{styleData.current.originalPrice} USD</section>
+          <section className="body-text price">{style.original_price} USD</section>
         }
-        <div className="average-star-container">
+        <section className="average-star-container">
           {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
-        </div>
+        </section>
       </div>
-      </React.Fragment>
-      : null}
     </div>
   );
-});
+};
 
-const AddProductCard = ({product_id, setOutfitList}) => {
+const AddProductCard = ({setCardData, current, cardData}) => {
 
   // TODO: Notify user that the card is already in their list
   const addProduct = () => {
-    setOutfitList((prev) => {
-      if (prev.includes(product_id)) {
-        return prev;
+    for (let i = 0; i < cardData.length; i++) {
+      if (cardData[i].productData.product.id === current.id) {
+        console.log("Already in your list!");
+        return;
       }
-      let newList = prev.concat([product_id]);
-      setCookie("outfitList", JSON.stringify(newList));
-      return newList;
-    });
+    }
+
+    // TODO: fully utilize newCard from getProductInfo
+    // TODO: Make functions of OutfitList children shared
+    getProductInfo(current)
+    .then((newCardInfo) => {
+      setCardData((newCardData) => {
+        let newCards = newCardData;
+        let newCard = {card: (<ProductCard setCardData={setCardData} card={newCardInfo} current={current} key={generateKey()} related={false} />),
+        productData: newCardInfo}
+        newCards = newCards.concat([newCard]);
+        // setCookie("outfitList", JSON.stringify(newCards));
+        setCookie("outfitList", JSON.stringify(newCards.map((card) => card.productData.product.id)))
+        return newCards;
+      })})
+    .catch((err) => console.error(err));
   }
 
   return (

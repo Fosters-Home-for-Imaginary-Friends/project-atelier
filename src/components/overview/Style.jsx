@@ -21,16 +21,10 @@ const Style = ({style}) => {
     side1 = `style-color side1 ${colors[0]}`;
   }
 
-  const { currentStyle, setCurrentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto } = useContext(OverviewContext);
-
-  const handleStyleClick = () => {
-    setCurrentStyle(style)
-    setPreviousPhoto(currentPhoto)
-    setCurrentPhoto(0)
-  }
+  const { currentStyle, setCurrentStyle } = useContext(OverviewContext);
 
   return (
-    <div className={`style-button ${currentStyle === style}`} onClick={() => handleStyleClick(style)}>
+    <div className={`style-button ${currentStyle === style}`} onClick={() => setCurrentStyle(style)}>
       <div className={ side1 }></div>
       <div className={ side2 }></div>
     </div>

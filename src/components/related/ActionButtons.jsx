@@ -1,42 +1,44 @@
-import React, {useState, useMemo, useContext, useEffect} from 'react';
+import React, {useState, useMemo} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
+import {getFeatures} from './RelatedHelpers.js';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
-const CompareButton = ({card}) => {
+const CompareButton = ({card, current}) => {
   const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(() => modal ? false : true);
+  const openModal = () => {
+    setModal(true);
   }
+  const features = useMemo(() =>
+    getFeatures(current, card),
+    [card.id, current.id]);
 
   return (
     <div className="compare-button action-button">
-      <AiOutlineStar size={25} onClick={toggleModal} />
-      {modal ? <CompareModal card={card} closeModal={toggleModal} /> : null }
+      <AiOutlineStar size={25} onClick={openModal} />
+      {modal ? <CompareModal features={features} closeModal={() => setModal(false)} /> : null }
     </div>
   );
 };
 
 //! Look into map objects
-const RemoveButton = ({setState, product_id}) => {
+const RemoveButton = ({setCardData, card}) => {
 
   const removeCard = () => {
-    setState((prev) => {
-      let newState = prev.filter((id) => {
-        return product_id !== id;
+    setCardData((cardData) => {
+      let newCardData = cardData.filter((item) => {
+        return item.productData.product.id !== card.id;
       });
+      if (newCardData.length > 0) {
+        setCookie("outfitList", JSON.stringify(newCardData.map((item) => item.productData.product.id)));
+      } else {
+        deleteCookie("outfitList");
+      }
 
-    if (newState.length > 0) {
-      setCookie("outfitList", JSON.stringify(newState));
-    } else {
-      deleteCookie("outfitList");
-    }
-    return newState;
+      return newCardData;
     });
   }
-
   return (
     <div className="remove-button action-button" >
       <CgRemove size={25} onClick={removeCard} />

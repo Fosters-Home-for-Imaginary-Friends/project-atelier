@@ -142,9 +142,9 @@ span.helpful-answer {
   background-color: gray;
   height: 75vh;
   width: 50vh;
-  /* overflow: hidden; */
+  overflow: hidden;
   overflow-y: scroll;
-  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -473,7 +473,7 @@ button.add {
 
 /*---------- Product Card ----------*/
 .product-card {
-  background-color: grey;
+  background-color: black;
   width: 200px;
   height: 300px;
   margin: 20px;
@@ -526,8 +526,8 @@ button.add {
   z-index: 10;
   background-color: white;
   color: black;
-  width: 400px;
-  height: 300px;
+  width: 550px;
+  height: 400px;
   animation: compare-modal-animation 0.3s;
 }
 .modal-header {
@@ -544,8 +544,8 @@ button.add {
 }
 .feature-container {
   margin: auto;
-  width: 385px;
-  height: 255px;
+  width: 390px;
+  height: 250px;
   overflow: scroll;
 }
 .feature-table {
@@ -555,7 +555,7 @@ tr {
   border-bottom: 1px solid black;
 }
 th, td {
-  width: 140px;
+  width: 100px;
   vertical-align: middle;
   padding: 5px;
 }
@@ -604,35 +604,16 @@ Start of Questions and Answers
   margin: 30px;
   display: flex;
   flex-direction: column;
-  max-height: 50vh;
-  overflow: auto;
-}
-.question-head {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  max-height: 80vh;
+  overflow: scroll;
 }
 .answer {
   display: flex;
-  flex-direction: column;
-  margin: 7px;
-}
-.answer-list {
-  margin-left: 7px;
-}
-.answer-head {
   flex-direction: row;
-  display: flex;
   align-items: center;
 }
-.answer-details {
-  margin-left: 20px;
-}
-h2.answer-heading {
+.answer-heading {
   margin-right: 7px;
-}
-h3.answer-list {
-  margin: 10px;
 }
 .search-bar {
   margin-top: 20px;
@@ -643,9 +624,6 @@ h3.answer-list {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-}
-a.helpful:hover {
-  text-decoration: underline;
 }
 
 /* Start of Ratings/Reviews *****************/
