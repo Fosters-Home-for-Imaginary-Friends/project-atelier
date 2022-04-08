@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useLayoutEffect } from "react";
+import React, { useRef, useContext, useState, useEffect, useLayoutEffect, useMemo } from "react";
 import Image from "./Image.jsx";
 import { OverviewContext } from "./Overview.jsx";
 
@@ -7,7 +7,7 @@ const ImageCarousel = () => {
 
   const imageCarouselRef = useRef(null);
 
-  const { currentStyle, previousPhoto, currentPhoto, loading } = useContext(OverviewContext);
+  const { currentStyle, previousPhoto, currentPhoto, setCurrentPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
   const [dimensions, setDimensions] = useState({width: 0, height: 0});
 
   useLayoutEffect(() => {
@@ -28,6 +28,26 @@ const ImageCarousel = () => {
     }
   }, [loading, currentPhoto]);
 
+  // var currentTop = 0;
+
+  // const changeImage = () => {
+  //   console.log(imageCarouselRef.current.scrollTop)
+  //   if (imageCarouselRef.current.scrollTop > currentTop) {
+  //     setCurrentPhoto(currentPhoto + 1)
+  //   } else {
+  //     console.log('Moving up!')
+  //   }
+  // }
+
+  // const changeImageThrottled = useMemo(() => _.throttle(changeImage, 2000), []);
+
+  // const onWheel = (event) => {
+  //   console.log(event.deltaY)
+  //   changeImage(event.deltaY)
+  // }
+
+  // const onWheelThrottled = useMemo(() => _.throttle(onWheel, 2000), []);
+
   if (loading) {
     return <div className="image-carousel loading"></div>;
   }
@@ -36,13 +56,33 @@ const ImageCarousel = () => {
     return <div className="image-carousel no-images">NO IMAGES AVAILABLE</div>
   }
 
+  // if (imageCarouselRef.current) {
+  //   imageCarouselRef.current.addEventListener('wheel', changeImageThrottled);
+  // }
+
+  const handleUpClick = () => {
+    if (currentPhoto > 0) {
+      setPreviousPhoto(currentPhoto)
+      setCurrentPhoto(currentPhoto - 1)
+    }
+  }
+
+  const handleDownClick = () => {
+    if (currentPhoto < currentStyle.photos.length - 1) {
+      setPreviousPhoto(currentPhoto)
+      setCurrentPhoto(currentPhoto + 1)
+    }
+  }
+
   return (
   <div className="overview-images">
-      <ul ref={imageCarouselRef} className="image-carousel">
-        {currentStyle.photos.map((image) =>
-            <Image key={image.url} slide={image}/>
-        )}
-      </ul>
+      <button className="carousel-button up" onClick={handleUpClick}></button>
+        <ul ref={imageCarouselRef} className="image-carousel">
+          {currentStyle.photos.map((image) =>
+              <Image key={image.url} slide={image}/>
+          )}
+        </ul>
+      <button className="carousel-button down" onClick={handleDownClick}></button>
   </div>
   )
 }

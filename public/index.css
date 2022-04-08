@@ -139,13 +139,15 @@ span.helpful-answer {
 /* IMAGE CAROUSEL */
 
 .image-carousel {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   background-color: gray;
   height: 75vh;
   width: 50vh;
-  /* overflow: hidden; */
-  overflow-y: scroll;
-  /* scroll-snap-type: y mandatory; */
+  overflow: hidden;
+  /* overflow-y: scroll; */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -186,6 +188,33 @@ span.helpful-answer {
 
 .image-bar {
   display: flex;
+}
+
+.carousel-button {
+  position: absolute;
+  width: 50vh;
+  height: 10vh;
+  outline: 0;
+  border-radius: 0px;
+  border: none;
+  opacity: 0;
+}
+
+.carousel-button.up:hover {
+  background: linear-gradient(180deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+.carousel-button.down {
+  align-self: flex-end;
+}
+
+.carousel-button.down:hover {
+  align-self: flex-end;
+  background: linear-gradient(0deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
 }
 
 .progress-bar {

@@ -15,6 +15,7 @@ const Overview = () => {
   const [currentSize, setCurrentSize] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [previousPhoto, setPreviousPhoto] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const { productId } = useContext(AppContext);
@@ -37,8 +38,12 @@ const Overview = () => {
           let style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
+            return style;
           }
         }
+      })
+      .then((style) => {
+        setProgress(1 / style.photos.length)
       })
       .then(() => {
         setLoading(false);
@@ -53,7 +58,7 @@ const Overview = () => {
   }, [productId]);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, loading }}>
       <div className="overview">
         <section className="overview-images">
           <ImageCarousel />
