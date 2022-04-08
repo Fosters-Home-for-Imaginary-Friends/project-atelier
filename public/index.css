@@ -144,9 +144,9 @@ span.helpful-answer {
   height: 75vh;
   width: 50vh;
   /* overflow: hidden; */
-  /* overflow: auto; */
-  /* scroll-snap-type: y mandatory;
-  scroll-behavior: smooth; */
+  overflow-y: scroll;
+  /* scroll-snap-type: y mandatory; */
+  scroll-behavior: smooth;
 }
 
 .image-carousel::-webkit-scrollbar {
