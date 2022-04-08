@@ -16,7 +16,19 @@ let NewReview = ({ setShowModal }) => {
   return ReactDom.createPortal (
     <div className= "new-review-container" ref={modalRef} onClick={exitModal}>
       <div className="modal">
-        <h1> Hey Nerds!!! </h1>
+        <div className="new-review-title-subtitle-rating">
+        <div className="new-review-title">
+          <h1> Write Your Reveiw </h1>
+        </div>
+        <div className="new-review-subtitle">
+          <h2>About the [Product Name] </h2>
+        </div>
+        <div className="new-review-overall-rating">
+          <h2> Overall Rating 5.0</h2>
+        </div>
+        </div>
+
+
         <button onClick={() => setShowModal(false)}>X</button>
       </div>
     </div>,
