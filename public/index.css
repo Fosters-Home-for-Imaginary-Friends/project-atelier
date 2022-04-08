@@ -896,6 +896,9 @@ margin-top: 20px;
   width: 25px;
   color: rgb(34, 34, 34);
 }
+.new-review-container {
+  overflow: auto;
+}
 .new-review-stars-container {
   display: flex
 }

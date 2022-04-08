@@ -9,8 +9,7 @@ let NewReview = ({ setShowModal }) => {
   const [oldStars, setOldStars] = useState([0, 0, 0, 0, 0])
   const [recommendYes, setRecommendYes] = useState(false);
   const [recommendNo, setRecommendNo] = useState(false);
-  const [thumbYesColor, setThumbYescolor] = useState("");
-  const [thumbNoColor, setThumbNoColor] = useState();
+  const [sizeSelector, setSizeSelector] = useState(0);
 
 
 
@@ -32,14 +31,15 @@ let NewReview = ({ setShowModal }) => {
     );
     };
 
-  const starsHover = (e) => {
-    e.preventDefault();
-    let rating = parseInt(e.target.getAttribute("value")) + 1;
-    let newStars = [];
-    while (newStars.length < 5) {
-      if ( rating > 0) {
-        rating--;
-        newStars.push(1);
+
+    const starsHover = (e) => {
+      e.preventDefault();
+      let rating = parseInt(e.target.getAttribute("value")) + 1;
+      let newStars = [];
+      while (newStars.length < 5) {
+        if ( rating > 0) {
+          rating--;
+          newStars.push(1);
       } else {
         newStars.push(0);
       }
@@ -61,20 +61,43 @@ let NewReview = ({ setShowModal }) => {
 
     setRecommendYes(true);
     setRecommendNo(false);
-    if (recommendYes) {
-      setThumbYescolor("purple");
-      setThumbNoColor("");
-    }
   }
 
   const thumbNoClick = (e) => {
     setRecommendYes(false);
     setRecommendNo(true);
-    if ( recommendNo ) {
-      setThumbYescolor("");
-      setThumbNoColor("purple");
-    }
+  };
+
+  const Characteristics = () => {
+    return (
+      <div className="new-review-characteristics-container">
+        <div className="new-review-characteristics-title-text">
+          <section className="body-text"> Size:  </section>
+          <section className="body-text"> </section>
+          <div className="new-review-characteristic-table">
+          </div>
+        </div>
+      </div>
+    )
   }
+
+  const sizeSelectionClick = (e) => {
+    let descriptor = "";
+    setSizeSelector(e.target.value);
+    if ( sizeSelector === 1) {
+      descriptor = "A size too small"
+    } else if ( sizeSelector === 2) {
+      descriptor = "1/2 a size too small"
+    } else if ( sizeSelector === 3) {
+      descriptor = "Perfect"
+    } else if ( sizeSelector === 4) {
+      descriptor = "1/2 a size too wide"
+    } else if ( sizeSelector === 5) {
+      descriptor = "A size too wide"
+    }
+    console.log(descriptor);
+  }
+
 
   // we need to render the modal using the new-review div in index.html
   return ReactDom.createPortal (
