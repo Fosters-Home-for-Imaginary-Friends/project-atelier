@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageBar from "./ImageBar.jsx";
+import ImageModal from "./ImageModal.jsx";
 import ProductInformation from './ProductInformation.jsx';
 import { getProduct, getStyles } from "../../helpers.js";
 import { AppContext } from "../App.jsx";
@@ -16,6 +17,7 @@ const Overview = () => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [previousPhoto, setPreviousPhoto] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const { productId } = useContext(AppContext);
@@ -58,8 +60,9 @@ const Overview = () => {
   }, [productId]);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, loading }}>
-      <div className="overview">
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, showModal, setShowModal, loading }}>
+      <div id="overview" className="overview">
+        {showModal ? <ImageModal /> : null}
         <section className="overview-images">
           <ImageCarousel />
           <ImageBar />

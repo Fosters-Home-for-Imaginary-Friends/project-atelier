@@ -57,6 +57,14 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 h1 {
   font-size: 24px;
   font-weight: 500;
@@ -134,6 +142,67 @@ span.helpful-answer {
 .overview-images:hover .thumbnails{
   opacity: 100;
   transition: opacity 0.2s ease-in;
+}
+
+/* IMAGE MODAL */
+
+#imageModal .image-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-modal-container .image-modal {
+  z-index: 1;
+  /* height: 100%; */
+  top: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  animation: animate 0.3s;
+}
+
+.image-modal button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 8px 11px;
+  background: crimson;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.image-modal-image {
+  width: 100vw;
+  position: absolute;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
 }
 
 /* IMAGE CAROUSEL */
