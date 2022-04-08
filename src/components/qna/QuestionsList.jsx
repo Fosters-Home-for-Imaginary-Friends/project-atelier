@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import Question from './Question.jsx';
 import {QnaContext} from './Qna.jsx';
 import {getQuestions} from '../../helpers.js';
+import { AddQuestionModal } from './AddQuestionModal.jsx';
 
 const QuestionsList = (props) => {
   // let init = props.data.slice(0, 4);
@@ -12,6 +13,7 @@ const QuestionsList = (props) => {
   const {setExtra} = useContext(QnaContext);
   const {init} = useContext(QnaContext);
   const {setInit} = useContext(QnaContext);
+  const [showModal, setShowModal] = useState(false);
 
   // const [init, setInit]= useState(props.data);
   // let init = props.data;
@@ -34,8 +36,6 @@ const QuestionsList = (props) => {
   const handleMoreClick = () => {
     getQuestions(65633, page, 2)
       .then((res) => {
-        // init = init.concat(res);
-        console.log(res);
         setInit(init.concat(res));
         setPage(page + 1);
         if (res.length < 2) {
@@ -45,6 +45,11 @@ const QuestionsList = (props) => {
       })
       .catch((err) => console.log(err))
   }
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
   return(
     <div>
       <div className="questions-list">
@@ -59,7 +64,8 @@ const QuestionsList = (props) => {
             handleMoreClick()
           }}
         >More Answered Questions</button>}
-        <button>Add a Question</button>
+        <button onClick={openModal}>Add a Question</button>
+        {showModal ? <AddQuestionModal setShowModal={setShowModal}/> : null}
       </div>
     </div>
   );
