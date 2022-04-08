@@ -902,3 +902,11 @@ margin-top: 20px;
 .new-review-stars-container:hover {
   cursor: pointer;
 }
+.thumbs-up {
+ width: 30px;
+ height: auto;
+}
+.thumbs-down {
+  width: 30px;
+  height: auto;
+}

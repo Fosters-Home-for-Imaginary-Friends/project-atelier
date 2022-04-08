@@ -1,11 +1,18 @@
 //this component will house the elements to build the new review modal
 import React, { useRef, useState } from 'react';
 import ReactDom from 'react-dom';
+import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
 
 let NewReview = ({ setShowModal }) => {
 
   const [currStars, setCurrStars] = useState([0, 0, 0, 0, 0]);
   const [oldStars, setOldStars] = useState([0, 0, 0, 0, 0])
+  const [recommendYes, setRecommendYes] = useState(false);
+  const [recommendNo, setRecommendNo] = useState(false);
+  const [thumbYesColor, setThumbYescolor] = useState("");
+  const [thumbNoColor, setThumbNoColor] = useState();
+
+
 
   //close this modal when clicking outside of the modal.
   const modalRef = useRef();
@@ -50,19 +57,41 @@ let NewReview = ({ setShowModal }) => {
     setOldStars(currStars);
   }
 
+  const thumbYesClick = (e) => {
+
+    setRecommendYes(true);
+    setRecommendNo(false);
+    if (recommendYes) {
+      setThumbYescolor("purple");
+      setThumbNoColor("");
+    }
+  }
+
+  const thumbNoClick = (e) => {
+    setRecommendYes(false);
+    setRecommendNo(true);
+    if ( recommendNo ) {
+      setThumbYescolor("");
+      setThumbNoColor("purple");
+    }
+  }
+
   // we need to render the modal using the new-review div in index.html
   return ReactDom.createPortal (
     <div className= "new-review-container" ref={modalRef} onClick={exitModal}>
       <div className="modal">
         <div className="new-review-title-subtitle-rating">
           <div className="new-review-title">
-            <h1> Write Your Reveiw </h1>
+            <h1> Write Your Review </h1>
           </div>
           <div className="new-review-subtitle">
             <h2>About the [Product Name] </h2>
           </div>
           <div className="new-review-overall-rating">
             <h2> Overall Rating 5.0</h2>
+          </div>
+          <div className="new-review-rating-text">
+            <span> How would you rate this product? </span>
           </div>
           <div className="new-review-stars-container">
            {currStars.map((item, i) => {
@@ -71,6 +100,13 @@ let NewReview = ({ setShowModal }) => {
           </div>
         </div>
 
+        <div className="new-review-product-recommendation-container">
+           <span>Do you recommend this product? </span>
+           {(!recommendYes) && <GoThumbsup className="thumbs-up" style={{"color": ""}} onClick={thumbYesClick} />}
+           {(recommendYes) && <GoThumbsup className="thumbs-up" style={{"color": "purple"}} onClick={thumbYesClick}/>}
+           {(!recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : ""}} onClick={thumbNoClick}/>}
+           {(recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : "purple"}} onClick={thumbNoClick}/>}
+        </div>
 
         <button onClick={() => setShowModal(false)}>X</button>
       </div>
