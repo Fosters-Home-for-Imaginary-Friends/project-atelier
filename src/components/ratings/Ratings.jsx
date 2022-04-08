@@ -68,7 +68,7 @@ let Ratings = () => {
       }
     }
     useEffect(() => {
-      dataget();
+      dataFetch();
     }, []);
 
 
