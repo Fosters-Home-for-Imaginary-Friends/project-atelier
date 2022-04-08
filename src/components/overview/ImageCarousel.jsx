@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect, useLayoutEffect, useMemo } from "react";
+import React, { useRef, useContext, useState, useLayoutEffect } from "react";
 import Image from "./Image.jsx";
 import { OverviewContext } from "./Overview.jsx";
 
@@ -77,7 +77,7 @@ const ImageCarousel = () => {
   return (
   <div className="overview-images">
       <button className="carousel-button up" onClick={handleUpClick}></button>
-        <ul ref={imageCarouselRef} className="image-carousel">
+        <ul id="image-carousel" ref={imageCarouselRef} className="image-carousel">
           {currentStyle.photos.map((image) =>
               <Image key={image.url} slide={image}/>
           )}
