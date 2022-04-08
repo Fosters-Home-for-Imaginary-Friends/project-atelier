@@ -21,7 +21,7 @@ let Ratings = () => {
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
 
-  let dataget = () => {
+  let dataFetch = () => {
     getReviews(40384, pageNum, 2, currentSort)
     .then((res) => {
       getReviewMetadata(40384)

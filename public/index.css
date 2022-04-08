@@ -473,7 +473,7 @@ button.add {
 
 /*---------- Product Card ----------*/
 .product-card {
-  background-color: black;
+  background-color: grey;
   width: 200px;
   height: 300px;
   margin: 20px;
@@ -526,8 +526,8 @@ button.add {
   z-index: 10;
   background-color: white;
   color: black;
-  width: 550px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   animation: compare-modal-animation 0.3s;
 }
 .modal-header {
@@ -544,8 +544,8 @@ button.add {
 }
 .feature-container {
   margin: auto;
-  width: 390px;
-  height: 250px;
+  width: 385px;
+  height: 255px;
   overflow: scroll;
 }
 .feature-table {
@@ -555,7 +555,7 @@ tr {
   border-bottom: 1px solid black;
 }
 th, td {
-  width: 100px;
+  width: 140px;
   vertical-align: middle;
   padding: 5px;
 }
@@ -604,16 +604,35 @@ Start of Questions and Answers
   margin: 30px;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
-  overflow: scroll;
+  max-height: 50vh;
+  overflow: auto;
+}
+.question-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .answer {
   display: flex;
+  flex-direction: column;
+  margin: 7px;
+}
+.answer-list {
+  margin-left: 7px;
+}
+.answer-head {
   flex-direction: row;
+  display: flex;
   align-items: center;
 }
-.answer-heading {
+.answer-details {
+  margin-left: 20px;
+}
+h2.answer-heading {
   margin-right: 7px;
+}
+h3.answer-list {
+  margin: 10px;
 }
 .search-bar {
   margin-top: 20px;
@@ -624,6 +643,9 @@ Start of Questions and Answers
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+a.helpful:hover {
+  text-decoration: underline;
 }
 
 /* Start of Ratings/Reviews *****************/
@@ -830,8 +852,6 @@ margin-top: 20px;
 .bar-titles:hover {
   cursor: pointer;
 }
-#one-star-graph {
-}
 .average-star-container {
   display: flex;
 }
@@ -842,4 +862,38 @@ margin-top: 20px;
 .full-star {
   overflow: hidden;
   position: absolute;
+}
+.characteristics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.individual-characterstic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.char-bar {
+  height: 2vh;
+  width: 7vw;
+  border: 2px;
+  margin: 10px 11px 5px 11px;
+  background-color: gray;
+}
+.characteristic-bars-container {
+  display: flex;
+  flex-direction: row;
+}
+.characteristic-container {
+  margin-top: 25px;
+}
+.char-qualities {
+  margin: 0 43px 15px 33px;
+}
+.marker {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  color: rgb(34, 34, 34);
+
 }
