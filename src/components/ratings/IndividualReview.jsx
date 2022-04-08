@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 let moment = require('moment');
 import { AiOutlineCheck } from 'react-icons/ai';
 
-import { putReviewHelpful, reportReview } from '../../helpers.js';
+import { putReviewHelpful, postReview } from '../../helpers.js';
 import IndividualReviewStars from './IndividualReviewStars.jsx';
 
 
@@ -42,7 +42,7 @@ let IndividualReview = (props) => {
   }
 
   let reportClick = () => {
-    putReviewReport(review_id);
+    postReview(review_id);
     alert ('Thank you for reporting this review. Our staff has been notified.');
   }
   //this function enlarges the thumbnail images on click, if the image is clicked again it returns to original scale
@@ -69,19 +69,19 @@ let IndividualReview = (props) => {
           <IndividualReviewStars fill= {rating}/>
           </div>
           <div className="username-date-container">
-            <span className= "review-username-date"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </span>
+            <h3 className= "review-username-date"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </h3>
           </div>
         </div>
         <div className="individual-review-element-conatainers">
-          <span className= "review-summary"> {summary}</span>
+          <span className= "review-summary user-data"> {summary}</span>
         </div>
         <div className="individual-review-element-conatainers">
-          <h2 className= "review-body"> {body} </h2>
+          <section className= "review-body body-text"> {body} </section>
         </div>
         <div className="review-body-photos-container">
 
           {photos.map((photo, i) => {
-            return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`}}/>)
+            return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "z-index" : 25}}/>)
 
           })}
         </div>
@@ -90,15 +90,15 @@ let IndividualReview = (props) => {
           <span> I recommend this product. </span>
         </div>}
         <div className="review-response-container">
-          {(response) && <span> {response} </span>}
+          {(response) && <section className="body-text"> {response} </section>}
         </div>
         <div className="review-helpful-container">
-        <h3 id="review-helpful-text"> Helpful? </h3>
-          {(helpfulChoice === 'yes' || helpfulChoice === '') && <h3 id= "review-helpful-link" onClick={helpfulYesClick}> Yes </h3>}
+        <span className="helpful-answer" id="review-helpful-text"> Helpful? </span>
+          {(helpfulChoice === 'yes' || helpfulChoice === '') && <span className="helpful-answer" id= "review-helpful-link" onClick={helpfulYesClick}> Yes </span>}
 
-          {(helpfulChoice === 'no' || helpfulChoice === '') && <h3 id= "review-helpful-link" onClick={helpfulNoClick}> No </h3>}
-          {(helpfulChoice === 'yes' || helpfulChoice === 'no') && <h3 id="review-helpfulness-number">{`(${helpfulness})`}</h3>}
-          <h3 id= "review-report" onClick={reportClick}> | Report </h3>
+          {(helpfulChoice === 'no' || helpfulChoice === '') && <span className="helpful-answer" id= "review-helpful-link" onClick={helpfulNoClick}> No </span>}
+          {(helpfulChoice === 'yes' || helpfulChoice === 'no') && <span className="helpful-answer" id="review-helpfulness-number">{`(${helpfulness})`}</span>}
+          <span className="helpful-answer" id= "review-report" onClick={reportClick}> | Report </span>
 
         </div>
 
