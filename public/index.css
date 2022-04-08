@@ -142,9 +142,9 @@ span.helpful-answer {
   background-color: gray;
   height: 75vh;
   width: 50vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
 }
 
@@ -473,7 +473,7 @@ button.add {
 
 /*---------- Product Card ----------*/
 .product-card {
-  background-color: black;
+  background-color: grey;
   width: 200px;
   height: 300px;
   margin: 20px;
@@ -526,8 +526,8 @@ button.add {
   z-index: 10;
   background-color: white;
   color: black;
-  width: 550px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   animation: compare-modal-animation 0.3s;
 }
 .modal-header {
@@ -544,8 +544,8 @@ button.add {
 }
 .feature-container {
   margin: auto;
-  width: 390px;
-  height: 250px;
+  width: 385px;
+  height: 255px;
   overflow: scroll;
 }
 .feature-table {
@@ -555,7 +555,7 @@ tr {
   border-bottom: 1px solid black;
 }
 th, td {
-  width: 100px;
+  width: 140px;
   vertical-align: middle;
   padding: 5px;
 }
