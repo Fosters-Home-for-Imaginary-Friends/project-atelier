@@ -10,6 +10,8 @@ let NewReview = ({ setShowModal }) => {
   const [recommendYes, setRecommendYes] = useState(false);
   const [recommendNo, setRecommendNo] = useState(false);
   const [sizeSelector, setSizeSelector] = useState(0);
+  const [sizeDescriptor, setSizeDescriptor] = useState("");
+
 
 
 
@@ -45,7 +47,6 @@ let NewReview = ({ setShowModal }) => {
       }
     }
     setCurrStars(newStars);
-    // console.log(currStars, oldStars, 'Hello hover!')
   };
 
   const starsOffHover = (e) => {
@@ -57,24 +58,33 @@ let NewReview = ({ setShowModal }) => {
     setOldStars(currStars);
   }
 
-  const thumbYesClick = (e) => {
+  const thumbYesClick = () => {
 
     setRecommendYes(true);
     setRecommendNo(false);
   }
 
-  const thumbNoClick = (e) => {
+  const thumbNoClick = () => {
     setRecommendYes(false);
     setRecommendNo(true);
   };
 
   const Characteristics = () => {
     return (
-      <div className="new-review-characteristics-container">
+      <div onChange={sizeSelectionClick} className="new-review-characteristics-container">
         <div className="new-review-characteristics-title-text">
-          <section className="body-text"> Size:  </section>
+          <section className="body-text"> Size: {sizeDescriptor}  </section>
           <section className="body-text"> </section>
-          <div className="new-review-characteristic-table">
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+            <label name="A size too small">1</label>
+            <input type="radio" checked= {sizeSelector === "1"} value="1" name="A size too small"/>
+            <label name="A size too small">Too Small</label>
+            </div>
+            <input type="radio" checked= {sizeSelector === "2"} value="2" name="A 1/2 size too small"/>
+            <input type="radio" checked= {sizeSelector === "3"} value="3" name="Perfect"/> Perfect
+            <input type="radio" checked= {sizeSelector === "4"} value="4" name="A 1/2 size too big"/>
+            <input type="radio" checked= {sizeSelector === "5"} value="5" name="A size too big"/> Too Big
           </div>
         </div>
       </div>
@@ -82,20 +92,20 @@ let NewReview = ({ setShowModal }) => {
   }
 
   const sizeSelectionClick = (e) => {
-    let descriptor = "";
     setSizeSelector(e.target.value);
-    if ( sizeSelector === 1) {
-      descriptor = "A size too small"
-    } else if ( sizeSelector === 2) {
-      descriptor = "1/2 a size too small"
-    } else if ( sizeSelector === 3) {
-      descriptor = "Perfect"
-    } else if ( sizeSelector === 4) {
-      descriptor = "1/2 a size too wide"
-    } else if ( sizeSelector === 5) {
-      descriptor = "A size too wide"
-    }
-    console.log(descriptor);
+    setSizeDescriptor(e.target.name);
+    // if ( sizeSelector === "1") {
+    //   setSizeDescriptor("A size too small")
+    // } else if ( sizeSelector === "2") {
+    //   setSizeDescriptor("1/2 a size too small")
+    // } else if ( sizeSelector === "3") {
+    //   setSizeDescriptor("Perfect")
+    // } else if ( sizeSelector === "4") {
+    //   setSizeDescriptor( "1/2 a size too wide")
+    // } else if ( sizeSelector === "5") {
+    //   setSizeDescriptor( "A size too wide")
+    // }
+
   }
 
 
@@ -103,6 +113,7 @@ let NewReview = ({ setShowModal }) => {
   return ReactDom.createPortal (
     <div className= "new-review-container" ref={modalRef} onClick={exitModal}>
       <div className="modal">
+        <div className ="new-review-position">
         <div className="new-review-title-subtitle-rating">
           <div className="new-review-title">
             <h1> Write Your Review </h1>
@@ -130,8 +141,11 @@ let NewReview = ({ setShowModal }) => {
            {(!recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : ""}} onClick={thumbNoClick}/>}
            {(recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : "purple"}} onClick={thumbNoClick}/>}
         </div>
-
+        <div className="new-review-characteristics">
+          <Characteristics />
+        </div>
         <button onClick={() => setShowModal(false)}>X</button>
+        </div>
       </div>
     </div>,
     document.getElementById("newReview")

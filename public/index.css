@@ -898,6 +898,22 @@ margin-top: 20px;
 }
 .new-review-container {
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+  justify-content: top;
+}
+.new-review-position {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  bottom: 200px;
+}
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .new-review-stars-container {
   display: flex

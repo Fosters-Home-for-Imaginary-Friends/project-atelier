@@ -27,7 +27,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Fit) &&
     <div className="characteristic-container">
-      <section className="body-text"> Fit </section>
+      <span className="body-text"> Fit </span>
       <div className="characteristic-bars-container">
         <div className="char-bar"></div>
         <div className="char-bar"> </div>
