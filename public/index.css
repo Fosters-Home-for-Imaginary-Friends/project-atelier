@@ -118,8 +118,12 @@ span.helpful-answer {
 .overview {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.overview-container {
+  display: flex;
 }
 
 .slogan-container {
@@ -137,9 +141,14 @@ span.helpful-answer {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  width: 54vh;
 }
 
-.overview-images:hover .thumbnails{
+.overview-images-container {
+  display: flex;
+}
+
+.overview-images-container:hover .thumbnails{
   opacity: 100;
   transition: opacity 0.2s ease-in;
 }
@@ -164,7 +173,6 @@ span.helpful-answer {
 
 .image-modal-container .image-modal {
   z-index: 1;
-  /* height: 100%; */
   top: 0;
   background: white;
   display: flex;
@@ -212,11 +220,9 @@ span.helpful-answer {
   flex-direction: column;
   list-style: none;
   background-color: gray;
-  height: 75vh;
-  width: 50vh;
+  height: 81vh;
+  width: 54vh;
   overflow: hidden;
-  /* overflow-y: scroll; */
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -237,22 +243,15 @@ span.helpful-answer {
 
 .image {
   display: list-item;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 75vh;
-  width: 50vh;
+  height: 81vh;
+  width: 54vh;
   list-style: none;
-  scroll-snap-align: start;
-  scroll-behavior: smooth;
-  transition-property: scroll-snap-align;
-  transition-duration: 2s;
   object-fit: cover;
+  scroll-snap-align: start;
+  scroll-snap-type: y mandatory;
 }
 
 .image-bar {
@@ -261,7 +260,7 @@ span.helpful-answer {
 
 .carousel-button {
   position: absolute;
-  width: 50vh;
+  width: 54vh;
   height: 10vh;
   outline: 0;
   border-radius: 0px;
@@ -270,7 +269,7 @@ span.helpful-answer {
 }
 
 .carousel-button.up:hover {
-  background: linear-gradient(180deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
   opacity: 100;
   transition: opacity 0.3s ease-in;
 }
@@ -281,7 +280,7 @@ span.helpful-answer {
 
 .carousel-button.down:hover {
   align-self: flex-end;
-  background: linear-gradient(0deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  background: linear-gradient(0deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
   opacity: 100;
   transition: opacity 0.3s ease-in;
 }
@@ -320,7 +319,7 @@ span.helpful-answer {
   flex-direction: column;
   padding-left: 20px;
   align-self: flex-end;
-  width: 200px;
+  width: 12vw;
 }
 
 .sale-price-container {

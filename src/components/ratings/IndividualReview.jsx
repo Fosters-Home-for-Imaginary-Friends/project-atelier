@@ -81,7 +81,7 @@ let IndividualReview = (props) => {
         <div className="review-body-photos-container">
 
           {photos.map((photo, i) => {
-            return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "z-index" : 25}}/>)
+            return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "zIndex" : 30, "objectFit": "cover"}}/>)
 
           })}
         </div>

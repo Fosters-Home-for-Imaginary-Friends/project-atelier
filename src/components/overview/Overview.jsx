@@ -61,13 +61,15 @@ const Overview = () => {
 
   return (
     <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, showModal, setShowModal, loading }}>
-      <div id="overview" className="overview">
+      <div className="overview">
         {showModal ? <ImageModal /> : null}
-        <section className="overview-images">
-          <ImageCarousel />
-          <ImageBar />
-        </section>
-          <ProductInformation />
+        <div className="overview-container">
+          <section className="overview-images-container">
+            <ImageCarousel />
+            <ImageBar />
+          </section>
+            <ProductInformation />
+        </div>
       </div>
     </OverviewContext.Provider>
   )
