@@ -780,16 +780,16 @@ margin-top: 20px;
   background: rgba(0, 0, 0, 0.7);
 }
 .new-review-container .modal {
-  z-index: 1;
+  z-index: 10;
   width: 75vw;
   height: 80vh;
   background: white;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 5px;
   position: relative;
   animation: animate 0.3s;
+  overflow: auto;
 }
 @keyframes animate {
   from {
@@ -903,12 +903,20 @@ margin-top: 20px;
   column-gap: 20px;
   justify-content: top;
 }
+.new-review-product-recommendation-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .new-review-position {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  position: relative;
-  bottom: 200px;
+  overflow: auto;
+}
+.new-review-characteristic-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .radio-buttons {
   display: flex;
