@@ -53,7 +53,7 @@ body {
   margin: 0;
   padding: 0;
   color: #1f1f1f;
-  background-color: #f1f1f1;
+  background-color: #fff;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -72,12 +72,12 @@ h1 {
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 
 h3 {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 200;
 }
 
@@ -89,11 +89,11 @@ button.info-button {
   border-radius: 0px;
   border-width: 1px;
   background-color: #1f1f1f;
-  color: #f1f1f1;
+  color: #fff;
 }
 
 section.body-text {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 200;
 }
 
@@ -542,75 +542,112 @@ button.add {
 /*-------------------- Related Products and Outfit List --------------------*/
 /*-------------------- Related Products and Outfit List --------------------*/
 
+h3.related-title {
+  position: relative;
+  left: 50px;
+}
+
 /*---------- Product Lists ----------*/
 .product-list {
-  width: 820px;
-  height: 370px;
+  display: flex;
+  flex-direction: column;
+  width: calc(56.5vh + 12vw + 161px);
   margin: auto;
 }
+
 .carousel-container {
-  height: 340px;
-  position: relative;
-  display:inline-flex;
+  display: inline-flex;
+  overflow: hidden;
 }
+
 .carousel-viewport {
-  width: 720px;
-  height: 340px;
-  margin: auto;
-  overflow-x: hidden;
-  margin: auto;
+  overflow: hidden;
+  width: calc(56.5vh + 12vw + 81px);
 }
+
 .carousel {
-  display:inline-flex;
+  display: inline-flex;
 }
+
 .arrow {
-  width: 45px;
-  height: 30px;
+  width: 40px;
+  height: 100%;
   margin: auto;
+  outline: 0;
+  border-radius: 0px;
+  border: none;
+  background: none;
 }
 
 /*---------- Product Card ----------*/
 .product-card {
+  display: flex;
+  flex-direction: column;
   background-color: grey;
-  width: 200px;
-  height: 300px;
-  margin: 20px;
+  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
+  width: calc((56.5vh + 12vw + 21px) / 3);
+  margin: 10px;
   justify-content: flex-start;
-}
-.card-top {
-  position: relative;
-  width: 200px;
-  height: 180px;
-  background-color: grey;
-}
-.related-image {
-  width: 200px;
-  height: 180px;
-  position: absolute;
   object-fit: cover;
 }
-.card-bot {
-  height: 40%;
+
+.card-top {
+  height: 100%;
+  background-color: grey;
+  object-fit: cover;
+  overflow: hidden;
   position: relative;
-  background-color: white;
 }
+
+.related-image {
+  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5));
+  width: calc((56.5vh + 12vw + 21px) / 3);
+  object-fit: cover;
+}
+
+.related-image.no-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  height: 100%;
+  width: 100%;
+  color: #1f1f1f;
+}
+
+.card-bot {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 12px;
+  height: 15vh;
+  background-color: #fff;
+}
+
 .action-button {
-  right: 0;
+  align-self: flex-start;
+  justify-self: flex-end;
   position: absolute;
+  top: 10px;
+  right: 10px;
   z-index: 9;
 }
+
 .compare-button {
   color: gold;
 }
+
 .remove-button {
   color: red;
 }
+
 #add-card {
-  background-color: grey;
+  background-color: #f1f1f1;
   display: flex;
 }
+
 #add-button {
-  color: white;
+  color: #1f1f1f;
   justify-content: center;
   margin: auto;
   padding: auto;
@@ -1020,6 +1057,7 @@ margin-top: 20px;
 }
 .average-star-container {
   display: flex;
+  justify-self: end;
 }
 .star-container {
   display: flex;
