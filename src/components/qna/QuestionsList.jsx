@@ -51,7 +51,7 @@ const QuestionsList = (props) => {
   };
 
   return(
-    <div>
+    <div className="questions-container">
       <div className="questions-list">
         {qnaList.map((product) =>
           <Question data={product} key={product.question_id}/>
@@ -59,12 +59,12 @@ const QuestionsList = (props) => {
       </div>
       <div className="questions-buttons">
         {extra &&
-        <button
+        <button className="questions"
           onClick={() => {
             handleMoreClick()
           }}
         >More Answered Questions</button>}
-        <button onClick={openModal}>Add a Question</button>
+        <button onClick={openModal} className="questions">Add a Question</button>
         {showModal ? <AddQuestionModal setShowModal={setShowModal}/> : null}
       </div>
     </div>

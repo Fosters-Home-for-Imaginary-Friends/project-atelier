@@ -93,18 +93,18 @@ button.info-button {
 }
 
 section.body-text {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 200;
 }
 
 span.user-data {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 300;
   color: rgb(150, 150, 150)
 }
 
 span.helpful-answer {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 300;
   color: rgb(100, 100, 100)
 }
@@ -764,61 +764,96 @@ Start of Questions and Answers
 **/
 .qna-container {
   display: flex;
-  /* height: 275px;
-  width: 925px; */
   flex-direction: column;
-  column-gap: 20px;
+  align-items: center;
+  position: relative;
+  width: calc(56.5vh + 12vw + 81px);
   margin: auto;
-  margin-bottom: 30px;
-  width: 925px;
+  margin-top: 50px;
 }
+
+.qna-title {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
+  left: 10px;
+}
+
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .questions-list {
-  margin: 30px;
   display: flex;
   flex-direction: column;
   max-height: 50vh;
   overflow: auto;
+  width: calc(56.5vh + 12vw + 61px);
 }
+
 .question-head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .answer {
   display: flex;
   flex-direction: column;
-  margin: 7px;
 }
+
 .answer-list {
-  margin-left: 7px;
+  margin-bottom: 20px;
 }
+
 .answer-head {
   flex-direction: row;
   display: flex;
   align-items: center;
+  margin-top: 12px;
 }
+
 .answer-details {
   margin-left: 20px;
 }
+
 h2.answer-heading {
   margin-right: 7px;
 }
+
 h3.answer-list {
   margin: 10px;
 }
+
 .search-bar {
   margin-top: 20px;
-  width: 100%;
+  width: calc(56.5vh + 12vw + 161px);
   height: 35px;
 }
+
 .questions-buttons {
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+  align-self: flex-start;
 }
+
+button.questions {
+  outline: 0;
+  border: 0;
+  width: 200px;
+  height: 50px;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+}
+
 a.helpful:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
+
 #add-question-modal .add-question-container {
   position: fixed;
   top: 0;
@@ -831,6 +866,7 @@ a.helpful:hover {
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .add-question-container .modal {
   z-index: 1;
   width: 350px;
@@ -843,6 +879,7 @@ a.helpful:hover {
   position: relative;
   animation: animate 0.3s;
 }
+
 .modal button {
   position: absolute;
   top: 7px;
@@ -856,6 +893,7 @@ a.helpful:hover {
   border-radius: 2px;
   cursor: pointer;
 }
+
 @keyframes animate {
   from {
     transform: scale(0.5);
@@ -864,6 +902,7 @@ a.helpful:hover {
     transform: scale(1);
   }
 }
+
 /* #newReview .new-review-container {
   position: fixed;
   top: 0;
