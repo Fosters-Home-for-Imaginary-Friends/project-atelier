@@ -558,6 +558,8 @@ h3.related-title {
 .carousel-container {
   display: inline-flex;
   overflow: hidden;
+  justify-content: center;
+  position: relative;
 }
 
 .carousel-viewport {
@@ -577,6 +579,7 @@ h3.related-title {
   border-radius: 0px;
   border: none;
   background: none;
+  color: #1f1f1f;
 }
 
 /*---------- Product Card ----------*/
@@ -634,11 +637,21 @@ h3.related-title {
 }
 
 .compare-button {
-  color: gold;
+  color: #fff
+}
+
+.compare-button:hover {
+  color: rgb(212, 175, 55);
+  transition: color 0.2s ease-in;
 }
 
 .remove-button {
-  color: red;
+  color: #fff;
+}
+
+.remove-button:hover {
+  color: rgb(130, 15, 15);
+  transition: color 0.2s ease-in;
 }
 
 #add-card {
@@ -655,59 +668,83 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  border-radius: 10px;
-  border: 2px solid black;
+  top: 10px;
+  border: 1px solid #1f1f1f;
   z-index: 10;
   background-color: white;
   color: black;
-  width: 400px;
-  height: 300px;
+  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
+  width: calc(56.5vh + 12vw + 61px);
   animation: compare-modal-animation 0.3s;
 }
+
 .modal-header {
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
   height: 20px;
   padding: auto;
   margin: 10px;
 }
+
 .modal-title {
   float: left;
 }
+
 .modal-button {
-  float: right;
+  position: relative;
+  right: 0;
+  border: none;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  font-style: normal;
 }
+
 .feature-container {
-  margin: auto;
-  width: 385px;
-  height: 255px;
-  overflow: scroll;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 5vh;
+  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh - 40px);
+  width: calc(56.5vh + 12vw + 61px);
 }
-.feature-table {
-  margin: auto;
-}
+
 tr {
   border-bottom: 1px solid black;
 }
+
 th, td {
-  width: 140px;
-  vertical-align: middle;
+  width: 12vw;
+  vertical-align: bottom;
   padding: 5px;
 }
+
 th {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 500;
 }
+
 td {
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 200;
 }
+
 .left {
   text-align: left;
 }
+
 .right {
   text-align: right;
 }
+
 .center {
   text-align: center;
+  font-weight: 300;
+  width: 6vw;
 }
 
 @keyframes compare-modal-animation {
