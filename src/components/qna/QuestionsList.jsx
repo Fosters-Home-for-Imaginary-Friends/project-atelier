@@ -63,8 +63,8 @@ const QuestionsList = (props) => {
           onClick={() => {
             handleMoreClick()
           }}
-        >More Answered Questions</button>}
-        <button onClick={openModal} className="questions">Add a Question</button>
+        >MORE ANSWERED QUESTIONS</button>}
+        <button onClick={openModal} className="questions">ADD A QUESTION</button>
         {showModal ? <AddQuestionModal setShowModal={setShowModal}/> : null}
       </div>
     </div>
