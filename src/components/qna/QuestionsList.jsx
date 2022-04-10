@@ -59,12 +59,12 @@ const QuestionsList = (props) => {
       </div>
       <div className="questions-buttons">
         {extra &&
-        <button className="questions"
+        <button className="info-button more-questions"
           onClick={() => {
             handleMoreClick()
           }}
         >MORE ANSWERED QUESTIONS</button>}
-        <button onClick={openModal} className="questions">ADD A QUESTION</button>
+        <button onClick={openModal} className="info-button add-question">ADD A QUESTION</button>
         {showModal ? <AddQuestionModal setShowModal={setShowModal}/> : null}
       </div>
     </div>

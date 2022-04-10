@@ -60,7 +60,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
           </div> :
           <section className="body-text price">{styleData.current.originalPrice} USD</section>
         }
-        <div className="average-star-container">
+        <div className="average-star-container product-stars">
           {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
         </div>
       </div>

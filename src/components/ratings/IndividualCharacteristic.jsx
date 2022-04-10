@@ -18,10 +18,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Size.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Too Small</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
-      <span className="char-qualities helpful-answer">Too Big</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Too Small</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
+        <span className="char-qualities helpful-answer">Too Big</span>
       </div>
     </div>}
 
@@ -34,10 +34,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Fit.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Too Tight</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
-      <span className="char-qualities helpful-answer">Too Long</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Too Tight</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
+        <span className="char-qualities helpful-answer">Too Long</span>
       </div>
     </div>}
 
@@ -50,10 +50,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Width.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Too Narrow</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
-      <span className="char-qualities helpful-answer">Too Wide</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Too Narrow</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
+        <span className="char-qualities helpful-answer">Too Wide</span>
       </div>
     </div>}
 
@@ -66,10 +66,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Comfort.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Uncomfortable</span>
-      <span className="char-qualities helpful-answer">Ok</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Uncomfortable</span>
+        <span className="char-qualities helpful-answer">Ok</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
       </div>
     </div>}
 
@@ -82,10 +82,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Quality.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Poor</span>
-      <span className="char-qualities helpful-answer">Ok</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Poor</span>
+        <span className="char-qualities helpful-answer">Ok</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
       </div>
     </div>}
 
@@ -98,10 +98,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"> </div>
         <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Length.value * 80}px)`}}/>
       </div>
-      <div>
-      <span className="char-qualities helpful-answer">Too Short</span>
-      <span className="char-qualities helpful-answer">Perfect</span>
-      <span className="char-qualities helpful-answer">Too Long</span>
+      <div className="qualities-container">
+        <span className="char-qualities helpful-answer">Too Short</span>
+        <span className="char-qualities helpful-answer">Perfect</span>
+        <span className="char-qualities helpful-answer">Too Long</span>
       </div>
     </div>}
 

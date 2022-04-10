@@ -64,19 +64,19 @@ let IndividualReview = (props) => {
   //returns individual review to the reviewlist.jsx
   return (
     <div className= "individual-review-container">
-        <div className="individual-review-element-conatainers">
+        <div className="individual-review-element-containers">
           <div className="Individual-review-stars-container">
           <IndividualReviewStars fill= {rating}/>
           </div>
           <div className="username-date-container">
-            <h3 className= "review-username-date"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </h3>
+            <span className= "review-username-date user-data"> {reviewer_name} {moment(date).format('MMMM Do YYYY')} </span>
           </div>
         </div>
-        <div className="individual-review-element-conatainers">
-          <span className= "review-summary user-data"> {summary}</span>
+        <div className="individual-review-element-containers">
+          <h2 className= "review-summary"> {summary}</h2>
         </div>
-        <div className="individual-review-element-conatainers">
-          <section className= "review-body body-text"> {body} </section>
+        <div className="individual-review-element-containers">
+          <section className= "body-text"> {body} </section>
         </div>
         <div className="review-body-photos-container">
 

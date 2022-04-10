@@ -11,14 +11,11 @@ let RatingsBreakdown = (props) => {
 
   return (
     <div className= "rating-breakdown-container">
-      <div className= "rating-breakdown-title">
-        <span className="helpful-answer"> Ratings and Reviews</span>
-      </div>
-      <div>
+      <div className="percent-recommend">
         <section className="body-text">100% of reviews recommend this product. </section>
       </div>
       <div className="rating-and-stars">
-      <h3> {averageRating}</h3>
+      <h1 className="average-rating"> {averageRating}</h1>
       <div className="ratings-breakdown-avg-stars-container">
         <AverageStars averageRating= {averageRating}/>
       </div>
@@ -26,7 +23,7 @@ let RatingsBreakdown = (props) => {
       <div className="bar-graph-container">
         <BarGraph metaRating={metaRating} totalReviews={totalReviews}/>
       </div>
-      <div className="characteristics-container">
+      <div className="overall-characteristics-container">
         <Characteristics />
       </div>
     </div>
