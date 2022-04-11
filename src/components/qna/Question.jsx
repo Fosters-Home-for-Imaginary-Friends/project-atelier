@@ -24,7 +24,7 @@ const Question = (props) => {
       {/* Add Answer Link */}
       {/* Answer List */}
       <div>
-        <AnswersList data={props.data.answers}/>
+        <AnswersList data={props.data.answers} sortData={props.sortData}/>
       </div>
       {/* More answers button */}
     </div>
