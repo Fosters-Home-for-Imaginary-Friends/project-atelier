@@ -24,7 +24,7 @@ const Overview = () => {
   const { productId } = useContext(AppContext);
 
   const getProductData = () => {
-    getProduct(40344)
+    getProduct(productId)
       .then((response) => {
         setProduct(response);
         return response.id;
