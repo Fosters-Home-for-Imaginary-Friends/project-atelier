@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import StyleSelector from './StyleSelector.jsx';
 import SizeSelector from './SizeSelector.jsx';
+import QuantitySelector from './QuantitySelector.jsx';
 import { OverviewContext } from "./Overview.jsx";
 import { postCart } from '../../helpers.js';
 
@@ -25,6 +26,7 @@ const ProductInformation = () => {
       }
       <StyleSelector />
       <SizeSelector />
+      <QuantitySelector />
       <div>
         <button className="info-button add" onClick={() => postCart(currentSize)}>ADD TO BAG</button>
       </div>

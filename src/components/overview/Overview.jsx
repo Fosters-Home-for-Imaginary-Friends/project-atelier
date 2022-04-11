@@ -14,6 +14,7 @@ const Overview = () => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSize, setCurrentSize] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [previousPhoto, setPreviousPhoto] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -23,7 +24,7 @@ const Overview = () => {
   const { productId } = useContext(AppContext);
 
   const getProductData = () => {
-    getProduct(productId)
+    getProduct(40344)
       .then((response) => {
         setProduct(response);
         return response.id;
@@ -60,7 +61,7 @@ const Overview = () => {
   }, [productId]);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, showModal, setShowModal, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, quantity, setQuantity, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, showModal, setShowModal, loading }}>
       <div className="overview">
         {showModal ? <ImageModal /> : null}
         <div className="overview-container">
