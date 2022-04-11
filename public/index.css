@@ -364,6 +364,10 @@ button.modal-image.right:hover {
   padding-bottom: 5px;
 }
 
+.thumbnail.false {
+  opacity: 50%;
+}
+
 
 /* ----- PRODUCT INFO ----- */
 
