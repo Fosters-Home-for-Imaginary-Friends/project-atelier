@@ -8,7 +8,7 @@ import {AppContext} from '../App.jsx';
 
 const ProductCard = React.memo(function ProductCard({product_id, related}) {
   const [cardData, setCardData] = useState({});
-  const {productData} = useContext(AppContext);
+  const {productData, setProductData} = useContext(AppContext);
 
   useEffect(() => {
     if (product_id === productData.id) {
@@ -31,8 +31,14 @@ const ProductCard = React.memo(function ProductCard({product_id, related}) {
 
   const averageRating = useMemo(() => getAverageRating(cardData.reviewData), [cardData]);
 
+  const handleCardClick = () => {
+    if (cardData.productData.id !== productData.id) {
+      setProductData(cardData.productData);
+    }
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleCardClick}>
       {cardData.productData ?
       <React.Fragment>
         <div className="card-top">

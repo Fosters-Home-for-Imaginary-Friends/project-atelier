@@ -19,7 +19,7 @@ const App = () => {
   }, []);
 
   return (
-    <AppContext.Provider value={{productId, setProductId, productData}}>
+    <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
       <Overview />
       <RelatedProducts />
       <OutfitList />
