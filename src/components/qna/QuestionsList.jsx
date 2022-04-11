@@ -53,8 +53,8 @@ const QuestionsList = (props) => {
   return(
     <div className="questions-container">
       <div className="questions-list">
-        {qnaList.map((product) =>
-          <Question data={product} key={product.question_id}/>
+        {qnaList.map((product, index) =>
+          <Question data={product} key={`${product.question_id}.${index}`}/>
         )}
       </div>
       <div className="questions-buttons">
