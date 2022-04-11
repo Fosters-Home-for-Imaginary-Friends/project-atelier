@@ -306,7 +306,7 @@ button.modal-image.left {
 }
 
 button.modal-image.left:hover {
-  background: linear-gradient(90deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
   cursor: w-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
@@ -318,7 +318,7 @@ button.modal-image.right {
 }
 
 button.modal-image.right:hover {
-  background: linear-gradient(-90deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  background: linear-gradient(-90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
   cursor: e-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
