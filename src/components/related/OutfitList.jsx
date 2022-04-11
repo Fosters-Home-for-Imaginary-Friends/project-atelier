@@ -17,7 +17,7 @@ const OutfitList = () => {
     <div className="product-list" id="outfit-list">
       <h3 className="related-title">YOUR OUTFIT</h3>
       <OutfitContext.Provider value={{outfitList, setOutfitList}}>
-        <CardCarousel />
+        <CardCarousel related={false} length={outfitList.length} />
       </OutfitContext.Provider>
     </div>
   );

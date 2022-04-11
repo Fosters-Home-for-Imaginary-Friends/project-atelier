@@ -24,7 +24,7 @@ const RelatedProducts = () => {
     <div className="product-list" id="related-list">
       <h3 className="related-title">RELATED PRODUCTS</h3>
       <RelatedContext.Provider value={{relatedList, setRelatedList}}>
-        <CardCarousel related={true} />
+        <CardCarousel related={true} length={relatedList.length} />
       </RelatedContext.Provider>
     </div>
   );
