@@ -12,7 +12,10 @@ let RatingsBreakdown = (props) => {
   return (
     <div className= "rating-breakdown-container">
       <div className= "rating-breakdown-title">
-        <h3> Ratings and Reviews</h3>
+        <span className="helpful-answer"> Ratings and Reviews</span>
+      </div>
+      <div>
+        <section className="body-text">100% of reviews recommend this product. </section>
       </div>
       <div className="rating-and-stars">
       <h3> {averageRating}</h3>

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AnswersList from './AnswersList.jsx';
+import { AddAnswer } from './AddAnswer.jsx';
 
 const Question = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  }
+
   return (
     <div>
       <div className="question-head">
@@ -9,8 +16,9 @@ const Question = (props) => {
         {/* Helpful Link */}
         <span className="helpful-answer">
           Helpful? <a className="helpful">Yes</a>{' '}
-          ({props.data.question_helpfulness}) | <a className="helpful">Add Answer</a>
+          ({props.data.question_helpfulness}) | <a className="helpful" onClick={openModal}>Add Answer</a>
         </span>
+        {showModal ? <AddAnswer setShowModal={setShowModal}/> : null}
       </div>
       {/* Question */}
       {/* Add Answer Link */}

@@ -69,7 +69,7 @@ let ReviewList = () => {
 return (
   <div className= "review-list-container">
     <div className="total-reviews-sort-dropdown-container">
-      <span>{`${totalReviews} reviews, sorted by `}</span>
+      <span className="user-data">{`${totalReviews} reviews, sorted by `}</span>
       <SortDropdown id="sort-dropdown" sortChange={sortChange} />
     </div>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}
