@@ -31,7 +31,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related}) {
 
   const averageRating = useMemo(() => getAverageRating(cardData.reviewData), [cardData]);
 
-  const handleCardClick = () => {
+  const handleCardClick = (e) => {
     if (cardData.productData.id !== productData.id) {
       setProductData(cardData.productData);
     }

@@ -4,7 +4,7 @@ import AddProductCard from './AddProductCard.jsx';
 import {OutfitContext} from './OutfitList.jsx';
 import {RelatedContext} from './RelatedProducts.jsx';
 
-const RelatedCards = React.memo(function RelatedCards() {
+const RelatedCards = function RelatedCards() {
   const {relatedList} = useContext(RelatedContext);
 
   return (
@@ -12,9 +12,9 @@ const RelatedCards = React.memo(function RelatedCards() {
     {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} />)}
   </div>
   );
-});
+};
 
-const OutfitCards = React.memo(function OutfitCards() {
+const OutfitCards = function OutfitCards() {
   const {outfitList, setOutfitList} = useContext(OutfitContext);
 
   return (
@@ -23,6 +23,6 @@ const OutfitCards = React.memo(function OutfitCards() {
       .concat(outfitList.map((id) => <ProductCard key={id} product_id={id} related={false}  />))}
     </div>
   );
-});
+};
 
 export {RelatedCards, OutfitCards};

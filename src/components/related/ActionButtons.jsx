@@ -9,7 +9,8 @@ import {AppContext} from '../App.jsx';
 const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => {
+  const toggleModal = (e) => {
+    e.stopPropagation();
     setModal(() => modal ? false : true);
   }
 
@@ -25,7 +26,8 @@ const RemoveButton = () => {
   const {productData} = useContext(AppContext);
   const {setOutfitList} = useContext(OutfitContext);
 
-  const removeCard = () => {
+  const removeCard = (e) => {
+    e.stopPropagation();
     setOutfitList((prev) => {
       let newState = prev.filter((id) => {
         return productData.id !== id;
