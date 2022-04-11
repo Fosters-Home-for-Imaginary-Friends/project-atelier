@@ -5,6 +5,7 @@ import { OverviewContext } from "./Overview.jsx";
 const ImageModal = () => {
 
   const imageModalRef = useRef(null);
+  const imageRef = useRef(null);
 
   const { setShowModal, currentStyle, currentPhoto, loading } = useContext(OverviewContext);
   const [top, setTop] = useState(0);
@@ -13,14 +14,15 @@ const ImageModal = () => {
 
   const handlePosition = (e) => {
     const container = imageModalRef.current.getBoundingClientRect();
-    setYPosition(e.clientY * (((height * 2) - e.clientY) / container.height))
+    setYPosition(e.clientY * ((height - container.height) / container.height))
   }
 
   if (imageModalRef.current && !height) {
     setHeight(imageModalRef.current.scrollHeight)
   }
+
   useLayoutEffect(() => {
-    setHeight(imageModalRef.current.scrollHeight)
+    setHeight(imageRef.current.scrollHeight)
   }, [loading, setShowModal])
 
   useEffect(() => {
@@ -35,10 +37,9 @@ const ImageModal = () => {
   return ReactDom.createPortal(
     <div id="image-modal-container" className="image-modal-container" ref={imageModalRef}>
       <div className="image-modal">
-        <img
+        <img ref={imageRef}
           src={currentStyle.photos[currentPhoto].url}
           onClick={() => handleClick()} className="image-modal-image"
-          // onMouseOver={(e) => handlePosition(e)}
           onMouseMove={(e) => handlePosition(e)}
           style = {{top}}
         />
