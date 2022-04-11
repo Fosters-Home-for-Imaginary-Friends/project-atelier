@@ -31,8 +31,18 @@ const ProductInformation = () => {
         <section className="body-text price">{product.default_price} USD</section>
       }
       <div className="social-media-container">
-        <SiFacebook className="social-media-icon" />
-        <SiTwitter className="social-media-icon" />
+        <a
+          href="https://facebook.com/sharer/sharer.php?"
+          rel="noopener noreferrer"
+          target="_blank">
+          <SiFacebook className="social-media-icon" />
+        </a>
+        <a
+          href="https://twitter.com/intent/tweet"
+          rel="noopener noreferrer"
+          target="_blank">
+          <SiTwitter className="social-media-icon" />
+        </a>
         <SiPinterest className="social-media-icon" />
         <SiInstagram className="social-media-icon" />
       </div>
