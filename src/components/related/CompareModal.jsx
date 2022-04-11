@@ -1,22 +1,14 @@
-import React, {useRef, useContext, useState, useEffect} from 'react';
+import React, {useRef, useContext, useMemo} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
 import {generateKey, getFeatures} from './RelatedHelpers.js';
-import {getProduct} from '../../helpers.js';
 import {AppContext} from '../App.jsx';
 
-const CompareModal = React.memo (function CompareModal ({card, closeModal}) {
+const CompareModal = React.memo (function CompareModal ({cardData, closeModal}) {
   const modalRef = useRef();
-  const {productId} = useContext(AppContext);
-  const [features, setFeatures] = useState(null);
+  const {productData} = useContext(AppContext);
 
-  useEffect(() => {
-    getProduct(productId)
-      .then((overview) => {
-        setFeatures(getFeatures(overview, card));
-      })
-      .catch((err) => console.error(err));
-  }, [productId]);
+  const features = useMemo(() => getFeatures(productData, cardData), [productData, cardData])
 
   return ReactDom.createPortal(
     <div className="compare-modal-container" ref={modalRef}>
@@ -25,7 +17,7 @@ const CompareModal = React.memo (function CompareModal ({card, closeModal}) {
         <button onClick={closeModal} className="modal-button">X</button>
       </div>
       <div className="feature-container">
-        {features ? <table className="feature-table">
+        <table className="feature-table">
           <thead>
             <tr>
               <th className="left">{features.currentName}</th>
@@ -34,7 +26,7 @@ const CompareModal = React.memo (function CompareModal ({card, closeModal}) {
             </tr>
           </thead>
           <ModalTableBody features={features.features} />
-        </table> : <h1>LOADING</h1>}
+        </table>
       </div>
     </div>,
     document.getElementById("modal")

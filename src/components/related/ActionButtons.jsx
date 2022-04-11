@@ -1,10 +1,10 @@
-import React, {useState, useMemo, useContext, useEffect} from 'react';
+import React, {useState} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 
-const CompareButton = ({card}) => {
+const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -14,7 +14,7 @@ const CompareButton = ({card}) => {
   return (
     <div className="compare-button action-button">
       <AiOutlineStar size={25} onClick={toggleModal} />
-      {modal ? <CompareModal card={card} closeModal={toggleModal} /> : null }
+      {modal ? <CompareModal cardData={cardData} closeModal={toggleModal} /> : null }
     </div>
   );
 };

@@ -11,7 +11,7 @@ export const AppContext = createContext({});
 const App = () => {
 
   const [productId, setProductId] = useState(40344);
-  const [productData, setProductData] = useState(null);
+  const [productData, setProductData] = useState({});
 
   useEffect(() => {
     getProduct(40344)

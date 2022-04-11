@@ -1,11 +1,9 @@
-import React, {useRef, useEffect, useState, useMemo, useCallback} from 'react';
-import {getRelated} from '../../helpers.js';
+import React, {useRef, useEffect, useState} from 'react';
 import {ProductCard, AddProductCard} from './ProductCards.jsx';
 import {getCookie} from '../../Cookies.js';
-import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
 
-const CardCarousel = ({product_id, related}) => {
+const CardCarousel = ({product_id, related, list}) => {
   const carouselRef = useRef(null);
 
   //These functions scroll the content within the carousel-viewport div
@@ -26,27 +24,18 @@ const CardCarousel = ({product_id, related}) => {
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
       <button onClick={scrollLeft} className="arrow"><AiOutlineDoubleLeft /></button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
-        {related ? <RelatedCards product_id={product_id} /> : <OutfitCards product_id={product_id} />}
+        {related ? <RelatedCards list={list} /> : <OutfitCards product_id={product_id} />}
       </div>
       <button onClick={scrollRight} className="arrow"><AiOutlineDoubleRight /></button>
     </div>
   );
 };
 
-const RelatedCards = React.memo(function RelatedCards({product_id}) {
-  const [relatedList, setRelatedList] = useState([]);
-
-  useEffect(() => {
-    getRelated(product_id)
-      .then((data) => {
-        setRelatedList(data);
-      })
-      .catch((err) => console.error(err));
-  }, [product_id]);
+const RelatedCards = React.memo(function RelatedCards({list}) {
 
   return (
   <div className="carousel"> {/* The part that scrolls when you press a button */}
-    {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} />)}
+    {list.map((id) => <ProductCard key={id} product_id={id} related={true} />)}
   </div>
   );
 });

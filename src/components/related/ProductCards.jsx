@@ -1,7 +1,7 @@
 import React, {useMemo, useRef, useEffect, useState} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
-import {getAverageRating, getProductInfo, generateKey} from './RelatedHelpers.js';
+import {getAverageRating} from './RelatedHelpers.js';
 import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
@@ -43,7 +43,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
       {loadState ?
       <React.Fragment>
         <div className="card-top">
-        {related ? <CompareButton card={productInfo.current} /> :
+        {related ? <CompareButton cardData={productInfo.current} /> :
         <RemoveButton setState={setState} product_id={product_id} />}
         {!styleData.current.image ?
         <div className="related-image no-image">NO IMAGE</div> :
