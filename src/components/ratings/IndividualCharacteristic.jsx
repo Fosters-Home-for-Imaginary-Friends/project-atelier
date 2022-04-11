@@ -27,7 +27,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Fit) &&
     <div className="characteristic-container">
-      <span className="body-text"> Fit </span>
+      <section className="body-text"> Fit </section>
       <div className="characteristic-bars-container">
         <div className="char-bar"></div>
         <div className="char-bar"> </div>
@@ -43,7 +43,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Width) &&
     <div className="characteristic-container">
-      <span className="body-text"> Width </span>
+      <section className="body-text"> Width </section>
       <div className="characteristic-bars-container">
         <div className="char-bar"></div>
         <div className="char-bar"> </div>
@@ -59,7 +59,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Comfort) &&
     <div className="characteristic-container">
-      <span className="body-text"> Comfort </span>
+      <section className="body-text"> Comfort </section>
       <div className="characteristic-bars-container">
         <div className="char-bar"></div>
         <div className="char-bar"> </div>
@@ -75,7 +75,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Quality) &&
     <div className="characteristic-container">
-      <span className="body-text"> Quality </span>
+      <section className="body-text"> Quality </section>
       <div className="characteristic-bars-container">
         <div className="char-bar "></div>
         <div className="char-bar"> </div>
@@ -91,7 +91,7 @@ let IndividualCharacteristic = (props) => {
 
     {(char.Length) &&
     <div className="characteristic-container">
-      <span className="body-text"> Length </span>
+      <section className="body-text"> Length </section>
       <div className="characteristic-bars-container">
         <div className="char-bar"></div>
         <div className="char-bar"> </div>

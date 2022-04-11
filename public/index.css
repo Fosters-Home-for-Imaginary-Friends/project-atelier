@@ -91,7 +91,7 @@ button.info-button {
   background-color: #1f1f1f;
   color: #fff;
   height: 40px;
-  width: 12vw;
+  width: 18vw;
   cursor: pointer;
   margin-right: 20px;
 }
@@ -146,7 +146,6 @@ span.helpful-answer {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  width: 54vh;
 }
 
 .overview-images-container {
@@ -229,6 +228,8 @@ span.helpful-answer {
   width: 54vh;
   overflow: hidden;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: start;
 }
 
 .image-carousel::-webkit-scrollbar {
@@ -324,7 +325,7 @@ span.helpful-answer {
   flex-direction: column;
   padding-left: 20px;
   align-self: flex-end;
-  width: 12vw;
+  width: 18vw;
 }
 
 .sale-price-container {
@@ -551,7 +552,7 @@ h3.related-title {
 .product-list {
   display: flex;
   flex-direction: column;
-  width: calc(56.5vh + 12vw + 161px);
+  width: calc(56.5vh + 18vw + 161px);
   margin: auto;
 }
 
@@ -564,7 +565,7 @@ h3.related-title {
 
 .carousel-viewport {
   overflow: hidden;
-  width: calc(56.5vh + 12vw + 81px);
+  width: calc(56.5vh + 18vw + 81px);
 }
 
 .carousel {
@@ -587,8 +588,8 @@ h3.related-title {
   display: flex;
   flex-direction: column;
   background-color: grey;
-  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
-  width: calc((56.5vh + 12vw + 21px) / 3);
+  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh);
+  width: calc((56.5vh + 18vw + 21px) / 3);
   margin: 10px;
   justify-content: flex-start;
   object-fit: cover;
@@ -603,8 +604,8 @@ h3.related-title {
 }
 
 .related-image {
-  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5));
-  width: calc((56.5vh + 12vw + 21px) / 3);
+  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5));
+  width: calc((56.5vh + 18vw + 21px) / 3);
   object-fit: cover;
 }
 
@@ -680,8 +681,8 @@ h3.related-title {
   z-index: 10;
   background-color: white;
   color: black;
-  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
-  width: calc(56.5vh + 12vw + 61px);
+  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh);
+  width: calc(56.5vh + 18vw + 61px);
   animation: compare-modal-animation 0.3s;
 }
 
@@ -713,8 +714,8 @@ h3.related-title {
   align-items: flex-start;
   justify-content: center;
   margin-top: 5vh;
-  height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh - 40px);
-  width: calc(56.5vh + 12vw + 61px);
+  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh - 40px);
+  width: calc(56.5vh + 18vw + 61px);
 }
 
 tr {
@@ -771,7 +772,7 @@ Start of Questions and Answers
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: calc(56.5vh + 12vw + 81px);
+  width: calc(56.5vh + 18vw + 81px);
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -795,9 +796,9 @@ Start of Questions and Answers
 .questions-list {
   display: flex;
   flex-direction: column;
-  max-height: 50vh;
+  max-height: 60vh;
   overflow: auto;
-  width: calc(56.5vh + 12vw + 61px);
+  width: calc(56.5vh + 18vw + 61px);
 }
 
 .question-head {
@@ -836,7 +837,7 @@ h3.answer-list {
 
 .search-bar {
   margin-top: 20px;
-  width: calc(56.5vh + 12vw + 161px);
+  width: calc(56.5vh + 18vw + 161px);
   height: 35px;
 }
 
@@ -848,7 +849,7 @@ h3.answer-list {
 button.questions {
   outline: 0;
   border: 0;
-  width: 12vw;
+  width: 18vw;
   height: 50px;
   background-color: #1f1f1f;
   color: #f1f1f1;
@@ -1066,7 +1067,7 @@ a.helpful:hover {
 .review-buttons {
   outline: 0;
   border: 0;
-  width: 12vw;
+  width: 18vw;
   height: 50px;
   background-color: #1f1f1f;
   color: #f1f1f1;
@@ -1209,7 +1210,7 @@ h1.average-rating {
 
 .star-container {
   display: flex;
-  font-size: 25px;
+  font-size: 10px;
 }
 
 .full-star {
@@ -1265,8 +1266,8 @@ h1.average-rating {
 
 .marker {
   position: absolute;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   color: #1f1f1f;
   align-self: flex-start;
   top: -10px;
