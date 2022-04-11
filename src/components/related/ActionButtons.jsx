@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
+import {OutfitContext} from './OutfitList.jsx';
+import {AppContext} from '../App.jsx';
 
 const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
@@ -19,13 +21,14 @@ const CompareButton = ({cardData}) => {
   );
 };
 
-//! Look into map objects
-const RemoveButton = ({setState, product_id}) => {
+const RemoveButton = () => {
+  const {productData} = useContext(AppContext);
+  const {setOutfitList} = useContext(OutfitContext);
 
   const removeCard = () => {
-    setState((prev) => {
+    setOutfitList((prev) => {
       let newState = prev.filter((id) => {
-        return product_id !== id;
+        return productData.id !== id;
       });
 
     if (newState.length > 0) {

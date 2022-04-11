@@ -21,8 +21,8 @@ const App = () => {
   return (
     <AppContext.Provider value={{productId, setProductId, productData}}>
       <Overview />
-      <RelatedProducts product_id={40344} />
-      <OutfitList product_id={40344} />
+      <RelatedProducts />
+      <OutfitList />
       <Qna />
       <Ratings />
     </AppContext.Provider>

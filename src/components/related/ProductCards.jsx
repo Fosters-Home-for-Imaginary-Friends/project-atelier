@@ -1,12 +1,14 @@
-import React, {useMemo, useRef, useEffect, useState} from 'react';
+import React, {useMemo, useRef, useEffect, useState, useContext} from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating} from './RelatedHelpers.js';
 import {setCookie} from '../../Cookies.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
+import {AppContext} from '../App.jsx';
+import {OutfitContext} from './OutfitList.jsx';
 
-const ProductCard = React.memo(function ProductCard({product_id, related, setState}) {
+const ProductCard = React.memo(function ProductCard({product_id, related}) {
   const productInfo = useRef(null);
   const styleData = useRef(null);
   const reviewData = useRef(null);
@@ -44,7 +46,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
       <React.Fragment>
         <div className="card-top">
         {related ? <CompareButton cardData={productInfo.current} /> :
-        <RemoveButton setState={setState} product_id={product_id} />}
+        <RemoveButton />}
         {!styleData.current.image ?
         <div className="related-image no-image">NO IMAGE</div> :
         <img className="related-image" src={styleData.current.image} />
@@ -70,15 +72,17 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
   );
 });
 
-const AddProductCard = ({product_id, setOutfitList}) => {
+const AddProductCard = () => {
+  const {productData} = useContext(AppContext);
+  const {setOutfitList} = useContext(OutfitContext);
 
   // TODO: Notify user that the card is already in their list
   const addProduct = () => {
     setOutfitList((prev) => {
-      if (prev.includes(product_id)) {
+      if (prev.includes(productData.id)) {
         return prev;
       }
-      let newList = prev.concat([product_id]);
+      let newList = prev.concat([productData.id]);
       setCookie("outfitList", JSON.stringify(newList));
       return newList;
     });
