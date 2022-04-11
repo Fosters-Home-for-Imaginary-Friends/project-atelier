@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageBar from "./ImageBar.jsx";
+import ImageModal from "./ImageModal.jsx";
 import ProductInformation from './ProductInformation.jsx';
 import { getProduct, getStyles } from "../../helpers.js";
 import { AppContext } from "../App.jsx";
@@ -14,6 +15,9 @@ const Overview = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSize, setCurrentSize] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [previousPhoto, setPreviousPhoto] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const { productId } = useContext(AppContext);
@@ -36,8 +40,12 @@ const Overview = () => {
           let style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
+            return style;
           }
         }
+      })
+      .then((style) => {
+        setProgress(1 / style.photos.length)
       })
       .then(() => {
         setLoading(false);
@@ -52,13 +60,16 @@ const Overview = () => {
   }, [productId]);
 
   return (
-    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, loading }}>
+    <OverviewContext.Provider value={{ product, productId, styles, currentStyle, setCurrentStyle, currentSize, setCurrentSize, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, progress, setProgress, showModal, setShowModal, loading }}>
       <div className="overview">
-        <section className="overview-images">
-          <ImageCarousel />
-          <ImageBar />
-        </section>
-          <ProductInformation />
+        {showModal ? <ImageModal /> : null}
+        <div className="overview-container">
+          <section className="overview-images-container">
+            <ImageCarousel />
+            <ImageBar />
+          </section>
+            <ProductInformation />
+        </div>
       </div>
     </OverviewContext.Provider>
   )

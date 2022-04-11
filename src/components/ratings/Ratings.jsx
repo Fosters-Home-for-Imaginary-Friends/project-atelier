@@ -83,10 +83,12 @@ let Ratings = () => {
   return (
 <RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
                                  starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
-
   <div className="ratings-reviews-container">
-    <RatingsBreakdown />
-    <ReviewList />
+    <h3 className="ratings-title">RATINGS AND REVIEWS</h3>
+    <div className="breakdown-list-container">
+      <RatingsBreakdown />
+      <ReviewList />
+    </div>
   </div>
 </RatingsContext.Provider>
   );

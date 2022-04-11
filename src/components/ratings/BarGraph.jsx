@@ -27,35 +27,35 @@ let BarGraph = (props) => {
         <section id="5" className="bar-titles body-text" onClick={filterClick}>5 Stars</section>
         <div className="star-bar">
           <div className="bar"></div>
-          <div className="scored-bar" style={{"width": `${fiveStarsPercent * 20}vw`}}></div>
+          <div className="bar scored-bar" style={{"width": `${fiveStarsPercent * 20}vw`}}></div>
         </div>
       </div>
       <div className="graph-title-bar">
         <section id="4" className="bar-titles body-text" onClick={filterClick}>4 Stars</section>
         <div className="star-bar">
           <div className="bar"></div>
-          <div className="scored-bar" style={{"width": `${fourStarsPercent * 20}vw`}}></div>
+          <div className="bar scored-bar" style={{"width": `${fourStarsPercent * 20}vw`}}></div>
         </div>
       </div>
       <div className="graph-title-bar">
         <section id="3"className="bar-titles body-text" onClick={filterClick}>3 Stars</section>
         <div className="star-bar">
           <div className="bar"></div>
-          <div className="scored-bar" style={{"width": `${threeStrsPercent * 20}vw`}}></div>
+          <div className="bar scored-bar" style={{"width": `${threeStrsPercent * 20}vw`}}></div>
         </div>
       </div>
       <div className="graph-title-bar">
         <section id="2" className="bar-titles body-text" onClick={filterClick}>2 Stars</section>
         <div className="star-bar">
           <div className="bar"></div>
-          <div className="scored-bar" style={{"width": `${twoStarsPercent * 20}vw`}}></div>
+          <div className="bar scored-bar" style={{"width": `${twoStarsPercent * 20}vw`}}></div>
         </div>
       </div>
       <div id="one-star-graph" className="graph-title-bar">
         <section id ="1" className="bar-titles body-text" onClick={filterClick}>1 Stars</section>
         <div className="star-bar">
           <div className="bar" ></div>
-          <div className="scored-bar" style={{"width": `${oneStarsPercent * 20}vw`}}></div>
+          <div className="bar scored-bar" style={{"width": `${oneStarsPercent * 20}vw`}}></div>
         </div>
       </div>
 
