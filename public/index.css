@@ -528,7 +528,7 @@ span.helpful-answer {
   box-shadow: 0 0 1px 1px darkgray;
   border-radius: 3px;
   height: 24px;
-  margin: 5px 3px 0 3px;
+  margin: 0px 3px 0 3px;
   cursor: pointer;
 }
 
