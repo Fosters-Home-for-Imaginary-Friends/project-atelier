@@ -21,7 +21,7 @@ const CompareModal = React.memo (function CompareModal ({card, closeModal}) {
   return ReactDom.createPortal(
     <div className="compare-modal-container" ref={modalRef}>
       <div className="modal-header">
-        <h2 className="modal-title">Comparing</h2>
+        <h3 className="modal-title">COMPARING</h3>
         <button onClick={closeModal} className="modal-button">X</button>
       </div>
       <div className="feature-container">
@@ -29,7 +29,7 @@ const CompareModal = React.memo (function CompareModal ({card, closeModal}) {
           <thead>
             <tr>
               <th className="left">{features.currentName}</th>
-              <th></th>
+              <th className="center"></th>
               <th className="right">{features.selectedName}</th>
             </tr>
           </thead>

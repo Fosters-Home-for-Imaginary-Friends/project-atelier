@@ -1,5 +1,4 @@
-import React, { createContext, useState, useMemo, useEffect } from "react";
-import CSSStyles from "./CSSStyles.jsx";
+import React, { createContext, useState, useEffect } from "react";
 import Overview from "./overview/Overview.jsx";
 import RelatedProducts from "./related/RelatedProducts.jsx";
 import OutfitList from './related/OutfitList.jsx';
@@ -20,15 +19,12 @@ const App = () => {
   }, []);
 
   return (
-    <AppContext.Provider value={{productId, productData}}>
-      <div>
-        <Overview />
-        <RelatedProducts product_id={40344} />
-        <OutfitList product_id={40344} />
-        <Qna />
-        <Ratings />
-        <CSSStyles />
-      </div>
+    <AppContext.Provider value={{productId, setProductId, productData}}>
+      <Overview />
+      <RelatedProducts product_id={40344} />
+      <OutfitList product_id={40344} />
+      <Qna />
+      <Ratings />
     </AppContext.Provider>
   );
 }

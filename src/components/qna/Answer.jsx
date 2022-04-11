@@ -10,7 +10,7 @@ const Answer = (props) => {
     <div className='answer'>
       <div className='answer-head'>
         <h2 className="answer-heading">A: </h2>
-        <h3 className="body-text">{props.data.body}</h3>
+        <section className="body-text">{props.data.body}</section>
       </div>
       {/* Date */}
       {/* Helpful Link */}
