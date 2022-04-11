@@ -11,27 +11,47 @@ export const QnaContext = createContext([]);
 const Qna = (props) => {
   const [question, setQuestion] = useState('');
   const [qnaList, setQnaList] = useState([]);
-  const [extra, setExtra] = useState(false);
+  const [extra, setExtra] = useState(true);
   const [init, setInit] = useState([]);
   const {productId} = useContext(AppContext);
   const [page, setPage] = useState(1);
 
+  // useEffect(() => {
+  //   // getQuestions(productId)
+  //   getQuestions(65633)
+  //     .then((res) => {
+  //       // console.log("Get request from QnA");
+  //       let data = res.slice(0, 4);
+  //       // setInit(res.slice(0, 4));
+  //       if (res.length > 4) {
+  //         setExtra(true);
+  //       }
+  //       setInit(data);
+  //       setQnaList(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [])
+
   useEffect(() => {
     // getQuestions(productId)
-    getQuestions(65633)
+    getQuestions(productId, 1, 9999)
       .then((res) => {
-        // console.log("Get request from QnA");
-        let data = res.slice(0, 4);
-        // setInit(res.slice(0, 4));
-        if (res.length > 4) {
-          setExtra(true);
+        let data = sortData(res);
+
+        if (res.length < 4) {
+          setExtra(false);
         }
         setInit(data);
-        setQnaList(data);
+        setQnaList(data.slice(0, 4));
       })
       .catch((err) => console.log(err));
   }, [])
 
+  const sortData = (array) => {
+    return array.sort((a, b) => {
+      return b.helpfulness - a.helpfulness;
+    })
+  }
 
   return (
     <QnaContext.Provider value={{question, setQuestion, qnaList, setQnaList, extra, setExtra, init, setInit}}>
@@ -41,7 +61,7 @@ const Qna = (props) => {
         <Search />
         {/* Questions List */}
         {/* <QuestionsList data={data.results}/> */}
-        <QuestionsList data={init}/>
+        <QuestionsList sortData={sortData}/>
         {/* See more questions button */}
         {/* Add a question button */}
       </div>
