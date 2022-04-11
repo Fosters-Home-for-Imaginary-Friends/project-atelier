@@ -33,6 +33,7 @@ export const AddQuestionModal = ({ setShowModal }) => {
           <span className="user-data">For authentication reasons, you will not be emailed</span>
           <input type="submit" value="Submit Question" />
         </form>
+      </div>
     </div>,
     document.getElementById("add-question-modal")
   )
