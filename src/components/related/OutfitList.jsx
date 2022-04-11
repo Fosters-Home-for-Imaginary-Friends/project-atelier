@@ -1,7 +1,6 @@
 import React, {useEffect, useState, createContext} from 'react';
 import CardCarousel from './CardCarousel.jsx';
 import {getCookie} from '../../Cookies.js';
-
 export const OutfitContext = createContext({});
 
 const OutfitList = () => {
@@ -20,7 +19,6 @@ const OutfitList = () => {
       <OutfitContext.Provider value={{outfitList, setOutfitList}}>
         <CardCarousel />
       </OutfitContext.Provider>
-
     </div>
   );
 };
