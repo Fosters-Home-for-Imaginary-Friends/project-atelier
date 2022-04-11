@@ -98,8 +98,9 @@ button.info-button {
 
 section.body-text {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 18px;
+  color: rgb(50, 50, 50);
 }
 
 span.user-data {
@@ -324,6 +325,7 @@ span.helpful-answer {
   padding-bottom: 5px;
 }
 
+
 /* ----- PRODUCT INFO ----- */
 
 .overview-product-info {
@@ -356,9 +358,27 @@ span.helpful-answer {
 
 .body-text.price {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+/* ----- SOCIAL MEDIA ----- */
+
+.social-media-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 28px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.social-media-icon {
+  display: flex;
+  align-items: center;
+  color: #1f1f1f;
+  margin: 3px;
 }
 
 /* ----- STYLE SELECTOR ----- */
@@ -366,7 +386,6 @@ span.helpful-answer {
 .style-name {
   font-weight: 200;
   font-size: 12px;
-  margin-top: 10px;
 }
 
 .style-selector {
@@ -377,7 +396,6 @@ span.helpful-answer {
   width: 136px;
   margin-top: 5px;
   margin-bottom: 10px;
-  transform: translateX(-3px);
 }
 
 .style-button {

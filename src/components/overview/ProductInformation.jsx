@@ -4,6 +4,7 @@ import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import { OverviewContext } from "./Overview.jsx";
 import { postCart } from '../../helpers.js';
+import { SiFacebook, SiTwitter, SiPinterest, SiInstagram } from 'react-icons/si';
 
 const ProductInformation = () => {
 
@@ -29,6 +30,12 @@ const ProductInformation = () => {
       </div> :
         <section className="body-text price">{product.default_price} USD</section>
       }
+      <div className="social-media-container">
+        <SiFacebook className="social-media-icon" />
+        <SiTwitter className="social-media-icon" />
+        <SiPinterest className="social-media-icon" />
+        <SiInstagram className="social-media-icon" />
+      </div>
       <StyleSelector />
       <SizeSelector />
       <QuantitySelector />
