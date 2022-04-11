@@ -758,24 +758,32 @@ a.helpful:hover {
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
-.add-question-container .modal {
+.add-question-container .question-modal {
   z-index: 1;
-  width: 350px;
-  height: 220px;
+  width: 75vw;
+  height: 60vh;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 5px;
   position: relative;
   animation: animate 0.3s;
 }
-.modal button {
+.question-modal form {
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+  margin: 20px;
+  gap: 10px;
+}
+.question-modal button {
   position: absolute;
   top: 7px;
   right: 7px;
   padding: 8px 11px;
-  background: crimson;
+  background: gray;
   color: white;
   font-weight: bold;
   border: none;
@@ -791,30 +799,7 @@ a.helpful:hover {
     transform: scale(1);
   }
 }
-/* #newReview .new-review-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-}
-.new-review-container .modal {
-  z-index: 1;
-  width: 75vw;
-  height: 80vh;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  position: relative;
-  animation: animate 0.3s;
-} */
+
 /* Start of Ratings/Reviews *****************/
 .ratings-reviews-container {
   display: flex;
