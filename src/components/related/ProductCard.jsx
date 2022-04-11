@@ -1,23 +1,32 @@
-import React, {useMemo, useEffect, useState} from 'react';
+import React, {useMemo, useEffect, useState, useContext} from 'react';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
 import {getAverageRating} from './RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
+import {AppContext} from '../App.jsx';
 
 
 const ProductCard = React.memo(function ProductCard({product_id, related}) {
   const [cardData, setCardData] = useState({});
+  const {productData} = useContext(AppContext);
 
   useEffect(() => {
-    getProduct(product_id)
+    if (product_id === productData.id) {
+      getStyles(product_id)
+        .then((styleData) => getReviewMetadata(product_id)
+          .then((reviewData) => {
+            setCardData({productData: productData, styleData: styleData, reviewData: reviewData.ratings});
+          }))
+        .catch((err) => console.error(err));
+    } else {
+      getProduct(product_id)
       .then((productData) => getStyles(product_id)
         .then((styleData) => getReviewMetadata(product_id)
           .then((reviewData) => {
             setCardData({productData, styleData, reviewData: reviewData.ratings});
           })))
       .catch((err) => console.error(err));
-
-
+    }
   }, [product_id]);
 
   const averageRating = useMemo(() => getAverageRating(cardData.reviewData), [cardData]);
