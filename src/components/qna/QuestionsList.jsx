@@ -4,7 +4,7 @@ import {QnaContext} from './Qna.jsx';
 import {getQuestions} from '../../helpers.js';
 import { AddQuestionModal } from './AddQuestionModal.jsx';
 
-const QuestionsList = (props) => {
+const QuestionsList = ({sortData}) => {
   // let init = props.data.slice(0, 4);
   const {question} = useContext(QnaContext);
   const {qnaList} = useContext(QnaContext);
@@ -12,38 +12,48 @@ const QuestionsList = (props) => {
   const {extra} = useContext(QnaContext);
   const {setExtra} = useContext(QnaContext);
   const {init} = useContext(QnaContext);
-  const {setInit} = useContext(QnaContext);
+  // const {setInit} = useContext(QnaContext);
   const [showModal, setShowModal] = useState(false);
+  const [listSize, setListSize] = useState(4);
 
   // const [init, setInit]= useState(props.data);
   // let init = props.data;
-  const [page, setPage] = useState(3);
+  // const [page, setPage] = useState(3);
 
   useEffect(() => {
     if (question.length > 3) {
       let newList = [];
-      for (let i = 0; i < qnaList.length; i++) {
-        if (qnaList[i].question_body.toLowerCase().indexOf(question.toLowerCase()) !== -1) {
-          newList.push(qnaList[i])
+      for (let i = 0; i < init.length; i++) {
+        if (init[i].question_body.toLowerCase().indexOf(question.toLowerCase()) !== -1) {
+          newList.push(init[i])
         }
       }
-      setQnaList(newList)
+      setQnaList(sortData(newList))
     } else {
-      setQnaList(init);
+      setQnaList(init.slice(0, listSize));
     }
   }, [question])
 
+  // const handleMoreClick = () => {
+  //   getQuestions(65633, page, 2)
+  //     .then((res) => {
+  //       setInit(init.concat(res));
+  //       setPage(page + 1);
+  //       if (res.length < 2) {
+  //         setExtra(false);
+  //       }
+  //       setQnaList(init.concat(res));
+  //     })
+  //     .catch((err) => console.log(err))
+  // }
+
   const handleMoreClick = () => {
-    getQuestions(65633, page, 2)
-      .then((res) => {
-        setInit(init.concat(res));
-        setPage(page + 1);
-        if (res.length < 2) {
-          setExtra(false);
-        }
-        setQnaList(init.concat(res));
-      })
-      .catch((err) => console.log(err))
+    if (qnaList.length !== init.length) {
+      setListSize(listSize + 2);
+      setQnaList(init.slice(0, listSize + 2));
+    } else {
+      setExtra(false);
+    }
   }
 
   const openModal = () => {
@@ -54,7 +64,7 @@ const QuestionsList = (props) => {
     <div className="questions-container">
       <div className="questions-list">
         {qnaList.map((product, index) =>
-          <Question data={product} key={`${product.question_id}.${index}`}/>
+          <Question data={product} key={`${product.question_id}.${index}`} sortData={sortData}/>
         )}
       </div>
       <div className="questions-buttons">

@@ -835,6 +835,11 @@ h3.answer-list {
   margin: 10px;
 }
 
+section.answer-list {
+  margin: 10px;
+  font-weight: bold;
+}
+
 .search-bar {
   margin-top: 20px;
   width: calc(56.5vh + 18vw + 161px);
