@@ -69,7 +69,7 @@ let ReviewList = () => {
 return (
   <div className= "review-list-container">
     <div className="total-reviews-sort-dropdown-container">
-      <span className="user-data">{`${totalReviews} reviews, sorted by `}</span>
+      <h2 className="total-reviews">{`${totalReviews} reviews, sorted by `}</h2>
       <SortDropdown id="sort-dropdown" sortChange={sortChange} />
     </div>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}
@@ -77,13 +77,11 @@ return (
         return <IndividualReview className="individual-review" review={review} key={i}/>
       })}
       <div className="more-review-and-add-reviews">
-      {(moreReviews) && <div className="more-reviews-container">
-       <h2 id="more-reviews-text" onClick= {moreReviewsClick}> More Reviews </h2>
-      </div>}
-      <div className="add-a-review-container">
-        <h2 id="add-a-review-text" onClick={openModal}> Add A Review + </h2>
+        {(moreReviews) &&
+        <button className="info-button more-reviews" onClick={moreReviewsClick}> MORE REVIEWS </button>
+        }
+        <button className="info-button add-review" onClick={openModal}> ADD A REVIEW + </button>
         {showModal ? <NewReview setShowModal={setShowModal}/> : null}
-      </div>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ const OutfitList = ({product_id}) => {
 
   return (
     <div className="product-list" id="outfit-list">
-      <span>Your Outfit</span>
+      <h3 className="related-title">YOUR OUTFIT</h3>
       <CardCarousel product_id={product_id} />
     </div>
   );

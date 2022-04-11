@@ -45,10 +45,13 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
         <div className="card-top">
         {related ? <CompareButton card={productInfo.current} /> :
         <RemoveButton setState={setState} product_id={product_id} />}
+        {!styleData.current.image ?
+        <div className="related-image no-image">NO IMAGE</div> :
         <img className="related-image" src={styleData.current.image} />
+        }
       </div>
       <div className="card-bot">
-        <section className="related-category">{productInfo.current.category}</section>
+        <section className="body-text">{productInfo.current.category}</section>
         <section className="related-name"><h2>{productInfo.current.name}</h2></section>
         {styleData.current.salePrice ?
           <div className="sale-price-container">
@@ -57,7 +60,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setSta
           </div> :
           <section className="body-text price">{styleData.current.originalPrice} USD</section>
         }
-        <div className="average-star-container">
+        <div className="average-star-container product-stars">
           {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
         </div>
       </div>

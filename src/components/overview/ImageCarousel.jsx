@@ -76,13 +76,17 @@ const ImageCarousel = () => {
 
   return (
   <div className="overview-images">
+    {currentPhoto === 0 ? null :
       <button className="carousel-button up" onClick={handleUpClick}></button>
-        <ul id="image-carousel" ref={imageCarouselRef} className="image-carousel">
-          {currentStyle.photos.map((image) =>
-              <Image key={image.url} slide={image}/>
-          )}
-        </ul>
+    }
+      <ul id="image-carousel" ref={imageCarouselRef} className="image-carousel">
+        {currentStyle.photos.map((image) =>
+            <Image key={image.url} slide={image}/>
+        )}
+      </ul>
+    {currentPhoto === currentStyle.photos.length - 1 ? null :
       <button className="carousel-button down" onClick={handleDownClick}></button>
+    }
   </div>
   )
 }

@@ -3,6 +3,7 @@ import {getRelated} from '../../helpers.js';
 import {ProductCard, AddProductCard} from './ProductCards.jsx';
 import {getCookie} from '../../Cookies.js';
 import {CompareButton, RemoveButton} from './ActionButtons.jsx';
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
 
 const CardCarousel = ({product_id, related}) => {
   const carouselRef = useRef(null);
@@ -10,24 +11,24 @@ const CardCarousel = ({product_id, related}) => {
   //These functions scroll the content within the carousel-viewport div
   const scrollLeft = () => {
     carouselRef.current.scrollBy({
-      left: -240,
+      left: -287.61,
       behavior: "smooth"
     });
   }
   const scrollRight = () => {
     carouselRef.current.scrollBy({
-      left: 240,
+      left: 287.61,
       behavior: "smooth"
     });
   }
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <button onClick={scrollLeft} className="arrow">Left</button>
+      <button onClick={scrollLeft} className="arrow"><AiOutlineDoubleLeft /></button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         {related ? <RelatedCards product_id={product_id} /> : <OutfitCards product_id={product_id} />}
       </div>
-      <button onClick={scrollRight} className="arrow">Right</button>
+      <button onClick={scrollRight} className="arrow"><AiOutlineDoubleRight /></button>
     </div>
   );
 };
