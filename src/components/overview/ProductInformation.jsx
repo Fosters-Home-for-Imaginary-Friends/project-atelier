@@ -32,7 +32,7 @@ const ProductInformation = () => {
       }
       <div className="social-media-container">
         <a
-          href="https://facebook.com/sharer/sharer.php?"
+          href="https://facebook.com/"
           rel="noopener noreferrer"
           target="_blank">
           <SiFacebook className="social-media-icon" />
@@ -43,8 +43,18 @@ const ProductInformation = () => {
           target="_blank">
           <SiTwitter className="social-media-icon" />
         </a>
-        <SiPinterest className="social-media-icon" />
-        <SiInstagram className="social-media-icon" />
+        <a
+          href="https://pinterest.com"
+          rel="noopener noreferrer"
+          target="_blank">
+          <SiPinterest className="social-media-icon" />
+        </a>
+        <a
+          href="https://instagram.com"
+          rel="noopener noreferrer"
+          target="_blank">
+          <SiInstagram className="social-media-icon" />
+        </a>
       </div>
       <StyleSelector />
       <SizeSelector />
