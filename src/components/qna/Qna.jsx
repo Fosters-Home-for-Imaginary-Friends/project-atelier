@@ -34,7 +34,7 @@ const Qna = (props) => {
 
   useEffect(() => {
     // getQuestions(productId)
-    getQuestions(productId, 1, 9999)
+    getQuestions(65633, 1, 9999)
       .then((res) => {
         let data = sortData(res);
 

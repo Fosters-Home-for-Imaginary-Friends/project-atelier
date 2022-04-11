@@ -50,7 +50,7 @@ const QuestionsList = ({sortData}) => {
   const handleMoreClick = () => {
     if (qnaList.length !== init.length) {
       setListSize(listSize + 2);
-      setQnaList(init.slice(0, listSize));
+      setQnaList(init.slice(0, listSize + 2));
     } else {
       setExtra(false);
     }
@@ -64,7 +64,7 @@ const QuestionsList = ({sortData}) => {
     <div className="questions-container">
       <div className="questions-list">
         {qnaList.map((product, index) =>
-          <Question data={product} key={`${product.question_id}.${index}`}/>
+          <Question data={product} key={`${product.question_id}.${index}`} sortData={sortData}/>
         )}
       </div>
       <div className="questions-buttons">
