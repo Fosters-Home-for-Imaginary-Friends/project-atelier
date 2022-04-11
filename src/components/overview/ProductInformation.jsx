@@ -7,10 +7,15 @@ import { postCart } from '../../helpers.js';
 
 const ProductInformation = () => {
 
-  const { product, currentStyle, currentSize, loading } = useContext(OverviewContext);
+  const { product, currentStyle, currentSize, setCurrentSize, loading } = useContext(OverviewContext);
 
   if (loading) {
     return <div className="overview-product-info loading"></div>
+  }
+
+  const handleAddToCartClick = () => {
+    postCart(currentSize);
+    setCurrentSize('');
   }
 
   return (
@@ -28,7 +33,7 @@ const ProductInformation = () => {
       <SizeSelector />
       <QuantitySelector />
       <div>
-        <button className="info-button add" onClick={() => postCart(currentSize)}>ADD TO BAG</button>
+        <button className="info-button add" onClick={() => handleAddToCartClick()}>ADD TO BAG</button>
       </div>
     </div>
   )
