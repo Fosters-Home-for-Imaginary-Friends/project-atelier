@@ -139,6 +139,8 @@ span.helpful-answer {
 /* IMAGE CAROUSEL */
 
 .image-carousel {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   background-color: gray;
   height: 75vh;
@@ -186,6 +188,33 @@ span.helpful-answer {
 
 .image-bar {
   display: flex;
+}
+
+.carousel-button {
+  position: absolute;
+  width: 50vh;
+  height: 10vh;
+  outline: 0;
+  border-radius: 0px;
+  border: none;
+  opacity: 0;
+}
+
+.carousel-button.up:hover {
+  background: linear-gradient(180deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+.carousel-button.down {
+  align-self: flex-end;
+}
+
+.carousel-button.down:hover {
+  align-self: flex-end;
+  background: linear-gradient(0deg,rgba(241, 241, 241, .5), rgba(255, 255, 255, 0));
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
 }
 
 .progress-bar {
@@ -527,8 +556,8 @@ button.add {
   z-index: 10;
   background-color: white;
   color: black;
-  width: 550px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
   animation: compare-modal-animation 0.3s;
 }
 .modal-header {
@@ -545,8 +574,8 @@ button.add {
 }
 .feature-container {
   margin: auto;
-  width: 390px;
-  height: 250px;
+  width: 385px;
+  height: 255px;
   overflow: scroll;
 }
 .feature-table {
