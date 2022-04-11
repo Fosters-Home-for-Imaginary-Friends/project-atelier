@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import ReactDom from 'react-dom';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
+import PhotoUpload from './PhotoUpload.jsx';
 
 let NewReview = ({ setShowModal }) => {
 
@@ -364,13 +365,19 @@ let NewReview = ({ setShowModal }) => {
           <span className="helpful-answer"> Type your review</span>
           <textarea className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap"></textarea>
           <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
-
         </div>
-        <div className="new-review-body">
-          <span className="helpful-answer"> Type your review</span>
-          <textarea className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap"></textarea>
-          <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
 
+        <PhotoUpload />
+        <div className="new-review-nickname">
+          <input type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60"></input>
+          <span className="helpful-answer"> For privacy reasons, do not use your full name or email address. </span>
+        </div>
+        <div className="new-review-email">
+          <input type="text" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60"></input>
+          <span className="helpful-answer"> For authentication reasons, you will not be emailed. </span>
+        </div>
+        <div className="new-review-submit">
+        <button className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
         <button onClick={() => setShowModal(false)}>X</button>
         </div>

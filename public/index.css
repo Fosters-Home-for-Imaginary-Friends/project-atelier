@@ -1290,6 +1290,9 @@ h1.average-rating {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .radio-buttons {
@@ -1314,4 +1317,32 @@ h1.average-rating {
 .thumbs-down {
   width: 30px;
   height: auto;
+}
+.new-review-summary {
+display: flex;
+flex-direction: column;
+margin-top: 25px;
+margin-bottom: 10px;
+width: 60%;
+}
+.new-review-body {
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 75%;
+}
+.new-review-nickname  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px 0 10px 0;
+}
+.new-review-email  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.new-review-submit {
+  position: relative;
 }
