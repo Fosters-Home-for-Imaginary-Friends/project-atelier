@@ -22,7 +22,7 @@ const RelatedProducts = () => {
 
   return (
     <div className="product-list" id="related-list">
-      <h3 className="related-title">WEAR WITH</h3>
+      <h3 className="related-title">RELATED PRODUCTS</h3>
       <RelatedContext.Provider value={{relatedList, setRelatedList}}>
         <CardCarousel related={true} />
       </RelatedContext.Provider>

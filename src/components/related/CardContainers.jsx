@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import {ProductCard, AddProductCard} from './ProductCards.jsx';
+import ProductCard from './ProductCard.jsx';
+import AddProductCard from './AddProductCard.jsx';
 import {OutfitContext} from './OutfitList.jsx';
 import {RelatedContext} from './RelatedProducts.jsx';
 
-const RelatedCards = React.memo(function RelatedCards({list}) {
+const RelatedCards = React.memo(function RelatedCards() {
   const {relatedList} = useContext(RelatedContext);
 
   return (
