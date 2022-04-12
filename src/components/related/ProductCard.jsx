@@ -43,7 +43,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related}) {
       <React.Fragment>
         <div className="card-top">
         {related ? <CompareButton cardData={cardData.productData} /> :
-        <RemoveButton />}
+        <RemoveButton product_id={product_id} />}
         {cardData.styleData[0].photos[0].thumbnail_url ?
         <img className="related-image" src={cardData.styleData[0].photos[0].thumbnail_url} /> :
         <div className="related-image no-image">NO IMAGE</div>
