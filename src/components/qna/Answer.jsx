@@ -14,7 +14,6 @@ const Answer = (props) => {
   }
 
   const handleHelpfulClick = () => {
-    console.log(typeof id);
     if (answerHelpClicked) {
       alert('Answers can only be marked as helpful once')
     } else {

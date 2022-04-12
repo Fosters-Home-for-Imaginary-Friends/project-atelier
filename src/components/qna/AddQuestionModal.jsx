@@ -56,7 +56,7 @@ export const AddQuestionModal = ({ setShowModal }) => {
         });
     }
     setValid(true);
-    }
+  }
 
   return ReactDom.createPortal(
     <div className="add-question-container" ref={modalRef} onClick={closeModal}>
@@ -74,17 +74,17 @@ export const AddQuestionModal = ({ setShowModal }) => {
               Your Question *
             </label>
             <textarea rows="4" cols="50" maxLength="1000" type="text" onChange={handleQuestionInputChange}/>
-            {valid && !questionValues.body && <span id='question-error'>Please enter a question</span>}
+            {valid && !questionValues.body && <h3 id='question-error'>Please enter a question</h3>}
             <label>
               What is your nickname *
             </label>
             <input placeholder="Example: jackson11!" maxLength="60" type="text" onChange={handleNameInputChange}/>
-            {valid && !questionValues.name && <span id='question-nickname-error'>Please enter a nickname</span>}
+            {valid && !questionValues.name && <h3 id='question-nickname-error'>Please enter a nickname</h3>}
             <label>
               Your email *
             </label>
             <input placeholder="Why did you like the product or not?" type="email" onChange={handleEmailInputChange}/>
-            {valid && !questionValues.email && <span id='question-email-error'>Please enter a email</span>}
+            {valid && !questionValues.email && <h3 id='question-email-error'>Please enter a email</h3>}
             <span className="user-data">For authentication reasons, you will not be emailed</span>
             <input type="submit" value="Submit Question" />
           </form>

@@ -41,7 +41,7 @@ const Question = (props) => {
           {' '}<a className="helpful" onClick={handleQReportClick}>{reportClicked ? 'Reported' : 'Report'}</a> |
           {' '}<a className="helpful" onClick={openModal}>Add Answer</a>
         </span>
-        {showModal ? <AddAnswer setShowModal={setShowModal}/> : null}
+        {showModal ? <AddAnswer setShowModal={setShowModal} question={props.data}/> : null}
       </div>
       {/* Question */}
       {/* Add Answer Link */}
