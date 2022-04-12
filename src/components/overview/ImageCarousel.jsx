@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useLayoutEffect } from "react";
+import React, { useRef, useContext, useLayoutEffect } from "react";
 import Image from "./Image.jsx";
 import { OverviewContext } from "./Overview.jsx";
 
@@ -8,45 +8,20 @@ const ImageCarousel = () => {
   const imageCarouselRef = useRef(null);
 
   const { currentStyle, previousPhoto, currentPhoto, setCurrentPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
-  const [dimensions, setDimensions] = useState({width: 0, height: 0});
 
   useLayoutEffect(() => {
-    if (imageCarouselRef.current && dimensions) {
-      setDimensions({
-        width: imageCarouselRef.current.offsetWidth,
-        height: imageCarouselRef.current.offsetHeight
-      })
+    if (imageCarouselRef.current) {
       if (currentPhoto > previousPhoto) {
         imageCarouselRef.current.scrollBy({
-          top: (dimensions.height * (currentPhoto - previousPhoto))
+          top: (imageCarouselRef.current.offsetHeight * (currentPhoto - previousPhoto))
         })
       } else {
         imageCarouselRef.current.scrollBy({
-          top: (dimensions.height * (currentPhoto - previousPhoto))
+          top: (imageCarouselRef.current.offsetHeight * (currentPhoto - previousPhoto))
         })
       }
     }
   }, [loading, currentPhoto]);
-
-  // var currentTop = 0;
-
-  // const changeImage = () => {
-  //   console.log(imageCarouselRef.current.scrollTop)
-  //   if (imageCarouselRef.current.scrollTop > currentTop) {
-  //     setCurrentPhoto(currentPhoto + 1)
-  //   } else {
-  //     console.log('Moving up!')
-  //   }
-  // }
-
-  // const changeImageThrottled = useMemo(() => _.throttle(changeImage, 2000), []);
-
-  // const onWheel = (event) => {
-  //   console.log(event.deltaY)
-  //   changeImage(event.deltaY)
-  // }
-
-  // const onWheelThrottled = useMemo(() => _.throttle(onWheel, 2000), []);
 
   if (loading) {
     return <div className="image-carousel loading"></div>;
@@ -55,10 +30,6 @@ const ImageCarousel = () => {
   if (!currentStyle.photos[0].url) {
     return <div className="image-carousel no-images">NO IMAGES AVAILABLE</div>
   }
-
-  // if (imageCarouselRef.current) {
-  //   imageCarouselRef.current.addEventListener('wheel', changeImageThrottled);
-  // }
 
   const handleUpClick = () => {
     if (currentPhoto > 0) {
@@ -81,7 +52,7 @@ const ImageCarousel = () => {
     }
       <ul id="image-carousel" ref={imageCarouselRef} className="image-carousel">
         {currentStyle.photos.map((image) =>
-            <Image key={image.url} slide={image}/>
+          <Image key={image.url} slide={image}/>
         )}
       </ul>
     {currentPhoto === currentStyle.photos.length - 1 ? null :
