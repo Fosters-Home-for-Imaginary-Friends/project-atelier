@@ -1219,16 +1219,16 @@ a.helpful:hover {
 }
 
 .new-review-container .modal {
-  z-index: 1;
+  z-index: 10;
   width: 75vw;
   height: 80vh;
   background: white;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 5px;
   position: relative;
   animation: animate 0.3s;
+  overflow: auto;
 }
 
 @keyframes animate {
@@ -1403,13 +1403,24 @@ h1.average-rating {
   column-gap: 20px;
   justify-content: top;
 }
+.new-review-product-recommendation-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .new-review-position {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  position: relative;
-  bottom: 200px;
+  overflow: auto;
+}
+.new-review-characteristic-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .radio-buttons {
@@ -1434,4 +1445,39 @@ h1.average-rating {
 .thumbs-down {
   width: 30px;
   height: auto;
+}
+.new-review-summary {
+display: flex;
+flex-direction: column;
+margin-top: 25px;
+margin-bottom: 10px;
+width: 60%;
+}
+.new-review-body {
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 75%;
+}
+.new-review-images {
+  display: flex;
+  flex-direction: row;
+}
+button.upload-photo {
+  position: relative;
+}
+.new-review-nickname  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px 0 10px 0;
+}
+.new-review-email  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.new-review-submit {
+  position: relative;
 }

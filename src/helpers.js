@@ -109,22 +109,22 @@ const postAnswer = (question_id, answerObject) => {
 };
 
 const putQuestionHelpful = (question_id) => {
-  return axios.put(host + `/qa/questions/${question_id}/helpful`, {}, options)
+  return axios.put(host + `/qa/questions/${question_id}/helpful`, {question_id: question_id}, options)
     .catch((err) => console.error(err));
 };
 
 const putQuestionReport = (question_id) => {
-  return axios.put(host + `/qa/questions/${question_id}/report`, {}, options)
+  return axios.put(host + `/qa/questions/${question_id}/report`, {question_id: question_id}, options)
     .catch((err) => console.error(err));
 };
 
 const putAnswerHelpful = (answer_id) => {
-  return axios.put(host + `/qa/answers/${answer_id}/helpful`, {}, options)
+  return axios.put(host + `/qa/answers/${answer_id}/helpful`, {answer_id: answer_id}, options)
     .catch((err) => console.error(err));
 };
 
 const putAnswerReport = (answer_id) => {
-  return axios.put(host + `/qa/answers/${answer_id}/report`, {}, options)
+  return axios.put(host + `/qa/answers/${answer_id}/report`, {answer_id: answer_id}, options)
     .catch((err) => console.error(err));
 };
 
