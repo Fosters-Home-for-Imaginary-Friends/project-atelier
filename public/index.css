@@ -160,66 +160,6 @@ span.helpful-answer {
   transition: opacity 0.2s ease-in;
 }
 
-/* ----- IMAGE MODAL ----- */
-
-#imageModal .image-modal-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 100;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.image-modal-container .image-modal {
-  z-index: 1;
-  top: 0;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  position: absolute;
-  animation: animate 0.3s;
-}
-
-.image-modal button {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  padding: 8px 11px;
-  background: crimson;
-  color: white;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.image-modal-image {
-  width: 100vw;
-  position: absolute;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-@keyframes animate {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.5);
-  }
-}
-
 /* ----- IMAGE CAROUSEL ----- */
 
 .image-carousel {
@@ -233,6 +173,10 @@ span.helpful-answer {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   scroll-snap-align: start;
+}
+
+.image-carousel:hover {
+  cursor: zoom-in;
 }
 
 .image-carousel::-webkit-scrollbar {
@@ -279,6 +223,7 @@ span.helpful-answer {
 
 .carousel-button.up:hover {
   background: linear-gradient(180deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: n-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
 }
@@ -290,8 +235,102 @@ span.helpful-answer {
 .carousel-button.down:hover {
   align-self: flex-end;
   background: linear-gradient(0deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: s-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
+}
+
+/* ----- IMAGE MODAL ----- */
+
+#imageModal .image-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-modal-container .image-modal {
+  z-index: 1;
+  top: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  animation: animate 0.3s;
+}
+
+.image-modal-image {
+  width: 100vw;
+  position: absolute;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-modal-image {
+  cursor: zoom-out;
+}
+
+.modal-buttons-container {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+button.modal-image {
+  position: absolute;
+  width: 15vw;
+  height: 100vh;
+  outline: 0;
+  border-radius: 0px;
+  border: none;
+  opacity: 0;
+  z-index: 10;
+}
+
+button.modal-image.left {
+  z-index: 2;
+  align-self: flex-start;
+}
+
+button.modal-image.left:hover {
+  background: linear-gradient(90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: w-resize;
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+button.modal-image.right {
+  z-index: 2;
+  align-self: flex-end;
+}
+
+button.modal-image.right:hover {
+  background: linear-gradient(-90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: e-resize;
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
 }
 
 /* ----- IMAGE BAR ----- */
