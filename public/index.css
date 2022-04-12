@@ -98,8 +98,9 @@ button.info-button {
 
 section.body-text {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 18px;
+  color: rgb(50, 50, 50);
 }
 
 span.user-data {
@@ -118,7 +119,9 @@ span.helpful-answer {
   margin-top: 300px;
 }
 
-/* START OF OVERVIEW */
+/* -------------------- */
+/* ----- OVERVIEW ----- */
+/* -------------------- */
 
 .overview {
   display: flex;
@@ -157,67 +160,7 @@ span.helpful-answer {
   transition: opacity 0.2s ease-in;
 }
 
-/* IMAGE MODAL */
-
-#imageModal .image-modal-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 100;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.image-modal-container .image-modal {
-  z-index: 1;
-  top: 0;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  position: absolute;
-  animation: animate 0.3s;
-}
-
-.image-modal button {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  padding: 8px 11px;
-  background: crimson;
-  color: white;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.image-modal-image {
-  width: 100vw;
-  position: absolute;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-@keyframes animate {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.5);
-  }
-}
-
-/* IMAGE CAROUSEL */
+/* ----- IMAGE CAROUSEL ----- */
 
 .image-carousel {
   display: flex;
@@ -230,6 +173,10 @@ span.helpful-answer {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   scroll-snap-align: start;
+}
+
+.image-carousel:hover {
+  cursor: zoom-in;
 }
 
 .image-carousel::-webkit-scrollbar {
@@ -260,10 +207,6 @@ span.helpful-answer {
   scroll-snap-type: y mandatory;
 }
 
-.image-bar {
-  display: flex;
-}
-
 .carousel-button {
   position: absolute;
   width: 54vh;
@@ -276,6 +219,7 @@ span.helpful-answer {
 
 .carousel-button.up:hover {
   background: linear-gradient(180deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: n-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
 }
@@ -287,22 +231,131 @@ span.helpful-answer {
 .carousel-button.down:hover {
   align-self: flex-end;
   background: linear-gradient(0deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: s-resize;
   opacity: 100;
   transition: opacity 0.3s ease-in;
 }
 
+/* ----- IMAGE MODAL ----- */
+
+#imageModal .image-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-modal-container .image-modal {
+  z-index: 1;
+  top: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  animation: animate 0.3s;
+}
+
+.image-modal-image {
+  width: 100vw;
+  position: absolute;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.image-modal-image {
+  cursor: zoom-out;
+}
+
+.modal-buttons-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+button.modal-image {
+  position: absolute;
+  width: 15vw;
+  height: 100vh;
+  outline: 0;
+  border-radius: 0px;
+  border: none;
+  opacity: 0;
+  z-index: 10;
+}
+
+button.modal-image.left {
+  z-index: 2;
+  align-self: flex-start;
+}
+
+button.modal-image.left:hover {
+  background: linear-gradient(90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: w-resize;
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+button.modal-image.right {
+  z-index: 2;
+  align-self: flex-end;
+}
+
+button.modal-image.right:hover {
+  background: linear-gradient(-90deg,rgba(241, 241, 241, .25), rgba(255, 255, 255, 0));
+  cursor: e-resize;
+  opacity: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+/* ----- IMAGE BAR ----- */
+
+.image-bar {
+  display: flex;
+  overflow: hidden;
+}
+
 .progress-bar {
-  height: 100%;
+  list-style: none;
+  height: 81vh;
   width: 1px;
+  overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
   margin-right: 20px;
+  scroll-behavior: smooth;
 }
 
 .progress-bar-progress {
-  height: 10%;
+  height: 81vh;
   width: 1px;
+  display: list-item;
+  list-style: none;
   background-color: #1f1f1f;
+}
+
+.progress-bar-progress.none {
+  background-color: darkgray;
 }
 
 .thumbnails {
@@ -319,6 +372,12 @@ span.helpful-answer {
   object-fit: cover;
   padding-bottom: 5px;
 }
+
+.thumbnail.false {
+  opacity: 50%;
+}
+
+/* ----- PRODUCT INFO ----- */
 
 .overview-product-info {
   display: block;
@@ -350,17 +409,34 @@ span.helpful-answer {
 
 .body-text.price {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 10px;
   margin-right: 10px;
 }
 
-/* STYLE SELECTOR */
+/* ----- SOCIAL MEDIA ----- */
+
+.social-media-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 28px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.social-media-icon {
+  display: flex;
+  align-items: center;
+  color: #1f1f1f;
+  margin: 3px;
+}
+
+/* ----- STYLE SELECTOR ----- */
 
 .style-name {
   font-weight: 200;
   font-size: 12px;
-  margin-top: 10px;
 }
 
 .style-selector {
@@ -371,16 +447,15 @@ span.helpful-answer {
   width: 136px;
   margin-top: 5px;
   margin-bottom: 10px;
-  transform: translateX(-3px);
 }
 
 .style-button {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  border: 2px solid #f1f1f1;
+  border: 2px solid #fff;
   border-radius: 50%;
-  box-shadow: 0 0 1px 1px darkgray;
+  box-shadow: 0 0 2px 1px darkgray;
   margin: 3px;
   cursor: pointer;
 }
@@ -411,6 +486,8 @@ span.helpful-answer {
   transform: rotate(180deg);
   transform-origin: 12px;
 }
+
+/* ----- COLORS ----- */
 
 .forest-green {
   background-color: rgb(12, 59, 43);
@@ -500,7 +577,7 @@ span.helpful-answer {
   background: linear-gradient( 90deg, #1f1f1f 50%, rgb(130, 15, 15) 50% );
 }
 
-/* SIZES */
+/* ----- SIZES ----- */
 
 .size-selector {
   display: flex;
@@ -508,20 +585,19 @@ span.helpful-answer {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
-  width: 210px;
-  transform: translateX(-3px);
+  max-width: 205px;
 }
 
 .size-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f1f1f1;
+  background-color: #fff;
   color: #1f1f1f;
   box-shadow: 0 0 1px 1px darkgray;
   border-radius: 3px;
   height: 24px;
-  margin: 5px 3px 0 3px;
+  margin: 0px 3px 0 3px;
   cursor: pointer;
 }
 
@@ -536,6 +612,51 @@ span.helpful-answer {
 
 .size-text {
   padding: 6.3px;
+}
+
+/* ----- QUANTITY SELECTOR ----- */
+
+.quantity-selector-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  max-width: 205px;
+}
+
+.quantity-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28.59px;
+  width: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 0 1px 1px darkgray;
+}
+
+.quantity-button.decrease {
+  margin-left: 3px;
+}
+
+.quantity-button.increase {
+  margin-right: 3px;
+}
+
+.quantity-count {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 0;
+  max-width: 100px;
+}
+
+/* ----- ADD TO BAG ----- */
+
+button.add {
+  max-width: 205px;
 }
 
 
@@ -632,28 +753,24 @@ h3.related-title {
   align-self: flex-start;
   justify-self: flex-end;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   z-index: 9;
+  color: white;
 }
-
-.compare-button {
-  color: #fff
+.action-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/5));
+  width: calc((((56.5vh + 18vw + 21px) / 3)/5));
 }
-
 .compare-button:hover {
   color: rgb(212, 175, 55);
   transition: color 0.2s ease-in;
 }
-
-.remove-button {
-  color: #fff;
-}
-
 .remove-button:hover {
   color: rgb(130, 15, 15);
   transition: color 0.2s ease-in;
 }
+
 
 #add-card {
   background-color: #f1f1f1;
@@ -666,6 +783,10 @@ h3.related-title {
   margin: auto;
   padding: auto;
 }
+.plus-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+  width: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+}
 
 .product-start {
   bottom: 0;
@@ -673,6 +794,7 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -689,33 +811,28 @@ h3.related-title {
 .modal-header {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  height: 20px;
-  padding: auto;
   margin: 10px;
+  line-height: 5vh;
 }
 
 .modal-title {
   float: left;
+  font-size: 5vh;
 }
 
 .modal-button {
-  position: relative;
-  right: 0;
+  float: right;
   border: none;
   background-color: #fff;
-  font-size: 14px;
+  font-size: 5vh;
   font-weight: 200;
   font-style: normal;
 }
-
 .feature-container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin-top: 5vh;
-  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh - 40px);
-  width: calc(56.5vh + 18vw + 61px);
 }
 
 tr {
@@ -723,19 +840,25 @@ tr {
 }
 
 th, td {
-  width: 12vw;
+  width: calc(100vw/3);
   vertical-align: bottom;
   padding: 5px;
 }
 
 th {
-  font-size: 24px;
+  font-size: 4vh;
   font-weight: 500;
 }
 
 td {
-  font-size: 14px;
+  font-size: 3vh;
   font-weight: 200;
+}
+
+thead {
+}
+tbody {
+  position: relative;
 }
 
 .left {
@@ -833,6 +956,11 @@ h2.answer-heading {
 
 h3.answer-list {
   margin: 10px;
+}
+
+section.answer-list {
+  margin: 10px;
+  font-weight: bold;
 }
 
 .search-bar {

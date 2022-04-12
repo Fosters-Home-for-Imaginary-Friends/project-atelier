@@ -1,72 +1,110 @@
-import React, {useRef, useEffect, useState, useMemo, useCallback} from 'react';
-import {getRelated} from '../../helpers.js';
-import {ProductCard, AddProductCard} from './ProductCards.jsx';
-import {getCookie} from '../../Cookies.js';
-import {CompareButton, RemoveButton} from './ActionButtons.jsx';
+import React, {useRef, useState, useEffect, useMemo, useCallback} from 'react';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
+import {RelatedCards, OutfitCards} from './CardContainers.jsx';
 
-const CardCarousel = ({product_id, related}) => {
-  const carouselRef = useRef(null);
+  // TODO: If item is removed from outfit list, re-check rightmost position
+  // TODO: Lock scrolling
+const CardCarousel = ({related, length}) => {
+  const carouselRef = useRef({});
+  const [left, setLeft] = useState(false);
+  const [right, setRight] = useState(false);
+  const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
+  const scrollPoint = () => carouselRef.current.scrollLeft;
 
   //These functions scroll the content within the carousel-viewport div
-  const scrollLeft = () => {
-    carouselRef.current.scrollBy({
-      left: -287.61,
-      behavior: "smooth"
-    });
-  }
-  const scrollRight = () => {
-    carouselRef.current.scrollBy({
-      left: 287.61,
-      behavior: "smooth"
-    });
-  }
+  const scrollLeft = useCallback(() => {
+      checkArrows(carouselRef.current.scrollLeft - cardWidth);
+      carouselRef.current.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+      });
+  });
+
+  const scrollRight = useCallback(() => {
+    if (right) {
+      checkArrows(carouselRef.current.scrollLeft + cardWidth);
+      carouselRef.current.scrollBy({
+        left: cardWidth,
+        behavior: "smooth"
+      });
+    }
+  });
+
+  useEffect(() => {
+    checkArrows(carouselRef.current.scrollLeft);
+  }, [length]);
+
+  const checkArrows = (scrollPoint) => {
+    if ((scrollPoint + (cardWidth * 3)) >= cardWidth * length) {
+      setRight((prev) => prev ? false : prev);
+    } else {
+      setRight((prev) => prev ? prev : true);
+    }
+
+    if (scrollPoint <= 0) {
+      setLeft((prev) => prev ? false : prev);
+    } else {
+      setLeft((prev) => prev ? prev : true);
+    }
+  };
+
+  useEffect(() => {
+    if (length < 4) {
+      setRight((prev) => prev ? false : prev);
+    } else {
+      setRight((prev) => prev ? prev : true);
+    }
+  }, [length])
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <button onClick={scrollLeft} className="arrow"><AiOutlineDoubleLeft /></button>
+      <LeftArrow scroll={scrollLeft} view={left} />
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
-        {related ? <RelatedCards product_id={product_id} /> : <OutfitCards product_id={product_id} />}
+        {related ? <RelatedCards /> : <OutfitCards />}
       </div>
-      <button onClick={scrollRight} className="arrow"><AiOutlineDoubleRight /></button>
+      <RightArrow scroll={scrollRight} view={right} />
     </div>
   );
 };
 
-const RelatedCards = React.memo(function RelatedCards({product_id}) {
-  const [relatedList, setRelatedList] = useState([]);
+const LeftArrow = ({scroll, view}) => {
+  const [clicked, setClicked] = useState(false);
 
-  useEffect(() => {
-    getRelated(product_id)
-      .then((data) => {
-        setRelatedList(data);
-      })
-      .catch((err) => console.error(err));
-  }, [product_id]);
-
-  return (
-  <div className="carousel"> {/* The part that scrolls when you press a button */}
-    {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} />)}
-  </div>
-  );
-});
-
-const OutfitCards = React.memo(function OutfitCards({product_id}) {
-  const [outfitList, setOutfitList] = useState([]);
-
-  useEffect(() => {
-    let cookies = getCookie("outfitList");
-    if (cookies !== "") {
-      setOutfitList((list) => list.concat(JSON.parse(cookies)))
+  const handleClick = () => {
+    if (!clicked) {
+      setClicked(true);
+      scroll();
     }
-  }, []);
+    setTimeout(() => setClicked(false), 250);
+  };
 
   return (
-    <div className="carousel"> {/* The part that scrolls when you press a button */}
-      {[<AddProductCard key={"addproductcard"} product_id={product_id} setOutfitList={setOutfitList} />]
-      .concat(outfitList.map((id) => <ProductCard key={id} product_id={id} related={false} setState={setOutfitList}  />))}
-    </div>
+    <React.Fragment>
+      <button onClick={handleClick} className="arrow">
+        {view ? <AiOutlineDoubleLeft size={40} /> : null}
+      </button>
+    </React.Fragment>
   );
-});
+};
+
+const RightArrow = ({scroll, view}) => {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    if (!clicked) {
+      setClicked(true);
+      scroll();
+    }
+    setTimeout(() => setClicked(false), 250);
+  };
+
+  return (
+    <React.Fragment>
+      <button onClick={handleClick} className="arrow">
+        {view ? <AiOutlineDoubleRight size={40} /> : null}
+      </button>
+    </React.Fragment>
+  );
+};
 
 export default CardCarousel;

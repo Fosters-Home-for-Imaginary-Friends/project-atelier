@@ -4,7 +4,7 @@ import { OverviewContext } from "./Overview.jsx";
 
 const Thumbnail = ({thumbnail, index}) => {
 
-  const { currentStyle, currentPhoto, setCurrentPhoto, previousPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
+  const { currentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
 
   if (loading) {
     return <div></div>;
@@ -15,15 +15,17 @@ const Thumbnail = ({thumbnail, index}) => {
   }
 
   const handleThumbnailClick = (index) => {
-    if (currentPhoto !== previousPhoto || (currentPhoto === 0 && previousPhoto === 0)) {
-      setPreviousPhoto(currentPhoto);
-      setCurrentPhoto(index);
-    }
+    setPreviousPhoto(currentPhoto);
+    setCurrentPhoto(index);
   }
 
   return (
     <li>
-      <img src={thumbnail.thumbnail_url} className="thumbnail" onClick={() => handleThumbnailClick(index)}/>
+      <img
+        src={thumbnail.thumbnail_url}
+        className={`thumbnail ${currentPhoto === index}`}
+        onClick={() => handleThumbnailClick(index)}
+      />
     </li>
   )
 }
