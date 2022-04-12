@@ -744,25 +744,21 @@ h3.related-title {
   top: 5px;
   right: 5px;
   z-index: 9;
+  color: white;
 }
-
-.compare-button {
-  color: #fff
+.action-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/5));
+  width: calc((((56.5vh + 18vw + 21px) / 3)/5));
 }
-
 .compare-button:hover {
   color: rgb(212, 175, 55);
   transition: color 0.2s ease-in;
 }
-
-.remove-button {
-  color: #fff;
-}
-
 .remove-button:hover {
   color: rgb(130, 15, 15);
   transition: color 0.2s ease-in;
 }
+
 
 #add-card {
   background-color: #f1f1f1;
@@ -774,6 +770,10 @@ h3.related-title {
   justify-content: center;
   margin: auto;
   padding: auto;
+}
+.plus-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+  width: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
 }
 
 .product-start {
