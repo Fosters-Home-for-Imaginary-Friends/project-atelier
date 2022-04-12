@@ -11,7 +11,6 @@ const PhotoUpload = (props) => {
 
  let handleFiles = (e) => {
    let files = e.target.files;
-   console.log(files);
    let reader = new FileReader();
    reader.readAsDataURL(files[0]);
 
