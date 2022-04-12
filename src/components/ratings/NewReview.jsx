@@ -3,11 +3,13 @@ import React, { useRef, useState, useContext } from 'react';
 import ReactDom from 'react-dom';
 import { RatingsContext } from './Ratings.jsx';
 import { postReview } from '../../helpers.js';
+import {AppContext} from '../App.jsx';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
 import PhotoUpload from './PhotoUpload.jsx';
 
 let NewReview = ({ setShowModal }) => {
 
+  const { productData } = useContext(AppContext);
   const {metaRating, relevantCharacteristics} = useContext(RatingsContext);
 
   const [currStars, setCurrStars] = useState([0, 0, 0, 0, 0]);
@@ -424,7 +426,7 @@ let NewReview = ({ setShowModal }) => {
 
 
     // let cObj = {[sizeID] : size, [widthID]: width, [comfortID]: comfort, [qualityID]: quality, [lengthID]: length, [fitID]: fit}
-    let reviewObj = {product_id: 40384, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
+    let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
 
     postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
   }

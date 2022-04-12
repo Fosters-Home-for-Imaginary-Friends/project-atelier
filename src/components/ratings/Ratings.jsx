@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext }from 'react';
+import React, { useState, useEffect, useContext, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
+import {AppContext} from '../App.jsx';
 
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
@@ -8,6 +9,8 @@ export const RatingsContext = createContext({});
 
 //primary component that will attach to App.jsx
 let Ratings = () => {
+
+  const { productData } = useContext(AppContext);
 
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
@@ -22,11 +25,10 @@ let Ratings = () => {
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
 
-
   let dataFetch = () => {
-    getReviews(40384, pageNum, 2, currentSort)
+    getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
-      getReviewMetadata(40384)
+      getReviewMetadata(productData.id)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
@@ -48,6 +50,7 @@ let Ratings = () => {
     })
   }
 
+
   let filteredContent = (filter) => {
     let filteredObj = starFilters;
     for ( let k in starFilters) {
@@ -64,14 +67,14 @@ let Ratings = () => {
           setReviews(filteredArray);
         } else {
           setPageNum(1);
-          getReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+          getReviews(productData.id, pageNum, 2, currentSort).then((res) => {setReviews(res)});
         }
       }
       }
     }
     useEffect(() => {
       dataFetch();
-    }, []);
+    }, [productData.id]);
 
 
    if ( loading ) {
