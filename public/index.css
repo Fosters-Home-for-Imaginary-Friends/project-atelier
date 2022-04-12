@@ -782,6 +782,7 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -798,33 +799,28 @@ h3.related-title {
 .modal-header {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  height: 20px;
-  padding: auto;
   margin: 10px;
+  line-height: 5vh;
 }
 
 .modal-title {
   float: left;
+  font-size: 5vh;
 }
 
 .modal-button {
-  position: relative;
-  right: 0;
+  float: right;
   border: none;
   background-color: #fff;
-  font-size: 14px;
+  font-size: 5vh;
   font-weight: 200;
   font-style: normal;
 }
-
 .feature-container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin-top: 5vh;
-  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh - 40px);
-  width: calc(56.5vh + 18vw + 61px);
 }
 
 tr {
@@ -832,23 +828,25 @@ tr {
 }
 
 th, td {
-  width: 12vw;
+  width: calc(100vw/3);
   vertical-align: bottom;
   padding: 5px;
 }
 
 th {
-  font-size: 24px;
+  font-size: 4vh;
   font-weight: 500;
 }
 
 td {
-  font-size: 14px;
+  font-size: 3vh;
   font-weight: 200;
 }
 
 thead {
-  position: fixed;
+}
+tbody {
+  position: relative;
 }
 
 .left {
