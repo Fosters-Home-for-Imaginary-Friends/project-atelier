@@ -5,6 +5,7 @@ import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 import {OutfitContext} from './OutfitList.jsx';
 import {IconContext} from 'react-icons';
+import {AppContext} from '../App.jsx';
 
 const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
@@ -24,14 +25,16 @@ const CompareButton = ({cardData}) => {
   );
 };
 
-const RemoveButton = ({product_id}) => {
+
+const RemoveButton = () => {
+  const {productData} = useContext(AppContext);
   const {setOutfitList} = useContext(OutfitContext);
 
   const removeCard = (e) => {
     e.stopPropagation();
     setOutfitList((prev) => {
       let newState = prev.filter((id) => {
-        return product_id !== id;
+        return productData.id !== id;
       });
 
     if (newState.length > 0) {
@@ -46,7 +49,7 @@ const RemoveButton = ({product_id}) => {
   return (
     <div className="remove-button action-button" >
       <IconContext.Provider value={{className: "action-icon"}}>
-        <CgRemove size={35} onClick={removeCard} />
+        <CgRemove onClick={removeCard} />
       </IconContext.Provider>
     </div>
   );

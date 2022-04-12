@@ -48,6 +48,14 @@ const CardCarousel = ({related, length}) => {
     }
   };
 
+  useEffect(() => {
+    if (length < 4) {
+      setRight((prev) => prev ? false : prev);
+    } else {
+      setRight((prev) => prev ? prev : true);
+    }
+  }, [length])
+
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
       <LeftArrow scroll={scrollLeft} view={left} />
