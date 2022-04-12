@@ -5,6 +5,11 @@ import {AppContext} from '../App.jsx';
 export const AddQuestionModal = ({ setShowModal }) => {
   const modalRef = useRef();
   const {productData} = useContext(AppContext);
+  const [questionValues, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+  });
 
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
@@ -33,6 +38,7 @@ export const AddQuestionModal = ({ setShowModal }) => {
           <span className="user-data">For authentication reasons, you will not be emailed</span>
           <input type="submit" value="Submit Question" />
         </form>
+        <button onClick={() => setShowModal(false)}>X</button>
       </div>
     </div>,
     document.getElementById("add-question-modal")
