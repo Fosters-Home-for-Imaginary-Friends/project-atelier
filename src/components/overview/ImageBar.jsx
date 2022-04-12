@@ -10,14 +10,14 @@ const ImageBar = () => {
 
   useLayoutEffect(() => {
     if (progressBarRef.current) {
-      let top = progressBarRef.current.offsetHeight / currentStyle.photos.length
+      let top = -(progressBarRef.current.offsetHeight / currentStyle.photos.length)
       if (currentPhoto > previousPhoto) {
         progressBarRef.current.scrollBy({
-          top: -(top * (currentPhoto - previousPhoto))
+          top: top * (currentPhoto - previousPhoto)
         })
       } else {
         progressBarRef.current.scrollBy({
-          top: -(top * (currentPhoto - previousPhoto))
+          top: top * (currentPhoto - previousPhoto)
         })
       }
     }
