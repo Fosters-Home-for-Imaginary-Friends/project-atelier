@@ -1,11 +1,11 @@
 //Component for the ratings breakdown
-import React, { useState, useContext } from 'react';
+import React, {useContext } from 'react';
 import AverageStars from './AverageStars.jsx';
 import BarGraph from './BarGraph.jsx';
 import Characteristics from './Characteristics.jsx';
 import { RatingsContext } from './Ratings.jsx';
 
-let RatingsBreakdown = (props) => {
+let RatingsBreakdown = () => {
 
   const {averageRating, metaRating, totalReviews} = useContext(RatingsContext)
 

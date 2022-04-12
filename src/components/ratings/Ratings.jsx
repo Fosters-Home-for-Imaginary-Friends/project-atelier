@@ -40,8 +40,8 @@ let Ratings = () => {
         for (let k in totalRatingsObj) {
           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
           setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 )
-          setAverageRating(totalScore / totalReviews);
       }
+        setAverageRating((totalScore / totalReviews).toFixed(2));
       }).then(() => {
         setLoading(false);
       }).catch(err => {
