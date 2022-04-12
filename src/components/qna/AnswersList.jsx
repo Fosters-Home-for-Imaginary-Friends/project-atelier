@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 
 const AnswersList = ({data, sortData}) => {

@@ -2,15 +2,48 @@
 import React, { useRef, useState } from 'react';
 import ReactDom from 'react-dom';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
+import PhotoUpload from './PhotoUpload.jsx';
 
 let NewReview = ({ setShowModal }) => {
 
   const [currStars, setCurrStars] = useState([0, 0, 0, 0, 0]);
   const [oldStars, setOldStars] = useState([0, 0, 0, 0, 0])
+
   const [recommendYes, setRecommendYes] = useState(false);
   const [recommendNo, setRecommendNo] = useState(false);
+
   const [sizeSelector, setSizeSelector] = useState(0);
   const [sizeDescriptor, setSizeDescriptor] = useState("");
+
+  const [widthSelector, setWidthSelector] = useState(0);
+  const [widthDescriptor, setWidthDescriptor] =useState("");
+
+  const [comfortSelector, setComfortSelector] = useState(0);
+  const [comfortDescriptor, setComfortDescriptor] =useState("");
+
+  const [qualitySelector, setQualitySelector] = useState(0);
+  const [qualityDescriptor, setQualityDescriptor] =useState("");
+
+  const [lengthSelector, setLengthSelector] = useState(0);
+  const [lengthDescriptor, setLengthDescriptor] =useState("");
+
+  const [fitSelector, setFitSelector] = useState(0);
+  const [fitDescriptor, setFitDescriptor] =useState("");
+
+  const [rating, setRating] = useState(null);
+  const [recommended, setRecommended] = useState(null);
+  const [size, setSize] = useState(null);
+  const [width, setWidth] = useState(null);
+  const [comfort, setComfort] = useState(null);
+  const [quality, setQuality] = useState(null);
+  const [length, setLength] = useState(null);
+  const [fit, setFit] = useState(null);
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
+  const [photos, setPhotos] = useState([]);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+
 
 
 
@@ -56,37 +89,224 @@ let NewReview = ({ setShowModal }) => {
 
   const starsClick = () => {
     setOldStars(currStars);
+    let r = 0;
+    oldStars.forEach((star) => {
+      if ( star === 1) {
+        r++;
+      }
+    })
+    setRating(r);
   }
 
   const thumbYesClick = () => {
 
     setRecommendYes(true);
     setRecommendNo(false);
+    setRecommended(true);
   }
 
   const thumbNoClick = () => {
     setRecommendYes(false);
     setRecommendNo(true);
+    setRecommended(false)
   };
 
   const Characteristics = () => {
     return (
-      <div onChange={sizeSelectionClick} className="new-review-characteristics-container">
-        <div className="new-review-characteristics-title-text">
+      <div  className="new-review-characteristics-container">
+
+        <div onChange={sizeSelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Size: {sizeDescriptor}  </section>
           <section className="body-text"> </section>
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
-            <label name="A size too small">1</label>
-            <input type="radio" checked= {sizeSelector === "1"} value="1" name="A size too small"/>
-            <label name="A size too small">Too Small</label>
+              <label name="A size too small">1</label>
+              <input type="radio" defaultChecked= {sizeSelector === "1"} value="1" name="A size too small"/>
+              <label name="A size too small">Too Small</label>
             </div>
-            <input type="radio" checked= {sizeSelector === "2"} value="2" name="A 1/2 size too small"/>
-            <input type="radio" checked= {sizeSelector === "3"} value="3" name="Perfect"/> Perfect
-            <input type="radio" checked= {sizeSelector === "4"} value="4" name="A 1/2 size too big"/>
-            <input type="radio" checked= {sizeSelector === "5"} value="5" name="A size too big"/> Too Big
+            <div className="radio-buttons">
+              <label name="A 1/2 size too small">2</label>
+            <input type="radio" defaultChecked= {sizeSelector === "2"} value="2" name="A 1/2 size too small"/>
+              <label name="A 1/2 size too small"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="Perfect">3</label>
+                <input type="radio" defaultChecked= {sizeSelector === "3"} value="3" name="Perfect"/>
+              <label name ="Perfect"> Perfect </label>
+            </div>
+            <div className="radio-buttons">
+              <label name="A 1/2 size too big">4</label>
+                <input type="radio" defaultChecked= {sizeSelector === "4"} value="4" name="A 1/2 size too big"/>
+              <label name="A 1/2 size too big"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="A size too big">5</label>
+                <input type="radio" defaultChecked= {sizeSelector === "5"} value="5" name="A size too big"/>
+              <label name="A size too big">Too Big</label>
+            </div>
           </div>
         </div>
+
+        <div onChange={widthSelectionClick} className="new-review-characteristics-title-text">
+          <section className="body-text"> Width: {widthDescriptor}  </section>
+          <section className="body-text"> </section>
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+              <label name="Too narrow">1</label>
+              <input type="radio" defaultChecked= {widthSelector === "1"} value="1" name="Too narrow"/>
+              <label name="Too narrow">Too narrow</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Slightly narrow">2</label>
+            <input type="radio" defaultChecked= {widthSelector === "2"} value="2" name="Slightly narrow"/>
+              <label name="Slightly narrow"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="Perfect">3</label>
+                <input type="radio" defaultChecked= {widthSelector === "3"} value="3" name="Perfect"/>
+              <label name ="Perfect"> Perfect </label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Slightly wide">4</label>
+                <input type="radio" defaultChecked= {widthSelector === "4"} value="4" name="Slightly wide"/>
+              <label name="Slightly wide"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Too wide">5</label>
+                <input type="radio" defaultChecked= {widthSelector === "5"} value="5" name="Too wide"/>
+              <label name="Too wide">Too wide</label>
+            </div>
+          </div>
+        </div>
+
+        <div onChange={comfortSelectionCLick} className="new-review-characteristics-title-text">
+          <section className="body-text"> Comfort: {comfortDescriptor}  </section>
+          <section className="body-text"> </section>
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+              <label name="Uncomfortable">1</label>
+              <input type="radio" defaultChecked= {comfortSelector === "1"} value="1" name="Uncomfortable"/>
+              <label name="Uncomfortable">Uncomfortable</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Slightly uncomfortable">2</label>
+            <input type="radio" defaultChecked= {comfortSelector === "2"} value="2" name="Slightly uncomfortable"/>
+              <label name="Slightly uncomfortable"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="Ok">3</label>
+                <input type="radio" defaultChecked= {comfortSelector === "3"} value="3" name="Ok"/>
+              <label name ="Ok"> Ok </label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Comfortable">4</label>
+                <input type="radio" defaultChecked= {comfortSelector === "4"} value="4" name="Comfortable"/>
+              <label name="Comfortable"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Perfect">5</label>
+                <input type="radio" defaultChecked= {comfortSelector === "5"} value="5" name="Perfect"/>
+              <label name="Perfect">Perfect</label>
+            </div>
+          </div>
+        </div>
+
+        <div onChange={qualitySelectionClick} className="new-review-characteristics-title-text">
+          <section className="body-text"> Quality: {qualityDescriptor}  </section>
+          <section className="body-text"> </section>
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+              <label name="Poor">1</label>
+              <input type="radio" defaultChecked= {qualitySelector === "1"} value="1" name="Poor"/>
+              <label name="Poor">Poor</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Below average">2</label>
+            <input type="radio" defaultChecked= {qualitySelector === "2"} value="2" name="Below average"/>
+              <label name="Below average"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="What I expected">3</label>
+                <input type="radio" defaultChecked= {qualitySelector === "3"} value="3" name="What I expected"/>
+              <label name ="What I expected"> What I expected </label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Pretty great">4</label>
+                <input type="radio" defaultChecked= {qualitySelector === "4"} value="4" name="Pretty great"/>
+              <label name="Pretty great"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Perfect">5</label>
+                <input type="radio" defaultChecked= {qualitySelector === "5"} value="5" name="Perfect"/>
+              <label name="Perfect">Perfect</label>
+            </div>
+          </div>
+        </div>
+
+        <div onChange={lengthSelectionClick} className="new-review-characteristics-title-text">
+          <section className="body-text"> Length: {lengthDescriptor}  </section>
+          <section className="body-text"> </section>
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+              <label name="Runs short">1</label>
+              <input type="radio" defaultChecked= {lengthSelector === "1"} value="1" name="Runs short"/>
+              <label name="Runs short">Runs short</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs slightly short">2</label>
+            <input type="radio" defaultChecked= {lengthSelector === "2"} value="2" name="Runs slightly short"/>
+              <label name="Runs slightly short"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="Perfect">3</label>
+                <input type="radio" defaultChecked= {lengthSelector === "3"} value="3" name="Perfect"/>
+              <label name ="Perfect"> Perfect</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs slightly long">4</label>
+                <input type="radio" defaultChecked= {lengthSelector === "4"} value="4" name="Runs slightly long"/>
+              <label name="Runs slightly long"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs Long">5</label>
+                <input type="radio" defaultChecked= {lengthSelector === "5"} value="5" name="Runs Long"/>
+              <label name="Perfect">Runs Long</label>
+            </div>
+          </div>
+        </div>
+
+        <div onChange={fitSelectionClick} className="new-review-characteristics-title-text">
+          <section className="body-text"> Fit: {fitDescriptor}  </section>
+          <section className="body-text"> </section>
+          <div  className="new-review-characteristic-table" >
+            <div className="radio-buttons">
+              <label name="Runs tight">1</label>
+              <input type="radio" defaultChecked= {fitSelector === "1"} value="1" name="Runs tight"/>
+              <label name="Runs tight">Runs tight</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs slightly tight">2</label>
+            <input type="radio" defaultChecked= {fitSelector === "2"} value="2" name="Runs slightly tight"/>
+              <label name="Runs slightly tight"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name ="Perfect">3</label>
+                <input type="radio" defaultChecked= {fitSelector === "3"} value="3" name="Perfect"/>
+              <label name ="Perfect"> Perfect</label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs slightly long">4</label>
+                <input type="radio" defaultChecked= {fitSelector === "4"} value="4" name="Runs slightly long"/>
+              <label name="Runs slightly long"></label>
+            </div>
+            <div className="radio-buttons">
+              <label name="Runs Long">5</label>
+                <input type="radio" defaultChecked= {fitSelector === "5"} value="5" name="Runs Long"/>
+              <label name="Perfect">Runs Long</label>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }
@@ -94,23 +314,66 @@ let NewReview = ({ setShowModal }) => {
   const sizeSelectionClick = (e) => {
     setSizeSelector(e.target.value);
     setSizeDescriptor(e.target.name);
-    // if ( sizeSelector === "1") {
-    //   setSizeDescriptor("A size too small")
-    // } else if ( sizeSelector === "2") {
-    //   setSizeDescriptor("1/2 a size too small")
-    // } else if ( sizeSelector === "3") {
-    //   setSizeDescriptor("Perfect")
-    // } else if ( sizeSelector === "4") {
-    //   setSizeDescriptor( "1/2 a size too wide")
-    // } else if ( sizeSelector === "5") {
-    //   setSizeDescriptor( "A size too wide")
-    // }
+    setSize(e.target.value);
 
+  };
+
+  const widthSelectionClick = (e) => {
+    setWidthSelector(e.target.value);
+    setWidthDescriptor(e.target.name);
+    setWidth(e.target.value);
+  };
+
+  const comfortSelectionCLick = (e) => {
+    setComfortSelector(e.target.value);
+    setComfortDescriptor(e.target.name);
+    setComfort(e.target.value);
+  };
+
+  const qualitySelectionClick = (e) => {
+    setQualitySelector(e.target.value);
+    setQualityDescriptor(e.target.name);
+    setQuality(e.target.value);
+  };
+
+  const lengthSelectionClick = (e) => {
+    setLengthSelector(e.target.value);
+    setLengthDescriptor(e.target.name);
+    setLength(e.target.value);
+  };
+
+  const fitSelectionClick = (e) => {
+    setFitSelector(e.target.value);
+    setFitDescriptor(e.target.name);
+    setFit(e.target.value);
+  };
+
+  const handleSummaryChange = (e) => {
+    setSummary(e.target.value);
+  };
+
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
+  };
+
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+  };
+
+   const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const submitClick = () => {
+    let reviewObj = {rating, recommended, size, width, comfort, quality, length, fit, summary, body, nickname, email};
+    console.log(reviewObj);
   }
 
 
   // we need to render the modal using the new-review div in index.html
+
   return ReactDom.createPortal (
+
     <div className= "new-review-container" ref={modalRef} onClick={exitModal}>
       <div className="modal">
         <div className ="new-review-position">
@@ -143,6 +406,29 @@ let NewReview = ({ setShowModal }) => {
         </div>
         <div className="new-review-characteristics">
           <Characteristics />
+        </div>
+        <div className="new-review-summary">
+          <span className="helpful-answer"> Review Summary: </span>
+          <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
+          <label> Max 60 characters</label>
+        </div>
+        <div className="new-review-body">
+          <span className="helpful-answer"> Type your review</span>
+          <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
+          <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
+        </div>
+
+        <PhotoUpload setPhotos={setPhotos}/>
+        <div className="new-review-nickname">
+          <input id="review-nickname" type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60" onChange={handleNicknameChange}></input>
+          <span className="helpful-answer"> For privacy reasons, do not use your full name or email address. </span>
+        </div>
+        <div className="new-review-email">
+          <input id="review-email" type="text" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60" onChange={handleEmailChange}></input>
+          <span className="helpful-answer"> For authentication reasons, you will not be emailed. </span>
+        </div>
+        <div className="new-review-submit">
+        <button onClick={submitClick} className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
         <button onClick={() => setShowModal(false)}>X</button>
         </div>

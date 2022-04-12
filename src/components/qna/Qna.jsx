@@ -16,25 +16,8 @@ const Qna = (props) => {
   const {productId} = useContext(AppContext);
   const [page, setPage] = useState(1);
 
-  // useEffect(() => {
-  //   // getQuestions(productId)
-  //   getQuestions(65633)
-  //     .then((res) => {
-  //       // console.log("Get request from QnA");
-  //       let data = res.slice(0, 4);
-  //       // setInit(res.slice(0, 4));
-  //       if (res.length > 4) {
-  //         setExtra(true);
-  //       }
-  //       setInit(data);
-  //       setQnaList(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [])
-
   useEffect(() => {
-    // getQuestions(productId)
-    getQuestions(65633, 1, 9999)
+    getQuestions(productId, 1, 9999)
       .then((res) => {
         let data = sortData(res);
 

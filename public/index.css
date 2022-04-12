@@ -207,10 +207,6 @@ span.helpful-answer {
   scroll-snap-type: y mandatory;
 }
 
-.image-bar {
-  display: flex;
-}
-
 .carousel-button {
   position: absolute;
   width: 54vh;
@@ -283,7 +279,6 @@ span.helpful-answer {
 
 .modal-buttons-container {
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
   height: 100vh;
   width: 100vw;
@@ -335,18 +330,32 @@ button.modal-image.right:hover {
 
 /* ----- IMAGE BAR ----- */
 
+.image-bar {
+  display: flex;
+  overflow: hidden;
+}
+
 .progress-bar {
-  height: 100%;
+  list-style: none;
+  height: 81vh;
   width: 1px;
+  overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
   margin-right: 20px;
+  scroll-behavior: smooth;
 }
 
 .progress-bar-progress {
-  height: 10%;
+  height: 81vh;
   width: 1px;
+  display: list-item;
+  list-style: none;
   background-color: #1f1f1f;
+}
+
+.progress-bar-progress.none {
+  background-color: darkgray;
 }
 
 .thumbnails {
@@ -364,6 +373,9 @@ button.modal-image.right:hover {
   padding-bottom: 5px;
 }
 
+.thumbnail.false {
+  opacity: 50%;
+}
 
 /* ----- PRODUCT INFO ----- */
 
@@ -741,28 +753,24 @@ h3.related-title {
   align-self: flex-start;
   justify-self: flex-end;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   z-index: 9;
+  color: white;
 }
-
-.compare-button {
-  color: #fff
+.action-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/5));
+  width: calc((((56.5vh + 18vw + 21px) / 3)/5));
 }
-
 .compare-button:hover {
   color: rgb(212, 175, 55);
   transition: color 0.2s ease-in;
 }
-
-.remove-button {
-  color: #fff;
-}
-
 .remove-button:hover {
   color: rgb(130, 15, 15);
   transition: color 0.2s ease-in;
 }
+
 
 #add-card {
   background-color: #f1f1f1;
@@ -775,6 +783,10 @@ h3.related-title {
   margin: auto;
   padding: auto;
 }
+.plus-icon {
+  height: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+  width: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+}
 
 .product-start {
   bottom: 0;
@@ -782,6 +794,7 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -798,33 +811,28 @@ h3.related-title {
 .modal-header {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  height: 20px;
-  padding: auto;
   margin: 10px;
+  line-height: 5vh;
 }
 
 .modal-title {
   float: left;
+  font-size: 5vh;
 }
 
 .modal-button {
-  position: relative;
-  right: 0;
+  float: right;
   border: none;
   background-color: #fff;
-  font-size: 14px;
+  font-size: 5vh;
   font-weight: 200;
   font-style: normal;
 }
-
 .feature-container {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin-top: 5vh;
-  height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh - 40px);
-  width: calc(56.5vh + 18vw + 61px);
 }
 
 tr {
@@ -832,19 +840,25 @@ tr {
 }
 
 th, td {
-  width: 12vw;
+  width: calc(100vw/3);
   vertical-align: bottom;
   padding: 5px;
 }
 
 th {
-  font-size: 24px;
+  font-size: 4vh;
   font-weight: 500;
 }
 
 td {
-  font-size: 14px;
+  font-size: 3vh;
   font-weight: 200;
+}
+
+thead {
+}
+tbody {
+  position: relative;
 }
 
 .left {
@@ -1205,16 +1219,16 @@ a.helpful:hover {
 }
 
 .new-review-container .modal {
-  z-index: 1;
+  z-index: 10;
   width: 75vw;
   height: 80vh;
   background: white;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 5px;
   position: relative;
   animation: animate 0.3s;
+  overflow: auto;
 }
 
 @keyframes animate {
@@ -1389,13 +1403,24 @@ h1.average-rating {
   column-gap: 20px;
   justify-content: top;
 }
+.new-review-product-recommendation-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .new-review-position {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  position: relative;
-  bottom: 200px;
+  overflow: auto;
+}
+.new-review-characteristic-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .radio-buttons {
@@ -1420,4 +1445,39 @@ h1.average-rating {
 .thumbs-down {
   width: 30px;
   height: auto;
+}
+.new-review-summary {
+display: flex;
+flex-direction: column;
+margin-top: 25px;
+margin-bottom: 10px;
+width: 60%;
+}
+.new-review-body {
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 75%;
+}
+.new-review-images {
+  display: flex;
+  flex-direction: row;
+}
+button.upload-photo {
+  position: relative;
+}
+.new-review-nickname  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px 0 10px 0;
+}
+.new-review-email  {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.new-review-submit {
+  position: relative;
 }
