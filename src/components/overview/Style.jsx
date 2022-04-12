@@ -4,22 +4,17 @@ import { OverviewContext } from "./Overview.jsx";
 
 const Style = ({style}) => {
 
-  var colors = style.name.split(' & ');
+  var color = style.name.split(' & ')
 
-  for (let i = 0; i < colors.length; i++) {
-    if (colors[i].includes(' ')) {
-      colors[i] = colors[i].replace(' ', '-').toLowerCase();
+  for (let i = 0; i < color.length; i++) {
+    if (color[i].includes(' ')) {
+      color[i] = color[i].replace(' ', '-').toLowerCase();
     } else {
-      colors[i] = colors[i].toLowerCase();
+      color[i] = color[i].toLowerCase();
     }
   }
 
-  if (colors.length > 1) {
-    var side1 = `style-color side1 ${colors[0]}`;
-    var side2 = `style-color side2 ${colors[1]}`;
-  } else {
-    side1 = `style-color side1 ${colors[0]}`;
-  }
+  color = color.join('-');
 
   const { currentStyle, setCurrentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto } = useContext(OverviewContext);
 
@@ -31,8 +26,7 @@ const Style = ({style}) => {
 
   return (
     <div className={`style-button ${currentStyle === style}`} onClick={() => handleStyleClick(style)}>
-      <div className={ side1 }></div>
-      <div className={ side2 }></div>
+      <div className={ `style-color ${color}` }></div>
     </div>
   )
 }
