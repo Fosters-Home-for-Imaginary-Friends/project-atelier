@@ -72,6 +72,4 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setPro
   );
 }, productCardComparison);
 
-
-
 export default ProductCard;
