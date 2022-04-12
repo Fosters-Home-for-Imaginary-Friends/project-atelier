@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext }from 'react';
+import React, { useState, useEffect, useContext, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
+import {AppContext} from '../App.jsx';
 
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
@@ -9,9 +10,12 @@ export const RatingsContext = createContext({});
 //primary component that will attach to App.jsx
 let Ratings = () => {
 
+  const { productData } = useContext(AppContext);
+
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
+  const [relevantCharacteristics, setRelevantCharacteristics] = useState({});
   const [currentSort, setCurrentSort] = useState('relevant');
   const [storedReviews, setStoredReviews] = useState([]);
   let [totalScore, setTotalScore] = useState(0);
@@ -22,14 +26,16 @@ let Ratings = () => {
 
 
   let dataFetch = () => {
-    getReviews(40384, pageNum, 2, currentSort)
+    getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
-      getReviewMetadata(40384)
+      getReviewMetadata(productData.id)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
         setMetaRating(meta);
+        setRelevantCharacteristics(meta.characteristics)
         let totalRatingsObj = meta.ratings;
+
         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
         for (let k in totalRatingsObj) {
           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
@@ -44,10 +50,10 @@ let Ratings = () => {
     })
   }
 
+
   let filteredContent = (filter) => {
     let filteredObj = starFilters;
     for ( let k in starFilters) {
-      console.log(k, filter)
       if (k === filter) {
         filteredObj[k] = (!starFilters[k]);
         setStarFilters(filteredObj);
@@ -58,18 +64,17 @@ let Ratings = () => {
                 filteredArray.push(reviews[i]);
               }
           }
-          console.log(filteredArray)
           setReviews(filteredArray);
         } else {
           setPageNum(1);
-          getReviews(40384, pageNum, 2, currentSort).then((res) => {setReviews(res)});
+          getReviews(productData.id, pageNum, 2, currentSort).then((res) => {setReviews(res)});
         }
       }
       }
     }
     useEffect(() => {
       dataFetch();
-    }, []);
+    }, [productData.id]);
 
 
    if ( loading ) {
@@ -81,8 +86,8 @@ let Ratings = () => {
   }
 
   return (
-<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
-                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
+<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort,
+                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum, relevantCharacteristics}}>
   <div className="ratings-reviews-container">
     <h3 className="ratings-title">RATINGS AND REVIEWS</h3>
     <div className="breakdown-list-container">
