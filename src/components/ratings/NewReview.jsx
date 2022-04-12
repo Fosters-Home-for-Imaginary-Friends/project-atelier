@@ -391,10 +391,8 @@ let NewReview = ({ setShowModal }) => {
     // let lengthID = metaRating.characteristics.Length.id || 1004
     // let fitID = metaRating.characteristics.Fit.id || 1005
     let charObj = {}
-    console.log(photos);
 
     for ( let char in relevantCharacteristics) {
-      // console.log(char, char.id);
       if (char === "Size") {
         charObj[relevantCharacteristics[char].id]= parseInt(size);
       } else if ( char === "Width") {
@@ -427,7 +425,6 @@ let NewReview = ({ setShowModal }) => {
 
     // let cObj = {[sizeID] : size, [widthID]: width, [comfortID]: comfort, [qualityID]: quality, [lengthID]: length, [fitID]: fit}
     let reviewObj = {product_id: 40384, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
-    console.log(reviewObj);
 
     postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
   }

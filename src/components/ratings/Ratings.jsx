@@ -51,7 +51,6 @@ let Ratings = () => {
   let filteredContent = (filter) => {
     let filteredObj = starFilters;
     for ( let k in starFilters) {
-      console.log(k, filter)
       if (k === filter) {
         filteredObj[k] = (!starFilters[k]);
         setStarFilters(filteredObj);
@@ -62,7 +61,6 @@ let Ratings = () => {
                 filteredArray.push(reviews[i]);
               }
           }
-          console.log(filteredArray)
           setReviews(filteredArray);
         } else {
           setPageNum(1);
