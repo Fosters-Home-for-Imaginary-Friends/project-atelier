@@ -384,7 +384,7 @@ button.modal-image.right:hover {
   flex-direction: column;
   padding-left: 20px;
   align-self: flex-end;
-  width: 18vw;
+  max-width: 12vw;
 }
 
 .sale-price-container {
@@ -473,6 +473,7 @@ button.modal-image.right:hover {
   filter: saturate(70%);
   border: .1vw solid #fff;
   border-radius: 50%;
+  background-color: #f1f1f1;
 }
 
 /* ----- COLORS ----- */
@@ -501,22 +502,32 @@ button.modal-image.right:hover {
   background: linear-gradient( 90deg, rgb(75, 75, 75) 50%, #1f1f1f 50% );
 }
 
-/* --- FIX STYLING --- */
-
-.black-lenses {
+.black-lenses-black-frame {
   background-color: #1f1f1f;
 }
 
-.black-frame {
+.black-lenses-gold-frame {
+  background: linear-gradient( 90deg, #1f1f1f 50%, rgb(212, 175, 55) 50% );
+}
+
+.gold-lenses-black-frame {
+  background: linear-gradient( 90deg, rgb(212, 175, 55) 50%, #1f1f1f 50% );
+}
+
+.gold-lenses-gold-frame {
+  background-color: rgb(212, 175, 55);
+}
+
+.black {
   background-color: #1f1f1f;
 }
 
-.gold-lenses {
-  background-color: rgb(212, 175, 55);
+.grey {
+  background-color: rgb(190, 190, 190);
 }
 
-.gold-frame {
-  background-color: rgb(212, 175, 55);
+.white {
+  background-color: #f1f1f1;
 }
 
 .goldenrod {
@@ -551,6 +562,22 @@ button.modal-image.right:hover {
   background: linear-gradient( 90deg, #1f1f1f 50%, rgb(130, 15, 15) 50% );
 }
 
+.white-white {
+  background-color: #f1f1f1;
+}
+
+.white-red {
+  background: linear-gradient( 90deg, #f1f1f1 50%, rgb(130, 15, 15) 50% );
+}
+
+.white-black {
+  background: linear-gradient( 90deg, #f1f1f1 50%, #1f1f1f 50% );
+}
+
+.white-blue {
+  background: linear-gradient( 90deg, #f1f1f1 50%, rgb(63, 86, 107) 50% );
+}
+
 /* ----- SIZES ----- */
 
 .size-selector {
@@ -558,8 +585,7 @@ button.modal-image.right:hover {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 10px;
-  max-width: 205px;
+  max-width: 12vw;
 }
 
 .size-button {
@@ -568,10 +594,10 @@ button.modal-image.right:hover {
   align-items: center;
   background-color: #fff;
   color: #1f1f1f;
-  box-shadow: 0 0 1px 1px darkgray;
-  border-radius: 3px;
-  height: 24px;
-  margin: 0px 3px 0 3px;
+  box-shadow: 0 0 .1vw .05vw darkgray;
+  border-radius: 10%;
+  height: 3vh;
+  margin: 0px .15vw .6vh .15vw;
   cursor: pointer;
 }
 
@@ -585,7 +611,7 @@ button.modal-image.right:hover {
 }
 
 .size-text {
-  padding: 6.3px;
+  padding: .4vw;
 }
 
 /* ----- QUANTITY SELECTOR ----- */
@@ -595,7 +621,7 @@ button.modal-image.right:hover {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 10px;
-  max-width: 205px;
+  max-width: 12vw;
 }
 
 .quantity-button {
@@ -630,7 +656,7 @@ button.modal-image.right:hover {
 /* ----- ADD TO BAG ----- */
 
 button.add {
-  max-width: 205px;
+  max-width: 12vw;
 }
 
 
