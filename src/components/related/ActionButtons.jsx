@@ -1,31 +1,36 @@
-import React, {useState, useMemo, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
+import {OutfitContext} from './OutfitList.jsx';
+import {AppContext} from '../App.jsx';
 
-const CompareButton = ({card}) => {
+const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => {
+  const toggleModal = (e) => {
+    e.stopPropagation();
     setModal(() => modal ? false : true);
   }
 
   return (
     <div className="compare-button action-button">
       <AiOutlineStar size={25} onClick={toggleModal} />
-      {modal ? <CompareModal card={card} closeModal={toggleModal} /> : null }
+      {modal ? <CompareModal cardData={cardData} closeModal={toggleModal} /> : null }
     </div>
   );
 };
 
-//! Look into map objects
-const RemoveButton = ({setState, product_id}) => {
+const RemoveButton = () => {
+  const {productData} = useContext(AppContext);
+  const {setOutfitList} = useContext(OutfitContext);
 
-  const removeCard = () => {
-    setState((prev) => {
+  const removeCard = (e) => {
+    e.stopPropagation();
+    setOutfitList((prev) => {
       let newState = prev.filter((id) => {
-        return product_id !== id;
+        return productData.id !== id;
       });
 
     if (newState.length > 0) {

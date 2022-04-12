@@ -1,72 +1,80 @@
-import React, {useRef, useEffect, useState, useMemo, useCallback} from 'react';
-import {getRelated} from '../../helpers.js';
-import {ProductCard, AddProductCard} from './ProductCards.jsx';
-import {getCookie} from '../../Cookies.js';
-import {CompareButton, RemoveButton} from './ActionButtons.jsx';
+import React, {useRef, useState, useEffect} from 'react';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
+import {RelatedCards, OutfitCards} from './CardContainers.jsx';
 
-const CardCarousel = ({product_id, related}) => {
-  const carouselRef = useRef(null);
+const CardCarousel = ({related, length}) => {
+  const carouselRef = useRef({});
+
+  // TODO: If item is removed from outfit list, re-check rightmost position
+  const position = useRef(0);
+  const [left, setLeft] = useState(false);
+  const [right, setRight] = useState(false);
 
   //These functions scroll the content within the carousel-viewport div
+  // TODO: Round up scrollby
   const scrollLeft = () => {
-    carouselRef.current.scrollBy({
-      left: -287.61,
-      behavior: "smooth"
-    });
+    if (left) {
+      position.current--;
+      carouselRef.current.scrollBy({
+        left: -(Math.ceil(carouselRef.current.clientWidth/3)),
+        behavior: "smooth"
+      });
+      if (position.current === 0) {
+        setLeft(false);
+      }
+      setRight((prev) => prev ? prev : true);
+    }
   }
+
   const scrollRight = () => {
-    carouselRef.current.scrollBy({
-      left: 287.61,
-      behavior: "smooth"
-    });
+    if (right) {
+      position.current++;
+      carouselRef.current.scrollBy({
+        left: Math.ceil(carouselRef.current.clientWidth/3),
+        behavior: "smooth"
+      });
+      if (position.current + 3 === length) {
+        setRight(false);
+      }
+      setLeft((prev) => prev ? prev : true);
+    }
   }
+
+  useEffect(() => {
+    if (length < 4) {
+      setRight((prev) => prev ? false : prev);
+    } else {
+      setRight((prev) => prev ? prev : true);
+    }
+  }, [length])
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <button onClick={scrollLeft} className="arrow"><AiOutlineDoubleLeft /></button>
+      <button onClick={scrollLeft} className="arrow"><LeftArrow view={left} /></button>
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
-        {related ? <RelatedCards product_id={product_id} /> : <OutfitCards product_id={product_id} />}
+        {related ? <RelatedCards /> : <OutfitCards />}
       </div>
-      <button onClick={scrollRight} className="arrow"><AiOutlineDoubleRight /></button>
+      <button onClick={scrollRight} className="arrow"><RightArrow view={right} /></button>
     </div>
   );
 };
 
-const RelatedCards = React.memo(function RelatedCards({product_id}) {
-  const [relatedList, setRelatedList] = useState([]);
-
-  useEffect(() => {
-    getRelated(product_id)
-      .then((data) => {
-        setRelatedList(data);
-      })
-      .catch((err) => console.error(err));
-  }, [product_id]);
+const LeftArrow = ({view}) => {
 
   return (
-  <div className="carousel"> {/* The part that scrolls when you press a button */}
-    {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} />)}
-  </div>
+    <React.Fragment>
+      {view ? <AiOutlineDoubleLeft /> : null}
+    </React.Fragment>
   );
-});
+};
 
-const OutfitCards = React.memo(function OutfitCards({product_id}) {
-  const [outfitList, setOutfitList] = useState([]);
-
-  useEffect(() => {
-    let cookies = getCookie("outfitList");
-    if (cookies !== "") {
-      setOutfitList((list) => list.concat(JSON.parse(cookies)))
-    }
-  }, []);
+const RightArrow = ({view}) => {
 
   return (
-    <div className="carousel"> {/* The part that scrolls when you press a button */}
-      {[<AddProductCard key={"addproductcard"} product_id={product_id} setOutfitList={setOutfitList} />]
-      .concat(outfitList.map((id) => <ProductCard key={id} product_id={id} related={false} setState={setOutfitList}  />))}
-    </div>
+    <React.Fragment>
+      {view ? <AiOutlineDoubleRight /> : null}
+    </React.Fragment>
   );
-});
+};
 
 export default CardCarousel;
