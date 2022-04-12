@@ -25,9 +25,9 @@ const ImageModal = () => {
     setHeight(imageRef.current.scrollHeight)
   }, [loading, setShowModal, currentPhoto])
 
-  useEffect(() => {
-    setTop(-yPosition)
-  }, [yPosition, currentPhoto])
+  // useEffect(() => {
+  //   setTop(-yPosition)
+  // }, [yPosition, currentPhoto])
 
   const handleModalClick = () => {
     document.body.classList.remove('modal-open')
