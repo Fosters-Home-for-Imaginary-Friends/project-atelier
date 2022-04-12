@@ -50,32 +50,49 @@ const CardCarousel = ({related, length}) => {
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <LeftArrow scrollLeft={scrollLeft} view={left} scrollPoint={scrollPoint} />
+      <LeftArrow scroll={scrollLeft} view={left} />
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         {related ? <RelatedCards /> : <OutfitCards />}
       </div>
-      <RightArrow scrollRight={scrollRight} view={right} scrollPoint={scrollPoint} />
+      <RightArrow scroll={scrollRight} view={right} />
     </div>
   );
 };
 
-const LeftArrow = ({scrollLeft, view}) => {
+const LeftArrow = ({scroll, view}) => {
+  const [clicked, setClicked] = useState(false);
 
+  const handleClick = () => {
+    if (!clicked) {
+      setClicked(true);
+      scroll();
+    }
+    setTimeout(() => setClicked(false), 250);
+  };
 
   return (
     <React.Fragment>
-      <button onClick={scrollLeft} className="arrow">
+      <button onClick={handleClick} className="arrow">
         {view ? <AiOutlineDoubleLeft size={40} /> : null}
       </button>
     </React.Fragment>
   );
 };
 
-const RightArrow = ({scrollRight, view}) => {
+const RightArrow = ({scroll, view}) => {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    if (!clicked) {
+      setClicked(true);
+      scroll();
+    }
+    setTimeout(() => setClicked(false), 250);
+  };
 
   return (
     <React.Fragment>
-      <button onClick={scrollRight} className="arrow">
+      <button onClick={handleClick} className="arrow">
         {view ? <AiOutlineDoubleRight size={40} /> : null}
       </button>
     </React.Fragment>
