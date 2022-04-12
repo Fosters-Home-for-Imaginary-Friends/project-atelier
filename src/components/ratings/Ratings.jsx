@@ -12,6 +12,7 @@ let Ratings = () => {
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
+  const [relevantCharacteristics, setRelevantCharacteristics] = useState({});
   const [currentSort, setCurrentSort] = useState('relevant');
   const [storedReviews, setStoredReviews] = useState([]);
   let [totalScore, setTotalScore] = useState(0);
@@ -19,6 +20,7 @@ let Ratings = () => {
   let [averageRating, setAverageRating] = useState(0);
   let [pageNum, setPageNum] = useState(1);
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
+
 
 
   let dataFetch = () => {
@@ -29,7 +31,9 @@ let Ratings = () => {
         // setRatingsObj({reviews: res, metaRating: meta})
         setReviews(res);
         setMetaRating(meta);
+        setRelevantCharacteristics(meta.characteristics)
         let totalRatingsObj = meta.ratings;
+
         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
         for (let k in totalRatingsObj) {
           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
@@ -81,8 +85,8 @@ let Ratings = () => {
   }
 
   return (
-<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort, averageRating,
-                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum}}>
+<RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort,
+                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum, relevantCharacteristics}}>
   <div className="ratings-reviews-container">
     <h3 className="ratings-title">RATINGS AND REVIEWS</h3>
     <div className="breakdown-list-container">

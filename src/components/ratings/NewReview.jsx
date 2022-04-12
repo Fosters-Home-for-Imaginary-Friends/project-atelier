@@ -1,10 +1,14 @@
 //this component will house the elements to build the new review modal
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import ReactDom from 'react-dom';
+import { RatingsContext } from './Ratings.jsx';
+import { postReview } from '../../helpers.js';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
 import PhotoUpload from './PhotoUpload.jsx';
 
 let NewReview = ({ setShowModal }) => {
+
+  const {metaRating, relevantCharacteristics} = useContext(RatingsContext);
 
   const [currStars, setCurrStars] = useState([0, 0, 0, 0, 0]);
   const [oldStars, setOldStars] = useState([0, 0, 0, 0, 0])
@@ -14,21 +18,28 @@ let NewReview = ({ setShowModal }) => {
 
   const [sizeSelector, setSizeSelector] = useState(0);
   const [sizeDescriptor, setSizeDescriptor] = useState("");
+  const [sizeRelevant, setSizeRelevant] = useState(false)
 
   const [widthSelector, setWidthSelector] = useState(0);
-  const [widthDescriptor, setWidthDescriptor] =useState("");
+  const [widthDescriptor, setWidthDescriptor] = useState("");
+  const [widthRelevant, setWidthRelevant] = useState(false);
 
   const [comfortSelector, setComfortSelector] = useState(0);
   const [comfortDescriptor, setComfortDescriptor] =useState("");
+  const [comfortRelevant, setComfortRelevant] = useState(false);
 
   const [qualitySelector, setQualitySelector] = useState(0);
-  const [qualityDescriptor, setQualityDescriptor] =useState("");
+  const [qualityDescriptor, setQualityDescriptor] = useState("");
+  const [qualityRelevant, setQualityRelevant] = useState(false);
 
   const [lengthSelector, setLengthSelector] = useState(0);
   const [lengthDescriptor, setLengthDescriptor] =useState("");
+  const [lengthRelevant, setLengthRelevant] = useState(false);
+
 
   const [fitSelector, setFitSelector] = useState(0);
-  const [fitDescriptor, setFitDescriptor] =useState("");
+  const [fitDescriptor, setFitDescriptor] = useState("");
+  const [fitRelevant, setFitRelevant] = useState(false);
 
   const [rating, setRating] = useState(null);
   const [recommended, setRecommended] = useState(null);
@@ -43,7 +54,6 @@ let NewReview = ({ setShowModal }) => {
   const [photos, setPhotos] = useState([]);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
-
 
 
 
@@ -95,6 +105,9 @@ let NewReview = ({ setShowModal }) => {
         r++;
       }
     })
+    if ( r < 1) {
+      r = 1;
+    }
     setRating(r);
   }
 
@@ -115,6 +128,7 @@ let NewReview = ({ setShowModal }) => {
     return (
       <div  className="new-review-characteristics-container">
 
+        { (relevantCharacteristics.Size) &&
         <div onChange={sizeSelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Size: {sizeDescriptor}  </section>
           <section className="body-text"> </section>
@@ -145,8 +159,9 @@ let NewReview = ({ setShowModal }) => {
               <label name="A size too big">Too Big</label>
             </div>
           </div>
-        </div>
+        </div>}
 
+       { (relevantCharacteristics.Width) &&
         <div onChange={widthSelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Width: {widthDescriptor}  </section>
           <section className="body-text"> </section>
@@ -177,8 +192,9 @@ let NewReview = ({ setShowModal }) => {
               <label name="Too wide">Too wide</label>
             </div>
           </div>
-        </div>
+        </div>}
 
+       { (relevantCharacteristics.Comfort)&&
         <div onChange={comfortSelectionCLick} className="new-review-characteristics-title-text">
           <section className="body-text"> Comfort: {comfortDescriptor}  </section>
           <section className="body-text"> </section>
@@ -209,9 +225,10 @@ let NewReview = ({ setShowModal }) => {
               <label name="Perfect">Perfect</label>
             </div>
           </div>
-        </div>
+        </div>}
 
-        <div onChange={qualitySelectionClick} className="new-review-characteristics-title-text">
+        {(relevantCharacteristics.Quality) &&
+         <div onChange={qualitySelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Quality: {qualityDescriptor}  </section>
           <section className="body-text"> </section>
           <div  className="new-review-characteristic-table" >
@@ -241,8 +258,9 @@ let NewReview = ({ setShowModal }) => {
               <label name="Perfect">Perfect</label>
             </div>
           </div>
-        </div>
+        </div>}
 
+        {(relevantCharacteristics.Length) &&
         <div onChange={lengthSelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Length: {lengthDescriptor}  </section>
           <section className="body-text"> </section>
@@ -273,8 +291,9 @@ let NewReview = ({ setShowModal }) => {
               <label name="Perfect">Runs Long</label>
             </div>
           </div>
-        </div>
+        </div>}
 
+        {(relevantCharacteristics.Fit) &&
         <div onChange={fitSelectionClick} className="new-review-characteristics-title-text">
           <section className="body-text"> Fit: {fitDescriptor}  </section>
           <section className="body-text"> </section>
@@ -305,7 +324,7 @@ let NewReview = ({ setShowModal }) => {
               <label name="Perfect">Runs Long</label>
             </div>
           </div>
-        </div>
+        </div>}
 
       </div>
     )
@@ -365,8 +384,52 @@ let NewReview = ({ setShowModal }) => {
   };
 
   const submitClick = () => {
-    let reviewObj = {rating, recommended, size, width, comfort, quality, length, fit, summary, body, nickname, email};
+    // let sizeID = metaRating.characteristics.Size.id || 1000
+    // let widthID = metaRating.characteristics.Width.id || 1001
+    // let comfortID = metaRating.characteristics.Comfort.id || 1002;
+    // let qualityID = metaRating.characteristics.Quality.id || 1003
+    // let lengthID = metaRating.characteristics.Length.id || 1004
+    // let fitID = metaRating.characteristics.Fit.id || 1005
+    let charObj = {}
+    console.log(photos);
+
+    for ( let char in relevantCharacteristics) {
+      // console.log(char, char.id);
+      if (char === "Size") {
+        charObj[relevantCharacteristics[char].id]= parseInt(size);
+      } else if ( char === "Width") {
+        charObj[relevantCharacteristics[char].id] = parseInt(width);
+      } else if ( char === "Comfort") {
+        charObj[relevantCharacteristics[char].id] = parseInt(comfort);
+      } else if ( char === "Quality") {
+        charObj[relevantCharacteristics[char].id] = parseInt(quality);
+      } else if ( char === "Length") {
+        charObj[relevantCharacteristics[char].id] = parseInt(length);
+      } else if ( char === "Fit") {
+        charObj[relevantCharacteristics[char].id] = parseInt(fit);
+      }
+    }
+
+
+    /*
+    He was such a great and wise potato boy. It's a shame that he had his best potatoing in front of him. But alas, he has potatoed his last potato, and have moved on to the potato boy after life. Which is actually just a rusty bucket filled with the lost hopes and dreams of other potato boys before him.
+
+    body: "He was such a great and wise potato boy. It's a shame that he had his best potatoing in front of him. But alas, he has potatoed his last potato, and have moved on to the potato boy after life. Which is actually just a rusty bucket filled with the lost hopes and dreams of other potato boys before him."
+    characteristics: {135346: '3', 135347: '3', 135348: '5', 135349: '5'}
+    email: "PotatoBoyz4Lyfe@gmail.com"
+    name: "PotatoBoyFan"
+    photos: (3) ['http://res.cloudinary.com/diono1kwq/image/upload/v1649792915/kam3mxanfzoxwfmfa5vz.jpg', 'http://res.cloudinary.com/diono1kwq/image/upload/v1649792915/prk9gbccf24pt3tlbus0.jpg', 'http://res.cloudinary.com/diono1kwq/image/upload/v1649792914/askqzlqc0v4n6qhfvfeb.jpg']
+    product_id: 40384
+    rating: 4
+    recommend: true
+    summary: "Best Potato Boy!"*/
+
+
+    // let cObj = {[sizeID] : size, [widthID]: width, [comfortID]: comfort, [qualityID]: quality, [lengthID]: length, [fitID]: fit}
+    let reviewObj = {product_id: 40384, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
     console.log(reviewObj);
+
+    postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
   }
 
 
