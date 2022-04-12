@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useLayoutEffect, useEffect } from "react";
+import React, { useRef, useContext, useState, useLayoutEffect } from "react";
 import ReactDom from "react-dom";
 import { OverviewContext } from "./Overview.jsx";
 
@@ -8,26 +8,18 @@ const ImageModal = () => {
   const imageRef = useRef(null);
 
   const { setShowModal, currentStyle, setPreviousPhoto, currentPhoto, setCurrentPhoto, loading } = useContext(OverviewContext);
+
   const [top, setTop] = useState(0);
-  const [yPosition, setYPosition] = useState(0);
   const [height, setHeight] = useState(0);
-
-  const handlePosition = (e) => {
-    const container = imageModalRef.current.getBoundingClientRect();
-    setYPosition(e.clientY * ((height - container.height) / container.height))
-  }
-
-  if (imageModalRef.current && !height) {
-    setHeight(imageModalRef.current.scrollHeight)
-  }
 
   useLayoutEffect(() => {
     setHeight(imageRef.current.scrollHeight)
   }, [loading, setShowModal, currentPhoto])
 
-  useEffect(() => {
-    setTop(-yPosition)
-  }, [yPosition, currentPhoto])
+  const handlePosition = (e) => {
+    const container = imageModalRef.current.getBoundingClientRect();
+    setTop(-(e.clientY * ((height - container.height) / container.height)));
+  }
 
   const handleModalClick = () => {
     document.body.classList.remove('modal-open')
