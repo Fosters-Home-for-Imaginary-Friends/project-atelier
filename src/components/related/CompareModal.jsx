@@ -4,17 +4,22 @@ import {BsCheckLg} from 'react-icons/bs';
 import {generateKey, getFeatures} from './RelatedHelpers.js';
 import {AppContext} from '../App.jsx';
 
+//! Modal button is misaligned ??
+//! Figure out how to lock header to top of page
 const CompareModal = React.memo (function CompareModal ({cardData, closeModal}) {
   const modalRef = useRef();
   const {productData} = useContext(AppContext);
 
   const features = useMemo(() => getFeatures(productData, cardData), [productData, cardData])
+  const handleClick = (e) => {
+    e.stopPropagation();
+  };
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef}>
+    <div className="compare-modal-container" ref={modalRef} onClick={handleClick}>
       <div className="modal-header">
         <h3 className="modal-title">COMPARING</h3>
-        <button onClick={closeModal} className="modal-button">X</button>
+        <button onClick={closeModal} className="modal-button"><h3 className="modal-title">X</h3></button>
       </div>
       <div className="feature-container">
         <table className="feature-table">
