@@ -1332,6 +1332,13 @@ margin-top: 10px;
 margin-bottom: 10px;
 width: 75%;
 }
+.new-review-images {
+  display: flex;
+  flex-direction: row;
+}
+button.upload-photo {
+  position: relative;
+}
 .new-review-nickname  {
   display: flex;
   flex-direction: column;

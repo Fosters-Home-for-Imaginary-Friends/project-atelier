@@ -1,36 +1,74 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-const PhotoUpload = () => {
+const PhotoUpload = (props) => {
 
-
+  const [loading, setLoading] = useState(true);
+  const [uploadedImages, setUploadedImages] = useState([]);
   const upload_preset = 'sqayfxfn';
   const cloudName = 'diono1kwq';
-  let uploadedImages = [];
+  let base64URLs = [];
 
 
  let handleFiles = (e) => {
    let files = e.target.files;
-   let file = e.target.files[0]
-  //  console.log(files);
+   console.log(files);
    let reader = new FileReader();
    reader.readAsDataURL(files[0]);
 
-   reader.onload = () => {
-    //  console.log(e.target.result);
-    axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {upload_preset, file})
-    .then((response) => {
-      console.log(response.data.url);
-    })
 
+   reader.onload = (e) => {
+
+     let file = e.target.result;
+     base64URLs.push(file);
    }
  }
+ let uploadClick = () => {
+  let photoPromises = [];
+  base64URLs.forEach((file) => {
+    let p = axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {upload_preset, file})
+    photoPromises.push(p);
+  })
+  Promise.all(photoPromises).then((values) => {
+    values.forEach((v) => {
+      uploadedImages.push(v.data.url);
+    })
+    setUploadedImages(uploadedImages);
+    props.setPhotos(uploadedImages);
+    setLoading(false);
+  }).catch(err => console.log(err));
+ }
+
+ let ImageThumbnails = () => {
+   if (!loading) {
+   return(
+    <div className="new-review-images">
+      {uploadedImages.map((imageURL, index) => {
+        return (
+          <div className= "new-review-image-thumbnail" key={`image${index}`}>
+            <img src={imageURL} style={{"width" : `${60}px`, "height": `${60}px`, "zIndex" : 30, "objectFit": "cover"}} />
+          </div>
+        )
+      })}
+    </div>
+  )
+ }
+}
+
 
 
 
 return (
 <div className="new-review-add-photo">
-  <input type="file" onChange= {e => handleFiles(e)}></input>
+
+  <div className="new-review-choose-file">
+    <input type="file" onChange= {e => handleFiles(e)}></input>
+    <button className="upload-photo" onClick={uploadClick}>Upload </button>
+  </div>
+
+  <ImageThumbnails class />
+
 </div>
+
 
 )
 }

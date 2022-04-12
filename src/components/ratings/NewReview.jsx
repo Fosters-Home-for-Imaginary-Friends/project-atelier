@@ -30,6 +30,21 @@ let NewReview = ({ setShowModal }) => {
   const [fitSelector, setFitSelector] = useState(0);
   const [fitDescriptor, setFitDescriptor] =useState("");
 
+  const [rating, setRating] = useState(null);
+  const [recommended, setRecommended] = useState(null);
+  const [size, setSize] = useState(null);
+  const [width, setWidth] = useState(null);
+  const [comfort, setComfort] = useState(null);
+  const [quality, setQuality] = useState(null);
+  const [length, setLength] = useState(null);
+  const [fit, setFit] = useState(null);
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
+  const [photos, setPhotos] = useState([]);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+
+
 
 
 
@@ -74,17 +89,26 @@ let NewReview = ({ setShowModal }) => {
 
   const starsClick = () => {
     setOldStars(currStars);
+    let r = 0;
+    oldStars.forEach((star) => {
+      if ( star === 1) {
+        r++;
+      }
+    })
+    setRating(r);
   }
 
   const thumbYesClick = () => {
 
     setRecommendYes(true);
     setRecommendNo(false);
+    setRecommended(true);
   }
 
   const thumbNoClick = () => {
     setRecommendYes(false);
     setRecommendNo(true);
+    setRecommended(false)
   };
 
   const Characteristics = () => {
@@ -97,27 +121,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="A size too small">1</label>
-              <input type="radio" checked= {sizeSelector === "1"} value="1" name="A size too small"/>
+              <input type="radio" defaultChecked= {sizeSelector === "1"} value="1" name="A size too small"/>
               <label name="A size too small">Too Small</label>
             </div>
             <div className="radio-buttons">
               <label name="A 1/2 size too small">2</label>
-            <input type="radio" checked= {sizeSelector === "2"} value="2" name="A 1/2 size too small"/>
+            <input type="radio" defaultChecked= {sizeSelector === "2"} value="2" name="A 1/2 size too small"/>
               <label name="A 1/2 size too small"></label>
             </div>
             <div className="radio-buttons">
               <label name ="Perfect">3</label>
-                <input type="radio" checked= {sizeSelector === "3"} value="3" name="Perfect"/>
+                <input type="radio" defaultChecked= {sizeSelector === "3"} value="3" name="Perfect"/>
               <label name ="Perfect"> Perfect </label>
             </div>
             <div className="radio-buttons">
               <label name="A 1/2 size too big">4</label>
-                <input type="radio" checked= {sizeSelector === "4"} value="4" name="A 1/2 size too big"/>
+                <input type="radio" defaultChecked= {sizeSelector === "4"} value="4" name="A 1/2 size too big"/>
               <label name="A 1/2 size too big"></label>
             </div>
             <div className="radio-buttons">
               <label name="A size too big">5</label>
-                <input type="radio" checked= {sizeSelector === "5"} value="5" name="A size too big"/>
+                <input type="radio" defaultChecked= {sizeSelector === "5"} value="5" name="A size too big"/>
               <label name="A size too big">Too Big</label>
             </div>
           </div>
@@ -129,27 +153,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="Too narrow">1</label>
-              <input type="radio" checked= {widthSelector === "1"} value="1" name="Too narrow"/>
+              <input type="radio" defaultChecked= {widthSelector === "1"} value="1" name="Too narrow"/>
               <label name="Too narrow">Too narrow</label>
             </div>
             <div className="radio-buttons">
               <label name="Slightly narrow">2</label>
-            <input type="radio" checked= {widthSelector === "2"} value="2" name="Slightly narrow"/>
+            <input type="radio" defaultChecked= {widthSelector === "2"} value="2" name="Slightly narrow"/>
               <label name="Slightly narrow"></label>
             </div>
             <div className="radio-buttons">
               <label name ="Perfect">3</label>
-                <input type="radio" checked= {widthSelector === "3"} value="3" name="Perfect"/>
+                <input type="radio" defaultChecked= {widthSelector === "3"} value="3" name="Perfect"/>
               <label name ="Perfect"> Perfect </label>
             </div>
             <div className="radio-buttons">
               <label name="Slightly wide">4</label>
-                <input type="radio" checked= {widthSelector === "4"} value="4" name="Slightly wide"/>
+                <input type="radio" defaultChecked= {widthSelector === "4"} value="4" name="Slightly wide"/>
               <label name="Slightly wide"></label>
             </div>
             <div className="radio-buttons">
               <label name="Too wide">5</label>
-                <input type="radio" checked= {widthSelector === "5"} value="5" name="Too wide"/>
+                <input type="radio" defaultChecked= {widthSelector === "5"} value="5" name="Too wide"/>
               <label name="Too wide">Too wide</label>
             </div>
           </div>
@@ -161,27 +185,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="Uncomfortable">1</label>
-              <input type="radio" checked= {comfortSelector === "1"} value="1" name="Uncomfortable"/>
+              <input type="radio" defaultChecked= {comfortSelector === "1"} value="1" name="Uncomfortable"/>
               <label name="Uncomfortable">Uncomfortable</label>
             </div>
             <div className="radio-buttons">
               <label name="Slightly uncomfortable">2</label>
-            <input type="radio" checked= {comfortSelector === "2"} value="2" name="Slightly uncomfortable"/>
+            <input type="radio" defaultChecked= {comfortSelector === "2"} value="2" name="Slightly uncomfortable"/>
               <label name="Slightly uncomfortable"></label>
             </div>
             <div className="radio-buttons">
               <label name ="Ok">3</label>
-                <input type="radio" checked= {comfortSelector === "3"} value="3" name="Ok"/>
+                <input type="radio" defaultChecked= {comfortSelector === "3"} value="3" name="Ok"/>
               <label name ="Ok"> Ok </label>
             </div>
             <div className="radio-buttons">
               <label name="Comfortable">4</label>
-                <input type="radio" checked= {comfortSelector === "4"} value="4" name="Comfortable"/>
+                <input type="radio" defaultChecked= {comfortSelector === "4"} value="4" name="Comfortable"/>
               <label name="Comfortable"></label>
             </div>
             <div className="radio-buttons">
               <label name="Perfect">5</label>
-                <input type="radio" checked= {comfortSelector === "5"} value="5" name="Perfect"/>
+                <input type="radio" defaultChecked= {comfortSelector === "5"} value="5" name="Perfect"/>
               <label name="Perfect">Perfect</label>
             </div>
           </div>
@@ -193,27 +217,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="Poor">1</label>
-              <input type="radio" checked= {qualitySelector === "1"} value="1" name="Poor"/>
+              <input type="radio" defaultChecked= {qualitySelector === "1"} value="1" name="Poor"/>
               <label name="Poor">Poor</label>
             </div>
             <div className="radio-buttons">
               <label name="Below average">2</label>
-            <input type="radio" checked= {qualitySelector === "2"} value="2" name="Below average"/>
+            <input type="radio" defaultChecked= {qualitySelector === "2"} value="2" name="Below average"/>
               <label name="Below average"></label>
             </div>
             <div className="radio-buttons">
               <label name ="What I expected">3</label>
-                <input type="radio" checked= {qualitySelector === "3"} value="3" name="What I expected"/>
+                <input type="radio" defaultChecked= {qualitySelector === "3"} value="3" name="What I expected"/>
               <label name ="What I expected"> What I expected </label>
             </div>
             <div className="radio-buttons">
               <label name="Pretty great">4</label>
-                <input type="radio" checked= {qualitySelector === "4"} value="4" name="Pretty great"/>
+                <input type="radio" defaultChecked= {qualitySelector === "4"} value="4" name="Pretty great"/>
               <label name="Pretty great"></label>
             </div>
             <div className="radio-buttons">
               <label name="Perfect">5</label>
-                <input type="radio" checked= {qualitySelector === "5"} value="5" name="Perfect"/>
+                <input type="radio" defaultChecked= {qualitySelector === "5"} value="5" name="Perfect"/>
               <label name="Perfect">Perfect</label>
             </div>
           </div>
@@ -225,27 +249,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="Runs short">1</label>
-              <input type="radio" checked= {lengthSelector === "1"} value="1" name="Runs short"/>
+              <input type="radio" defaultChecked= {lengthSelector === "1"} value="1" name="Runs short"/>
               <label name="Runs short">Runs short</label>
             </div>
             <div className="radio-buttons">
               <label name="Runs slightly short">2</label>
-            <input type="radio" checked= {lengthSelector === "2"} value="2" name="Runs slightly short"/>
+            <input type="radio" defaultChecked= {lengthSelector === "2"} value="2" name="Runs slightly short"/>
               <label name="Runs slightly short"></label>
             </div>
             <div className="radio-buttons">
               <label name ="Perfect">3</label>
-                <input type="radio" checked= {lengthSelector === "3"} value="3" name="Perfect"/>
+                <input type="radio" defaultChecked= {lengthSelector === "3"} value="3" name="Perfect"/>
               <label name ="Perfect"> Perfect</label>
             </div>
             <div className="radio-buttons">
               <label name="Runs slightly long">4</label>
-                <input type="radio" checked= {lengthSelector === "4"} value="4" name="Runs slightly long"/>
+                <input type="radio" defaultChecked= {lengthSelector === "4"} value="4" name="Runs slightly long"/>
               <label name="Runs slightly long"></label>
             </div>
             <div className="radio-buttons">
               <label name="Runs Long">5</label>
-                <input type="radio" checked= {lengthSelector === "5"} value="5" name="Runs Long"/>
+                <input type="radio" defaultChecked= {lengthSelector === "5"} value="5" name="Runs Long"/>
               <label name="Perfect">Runs Long</label>
             </div>
           </div>
@@ -257,27 +281,27 @@ let NewReview = ({ setShowModal }) => {
           <div  className="new-review-characteristic-table" >
             <div className="radio-buttons">
               <label name="Runs tight">1</label>
-              <input type="radio" checked= {fitSelector === "1"} value="1" name="Runs tight"/>
+              <input type="radio" defaultChecked= {fitSelector === "1"} value="1" name="Runs tight"/>
               <label name="Runs tight">Runs tight</label>
             </div>
             <div className="radio-buttons">
               <label name="Runs slightly tight">2</label>
-            <input type="radio" checked= {fitSelector === "2"} value="2" name="Runs slightly tight"/>
+            <input type="radio" defaultChecked= {fitSelector === "2"} value="2" name="Runs slightly tight"/>
               <label name="Runs slightly tight"></label>
             </div>
             <div className="radio-buttons">
               <label name ="Perfect">3</label>
-                <input type="radio" checked= {fitSelector === "3"} value="3" name="Perfect"/>
+                <input type="radio" defaultChecked= {fitSelector === "3"} value="3" name="Perfect"/>
               <label name ="Perfect"> Perfect</label>
             </div>
             <div className="radio-buttons">
               <label name="Runs slightly long">4</label>
-                <input type="radio" checked= {fitSelector === "4"} value="4" name="Runs slightly long"/>
+                <input type="radio" defaultChecked= {fitSelector === "4"} value="4" name="Runs slightly long"/>
               <label name="Runs slightly long"></label>
             </div>
             <div className="radio-buttons">
               <label name="Runs Long">5</label>
-                <input type="radio" checked= {fitSelector === "5"} value="5" name="Runs Long"/>
+                <input type="radio" defaultChecked= {fitSelector === "5"} value="5" name="Runs Long"/>
               <label name="Perfect">Runs Long</label>
             </div>
           </div>
@@ -290,33 +314,60 @@ let NewReview = ({ setShowModal }) => {
   const sizeSelectionClick = (e) => {
     setSizeSelector(e.target.value);
     setSizeDescriptor(e.target.name);
+    setSize(e.target.value);
 
   };
 
   const widthSelectionClick = (e) => {
     setWidthSelector(e.target.value);
     setWidthDescriptor(e.target.name);
+    setWidth(e.target.value);
   };
 
   const comfortSelectionCLick = (e) => {
     setComfortSelector(e.target.value);
     setComfortDescriptor(e.target.name);
+    setComfort(e.target.value);
   };
 
   const qualitySelectionClick = (e) => {
     setQualitySelector(e.target.value);
     setQualityDescriptor(e.target.name);
+    setQuality(e.target.value);
   };
 
   const lengthSelectionClick = (e) => {
     setLengthSelector(e.target.value);
     setLengthDescriptor(e.target.name);
+    setLength(e.target.value);
   };
 
   const fitSelectionClick = (e) => {
     setFitSelector(e.target.value);
-    setFitDescriptor(e.targat.name);
+    setFitDescriptor(e.target.name);
+    setFit(e.target.value);
   };
+
+  const handleSummaryChange = (e) => {
+    setSummary(e.target.value);
+  };
+
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
+  };
+
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+  };
+
+   const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const submitClick = () => {
+    let reviewObj = {rating, recommended, size, width, comfort, quality, length, fit, summary, body, nickname, email};
+    console.log(reviewObj);
+  }
 
 
   // we need to render the modal using the new-review div in index.html
@@ -358,26 +409,26 @@ let NewReview = ({ setShowModal }) => {
         </div>
         <div className="new-review-summary">
           <span className="helpful-answer"> Review Summary: </span>
-          <textarea  cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" style={{"width" : "350px"}}></textarea>
+          <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
           <label> Max 60 characters</label>
         </div>
         <div className="new-review-body">
           <span className="helpful-answer"> Type your review</span>
-          <textarea className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap"></textarea>
+          <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
           <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
         </div>
 
-        <PhotoUpload />
+        <PhotoUpload setPhotos={setPhotos}/>
         <div className="new-review-nickname">
-          <input type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60"></input>
+          <input id="review-nickname" type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60" onChange={handleNicknameChange}></input>
           <span className="helpful-answer"> For privacy reasons, do not use your full name or email address. </span>
         </div>
         <div className="new-review-email">
-          <input type="text" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60"></input>
+          <input id="review-email" type="text" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60" onChange={handleEmailChange}></input>
           <span className="helpful-answer"> For authentication reasons, you will not be emailed. </span>
         </div>
         <div className="new-review-submit">
-        <button className="info-button submit-review"> SUBMIT REVIEW</button>
+        <button onClick={submitClick} className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
         <button onClick={() => setShowModal(false)}>X</button>
         </div>
