@@ -1,4 +1,4 @@
-describe('My First Test', () => {
+describe('Overview Test Suite', () => {
   it('Visits Atelier website', () => {
     cy.visit('http://localhost:3000')
 

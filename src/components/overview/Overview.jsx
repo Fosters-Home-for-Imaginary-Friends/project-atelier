@@ -25,16 +25,13 @@ const Overview = () => {
     getStyles(productData.id)
       .then((styleData) => {
         setStyles(styleData);
-        return styleData;
-      })
-      .then((styleData) => {
         for (let i = 0; i < styleData.length; i++) {
           let style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
-            return style;
           }
         }
+        return styleData;
       })
       .then(() => {
         setLoading(false);
