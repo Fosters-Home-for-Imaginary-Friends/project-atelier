@@ -24,7 +24,8 @@ const Thumbnail = ({thumbnail, index}) => {
       <img
         src={thumbnail.thumbnail_url}
         className={`thumbnail ${currentPhoto === index}`}
-        onClick={() => handleThumbnailClick(index)}/>
+        onClick={() => handleThumbnailClick(index)}
+      />
     </li>
   )
 }

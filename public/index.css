@@ -207,10 +207,6 @@ span.helpful-answer {
   scroll-snap-type: y mandatory;
 }
 
-.image-bar {
-  display: flex;
-}
-
 .carousel-button {
   position: absolute;
   width: 54vh;
@@ -283,7 +279,6 @@ span.helpful-answer {
 
 .modal-buttons-container {
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
   height: 100vh;
   width: 100vw;
@@ -335,18 +330,32 @@ button.modal-image.right:hover {
 
 /* ----- IMAGE BAR ----- */
 
+.image-bar {
+  display: flex;
+  overflow: hidden;
+}
+
 .progress-bar {
-  height: 100%;
+  list-style: none;
+  height: 81vh;
   width: 1px;
+  overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
   margin-right: 20px;
+  scroll-behavior: smooth;
 }
 
 .progress-bar-progress {
-  height: 10%;
+  height: 81vh;
   width: 1px;
+  display: list-item;
+  list-style: none;
   background-color: #1f1f1f;
+}
+
+.progress-bar-progress.none {
+  background-color: darkgray;
 }
 
 .thumbnails {
@@ -367,7 +376,6 @@ button.modal-image.right:hover {
 .thumbnail.false {
   opacity: 50%;
 }
-
 
 /* ----- PRODUCT INFO ----- */
 
