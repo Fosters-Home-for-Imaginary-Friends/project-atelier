@@ -25,13 +25,13 @@ const OutfitList = () => {
       setCookie("outfitList", JSON.stringify(newList));
       return newList;
     });
-  });
+  }, [productData.id]);
 
   return (
     <div className="product-list" id="outfit-list">
       <h3 className="related-title">YOUR OUTFIT</h3>
       <OutfitContext.Provider value={{outfitList, setOutfitList, addProduct}}>
-        <CardCarousel related={false} length={outfitList.length} />
+        <CardCarousel related={false} length={outfitList.length + 1} />
       </OutfitContext.Provider>
     </div>
   );

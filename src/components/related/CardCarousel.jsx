@@ -1,56 +1,52 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect, useMemo, useCallback} from 'react';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
 import {RelatedCards, OutfitCards} from './CardContainers.jsx';
 
+  // TODO: If item is removed from outfit list, re-check rightmost position
 const CardCarousel = ({related, length}) => {
   const carouselRef = useRef({});
-
-  // TODO: If item is removed from outfit list, re-check rightmost position
-  const position = useRef(0);
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
-
+  const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
+  const scrollPoint = useMemo(() => carouselRef.current.scrollLeft, [carouselRef.current.scrollLeft]);
   //These functions scroll the content within the carousel-viewport div
-  // TODO: Round up scrollby
-  const scrollLeft = () => {
-    if (left) {
-      position.current--;
-      carouselRef.current.scrollBy({
-        left: -(Math.ceil(carouselRef.current.clientWidth/3)),
-        behavior: "smooth"
-      });
-      if (position.current === 0) {
-        setLeft(false);
-      }
-      setRight((prev) => prev ? prev : true);
-    }
-  }
+
+  const scrollLeft = useCallback(() => {
+    carouselRef.current.scrollBy({
+      left: -cardWidth,
+      behavior: "smooth"
+    });
+  }, [cardWidth]);
+
+
+
+
 
   const scrollRight = () => {
     if (right) {
-      position.current++;
+      checkArrows(carouselRef.current.scrollLeft + cardWidth);
       carouselRef.current.scrollBy({
-        left: Math.ceil(carouselRef.current.clientWidth/3),
+        left: cardWidth,
         behavior: "smooth"
       });
-      if (position.current + 3 === length) {
-        setRight(false);
-      }
-      setLeft((prev) => prev ? prev : true);
     }
   }
 
   useEffect(() => {
-    if (length < 4) {
+    checkArrows(carouselRef.current.scrollLeft);
+  }, [length]);
+
+  const checkArrows = (scrollPoint) => {
+    if ((scrollPoint + (cardWidth * 3)) >= cardWidth * length) {
       setRight((prev) => prev ? false : prev);
     } else {
       setRight((prev) => prev ? prev : true);
     }
-  }, [length])
+  };
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <button onClick={scrollLeft} className="arrow"><LeftArrow view={left} /></button>
+      <LeftArrow scrollLeft={scrollLeft} scrollPoint={scrollPoint} cardWidth={cardWidth} />
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         {related ? <RelatedCards /> : <OutfitCards />}
       </div>
@@ -59,11 +55,25 @@ const CardCarousel = ({related, length}) => {
   );
 };
 
-const LeftArrow = ({view}) => {
+const LeftArrow = ({scrollLeft, scrollPoint, cardWidth}) => {
+  const [view, setView] = useState(false);
+
+  const handleClick = () => {
+    if (view) {
+      setView(() => scrollPoint - cardWidth > 0);
+      scrollLeft();
+    }
+  };
+
+  useEffect(() => {
+    setView(() => scrollPoint > 0);
+  }, [scrollPoint])
 
   return (
     <React.Fragment>
-      {view ? <AiOutlineDoubleLeft /> : null}
+      <button onClick={handleClick} className="arrow">
+        {view ? <AiOutlineDoubleLeft size={40} /> : null}
+      </button>
     </React.Fragment>
   );
 };
@@ -72,7 +82,7 @@ const RightArrow = ({view}) => {
 
   return (
     <React.Fragment>
-      {view ? <AiOutlineDoubleRight /> : null}
+      {view ? <AiOutlineDoubleRight size={40} /> : null}
     </React.Fragment>
   );
 };

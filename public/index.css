@@ -741,8 +741,8 @@ h3.related-title {
   align-self: flex-start;
   justify-self: flex-end;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   z-index: 9;
 }
 
@@ -845,6 +845,10 @@ th {
 td {
   font-size: 14px;
   font-weight: 200;
+}
+
+thead {
+  position: fixed;
 }
 
 .left {

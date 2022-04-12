@@ -9,9 +9,12 @@ const CompareModal = React.memo (function CompareModal ({cardData, closeModal}) 
   const {productData} = useContext(AppContext);
 
   const features = useMemo(() => getFeatures(productData, cardData), [productData, cardData])
+  const handleClick = (e) => {
+    e.stopPropagation();
+  };
 
   return ReactDom.createPortal(
-    <div className="compare-modal-container" ref={modalRef}>
+    <div className="compare-modal-container" ref={modalRef} onClick={handleClick}>
       <div className="modal-header">
         <h3 className="modal-title">COMPARING</h3>
         <button onClick={closeModal} className="modal-button">X</button>

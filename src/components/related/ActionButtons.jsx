@@ -4,7 +4,6 @@ import {CgRemove} from 'react-icons/cg';
 import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 import {OutfitContext} from './OutfitList.jsx';
-import {AppContext} from '../App.jsx';
 
 const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);
@@ -16,7 +15,7 @@ const CompareButton = ({cardData}) => {
 
   return (
     <div className="compare-button action-button">
-      <AiOutlineStar size={25} onClick={toggleModal} />
+      <AiOutlineStar size={35} onClick={toggleModal} />
       {modal ? <CompareModal cardData={cardData} closeModal={toggleModal} /> : null }
     </div>
   );
@@ -43,7 +42,7 @@ const RemoveButton = ({product_id}) => {
 
   return (
     <div className="remove-button action-button" >
-      <CgRemove size={25} onClick={removeCard} />
+      <CgRemove size={35} onClick={removeCard} />
     </div>
   );
 };
