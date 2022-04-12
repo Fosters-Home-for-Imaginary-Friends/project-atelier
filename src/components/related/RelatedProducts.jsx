@@ -15,7 +15,8 @@ const RelatedProducts = () => {
     }
     getRelated(productData.id)
       .then((data) => {
-        setRelatedList(data);
+        let newList = Array.from(new Set(data)).filter((id) => id !== productData.id);
+        setRelatedList(newList);
       })
       .catch((err) => console.error(err));
   }, [productData.id]);
