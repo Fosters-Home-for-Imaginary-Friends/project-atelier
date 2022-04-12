@@ -3,12 +3,13 @@ import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
 import {RelatedCards, OutfitCards} from './CardContainers.jsx';
 
   // TODO: If item is removed from outfit list, re-check rightmost position
+  // TODO: Lock scrolling
 const CardCarousel = ({related, length}) => {
   const carouselRef = useRef({});
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
   const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
-  const scrollPoint = () => carouselRef.current.scrollLeft
+  const scrollPoint = () => carouselRef.current.scrollLeft;
 
   //These functions scroll the content within the carousel-viewport div
   const scrollLeft = useCallback(() => {
@@ -49,16 +50,17 @@ const CardCarousel = ({related, length}) => {
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <LeftArrow scrollLeft={scrollLeft} view={left} />
+      <LeftArrow scrollLeft={scrollLeft} view={left} scrollPoint={scrollPoint} />
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         {related ? <RelatedCards /> : <OutfitCards />}
       </div>
-      <RightArrow scrollRight={scrollRight} view={right} />
+      <RightArrow scrollRight={scrollRight} view={right} scrollPoint={scrollPoint} />
     </div>
   );
 };
 
 const LeftArrow = ({scrollLeft, view}) => {
+
 
   return (
     <React.Fragment>
