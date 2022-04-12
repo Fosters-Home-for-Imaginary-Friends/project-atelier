@@ -16,10 +16,11 @@ const Style = ({style}) => {
 
   color = color.join('-');
 
-  const { currentStyle, setCurrentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto } = useContext(OverviewContext);
+  const { currentStyle, setCurrentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto, setCurrentSize } = useContext(OverviewContext);
 
   const handleStyleClick = () => {
     setCurrentStyle(style)
+    setCurrentSize('')
     setPreviousPhoto(currentPhoto)
     setCurrentPhoto(0)
   }

@@ -336,9 +336,10 @@ button.modal-image.right:hover {
 }
 
 .progress-bar {
+  position: relative;
   list-style: none;
   height: 81vh;
-  width: 1px;
+  width: .1vh;
   overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
@@ -348,13 +349,14 @@ button.modal-image.right:hover {
 
 .progress-bar-progress {
   height: 81vh;
-  width: 1px;
+  width: .1vh;
   display: list-item;
   list-style: none;
   background-color: #1f1f1f;
 }
 
 .progress-bar-progress.none {
+  height: 81vh;
   background-color: darkgray;
 }
 
@@ -384,6 +386,7 @@ button.modal-image.right:hover {
   flex-direction: column;
   padding-left: 20px;
   align-self: flex-end;
+  min-width: 200px;
   max-width: 12vw;
 }
 
@@ -420,9 +423,9 @@ button.modal-image.right:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 28px;
-  margin-top: 6px;
-  margin-bottom: 10px;
+  font-size: 2vh;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
 }
 
 .social-media-icon {
@@ -611,7 +614,8 @@ button.modal-image.right:hover {
 }
 
 .size-text {
-  padding: .4vw;
+  padding-left: .4vw;
+  padding-right: .4vw;
 }
 
 /* ----- QUANTITY SELECTOR ----- */
@@ -620,7 +624,8 @@ button.modal-image.right:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: .6vh;
+  min-width: 200px;
   max-width: 12vw;
 }
 
@@ -628,21 +633,21 @@ button.modal-image.right:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 28.59px;
+  height: 3vh;
   width: 22px;
   padding: 0;
   border: 0;
-  border-radius: 3px;
+  border-radius: 10%;
   background-color: #fff;
-  box-shadow: 0 0 1px 1px darkgray;
+  box-shadow: 0 0 .1vw .05vw darkgray;
 }
 
 .quantity-button.decrease {
-  margin-left: 3px;
+  margin-left: .15vw;
 }
 
 .quantity-button.increase {
-  margin-right: 3px;
+  margin-right: .15vw;
 }
 
 .quantity-count {
@@ -650,12 +655,12 @@ button.modal-image.right:hover {
   text-align: center;
   align-items: center;
   border: 0;
-  max-width: 100px;
 }
 
 /* ----- ADD TO BAG ----- */
 
 button.add {
+  min-width: 200px;
   max-width: 12vw;
 }
 
