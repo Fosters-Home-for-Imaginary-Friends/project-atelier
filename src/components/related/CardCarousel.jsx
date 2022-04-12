@@ -8,21 +8,18 @@ const CardCarousel = ({related, length}) => {
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
   const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
-  const scrollPoint = useMemo(() => carouselRef.current.scrollLeft, [carouselRef.current.scrollLeft]);
+  const scrollPoint = () => carouselRef.current.scrollLeft
+
   //These functions scroll the content within the carousel-viewport div
-
   const scrollLeft = useCallback(() => {
-    carouselRef.current.scrollBy({
-      left: -cardWidth,
-      behavior: "smooth"
-    });
-  }, [cardWidth]);
+      checkArrows(carouselRef.current.scrollLeft - cardWidth);
+      carouselRef.current.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+      });
+  });
 
-
-
-
-
-  const scrollRight = () => {
+  const scrollRight = useCallback(() => {
     if (right) {
       checkArrows(carouselRef.current.scrollLeft + cardWidth);
       carouselRef.current.scrollBy({
@@ -30,7 +27,7 @@ const CardCarousel = ({related, length}) => {
         behavior: "smooth"
       });
     }
-  }
+  });
 
   useEffect(() => {
     checkArrows(carouselRef.current.scrollLeft);
@@ -42,47 +39,43 @@ const CardCarousel = ({related, length}) => {
     } else {
       setRight((prev) => prev ? prev : true);
     }
+
+    if (scrollPoint <= 0) {
+      setLeft((prev) => prev ? false : prev);
+    } else {
+      setLeft((prev) => prev ? prev : true);
+    }
   };
 
   return (
     <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <LeftArrow scrollLeft={scrollLeft} scrollPoint={scrollPoint} cardWidth={cardWidth} />
+      <LeftArrow scrollLeft={scrollLeft} view={left} />
       <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
         {related ? <RelatedCards /> : <OutfitCards />}
       </div>
-      <button onClick={scrollRight} className="arrow"><RightArrow view={right} /></button>
+      <RightArrow scrollRight={scrollRight} view={right} />
     </div>
   );
 };
 
-const LeftArrow = ({scrollLeft, scrollPoint, cardWidth}) => {
-  const [view, setView] = useState(false);
-
-  const handleClick = () => {
-    if (view) {
-      setView(() => scrollPoint - cardWidth > 0);
-      scrollLeft();
-    }
-  };
-
-  useEffect(() => {
-    setView(() => scrollPoint > 0);
-  }, [scrollPoint])
+const LeftArrow = ({scrollLeft, view}) => {
 
   return (
     <React.Fragment>
-      <button onClick={handleClick} className="arrow">
+      <button onClick={scrollLeft} className="arrow">
         {view ? <AiOutlineDoubleLeft size={40} /> : null}
       </button>
     </React.Fragment>
   );
 };
 
-const RightArrow = ({view}) => {
+const RightArrow = ({scrollRight, view}) => {
 
   return (
     <React.Fragment>
-      {view ? <AiOutlineDoubleRight size={40} /> : null}
+      <button onClick={scrollRight} className="arrow">
+        {view ? <AiOutlineDoubleRight size={40} /> : null}
+      </button>
     </React.Fragment>
   );
 };
