@@ -16,10 +16,6 @@ const QuestionsList = ({sortData}) => {
   const [showModal, setShowModal] = useState(false);
   const [listSize, setListSize] = useState(4);
 
-  // const [init, setInit]= useState(props.data);
-  // let init = props.data;
-  // const [page, setPage] = useState(3);
-
   useEffect(() => {
     if (question.length > 3) {
       let newList = [];
@@ -33,19 +29,6 @@ const QuestionsList = ({sortData}) => {
       setQnaList(init.slice(0, listSize));
     }
   }, [question])
-
-  // const handleMoreClick = () => {
-  //   getQuestions(65633, page, 2)
-  //     .then((res) => {
-  //       setInit(init.concat(res));
-  //       setPage(page + 1);
-  //       if (res.length < 2) {
-  //         setExtra(false);
-  //       }
-  //       setQnaList(init.concat(res));
-  //     })
-  //     .catch((err) => console.log(err))
-  // }
 
   const handleMoreClick = () => {
     if (qnaList.length !== init.length) {
