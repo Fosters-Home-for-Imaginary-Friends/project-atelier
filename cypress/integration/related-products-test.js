@@ -21,7 +21,17 @@ describe('Product Cards', () => {
   });
   context('Adds a Product Card to Your Outfit List', () => {
     beforeEach(() => {
-
+      cy.get('#add-card')
+      .click();
+    });
+    it('Finds a Product Card in Your Outfit List', () => {
+      cy.get('#outfit-list')
+        .find('.product-card');
+    });
+    it('Reloads the page and finds a product card in your outfit list', () => {
+      cy.reload()
+        .get('#outfit-list')
+        .find('.product-card');
     });
   });
 });
