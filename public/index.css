@@ -336,9 +336,10 @@ button.modal-image.right:hover {
 }
 
 .progress-bar {
+  position: relative;
   list-style: none;
   height: 81vh;
-  width: 1px;
+  width: .1vh;
   overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
@@ -348,13 +349,14 @@ button.modal-image.right:hover {
 
 .progress-bar-progress {
   height: 81vh;
-  width: 1px;
+  width: .1vh;
   display: list-item;
   list-style: none;
   background-color: #1f1f1f;
 }
 
 .progress-bar-progress.none {
+  height: 81vh;
   background-color: darkgray;
 }
 
@@ -384,7 +386,8 @@ button.modal-image.right:hover {
   flex-direction: column;
   padding-left: 20px;
   align-self: flex-end;
-  width: 18vw;
+  min-width: 200px;
+  max-width: 12vw;
 }
 
 .sale-price-container {
@@ -420,9 +423,9 @@ button.modal-image.right:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 28px;
-  margin-top: 6px;
-  margin-bottom: 10px;
+  font-size: 2vh;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
 }
 
 .social-media-icon {
@@ -444,105 +447,90 @@ button.modal-image.right:hover {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  width: 136px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  width: 8vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .style-button {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  border: 2px solid #fff;
   border-radius: 50%;
-  box-shadow: 0 0 2px 1px darkgray;
-  margin: 3px;
+  box-shadow: 0 0 .1vw .05vw rgb(200, 200, 200);
+  margin: .15vw;
   cursor: pointer;
 }
 
 .style-button:hover {
-  box-shadow: 0 0 2px 1px #1f1f1f;
+  box-shadow: 0 0 .1vw .05vw rgb(150, 150, 150);
 }
 
 .style-button.true {
-  box-shadow: 0 0 3px 1px #1f1f1f;
+  box-shadow: 0 0 .1vw .1vw rgb(100, 100, 100);
 }
 
 .style-color {
-  height: 24px;
-  width: 12px;
+  height: 1.4vw;
+  width: 1.4vw;
   filter: saturate(70%);
-}
-
-.side1 {
-  height: 24px;
-  width: 24px;
+  border: .1vw solid #fff;
   border-radius: 50%;
-}
-
-.side2 {
-  border-radius: 100% 0 0 100%/50% 0 0 50%;
-  position: absolute;
-  transform: rotate(180deg);
-  transform-origin: 12px;
+  background-color: #f1f1f1;
 }
 
 /* ----- COLORS ----- */
 
-.forest-green {
-  background-color: rgb(12, 59, 43);
+.forest-green-black {
+  background: linear-gradient( 90deg, rgb(12, 59, 43) 50%, #1f1f1f 50% );
+}
+
+.desert-brown-tan {
+  background: linear-gradient( 90deg, rgb(149, 110, 93) 50%, rgb(210, 180, 140) 50% );
+}
+
+.ocean-blue-grey {
+  background: linear-gradient( 90deg, rgb(0, 130, 140) 50%, rgb(190, 190, 190) 50% );
+}
+
+.digital-red-black {
+  background: linear-gradient( 90deg, rgb(130, 15, 15) 50%, #1f1f1f 50% );
+}
+
+.sky-blue-white {
+  background: linear-gradient( 90deg, rgb(55, 135, 185) 50%, #f1f1f1 50% );
+}
+
+.dark-grey-black {
+  background: linear-gradient( 90deg, rgb(75, 75, 75) 50%, #1f1f1f 50% );
+}
+
+.black-lenses-black-frame {
+  background-color: #1f1f1f;
+}
+
+.black-lenses-gold-frame {
+  background: linear-gradient( 90deg, #1f1f1f 50%, rgb(212, 175, 55) 50% );
+}
+
+.gold-lenses-black-frame {
+  background: linear-gradient( 90deg, rgb(212, 175, 55) 50%, #1f1f1f 50% );
+}
+
+.gold-lenses-gold-frame {
+  background-color: rgb(212, 175, 55);
 }
 
 .black {
   background-color: #1f1f1f;
 }
 
-.desert-brown {
-  background-color: rgb(149, 110, 93);
-}
-
-.tan {
-  background-color: rgb(210, 180, 140);
-}
-
-.ocean-blue {
-  background-color: rgb(0, 130, 140);
-}
-
 .grey {
   background-color: rgb(190, 190, 190);
 }
 
-.digital-red {
-  background-color: rgb(130, 15, 15);
-}
-
-.sky-blue {
-  background-color: rgb(55, 135, 185);
-}
-
 .white {
-  background-color: rgb(250, 250, 250);
-}
-
-.dark-grey {
-  background-color: rgb(75, 75, 75);
-}
-
-.black-lenses {
-  background-color: #1f1f1f;
-}
-
-.black-frame {
-  background-color: #1f1f1f;
-}
-
-.gold-lenses {
-  background-color: rgb(212, 175, 55);
-}
-
-.gold-frame {
-  background-color: rgb(212, 175, 55);
+  background-color: #f1f1f1;
 }
 
 .goldenrod {
@@ -577,6 +565,22 @@ button.modal-image.right:hover {
   background: linear-gradient( 90deg, #1f1f1f 50%, rgb(130, 15, 15) 50% );
 }
 
+.white-white {
+  background-color: #f1f1f1;
+}
+
+.white-red {
+  background: linear-gradient( 90deg, #f1f1f1 50%, rgb(130, 15, 15) 50% );
+}
+
+.white-black {
+  background: linear-gradient( 90deg, #f1f1f1 50%, #1f1f1f 50% );
+}
+
+.white-blue {
+  background: linear-gradient( 90deg, #f1f1f1 50%, rgb(63, 86, 107) 50% );
+}
+
 /* ----- SIZES ----- */
 
 .size-selector {
@@ -584,8 +588,7 @@ button.modal-image.right:hover {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 10px;
-  max-width: 205px;
+  max-width: 12vw;
 }
 
 .size-button {
@@ -594,10 +597,10 @@ button.modal-image.right:hover {
   align-items: center;
   background-color: #fff;
   color: #1f1f1f;
-  box-shadow: 0 0 1px 1px darkgray;
-  border-radius: 3px;
-  height: 24px;
-  margin: 0px 3px 0 3px;
+  box-shadow: 0 0 .1vw .05vw darkgray;
+  border-radius: 10%;
+  height: 3vh;
+  margin: 0px .15vw .6vh .15vw;
   cursor: pointer;
 }
 
@@ -611,7 +614,8 @@ button.modal-image.right:hover {
 }
 
 .size-text {
-  padding: 6.3px;
+  padding-left: .4vw;
+  padding-right: .4vw;
 }
 
 /* ----- QUANTITY SELECTOR ----- */
@@ -620,29 +624,30 @@ button.modal-image.right:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px;
-  max-width: 205px;
+  margin-bottom: .6vh;
+  min-width: 200px;
+  max-width: 12vw;
 }
 
 .quantity-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 28.59px;
+  height: 3vh;
   width: 22px;
   padding: 0;
   border: 0;
-  border-radius: 3px;
+  border-radius: 10%;
   background-color: #fff;
-  box-shadow: 0 0 1px 1px darkgray;
+  box-shadow: 0 0 .1vw .05vw darkgray;
 }
 
 .quantity-button.decrease {
-  margin-left: 3px;
+  margin-left: .15vw;
 }
 
 .quantity-button.increase {
-  margin-right: 3px;
+  margin-right: .15vw;
 }
 
 .quantity-count {
@@ -650,13 +655,13 @@ button.modal-image.right:hover {
   text-align: center;
   align-items: center;
   border: 0;
-  max-width: 100px;
 }
 
 /* ----- ADD TO BAG ----- */
 
 button.add {
-  max-width: 205px;
+  min-width: 200px;
+  max-width: 12vw;
 }
 
 
@@ -857,6 +862,7 @@ td {
 
 thead {
 }
+
 tbody {
   position: relative;
 }

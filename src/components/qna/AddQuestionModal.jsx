@@ -5,7 +5,6 @@ import { postQuestion } from '../../helpers.js';
 
 export const AddQuestionModal = ({ setShowModal }) => {
   const modalRef = useRef();
-  const {productId} = useContext(AppContext);
   const {productData} = useContext(AppContext);
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
@@ -13,7 +12,7 @@ export const AddQuestionModal = ({ setShowModal }) => {
     body: '',
     name: '',
     email: '',
-    product_id: productId
+    product_id: productData.id
   });
 
   const closeModal = (e) => {
