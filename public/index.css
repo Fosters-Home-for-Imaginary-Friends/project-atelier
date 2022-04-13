@@ -860,7 +860,6 @@ h3.related-title {
 .product-card {
   display: flex;
   flex-direction: column;
-  background-color: grey;
   height: calc((((56.5vh + 18vw + 21px) / 3) * 1.5) + 12vh);
   width: calc((56.5vh + 18vw + 21px) / 3);
   margin: 10px;
@@ -898,7 +897,6 @@ h3.related-title {
   position: relative;
   padding-top: 12px;
   height: 15vh;
-  background-color: #fff;
 }
 
 .action-button {
