@@ -153,9 +153,9 @@ body.dark-mode span.helpful-answer {
 /* ----- LIGHT / DARK MODE ----- */
 
 .mode-switch-container {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 2vh;
+  right: 2vh;
 }
 
 .switch {
