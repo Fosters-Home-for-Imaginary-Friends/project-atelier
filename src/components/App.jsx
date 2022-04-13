@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import ToggleSwitch from './ToggleSwitch.jsx';
 import Overview from "./overview/Overview.jsx";
 import RelatedProducts from "./related/RelatedProducts.jsx";
 import OutfitList from './related/OutfitList.jsx';
@@ -20,6 +21,7 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
+      <ToggleSwitch />
       <Overview />
       <RelatedProducts />
       <OutfitList />

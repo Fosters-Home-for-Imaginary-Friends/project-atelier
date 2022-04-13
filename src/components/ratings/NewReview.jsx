@@ -409,26 +409,10 @@ let NewReview = ({ setShowModal }) => {
         charObj[relevantCharacteristics[char].id] = parseInt(fit);
       }
     }
-
-
-    /*
-    He was such a great and wise potato boy. It's a shame that he had his best potatoing in front of him. But alas, he has potatoed his last potato, and have moved on to the potato boy after life. Which is actually just a rusty bucket filled with the lost hopes and dreams of other potato boys before him.
-
-    body: "He was such a great and wise potato boy. It's a shame that he had his best potatoing in front of him. But alas, he has potatoed his last potato, and have moved on to the potato boy after life. Which is actually just a rusty bucket filled with the lost hopes and dreams of other potato boys before him."
-    characteristics: {135346: '3', 135347: '3', 135348: '5', 135349: '5'}
-    email: "PotatoBoyz4Lyfe@gmail.com"
-    name: "PotatoBoyFan"
-    photos: (3) ['http://res.cloudinary.com/diono1kwq/image/upload/v1649792915/kam3mxanfzoxwfmfa5vz.jpg', 'http://res.cloudinary.com/diono1kwq/image/upload/v1649792915/prk9gbccf24pt3tlbus0.jpg', 'http://res.cloudinary.com/diono1kwq/image/upload/v1649792914/askqzlqc0v4n6qhfvfeb.jpg']
-    product_id: 40384
-    rating: 4
-    recommend: true
-    summary: "Best Potato Boy!"*/
-
-
-    // let cObj = {[sizeID] : size, [widthID]: width, [comfortID]: comfort, [qualityID]: quality, [lengthID]: length, [fitID]: fit}
     let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
 
     postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
+    setShowModal(false);
   }
 
 
@@ -444,7 +428,7 @@ let NewReview = ({ setShowModal }) => {
             <h1> Write Your Review </h1>
           </div>
           <div className="new-review-subtitle">
-            <h2>About the [Product Name] </h2>
+            <h2>About the {productData.name} </h2>
           </div>
           <div className="new-review-overall-rating">
             <h2> Overall Rating 5.0</h2>
@@ -470,12 +454,12 @@ let NewReview = ({ setShowModal }) => {
           <Characteristics />
         </div>
         <div className="new-review-summary">
-          <span className="helpful-answer"> Review Summary: </span>
+          <span className="user-data"> Review Summary: </span>
           <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
           <label> Max 60 characters</label>
         </div>
         <div className="new-review-body">
-          <span className="helpful-answer"> Type your review</span>
+          <span className="user-data"> Type your review</span>
           <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
           <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
         </div>
@@ -492,7 +476,7 @@ let NewReview = ({ setShowModal }) => {
         <div className="new-review-submit">
         <button onClick={submitClick} className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
-        <button onClick={() => setShowModal(false)}>X</button>
+        <button id="x-button" onClick={() => setShowModal(false)}>X</button>
         </div>
       </div>
     </div>,
