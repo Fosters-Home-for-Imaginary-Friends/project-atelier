@@ -1,6 +1,7 @@
 describe('Product Cards', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000')
+      .wait(5000);
   });
 
   it('Finds Product Cards', () => {
@@ -19,19 +20,33 @@ describe('Product Cards', () => {
       cy.get('.compare-modal-container');
     });
   });
-  context('Adds a Product Card to Your Outfit List', () => {
-    beforeEach(() => {
-      cy.get('#add-card')
-      .click();
-    });
+
+  context('Outfit List', () => {
     it('Finds a Product Card in Your Outfit List', () => {
       cy.get('#outfit-list')
-        .find('.product-card');
-    });
-    it('Reloads the page and finds a product card in your outfit list', () => {
-      cy.reload()
+        .find('#add-card')
+        .click()
         .get('#outfit-list')
-        .find('.product-card');
+        .find('.product-card')
+        .not('#add-card');
+    });
+
+    it('Should find a remove-button and click it', () => {
+      cy.get('#outfit-list')
+        .find('#add-card')
+        .click();
+
+      // cy.intercept('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/**').as('getReviews');
+
+      cy.get('#outfit-list')
+        .find('.product-card')
+        .not('#add-card')
+        .find('.remove-button')
+        .click()
+        .get('#outfit-list')
+        .find('.product-card')
+        .not('#add-card')
+        .should('not.exist');
     });
   });
 });
