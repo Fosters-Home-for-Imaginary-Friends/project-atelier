@@ -13,11 +13,14 @@ const Qna = (props) => {
   const [qnaList, setQnaList] = useState([]);
   const [extra, setExtra] = useState(true);
   const [init, setInit] = useState([]);
-  const {productId} = useContext(AppContext);
-  const [page, setPage] = useState(1);
+  const {productData} = useContext(AppContext);
+  // const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getQuestions(productId, 1, 9999)
+    if (!productData.id) {
+      return;
+    }
+    getQuestions(productData.id, 1, 9999)
       .then((res) => {
         let data = sortData(res);
 
@@ -28,7 +31,7 @@ const Qna = (props) => {
         setQnaList(data.slice(0, 4));
       })
       .catch((err) => console.log(err));
-  }, [])
+  }, [productData.id])
 
   const sortData = (array) => {
     return array.sort((a, b) => {
