@@ -18,6 +18,10 @@ let NewReview = ({ setShowModal }) => {
   const [recommendYes, setRecommendYes] = useState(false);
   const [recommendNo, setRecommendNo] = useState(false);
 
+  const [requiredBodyChars, setRequiredBodyChars] = useState(null);
+  const [remainingBodyChars, setRemainingBodyChars] = useState(null);
+  const [remainingSummaryChars, setRemainingSummaryChars] = useState(null);
+
   const [sizeSelector, setSizeSelector] = useState(0);
   const [sizeDescriptor, setSizeDescriptor] = useState("");
   const [sizeRelevant, setSizeRelevant] = useState(false)
@@ -371,10 +375,14 @@ let NewReview = ({ setShowModal }) => {
 
   const handleSummaryChange = (e) => {
     setSummary(e.target.value);
+    setRemainingSummaryChars(60 - e.target.value.length);
   };
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
+    setRequiredBodyChars(50 - e.target.value.length);
+    setRemainingBodyChars(1000 - e.target.value.length);
+
   };
 
   const handleNicknameChange = (e) => {
@@ -386,12 +394,6 @@ let NewReview = ({ setShowModal }) => {
   };
 
   const submitClick = () => {
-    // let sizeID = metaRating.characteristics.Size.id || 1000
-    // let widthID = metaRating.characteristics.Width.id || 1001
-    // let comfortID = metaRating.characteristics.Comfort.id || 1002;
-    // let qualityID = metaRating.characteristics.Quality.id || 1003
-    // let lengthID = metaRating.characteristics.Length.id || 1004
-    // let fitID = metaRating.characteristics.Fit.id || 1005
     let charObj = {}
 
     for ( let char in relevantCharacteristics) {
@@ -456,12 +458,12 @@ let NewReview = ({ setShowModal }) => {
         <div className="new-review-summary">
           <span className="user-data"> Review Summary: </span>
           <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
-          <label> Max 60 characters</label>
+          <label> {remainingSummaryChars || 60} characters remaining</label>
         </div>
         <div className="new-review-body">
           <span className="user-data"> Type your review</span>
           <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
-          <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
+          <label> Please type at least {requiredBodyChars || 50} more characters. You have {remainingBodyChars || 1000} characters remainging.</label>
         </div>
 
         <PhotoUpload setPhotos={setPhotos}/>
