@@ -12,7 +12,7 @@ let RatingsBreakdown = () => {
   return (
     <div className= "rating-breakdown-container">
       <div className="percent-recommend">
-        <section className="body-text">100% of reviews recommend this product. </section>
+        <section className="body-text">{((parseInt(metaRating.recommended.true) / (parseInt(metaRating.recommended.true) + parseInt(metaRating.recommended.false)) * 100).toFixed(2))}% of reviews recommend this product </section>
       </div>
       <div className="rating-and-stars">
       <h1 className="average-rating"> {averageRating}</h1>
