@@ -17,7 +17,7 @@ const ToggleSwitch = () => {
   }
 
   return (
-    <div>
+    <div className="mode-switch-container">
       <label className="switch">
         <input type="checkbox"></input>
         <span className={`slider round ${checked}`} onClick={() => handleCheckedClick()}></span>

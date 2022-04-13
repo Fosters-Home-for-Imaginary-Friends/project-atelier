@@ -80,7 +80,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: calc(14px + .2vw);
   font-weight: 400;
 }
 
@@ -105,6 +105,10 @@ button.info-button {
 button.info-button {
   background-color: #1f1f1f;
   color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
 }
 
 body.dark-mode button.info-button {
@@ -112,26 +116,34 @@ body.dark-mode button.info-button {
 }
 
 section.body-text {
-  font-size: 14px;
+  font-size: calc(12px + .15vw);
   font-weight: 200;
-  line-height: 18px;
+  line-height: calc(14px + .2vw);
   color: rgb(50, 50, 50);
 }
 
 body.dark-mode section.body-text {
-  color: rgb(150, 150, 150);
+  color: rgb(200, 200, 200);
 }
 
 span.user-data {
-  font-size: 10px;
+  font-size: calc(9px + .1vw);
   font-weight: 300;
-  color: rgb(100, 100, 100)
+  color: rgb(100, 100, 100);
+}
+
+body.dark-mode span.user-data {
+  color: rgb(150, 150, 150);
 }
 
 span.helpful-answer {
-  font-size: 10px;
+  font-size: calc(9px + .1vw);
   font-weight: 300;
-  color: rgb(100, 100, 100)
+  color: rgb(100, 100, 100);
+}
+
+body.dark-mode span.helpful-answer {
+  color: rgb(150, 150, 150);
 }
 
 .styles-template {
@@ -140,11 +152,17 @@ span.helpful-answer {
 
 /* ----- LIGHT / DARK MODE ----- */
 
+.mode-switch-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 30px;
+  height: 17px;
 }
 
 .switch input {
@@ -168,10 +186,10 @@ span.helpful-answer {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
   background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
@@ -186,13 +204,13 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
 }
 
 .slider.round {
-  border-radius: 34px;
+  border-radius: 17px;
 }
 
 .slider.round:before {
@@ -516,8 +534,7 @@ body.dark-mode .body-text.sale-price {
 }
 
 .body-text.price {
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 300;
   margin-top: 10px;
   margin-right: 10px;
 }
@@ -724,17 +741,16 @@ body.dark-mode .style-color {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
   color: #1f1f1f;
   box-shadow: 0 0 .1vw .05vw darkgray;
   border-radius: 10%;
   height: 3vh;
+  min-height: 25px;
   margin: 0px 3px .6vh 3px;
   cursor: pointer;
 }
 
 body.dark-mode .size-button {
-  background-color: #1f1f1f;
   color: #fff;
   box-shadow: 0 0 .1vw .05vw rgb(75, 75, 75);
 }
@@ -778,6 +794,7 @@ body.dark-mode .size-button.true {
   justify-content: center;
   align-items: center;
   height: 3vh;
+  min-height: 25px;
   width: 22px;
   padding: 0;
   border: 0;
@@ -890,9 +907,14 @@ h3.related-title {
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
+  color: #1f1f1f;
   height: 100%;
   width: 100%;
-  color: #1f1f1f;
+}
+
+body.dark-mode .related-image.no-image {
+  background-color: rgb(50, 50, 50);
+  color: #fff;
 }
 
 .card-bot {
@@ -901,6 +923,13 @@ h3.related-title {
   position: relative;
   padding-top: 12px;
   height: 15vh;
+}
+
+.average-star-container.product-stars {
+  position: absolute;
+  /* bottom: 6px; */
+  top: 14px;
+  right: 0px;
 }
 
 .action-button {
@@ -912,23 +941,29 @@ h3.related-title {
   z-index: 9;
   color: white;
 }
+
 .action-icon {
-  height: calc((((56.5vh + 18vw + 21px) / 3)/5));
-  width: calc((((56.5vh + 18vw + 21px) / 3)/5));
+  height: calc((((56.5vh + 18vw + 21px) / 3)/10));
+  width: calc((((56.5vh + 18vw + 21px) / 3)/10));
 }
+
 .compare-button:hover {
   color: rgb(212, 175, 55);
   transition: color 0.2s ease-in;
 }
+
 .remove-button:hover {
   color: rgb(130, 15, 15);
   transition: color 0.2s ease-in;
 }
 
-
 #add-card {
-  background-color: #f1f1f1;
   display: flex;
+  background-color: #f1f1f1;
+}
+
+body.dark-mode #add-card {
+  background-color: rgb(50, 50, 50);
 }
 
 #add-button {
@@ -937,9 +972,14 @@ h3.related-title {
   margin: auto;
   padding: auto;
 }
+
+body.dark-mode #add-button {
+  color: #fff;
+}
+
 .plus-icon {
-  height: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
-  width: calc((((56.5vh + 18vw + 21px) / 3)/2) + 12vh);
+  height: calc((((56.5vh + 18vw + 21px) / 3)/3) + 12vh);
+  width: calc((((56.5vh + 18vw + 21px) / 3)/3) + 12vh);
 }
 
 .product-start {
@@ -1129,6 +1169,14 @@ section.answer-list {
   margin-top: 20px;
   width: calc(56.5vh + 18vw + 161px);
   height: 35px;
+  padding-left: 10px;
+  background-color: #fff;
+  border: 1px solid #1f1f1f;
+}
+
+body.dark-mode .search-bar {
+  background-color: #1f1f1f;
+  border: 1px solid #fff;
 }
 
 .questions-buttons {
@@ -1166,7 +1214,6 @@ a.helpful:hover {
 }
 
 .add-question-container .question-modal {
-
   z-index: 1;
   width: 75vw;
   height: 60vh;
@@ -1180,6 +1227,10 @@ a.helpful:hover {
   animation: animate 0.3s;
 }
 
+body.dark-mode .add-question-container .question-modal {
+  background: rgb(50, 50, 50);
+}
+
 .question-modal form {
   display: flex;
   flex-direction: column;
@@ -1187,8 +1238,8 @@ a.helpful:hover {
   margin: 20px;
   gap: 10px;
 }
-.question-modal button {
 
+.question-modal button {
   position: absolute;
   top: 7px;
   right: 7px;
@@ -1393,6 +1444,10 @@ a.helpful:hover {
   overflow: auto;
 }
 
+body.dark-mode .new-review-container .modal {
+  background: rgb(50, 50, 50);
+}
+
 @keyframes animate {
   from {
     transform: scale(0.5);
@@ -1456,14 +1511,22 @@ h1.average-rating {
   width: 20vw;
   margin: 10px 0 10px 10px;
   height: 10px;
-  background-color: silver;
+  background-color: darkgray;
   border: 2px;
+}
+
+body.dark-mode .bar {
+  background-color: rgb(50, 50, 50);
 }
 
 .scored-bar {
   background-color: #1f1f1f;
   border: 2px;
   position: absolute;
+}
+
+body.dark-mode .scored-bar {
+  background-color: darkgray;
 }
 
 .bar-titles {
@@ -1520,7 +1583,11 @@ h1.average-rating {
 .char-bar {
   height: 10px;
   width: 7.5vw;
-  background-color: silver;
+  background-color: darkgray;
+}
+
+body.dark-mode .char-bar {
+  background-color: rgb(50, 50, 50);
 }
 
 .characteristic-bars-container {
@@ -1549,6 +1616,10 @@ h1.average-rating {
   color: #1f1f1f;
   align-self: flex-start;
   top: -10px;
+}
+
+body.dark-mode .marker{
+  color: darkgray;
 }
 
 .qualities-container {
