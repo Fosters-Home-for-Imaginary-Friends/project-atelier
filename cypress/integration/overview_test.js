@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe('Overview Test Suite', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
@@ -5,8 +6,6 @@ describe('Overview Test Suite', () => {
   })
 
   it('Contains a button that is clickable', () => {
-    cy.visit('http://localhost:3000')
-
     cy.get('.info-button.add').click()
   })
 })
