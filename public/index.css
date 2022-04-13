@@ -448,6 +448,7 @@ button.modal-image.right:hover {
   justify-content: flex-start;
   align-items: center;
   width: 8vw;
+  min-width: 110px;
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
@@ -473,6 +474,8 @@ button.modal-image.right:hover {
 .style-color {
   height: 1.4vw;
   width: 1.4vw;
+  min-width: 20px;
+  min-height: 20px;
   filter: saturate(70%);
   border: .1vw solid #fff;
   border-radius: 50%;
@@ -589,6 +592,7 @@ button.modal-image.right:hover {
   justify-content: flex-start;
   align-items: center;
   max-width: 12vw;
+  min-width: 200px;
 }
 
 .size-button {
@@ -600,7 +604,7 @@ button.modal-image.right:hover {
   box-shadow: 0 0 .1vw .05vw darkgray;
   border-radius: 10%;
   height: 3vh;
-  margin: 0px .15vw .6vh .15vw;
+  margin: 0px 3px .6vh 3px;
   cursor: pointer;
 }
 
@@ -614,8 +618,8 @@ button.modal-image.right:hover {
 }
 
 .size-text {
-  padding-left: .4vw;
-  padding-right: .4vw;
+  padding-left: 5.9px;
+  padding-right: 5.9px;
 }
 
 /* ----- QUANTITY SELECTOR ----- */
@@ -643,11 +647,11 @@ button.modal-image.right:hover {
 }
 
 .quantity-button.decrease {
-  margin-left: .15vw;
+  margin-left: 3px;
 }
 
 .quantity-button.increase {
-  margin-right: .15vw;
+  margin-right: 3px;
 }
 
 .quantity-count {
@@ -799,7 +803,6 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -833,7 +836,18 @@ h3.related-title {
   font-weight: 200;
   font-style: normal;
 }
+.feature-name-container {
+  width: 100%;
+  display: inline-flex;
+}
+.feature-name {
+  width: calc(50vw);
+  font-size: 4vh;
+  font-weight: 500;
+
+}
 .feature-container {
+  overflow: scroll;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -858,9 +872,6 @@ th {
 td {
   font-size: 3vh;
   font-weight: 200;
-}
-
-thead {
 }
 
 tbody {
