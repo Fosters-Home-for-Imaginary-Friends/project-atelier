@@ -26,15 +26,14 @@ const CompareButton = ({cardData}) => {
 };
 
 
-const RemoveButton = () => {
-  const {productData} = useContext(AppContext);
+const RemoveButton = ({product_id}) => {
   const {setOutfitList} = useContext(OutfitContext);
 
   const removeCard = (e) => {
     e.stopPropagation();
     setOutfitList((prev) => {
       let newState = prev.filter((id) => {
-        return productData.id !== id;
+        return product_id !== id;
       });
 
     if (newState.length > 0) {
