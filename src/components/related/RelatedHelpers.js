@@ -72,4 +72,9 @@ const generateKey = () => {
   return Math.floor(Math.random() * 10000000);
 };
 
-export {getFeatures, generateKey, getAverageRating, getStarFill};
+const productCardComparison = (prevProductCard, newProductCard) => {
+  return prevProductCard.product_id === newProductCard.product_id
+    && prevProductCard.related === newProductCard.related;
+}
+
+export {getFeatures, generateKey, getAverageRating, getStarFill, productCardComparison};

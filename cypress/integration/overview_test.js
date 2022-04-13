@@ -1,7 +1,11 @@
-describe('My First Test', () => {
-  it('Visits Atelier website', () => {
+/* eslint-disable no-undef */
+describe('Overview Test Suite', () => {
+  beforeEach(() => {
     cy.visit('http://localhost:3000')
+      .wait(1000)
+  })
 
-    cy.contains('ADD TO BAG')
+  it('Contains a button that is clickable', () => {
+    cy.get('.info-button.add').click()
   })
 })
