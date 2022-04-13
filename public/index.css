@@ -799,7 +799,6 @@ h3.related-title {
 
 /*---------- Comparison Modal ----------*/
 .compare-modal-container {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -833,7 +832,18 @@ h3.related-title {
   font-weight: 200;
   font-style: normal;
 }
+.feature-name-container {
+  width: 100%;
+  display: inline-flex;
+}
+.feature-name {
+  width: calc(50vw);
+  font-size: 4vh;
+  font-weight: 500;
+
+}
 .feature-container {
+  overflow: scroll;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -858,9 +868,6 @@ th {
 td {
   font-size: 3vh;
   font-weight: 200;
-}
-
-thead {
 }
 
 tbody {
