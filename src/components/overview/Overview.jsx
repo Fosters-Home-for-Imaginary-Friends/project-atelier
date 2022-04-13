@@ -21,17 +21,23 @@ const Overview = () => {
 
   const { productId, productData } = useContext(AppContext);
 
-  const getProductData = () => {
+  const getProductInformation = () => {
+    if (!productData.id) {
+      return;
+    }
     getStyles(productData.id)
       .then((styleData) => {
-        setStyles(styleData);
+        setStyles(styleData)
+        return styleData;
+      })
+      .then((styleData) => {
         for (let i = 0; i < styleData.length; i++) {
           let style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
           }
         }
-        return styleData;
+        return;
       })
       .then(() => {
         setLoading(false);
@@ -42,7 +48,7 @@ const Overview = () => {
   }
 
   useEffect(() => {
-    getProductData();
+    getProductInformation();
   }, [productData.id]);
 
   return (
