@@ -1208,45 +1208,7 @@ a.helpful:hover {
   cursor: pointer;
 }
 
-.new-review-container button {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  padding: 8px, 11px;
-  background-color: #333333;
-  color: white;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
 
-#newReview .new-review-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.new-review-container .modal {
-  z-index: 10;
-  width: 75vw;
-  height: 80vh;
-  background: white;
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-  position: relative;
-  animation: animate 0.3s;
-  overflow: auto;
-}
 
 @keyframes animate {
   from {
@@ -1292,6 +1254,9 @@ h1.average-rating {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+.bar-graph-container span {
+  position: absolute;
 }
 
 .graph-title-bar {
@@ -1413,16 +1378,69 @@ h1.average-rating {
 
 /* ----- NEW REVIEW ----- */
 
+#newReview .new-review-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.new-review-container .modal {
+  z-index: 10;
+  width: 75vw;
+  height: 80vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+}
 .new-review-container {
   overflow: auto;
   display: flex;
   flex-direction: column;
   column-gap: 20px;
   justify-content: top;
+  overflow: auto;
 }
 .new-review-product-recommendation-container {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+.new-review-title {
+  margin-top: 25px;
+}
+.new-review-title h1 {
+  color: rgb(50, 50, 50);
+  font-weight: 400;
+}
+
+.new-review-characteristics {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.new-review-characteristics-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.new-review-characteristics-container label{
+  font-size: 11px;
+  font-weight: 200;
+  line-height: 18px;
+  color: rgb(86, 86, 86);
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .new-review-position {
@@ -1438,18 +1456,31 @@ h1.average-rating {
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .radio-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .new-review-stars-container {
-  display: flex
+  display: flex;
+  position: relative;
 }
-
+.new-review-subtitle {
+  margin-bottom: 25px;
+}
+.new-review-overall-rating {
+  margin-bottom: 7px;
+}
+.new-review-rating-text {
+  margin-bottom: 4px;
+}
 .new-review-stars-container:hover {
   cursor: pointer;
 }
@@ -1457,25 +1488,41 @@ h1.average-rating {
 .thumbs-up {
  width: 30px;
  height: auto;
+ margin-right: 20px;
+ margin-left: 7px;
 }
 
 .thumbs-down {
   width: 30px;
   height: auto;
 }
+.new-review-choose-file {
+  display: flex;
+  flex-direction: row;
+}
 .new-review-summary {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 margin-top: 25px;
 margin-bottom: 10px;
 width: 60%;
 }
+.new-review-summary label{
+  font-size: 10px;
+  font-weight: 300;
+  color: rgb(100, 100, 100)
+}
 .new-review-body {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 margin-top: 10px;
 margin-bottom: 10px;
 width: 75%;
+}
+.new-review-body label{
+  font-size: 10px;
+  font-weight: 300;
+  color: rgb(100, 100, 100)
 }
 .new-review-images {
   display: flex;
@@ -1494,7 +1541,25 @@ button.upload-photo {
   display: flex;
   flex-direction: column;
   width: 60%;
+  margin-bottom: 10px;
 }
 .new-review-submit {
   position: relative;
 }
+
+  .new-review-container button {
+    background-color: #333333;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  #x-button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    padding: 8px, 11px;
+  }
