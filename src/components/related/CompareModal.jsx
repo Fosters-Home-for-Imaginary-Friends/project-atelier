@@ -21,15 +21,12 @@ const CompareModal = React.memo (function CompareModal ({cardData, closeModal}) 
         <h3 className="modal-title">COMPARING</h3>
         <button onClick={closeModal} className="modal-button"><h3 className="modal-title">X</h3></button>
       </div>
+      <div className="feature-name-container">
+        <span className="left feature-name">{features.currentName}</span>
+        <span className="right feature-name">{features.selectedName}</span>
+      </div>
       <div className="feature-container">
         <table className="feature-table">
-          <thead>
-            <tr>
-              <th className="left">{features.currentName}</th>
-              <th className="center"></th>
-              <th className="right">{features.selectedName}</th>
-            </tr>
-          </thead>
           <ModalTableBody features={features.features} />
         </table>
       </div>
