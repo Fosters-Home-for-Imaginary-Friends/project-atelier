@@ -1,7 +1,7 @@
 describe('Product Cards', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
-      .wait(5000);
+      .wait(1000);
   });
 
   it('Finds Product Cards', () => {
