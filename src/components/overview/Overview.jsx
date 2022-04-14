@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import ImageCarousel from './ImageCarousel.jsx';
-import ImageBar from "./ImageBar.jsx";
-import ImageModal from "./ImageModal.jsx";
-import ProductInformation from './ProductInformation.jsx';
+import ImageCarousel from './components/images/ImageCarousel.jsx';
+import ImageBar from "./components/images/ImageBar.jsx";
+import ImageModal from "./components/images/ImageModal.jsx";
+import ProductInformation from './components/information/ProductInformation.jsx';
 import { getStyles } from "../../helpers.js";
 import { AppContext } from "../App.jsx";
 

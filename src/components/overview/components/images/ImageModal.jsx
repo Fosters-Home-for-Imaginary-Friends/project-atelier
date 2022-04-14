@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useState, useLayoutEffect } from "react";
 import ReactDom from "react-dom";
-import { OverviewContext } from "./Overview.jsx";
+import { OverviewContext } from "../../Overview.jsx";
 
 const ImageModal = () => {
 

@@ -25,9 +25,16 @@ let Ratings = () => {
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
 
+
   let dataFetch = () => {
+    if (!productData.id) {
+      return;
+    }
     getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
+      totalReviews = 0;
+      totalScore = 0;
+
       getReviewMetadata(productData.id)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})

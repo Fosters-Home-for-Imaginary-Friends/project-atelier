@@ -14,6 +14,8 @@ let ReviewList = () => {
   const [showModal, setShowModal] = useState(false);
   const [moreReviews, setMoreReviews] = useState(true);
 
+  const[modalState, setModalState] = useState(false);
+
 
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
@@ -71,7 +73,7 @@ let ReviewList = () => {
 return (
   <div className= "review-list-container">
     <div className="total-reviews-sort-dropdown-container">
-      <h2 className="total-reviews">{`${totalReviews} reviews, sorted by `}</h2>
+      <h2 className="total-reviews">{`${totalReviews + 2} reviews, sorted by `}</h2>
       <SortDropdown id="sort-dropdown" sortChange={sortChange} />
     </div>
     <div className="review-list-individual-review-container"> {/*this container holds all individual reviews*/}
@@ -85,6 +87,7 @@ return (
         <button className="info-button add-review" onClick={openModal}> ADD A REVIEW + </button>
         {showModal ? <NewReview setShowModal={setShowModal}/> : null}
       </div>
+
     </div>
   </div>
 );

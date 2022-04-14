@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
-import { OverviewContext } from './Overview.jsx';
+import { OverviewContext } from '../../Overview.jsx';
 
 const QuantitySelector = () => {
 

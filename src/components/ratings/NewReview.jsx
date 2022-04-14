@@ -18,6 +18,10 @@ let NewReview = ({ setShowModal }) => {
   const [recommendYes, setRecommendYes] = useState(false);
   const [recommendNo, setRecommendNo] = useState(false);
 
+  const [requiredBodyChars, setRequiredBodyChars] = useState(50);
+  const [remainingBodyChars, setRemainingBodyChars] = useState(null);
+  const [remainingSummaryChars, setRemainingSummaryChars] = useState(null);
+
   const [sizeSelector, setSizeSelector] = useState(0);
   const [sizeDescriptor, setSizeDescriptor] = useState("");
   const [sizeRelevant, setSizeRelevant] = useState(false)
@@ -56,6 +60,8 @@ let NewReview = ({ setShowModal }) => {
   const [photos, setPhotos] = useState([]);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+
+  const[validate, setValidate] = useState(false);
 
 
 
@@ -107,9 +113,9 @@ let NewReview = ({ setShowModal }) => {
         r++;
       }
     })
-    if ( r < 1) {
-      r = 1;
-    }
+    // if ( r < 1) {
+    //   r = 1;
+    // }
     setRating(r);
   }
 
@@ -371,10 +377,14 @@ let NewReview = ({ setShowModal }) => {
 
   const handleSummaryChange = (e) => {
     setSummary(e.target.value);
+    setRemainingSummaryChars(60 - e.target.value.length);
   };
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
+    setRequiredBodyChars(50 - e.target.value.length);
+    setRemainingBodyChars(1000 - e.target.value.length);
+
   };
 
   const handleNicknameChange = (e) => {
@@ -386,12 +396,6 @@ let NewReview = ({ setShowModal }) => {
   };
 
   const submitClick = () => {
-    // let sizeID = metaRating.characteristics.Size.id || 1000
-    // let widthID = metaRating.characteristics.Width.id || 1001
-    // let comfortID = metaRating.characteristics.Comfort.id || 1002;
-    // let qualityID = metaRating.characteristics.Quality.id || 1003
-    // let lengthID = metaRating.characteristics.Length.id || 1004
-    // let fitID = metaRating.characteristics.Fit.id || 1005
     let charObj = {}
 
     for ( let char in relevantCharacteristics) {
@@ -409,10 +413,14 @@ let NewReview = ({ setShowModal }) => {
         charObj[relevantCharacteristics[char].id] = parseInt(fit);
       }
     }
-    let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
+    if ( rating > 0 && summary.length > 0 && body.length > 50 && recommended && nickname.length > 0 && email.length > 1 && Object.keys(charObj).length > 0) {
 
-    postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
-    setShowModal(false);
+      let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
+      postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
+      setShowModal(false);
+    }
+
+    setValidate(true);
   }
 
 
@@ -441,6 +449,7 @@ let NewReview = ({ setShowModal }) => {
              return <Star value={i} key={i} fill={item} />
            })}
           </div>
+          {(!rating) && (validate) && <label className="invalid-text">Please select a rating for this product.</label>}
         </div>
 
         <div className="new-review-product-recommendation-container">
@@ -450,27 +459,35 @@ let NewReview = ({ setShowModal }) => {
            {(!recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : ""}} onClick={thumbNoClick}/>}
            {(recommendNo) && <GoThumbsdown className="thumbs-down" style={{"color" : "purple"}} onClick={thumbNoClick}/>}
         </div>
+        {(!recommended) && (validate) &&<label className="invalid-text">Please select a recommendation for this product.</label>}
         <div className="new-review-characteristics">
           <Characteristics />
         </div>
         <div className="new-review-summary">
+          {(summary.length < 1) && (validate) && <label className="invalid-text">Please enter a valid summary</label>}
           <span className="user-data"> Review Summary: </span>
           <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
-          <label> Max 60 characters</label>
+          <label> {remainingSummaryChars || 60} characters remaining</label>
         </div>
         <div className="new-review-body">
+          {(body.length < 50) && (validate) && <label className="invalid-text">Please enter a valid review.</label>}
           <span className="user-data"> Type your review</span>
           <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
-          <label> Please type at least 50 more characters. You have 1000 characters remainging.</label>
+          {requiredBodyChars > 0 && <label>Please type {(requiredBodyChars || 50)} more characters.</label>}
+          {requiredBodyChars <= 0 && <label> You have met the minimum character requirement. </label>}
+          <label>You have {remainingBodyChars || 1000} characters remainging.</label>
+          {}
         </div>
 
         <PhotoUpload setPhotos={setPhotos}/>
         <div className="new-review-nickname">
-          <input id="review-nickname" type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60" onChange={handleNicknameChange}></input>
+          {(!nickname.length > 0) && (validate) && <label className="invalid-text"> Please enter a nickname.</label>}
+          <input id="review-nickname" type="text" placeholder="Enter your nickname. Example: Jackson11..." maxLength="60" onChange={handleNicknameChange} required></input>
           <span className="helpful-answer"> For privacy reasons, do not use your full name or email address. </span>
         </div>
         <div className="new-review-email">
-          <input id="review-email" type="text" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60" onChange={handleEmailChange}></input>
+          {(!email) && (validate) && <label className="invalid-text">Please enter a valid email.</label>}
+          <input id="review-email" type="email" placeholder="Enter your email address. Example: Jackson11@email.com" maxLength="60" onChange={handleEmailChange}></input>
           <span className="helpful-answer"> For authentication reasons, you will not be emailed. </span>
         </div>
         <div className="new-review-submit">
