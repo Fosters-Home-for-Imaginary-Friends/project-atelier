@@ -25,7 +25,11 @@ let Ratings = () => {
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
 
 
+
   let dataFetch = () => {
+    if (!productData.id) {
+      return;
+    }
     getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
       getReviewMetadata(productData.id)
@@ -40,10 +44,12 @@ let Ratings = () => {
         for (let k in totalRatingsObj) {
           setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
           setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 )
+          console.log(totalReviews);
       }
         setAverageRating((totalScore / totalReviews).toFixed(2));
       }).then(() => {
         setLoading(false);
+        setTotalReviews(0);
       }).catch(err => {
         console.error(err);
       })
