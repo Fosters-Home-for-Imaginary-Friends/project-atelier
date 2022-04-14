@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import StyleSelector from './StyleSelector.jsx';
-import SizeSelector from './SizeSelector.jsx';
-import QuantitySelector from './QuantitySelector.jsx';
-import { OverviewContext } from './Overview.jsx';
-import { AppContext } from '../App.jsx';
-import { postCart } from '../../helpers.js';
+import StyleSelector from '../styles/StyleSelector.jsx';
+import SizeSelector from '../sizes/SizeSelector.jsx';
+import QuantitySelector from '../quantity/QuantitySelector.jsx';
+import { OverviewContext } from '../../Overview.jsx';
+import { AppContext } from '../../../App.jsx';
+import { postCart } from '../../../../helpers.js';
 import { SiFacebook, SiTwitter, SiPinterest, SiInstagram } from 'react-icons/si';
 
 const ProductInformation = () => {
