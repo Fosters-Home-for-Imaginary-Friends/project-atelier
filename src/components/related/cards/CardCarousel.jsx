@@ -1,9 +1,6 @@
 import React, {useRef, useState, useMemo, useCallback} from 'react';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
 
-
-  // TODO: If item is removed from outfit list, re-check rightmost position
-  // TODO: Lock scrolling
 const CardCarousel = ({children, length}) => {
   const carouselRef = useRef({});
   const [position, setPosition] = useState(0);

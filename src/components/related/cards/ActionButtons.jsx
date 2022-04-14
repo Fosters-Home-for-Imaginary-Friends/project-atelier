@@ -4,6 +4,7 @@ import {setCookie, deleteCookie} from '../../Cookies.js';
 import {OutfitContext} from './OutfitList.jsx';
 import {IconContext} from 'react-icons';
 
+//! Move removeCard to OutfitContext
 const RemoveButton = ({product_id}) => {
   const {setOutfitList} = useContext(OutfitContext);
 

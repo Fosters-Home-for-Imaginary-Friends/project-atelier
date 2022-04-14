@@ -16,7 +16,6 @@ export default function OutfitContext ({children}) {
   }, []);
 
   const addProduct = useCallback(() => {
-    console.log("clicked!");
     setOutfitList((prev) => {
       if (prev.includes(productData.id)) {
         return prev;
