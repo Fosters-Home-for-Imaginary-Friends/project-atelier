@@ -1,72 +1,50 @@
-import React, {useRef, useState, useEffect, useMemo, useCallback} from 'react';
+import React, {useRef, useState, useMemo, useCallback} from 'react';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from 'react-icons/ai';
-import {RelatedCards, OutfitCards} from './CardContainers.jsx';
+
 
   // TODO: If item is removed from outfit list, re-check rightmost position
   // TODO: Lock scrolling
-const CardCarousel = ({children}) => {
+const CardCarousel = ({children, length}) => {
   const carouselRef = useRef({});
-  const [left, setLeft] = useState(false);
-  const [right, setRight] = useState(false);
+  const [position, setPosition] = useState(0);
   const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
-
-  //These functions scroll the content within the carousel-viewport div
   const scrollLeft = useCallback(() => {
-      checkArrows(carouselRef.current.scrollLeft - cardWidth);
+    if (position > 0) {
       carouselRef.current.scrollBy({
         left: -cardWidth,
         behavior: "smooth"
       });
+      setPosition((prev) => prev - 1);
+    }
   });
-
   const scrollRight = useCallback(() => {
-    if (right) {
-      checkArrows(carouselRef.current.scrollLeft + cardWidth);
+    if (position + 3 < length) {
       carouselRef.current.scrollBy({
         left: cardWidth,
         behavior: "smooth"
       });
+      setPosition((prev) => prev + 1);
     }
   });
 
-  useEffect(() => {
-    checkArrows(carouselRef.current.scrollLeft);
-  }, [length]);
-
-  const checkArrows = (scrollPoint) => {
-    if ((scrollPoint + (cardWidth * 3)) >= cardWidth * length) {
-      setRight((prev) => prev ? false : prev);
-    } else {
-      setRight((prev) => prev ? prev : true);
-    }
-
-    if (scrollPoint <= 0) {
-      setLeft((prev) => prev ? false : prev);
-    } else {
-      setLeft((prev) => prev ? prev : true);
-    }
-  };
-
-  useEffect(() => {
-    if (length < 4) {
-      setRight((prev) => prev ? false : prev);
-    } else {
-      setRight((prev) => prev ? prev : true);
-    }
-  }, [length])
-
   return (
-    <div className="carousel-container" id="modal"> {/* This holds the carousel viewport and the buttons */}
-      <LeftArrow scroll={scrollLeft} view={left} />
-      <div ref={carouselRef} className="carousel-viewport"> {/* The portion of the carousel that is visible to the user */}
-        {related ? <RelatedCards /> : <OutfitCards />}
+    <div className="carousel-container" id="modal">
+      <div className="arrow">
+        {length > 3 && position > 0 ? <LeftArrow scroll={scrollLeft} /> : null}
       </div>
-      <RightArrow scroll={scrollRight} view={right} />
+      <div ref={carouselRef} className="carousel-viewport">
+        <div className="carousel">
+          {children}
+        </div>
+      </div>
+      <div className="arrow">
+        {length > 3 && position + 3 < length ? <RightArrow scroll={scrollRight} /> : null}
+      </div>
     </div>
   );
 };
 
-const LeftArrow = ({scroll, view}) => {
+const LeftArrow = ({scroll}) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -79,14 +57,12 @@ const LeftArrow = ({scroll, view}) => {
 
   return (
     <React.Fragment>
-      <button onClick={handleClick} className="arrow">
-        {view ? <AiOutlineDoubleLeft size={40} /> : null}
-      </button>
+      <AiOutlineDoubleLeft onClick={handleClick} size={40} />
     </React.Fragment>
   );
 };
 
-const RightArrow = ({scroll, view}) => {
+const RightArrow = ({scroll}) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -99,9 +75,7 @@ const RightArrow = ({scroll, view}) => {
 
   return (
     <React.Fragment>
-      <button onClick={handleClick} className="arrow">
-        {view ? <AiOutlineDoubleRight size={40} /> : null}
-      </button>
+      <AiOutlineDoubleRight onClick={handleClick} size={40} />
     </React.Fragment>
   );
 };

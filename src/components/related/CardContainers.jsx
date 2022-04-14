@@ -11,9 +11,9 @@ const RelatedCards = function RelatedCards() {
   const {setProductData} = useContext(AppContext);
 
   return (
-  <div className="carousel"> {/* The part that scrolls when you press a button */}
-    {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} setProductData={setProductData} />)}
-  </div>
+    <React.Fragment>
+      {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} setProductData={setProductData} />)}
+    </React.Fragment>
   );
 };
 
