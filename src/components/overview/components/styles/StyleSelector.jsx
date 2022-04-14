@@ -1,6 +1,6 @@
 import React, { useContext} from "react";
 import Style from "./Style.jsx";
-import {OverviewContext} from "./Overview.jsx";
+import {OverviewContext} from "../../Overview.jsx";
 
 const StyleSelector = () => {
 

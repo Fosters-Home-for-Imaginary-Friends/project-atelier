@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import PropTypes from "prop-types";
-import { OverviewContext } from "./Overview.jsx";
+import { OverviewContext } from "../../Overview.jsx";
 
 const Thumbnail = ({thumbnail, index}) => {
 

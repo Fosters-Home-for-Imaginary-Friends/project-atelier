@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { OverviewContext } from './Overview.jsx';
+import { OverviewContext } from '../../Overview.jsx';
 import Size from './Size.jsx';
 
 const SizeSelector = () => {
