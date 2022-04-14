@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import ToggleSwitch from './ToggleSwitch.jsx';
 import Overview from "./overview/Overview.jsx";
-import RelatedProducts from "./related/RelatedProducts.jsx";
-import OutfitList from './related/OutfitList.jsx';
+import ProductCardLists from "./related/ProductCardLists.jsx";
 import Qna from "./qna/Qna.jsx";
 import Ratings from "./ratings/Ratings.jsx";
 import {getProduct} from '../helpers.js';
@@ -23,8 +22,7 @@ const App = () => {
     <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
       <ToggleSwitch />
       <Overview />
-      <RelatedProducts />
-      {/* <OutfitList /> */}
+      <ProductCardLists />
       <Qna />
       <Ratings />
     </AppContext.Provider>

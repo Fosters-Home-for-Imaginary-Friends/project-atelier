@@ -1,35 +1,19 @@
-import React, {useEffect, useState, useContext, createContext} from 'react';
+import React, {useContext} from 'react';
 import CardCarousel from './CardCarousel.jsx';
-import {getRelated} from '../../helpers.js';
 import {AppContext} from '../App.jsx';
-import {RelatedCards} from './CardContainers.jsx';
-
-export const RelatedContext = createContext({});
+import ProductCard from './ProductCard.jsx';
+import {RelatedCardContext} from './RelatedContext.jsx';
 
 const RelatedProducts = () => {
-  const [relatedList, setRelatedList] = useState([]);
-  const {productData} = useContext(AppContext);
-
-  useEffect(() => {
-    if (!productData.id) {
-      return;
-    }
-    getRelated(productData.id)
-      .then((data) => {
-        let newList = Array.from(new Set(data)).filter((id) => id !== productData.id);
-        setRelatedList(newList);
-      })
-      .catch((err) => console.error(err));
-  }, [productData.id]);
+  const {relatedList} = useContext(RelatedCardContext);
+  const {setProductData} = useContext(AppContext);
 
   return (
     <div className="product-list" id="related-list">
       <h3 className="related-title">RELATED PRODUCTS</h3>
-      <RelatedContext.Provider value={{relatedList, setRelatedList}}>
         <CardCarousel length={relatedList.length}>
-          <RelatedCards />
+          {relatedList.map((id) => <ProductCard key={id} product_id={id} setProductData={setProductData} />)}
         </CardCarousel>
-      </RelatedContext.Provider>
     </div>
   );
 }

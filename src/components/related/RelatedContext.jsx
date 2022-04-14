@@ -2,11 +2,10 @@ import React, {useState, useEffect, useContext, createContext} from 'react';
 import {AppContext} from '../App.jsx';
 import {getRelated} from '../../helpers.js';
 
-const RelatedCardContext = createContext();
+export const RelatedCardContext = createContext();
 
 export default function RelatedContext ({children}) {
   const [relatedList, setRelatedList] = useState([]);
-  const [cardData, setCardData] = useState({});
   const {productData} = useContext(AppContext);
 
   useEffect(() => {
@@ -21,9 +20,8 @@ export default function RelatedContext ({children}) {
       .catch((err) => console.error(err));
   }, [productData.id]);
 
-
   return (
-    <RelatedCardContext.Provider value={cardData}>
+    <RelatedCardContext.Provider value={{relatedList}}>
       {children}
     </RelatedCardContext.Provider>
   );
