@@ -2,6 +2,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.8",
     "axios": "^0.26.1",
+    "express": "^4.17.3",
     "jest": "^27.5.1",
     "moment": "^2.29.1",
     "react": "^18.0.0",
@@ -30,6 +31,7 @@
     "eslint": "^8.12.0",
     "eslint-plugin-react": "^7.29.4",
     "mocha": "^9.2.2",
+    "nodemon": "^2.0.15",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
@@ -42,6 +44,7 @@
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
     "cypress:open": "cypress open",
-    "report": "nyc report --reporter=text-summary"
+    "report": "nyc report --reporter=text-summary",
+    "start:server": "nodemon server/index.js"
   }
 }

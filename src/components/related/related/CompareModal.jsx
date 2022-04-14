@@ -1,8 +1,8 @@
 import React, {useRef, useContext, useMemo} from 'react';
 import ReactDom from 'react-dom';
 import {BsCheckLg} from 'react-icons/bs';
-import {generateKey, getFeatures} from './RelatedHelpers.js';
-import {AppContext} from '../App.jsx';
+import {generateKey, getFeatures} from '../utils/RelatedHelpers.js';
+import {AppContext} from '../../App.jsx';
 
 //! Modal button is misaligned ??
 //! Figure out how to lock header to top of page
