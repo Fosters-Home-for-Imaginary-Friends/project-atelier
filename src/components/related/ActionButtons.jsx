@@ -5,7 +5,6 @@ import CompareModal from './CompareModal.jsx';
 import {setCookie, deleteCookie} from '../../Cookies.js';
 import {OutfitContext} from './OutfitList.jsx';
 import {IconContext} from 'react-icons';
-import {AppContext} from '../App.jsx';
 
 const CompareButton = ({cardData}) => {
   const [modal, setModal] = useState(false);

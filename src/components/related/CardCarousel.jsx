@@ -4,12 +4,11 @@ import {RelatedCards, OutfitCards} from './CardContainers.jsx';
 
   // TODO: If item is removed from outfit list, re-check rightmost position
   // TODO: Lock scrolling
-const CardCarousel = ({related, length}) => {
+const CardCarousel = ({children}) => {
   const carouselRef = useRef({});
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
   const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
-  const scrollPoint = () => carouselRef.current.scrollLeft;
 
   //These functions scroll the content within the carousel-viewport div
   const scrollLeft = useCallback(() => {

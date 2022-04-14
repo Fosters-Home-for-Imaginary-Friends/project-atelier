@@ -5,7 +5,6 @@ import {AppContext} from '../App.jsx';
 
 export const RelatedContext = createContext({});
 
-// TODO: Optimize loading time by only loading first 3 cards on initial site render
 const RelatedProducts = () => {
   const [relatedList, setRelatedList] = useState([]);
   const {productData} = useContext(AppContext);

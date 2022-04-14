@@ -24,7 +24,7 @@ const App = () => {
       <ToggleSwitch />
       <Overview />
       <RelatedProducts />
-      <OutfitList />
+      {/* <OutfitList /> */}
       <Qna />
       <Ratings />
     </AppContext.Provider>

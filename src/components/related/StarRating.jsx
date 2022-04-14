@@ -5,11 +5,11 @@ import {Star} from '../ratings/AverageStars.jsx';
 const StarRating = function StarRating({averageRating}) {
   const starFill = useMemo(() => getStarFill(averageRating), [averageRating]);
 
-  return (
+  return averageRating > 0 ? (
     <div className="average-star-container">
-      {starFill.map((fill, i) => <Star fill={fill} key={generateKey()} />)}
+      {starFill.map((fill) => <Star fill={fill} key={generateKey()} />)}
     </div>
-  );
+  ) : null;
 };
 
 export default StarRating;
