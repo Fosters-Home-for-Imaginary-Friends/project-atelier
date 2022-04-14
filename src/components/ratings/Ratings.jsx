@@ -18,8 +18,8 @@ let Ratings = () => {
   const [relevantCharacteristics, setRelevantCharacteristics] = useState({});
   const [currentSort, setCurrentSort] = useState('relevant');
   const [storedReviews, setStoredReviews] = useState([]);
-  let [totalScore, setTotalScore] = useState(0);
-  let [totalReviews, setTotalReviews] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
   let [averageRating, setAverageRating] = useState(0);
   let [pageNum, setPageNum] = useState(1);
   const [starFilters, setStarFilters] = useState({1: false, 2: false, 3: false, 4: false, 5: false});
@@ -32,8 +32,7 @@ let Ratings = () => {
     }
     getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
-      totalReviews = 0;
-      totalScore = 0;
+
 
       getReviewMetadata(productData.id)
       .then((meta) => {
@@ -43,12 +42,18 @@ let Ratings = () => {
         setRelevantCharacteristics(meta.characteristics)
         let totalRatingsObj = meta.ratings;
 
+        let r = 0;
+        let s = 0;
         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
         for (let k in totalRatingsObj) {
-          setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
-          setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 )
+          r += (parseInt(totalRatingsObj[k]));
+          s += (parseInt(k) * parseInt(totalRatingsObj[k]));
+          // setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
+          // setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 )
       }
-        setAverageRating((totalScore / totalReviews).toFixed(2));
+        setTotalReviews(r);
+        setTotalScore(s);
+        setAverageRating((s / r).toFixed(2));
       }).then(() => {
         setLoading(false);
       }).catch(err => {
