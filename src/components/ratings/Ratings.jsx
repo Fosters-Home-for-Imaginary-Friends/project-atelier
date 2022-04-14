@@ -32,6 +32,9 @@ let Ratings = () => {
     }
     getReviews(productData.id, pageNum, 2, currentSort)
     .then((res) => {
+      totalReviews = 0;
+      totalScore = 0;
+
       getReviewMetadata(productData.id)
       .then((meta) => {
         // setRatingsObj({reviews: res, metaRating: meta})
@@ -49,7 +52,6 @@ let Ratings = () => {
         setAverageRating((totalScore / totalReviews).toFixed(2));
       }).then(() => {
         setLoading(false);
-        setTotalReviews(0);
       }).catch(err => {
         console.error(err);
       })
