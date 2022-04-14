@@ -1,10 +1,8 @@
-import React, {useContext} from 'react';
-import {OutfitContext} from './OutfitList.jsx';
+import React from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {IconContext} from 'react-icons';
 
-const AddProductCard = () => {
-  const {addProduct} = useContext(OutfitContext);
+const AddProductCard = ({addProduct}) => {
 
   return (
     <div className="product-card" id="add-card" onClick={addProduct}>
