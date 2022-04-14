@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {IconContext} from 'react-icons';
-import {AiOutlineStar} from 'react-icons/ai';
-import {getAverageRating, productCardComparison} from './RelatedHelpers.js';
+import {getAverageRating, productCardComparison} from '../utils/RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
-import {getProduct, getStyles, getReviewMetadata} from '../../helpers.js';
+import {getProduct, getStyles, getReviewMetadata} from '../../../helpers.js';
+import CompareButton from './CompareButton.jsx';
+import RemoveButton from './RemoveButton.jsx';
 
-//! Remove context to prevent re-rendering
-const ProductCard = React.memo(function ProductCard({product_id, setProductData}) {
+const ProductCard = React.memo(function ProductCard({product_id, related, setProductData}) {
   const [cardData, setCardData] = useState({});
 
   useEffect(() => {
@@ -28,11 +27,7 @@ const ProductCard = React.memo(function ProductCard({product_id, setProductData}
   return (
     <div className="product-card" onClick={handleCardClick}>
         <div className="card-top">
-          <div className="compare-button action-button">
-            <IconContext.Provider value={{className: "action-icon"}}>
-              <AiOutlineStar />
-            </IconContext.Provider>
-          </div>
+          {related ? <CompareButton cardData={cardData.productData} /> : <RemoveButton product_id={product_id} />}
           {cardData.styleData && cardData.styleData[0].photos[0].thumbnail_url ?
           <img className="related-image" src={cardData.styleData[0].photos[0].thumbnail_url} /> :
           <div className="related-image no-image">NO IMAGE</div>}

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import CardCarousel from './CardCarousel.jsx';
-import {AppContext} from '../App.jsx';
-import ProductCard from './ProductCard.jsx';
+import CardCarousel from '../cards/CardCarousel.jsx';
+import {AppContext} from '../../App.jsx';
+import ProductCard from '../cards/ProductCard.jsx';
 import {RelatedCardContext} from './RelatedContext.jsx';
 
 const RelatedProducts = () => {
@@ -12,7 +12,7 @@ const RelatedProducts = () => {
     <div className="product-list" id="related-list">
       <h3 className="related-title">RELATED PRODUCTS</h3>
         <CardCarousel length={relatedList.length}>
-          {relatedList.map((id) => <ProductCard key={id} product_id={id} setProductData={setProductData} />)}
+          {relatedList.map((id) => <ProductCard key={id} product_id={id} related={true} setProductData={setProductData} />)}
         </CardCarousel>
     </div>
   );

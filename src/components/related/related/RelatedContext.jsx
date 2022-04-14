@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext, createContext} from 'react';
-import {AppContext} from '../App.jsx';
-import {getRelated} from '../../helpers.js';
+import {AppContext} from '../../App.jsx';
+import {getRelated} from '../../../helpers.js';
 
 export const RelatedCardContext = createContext();
 
