@@ -1208,6 +1208,31 @@ a.helpful:hover {
   cursor: pointer;
 }
 
+.review-image-modal {
+  z-index: 999;
+  width: 40vw;
+  height: 40vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+}
+
+.review-thumbnail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
 
 
 @keyframes animate {
@@ -1339,7 +1364,7 @@ h1.average-rating {
 
 .char-bar {
   height: 10px;
-  width: 7.5vw;
+  width: 8vw;
   background-color: silver;
 }
 
@@ -1562,4 +1587,8 @@ button.upload-photo {
     top: 7px;
     right: 7px;
     padding: 8px, 11px;
+  }
+  .invalid-text {
+    size: 9px;
+    color: rgb(206, 41, 41);
   }

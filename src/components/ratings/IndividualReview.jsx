@@ -5,6 +5,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 
 import { putReviewHelpful, postReview } from '../../helpers.js';
 import IndividualReviewStars from './IndividualReviewStars.jsx';
+import ImageModal from './ImageModal.jsx';
 
 
 
@@ -16,6 +17,9 @@ let IndividualReview = (props) => {
   const [helpfulChoiceMade, setHelpfulChoiceMade] = useState(false);
   const [helpfulChoice, setHelpfulChoice] = useState('');
   const [imageEnlarged, setImageEnlarged] = useState(false);
+
+  const [reviewImageModalState, setReviewImageModalState] = useState(false);
+  const [imgSrc, setImgSrc] = useState('');
 
 
   //if yes link is clicked for helpfulness this generates an api call to incrememnt helpfulness and displays the
@@ -49,13 +53,15 @@ let IndividualReview = (props) => {
   let enlargeImg = (e) => {
     if (imageEnlarged === false) {
     e.preventDefault();
-    e.target.style.transform = "scale(20.0)";
-    e.target.style.transition = "transfrom 0.25s ease";
-    setImageEnlarged(true);
+    // e.target.style.transform = "scale(20.0)";
+    // e.target.style.transition = "transfrom 0.25s ease";
+    // setImageEnlarged(true);
+    setReviewImageModalState(true);
+    setImgSrc(e.target.src);
     } else {
-      e.target.style.transform = "scale(1.0)";
-      e.target.style.transition = "transfrom 0.25s ease";
-      setImageEnlarged(false);
+      // e.target.style.transform = "scale(1.0)";
+      // e.target.style.transition = "transfrom 0.25s ease";
+      setReviewImageModalState(false);
     }
 
   }
@@ -81,8 +87,8 @@ let IndividualReview = (props) => {
         <div className="review-body-photos-container">
 
           {photos.map((photo, i) => {
-            return (<img id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "zIndex" : 30, "objectFit": "cover"}}/>)
-
+            return (<img className="image-thumbs" id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "zIndex" : 30, "objectFit": "cover"}}/>
+            )
           })}
         </div>
         {(recommend) && <div className= "review-recommend">
@@ -100,6 +106,7 @@ let IndividualReview = (props) => {
           {(helpfulChoice === 'yes' || helpfulChoice === 'no') && <span className="helpful-answer" id="review-helpfulness-number">{`(${helpfulness})`}</span>}
           <span className="helpful-answer" id= "review-report" onClick={reportClick}> | Report </span>
 
+          {reviewImageModalState ? <ImageModal imgSrc={imgSrc} setReviewImageModalState={setReviewImageModalState}/> : null}
         </div>
 
 
