@@ -26,6 +26,7 @@
     "@testing-library/react": "^13.0.0",
     "babel-loader": "^8.2.4",
     "chai": "^4.3.6",
+    "compression-webpack-plugin": "^9.2.0",
     "css-loader": "^6.7.1",
     "cypress": "^9.5.3",
     "eslint": "^8.12.0",
