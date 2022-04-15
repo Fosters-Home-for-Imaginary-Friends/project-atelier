@@ -217,9 +217,89 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+/* ---------------------- */
+/* ----- RESPONSIVE ----- */
+/* ---------------------- */
+
+@media screen and (min-width: 900px) {
+  .image-carousel {
+    height: 81vh;
+    width: 54vh;
+  }
+  .image {
+    height: 81vh;
+    width: 54vh;
+  }
+  .progress-bar {
+    height: 81vh;
+  }
+  .progress-bar-progress {
+    height: 81vh;
+  }
+  .carousel-button {
+    width: 54vh;
+  }
+  .overview-product-info {
+    min-width: 200px;
+    max-width: 12vw;
+    align-self: flex-end;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 899px) {
+  .image-carousel {
+    height: 54vh;
+    width: 36vh;
+  }
+  .image {
+    height: 54vh;
+    width: 36vh;
+  }
+  .progress-bar {
+    height: 54vh;
+  }
+  .progress-bar-progress {
+    height: 54vh;
+  }
+  .carousel-button {
+    width: 36vh;
+  }
+  .overview-product-info {
+    min-width: 200px;
+    max-width: 12vw;
+    align-self: flex-end;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .overview-container {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .image-carousel {
+    height: 81vh;
+    width: 54vh;
+  }
+  .image {
+    height: 81vh;
+    width: 54vh;
+  }
+  .overview-product-info {
+    width: 54vh;
+    align-self: flex-start;
+    padding-left: 0px;
+    margin-top: 20px;
+  }
+}
+
+
 /* -------------------- */
 /* ----- OVERVIEW ----- */
 /* -------------------- */
+
 
 .overview {
   display: flex;
@@ -254,8 +334,6 @@ input:checked + .slider:before {
   flex-direction: column;
   list-style: none;
   background-color: gray;
-  height: 81vh;
-  width: 54vh;
   overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -294,8 +372,6 @@ body.dark-mode .no-images{
   vertical-align: baseline;
   background-color: darkgray;
   box-sizing: border-box;
-  height: 81vh;
-  width: 54vh;
   list-style: none;
   object-fit: cover;
   scroll-snap-align: start;
@@ -449,8 +525,7 @@ body.dark-mode button.modal-image.right:hover {
 .progress-bar {
   position: relative;
   list-style: none;
-  height: 81vh;
-  width: .1vh;
+  width: 1px;
   overflow: hidden;
   background-color: darkgray;
   margin-left: 20px;
@@ -459,8 +534,7 @@ body.dark-mode button.modal-image.right:hover {
 }
 
 .progress-bar-progress {
-  height: 81vh;
-  width: .1vh;
+  width: 1px;
   display: list-item;
   list-style: none;
   background-color: #1f1f1f;
@@ -471,7 +545,6 @@ body.dark-mode .progress-bar-progress {
 }
 
 .progress-bar-progress.none {
-  height: 81vh;
   background-color: darkgray;
 }
 
@@ -503,10 +576,6 @@ body.dark-mode .progress-bar-progress.none {
 .overview-product-info {
   display: block;
   flex-direction: column;
-  padding-left: 20px;
-  align-self: flex-end;
-  min-width: 200px;
-  max-width: 12vw;
 }
 
 .sale-price-container {
@@ -847,6 +916,7 @@ h3.related-title {
   display: flex;
   flex-direction: column;
   width: calc(56.5vh + 18vw + 161px);
+  width: calc(800px + 15vw);
   margin: auto;
 }
 
@@ -1097,7 +1167,7 @@ Start of Questions and Answers
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: calc(56.5vh + 18vw + 81px);
+  width: calc(800px + 15vh);
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -1123,7 +1193,7 @@ Start of Questions and Answers
   flex-direction: column;
   max-height: 60vh;
   overflow: auto;
-  width: calc(56.5vh + 18vw + 61px);
+  width: calc(800px + 15vh);
 }
 
 .question-head {
@@ -1167,7 +1237,7 @@ section.answer-list {
 
 .search-bar {
   margin-top: 20px;
-  width: calc(56.5vh + 18vw + 161px);
+  width: calc(800px + 15vh);
   height: 35px;
   padding-left: 10px;
   background-color: #fff;
