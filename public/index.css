@@ -317,7 +317,7 @@ input:checked + .slider:before {
     height: 81vh;
   }
   .progress-bar-progress {
-    height: 81vh;
+    height: 50%;
   }
   .carousel-button {
     width: 54vh;
@@ -886,6 +886,8 @@ body.dark-mode button.modal-image.right:hover {
 }
 
 .progress-bar {
+  display: flex;
+  flex-direction: row;
   position: relative;
   list-style: none;
   width: 1px;
@@ -897,10 +899,14 @@ body.dark-mode button.modal-image.right:hover {
 }
 
 .progress-bar-progress {
+  transform-origin: top;
   width: 1px;
   display: list-item;
   list-style: none;
   background-color: #1f1f1f;
+  position: relative;
+  top: 0;
+  transition: scaleY 0.3s;
 }
 
 body.dark-mode .progress-bar-progress {

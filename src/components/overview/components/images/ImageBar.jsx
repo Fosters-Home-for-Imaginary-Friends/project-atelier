@@ -1,45 +1,33 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import Thumbnail from "./Thumbnail.jsx";
 import { OverviewContext } from "../../Overview.jsx";
 
 const ImageBar = () => {
 
-  const progressBarRef = useRef(null);
+  const { currentStyle, currentPhoto, loading } = useContext(OverviewContext);
 
-  const { currentStyle, currentPhoto, previousPhoto, loading } = useContext(OverviewContext);
+  const [progress, setProgress] = useState(0);
 
   useLayoutEffect(() => {
-    if (progressBarRef.current) {
-      let top = -(progressBarRef.current.offsetHeight / currentStyle.photos.length)
-      if (currentPhoto > previousPhoto) {
-        progressBarRef.current.scrollBy({
-          top: top * (currentPhoto - previousPhoto)
-        })
-      } else {
-        progressBarRef.current.scrollBy({
-          top: top * (currentPhoto - previousPhoto)
-        })
-      }
+    if (!loading) {
+      let top = (((1) / currentStyle.photos.length) * 100)
+      setProgress((top * (currentPhoto + 1)));
     }
   }, [currentPhoto, loading])
-
-  useEffect(() => {
-    if (!loading) {
-      progressBarRef.current.scrollBy({
-        top: Math.abs((progressBarRef.current.offsetHeight / currentStyle.photos.length) - progressBarRef.current.offsetHeight)
-      })
-    }
-  }, [loading])
 
   if (loading) {
       return <div className="image-bar loading"></div>
   }
 
+  var style = {
+    height: `${progress}%`,
+    transition: 'height 0.2s ease-in 0.2s'
+  }
+
   return (
   <div className="image-bar">
-    <ul ref={progressBarRef} className="progress-bar">
-      <li className="progress-bar-progress"></li>
-      <li className="progress-bar-progress none"></li>
+    <ul className="progress-bar">
+      <li className="progress-bar-progress" style={style}></li>
     </ul>
     <ul className="thumbnails">
       {currentStyle.photos.map((thumbnail, index) =>
