@@ -4,7 +4,11 @@ import { OverviewContext } from "../../Overview.jsx";
 
 const ImageBar = () => {
 
-  const { currentStyle, currentPhoto, loading } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    currentPhoto,
+    loading
+  } = useContext(OverviewContext);
 
   const [progress, setProgress] = useState(0);
 

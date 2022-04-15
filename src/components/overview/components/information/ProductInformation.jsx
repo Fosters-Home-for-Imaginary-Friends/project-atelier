@@ -9,8 +9,16 @@ import { SiFacebook, SiTwitter, SiPinterest, SiInstagram } from 'react-icons/si'
 
 const ProductInformation = () => {
 
-  const { currentStyle, currentSize, setCurrentSize, loading } = useContext(OverviewContext);
-  const { productData } = useContext(AppContext);
+  const {
+    currentStyle,
+    currentSize,
+    setCurrentSize,
+    loading
+  } = useContext(OverviewContext);
+
+  const {
+    productData
+  } = useContext(AppContext);
 
   if (loading) {
     return <div className="overview-product-info loading"></div>
@@ -27,10 +35,16 @@ const ProductInformation = () => {
       <section className="body-text">{productData.description}</section>
       { currentStyle.sale_price ?
       <div className="sale-price-container">
-        <section className="body-text sale-price">{currentStyle.sale_price} USD</section>
-        <section className="body-text original-price">{productData.default_price} USD</section>
+        <section
+          className="body-text sale-price">{currentStyle.sale_price} USD
+        </section>
+        <section
+          className="body-text original-price">{productData.default_price} USD
+        </section>
       </div> :
-        <section className="body-text price">{productData.default_price} USD</section>
+        <section
+          className="body-text price">{productData.default_price} USD
+        </section>
       }
       <div className="social-media-container">
         <a
@@ -62,7 +76,10 @@ const ProductInformation = () => {
       <SizeSelector />
       <QuantitySelector />
       <div>
-        <button className="info-button add" onClick={() => handleAddToCartClick()}>ADD TO BAG</button>
+        <button
+          className="info-button add"
+          onClick={() => handleAddToCartClick()}>ADD TO BAG
+        </button>
       </div>
     </div>
   )

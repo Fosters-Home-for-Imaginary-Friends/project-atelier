@@ -2,9 +2,18 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { OverviewContext } from "../../Overview.jsx";
 
-const Style = ({style}) => {
+const Style = ({ style }) => {
 
-  var color = style.name.split(' & ')
+  const {
+    currentStyle,
+    setCurrentStyle,
+    currentPhoto,
+    setCurrentPhoto,
+    setPreviousPhoto,
+    setCurrentSize
+  } = useContext(OverviewContext);
+
+  var color = style.name.split(' & ');
 
   for (let i = 0; i < color.length; i++) {
     if (color[i].includes(' ')) {
@@ -16,7 +25,6 @@ const Style = ({style}) => {
 
   color = color.join('-');
 
-  const { currentStyle, setCurrentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto, setCurrentSize } = useContext(OverviewContext);
 
   const handleStyleClick = () => {
     setCurrentStyle(style)
@@ -26,7 +34,9 @@ const Style = ({style}) => {
   }
 
   return (
-    <div className={`style-button ${currentStyle === style}`} onClick={() => handleStyleClick(style)}>
+    <div
+      className={`style-button ${currentStyle === style}`}
+      onClick={() => handleStyleClick(style)}>
       <div className={ `style-color ${color}` }></div>
     </div>
   )
