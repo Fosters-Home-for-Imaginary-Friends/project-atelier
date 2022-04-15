@@ -150,12 +150,69 @@ body.dark-mode span.helpful-answer {
   margin-top: 300px;
 }
 
-/* ----- LIGHT / DARK MODE ----- */
+/* ----- HEADER ----- */
 
-.mode-switch-container {
+.menu-icon {
+  position: fixed;
+  top: 2vh;
+  left: 2vh;
+  font-size: 17px;
+}
+
+#logo {
+  position: fixed;
+  top: 2vh;
+  left: 10vw;
+  font-size: 100px;
+  font-weight: 100;
+  letter-spacing: -4px;
+}
+
+.header-links {
+  display: flex;
   position: fixed;
   top: 2vh;
   right: 2vh;
+}
+
+.header-search-label {
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.header-search {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #1f1f1f;
+  margin-left: 10px;
+  background-color: #fff;
+}
+
+.header-search:focus {
+  background-color: #fff;
+}
+
+.header-login {
+  font-weight: 200;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.header-help {
+  font-weight: 200;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.header-bag-icon {
+  margin-left: 20px;
+}
+
+/* ----- LIGHT / DARK MODE ----- */
+
+.mode-switch-container {
+  align-self: flex-end;
+  margin-left: 20px;
 }
 
 .switch {
