@@ -105,3 +105,9 @@ dist
 
 # API Key
 config.js
+
+# PEM
+fostersfec.pem
+
+# bundle
+bundle.js
