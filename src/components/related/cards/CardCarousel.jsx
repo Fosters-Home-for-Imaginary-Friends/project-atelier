@@ -5,22 +5,27 @@ const CardCarousel = ({children, length}) => {
   const carouselRef = useRef({});
   const [position, setPosition] = useState(0);
   const cardWidth = useMemo(() => Math.ceil(carouselRef.current.clientWidth/3), [carouselRef.current.clientWidth]);
+  const [clicked, setClicked] = useState(false);
   const scrollLeft = useCallback(() => {
-    if (position > 0) {
+    if (position > 0 && !clicked) {
+      setClicked(true);
       carouselRef.current.scrollBy({
         left: -cardWidth,
         behavior: "smooth"
       });
       setPosition((prev) => prev - 1);
+      setTimeout(() => setClicked(false), 250);
     }
   });
   const scrollRight = useCallback(() => {
-    if (position + 3 < length) {
+    if (position + 3 < length && !clicked) {
+      setClicked(true);
       carouselRef.current.scrollBy({
         left: cardWidth,
         behavior: "smooth"
       });
       setPosition((prev) => prev + 1);
+      setTimeout(() => setClicked(false), 250);
     }
   });
 
@@ -42,37 +47,19 @@ const CardCarousel = ({children, length}) => {
 };
 
 const LeftArrow = ({scroll}) => {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    if (!clicked) {
-      setClicked(true);
-      scroll();
-    }
-    setTimeout(() => setClicked(false), 250);
-  };
 
   return (
     <React.Fragment>
-      <AiOutlineDoubleLeft onClick={handleClick} size={40} className="related-carousel-button left"/>
+      <AiOutlineDoubleLeft onClick={scroll} size={40} className="related-carousel-button left"/>
     </React.Fragment>
   );
 };
 
 const RightArrow = ({scroll}) => {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    if (!clicked) {
-      setClicked(true);
-      scroll();
-    }
-    setTimeout(() => setClicked(false), 250);
-  };
 
   return (
     <React.Fragment>
-      <AiOutlineDoubleRight onClick={handleClick} size={40} className="related-carousel-button right"/>
+      <AiOutlineDoubleRight onClick={scroll} size={40} className="related-carousel-button right"/>
     </React.Fragment>
   );
 };
