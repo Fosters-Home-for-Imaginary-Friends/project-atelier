@@ -10,7 +10,7 @@ let numOfStars = [];
 //push an element for each whole star in the rating
   while (numOfStars.length < 5 ) {
     if ( avgRating > 1) {
-      numOfStars.push(20);
+      numOfStars.push(16);
       //once below 1 total star, create values for each quarter star
     } else if ( avgRating > 0) {
       let zero = Math.abs(0 - avgRating);
@@ -26,16 +26,16 @@ let numOfStars = [];
         numOfStars.push(0);
         break;
           case(oneQuarter):
-        numOfStars.push(9);
+        numOfStars.push(6);
         break;
           case(half):
-        numOfStars.push(11);
+        numOfStars.push(7);
         break;
           case(threeQuarters):
-        numOfStars.push(13);
+        numOfStars.push(8);
         break;
           case(max):
-        numOfStars.push(20);
+        numOfStars.push(16);
         break;
           default:
         console.log('How did this happen');
