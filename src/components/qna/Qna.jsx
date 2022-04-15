@@ -1,11 +1,9 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
-// import data from './data.js';
 import QuestionsList from './QuestionsList.jsx';
 import Search from './Search.jsx';
 import {getQuestions} from '../../helpers.js';
 import {AppContext} from '../App.jsx';
 
-// let data = [];
 export const QnaContext = createContext([]);
 
 const Qna = (props) => {
@@ -14,7 +12,6 @@ const Qna = (props) => {
   const [extra, setExtra] = useState(true);
   const [init, setInit] = useState([]);
   const {productData} = useContext(AppContext);
-  // const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (!productData.id) {
@@ -41,15 +38,12 @@ const Qna = (props) => {
 
   return (
     <QnaContext.Provider value={{question, setQuestion, qnaList, setQnaList, extra, setExtra, init, setInit}}>
-      <div className="qna-container">
+      <div id="qna-container" className="qna-container">
         <h3 className="qna-title">QUESTIONS AND ANSWERS</h3>
         {/* Search Bar */}
         <Search />
         {/* Questions List */}
-        {/* <QuestionsList data={data.results}/> */}
         <QuestionsList sortData={sortData}/>
-        {/* See more questions button */}
-        {/* Add a question button */}
       </div>
     </QnaContext.Provider >
   );

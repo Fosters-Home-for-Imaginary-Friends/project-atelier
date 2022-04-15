@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { OverviewContext } from "../../Overview.jsx";
 
-const Size = ({sizes, sku}) => {
+const Size = ({ sizes, sku }) => {
 
-  const { currentSize, setCurrentSize, setQuantity } = useContext(OverviewContext);
+  const {
+    currentSize,
+    setCurrentSize,
+    setQuantity
+  } = useContext(OverviewContext);
 
   const setCurrentSizing = () => {
     if (currentSize === '' || currentSize !== sku) {
@@ -16,7 +20,9 @@ const Size = ({sizes, sku}) => {
   }
 
   return (
-    <div className={`size-button ${currentSize === sku}`} onClick={() => setCurrentSizing()}>
+    <div
+      className={`size-button ${currentSize === sku}`}
+      onClick={() => setCurrentSizing()}>
       <span className="size-text">{sizes.size}</span>
     </div>
   )

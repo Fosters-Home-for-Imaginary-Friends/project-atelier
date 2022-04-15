@@ -8,19 +8,22 @@ const PhotoUpload = (props) => {
   const cloudName = 'diono1kwq';
   let base64URLs = [];
 
-
+  //this function allows the user to select a photo from local and pushes its base64 string to an array
  let handleFiles = (e) => {
    let files = e.target.files;
    let reader = new FileReader();
    reader.readAsDataURL(files[0]);
-
-
    reader.onload = (e) => {
 
      let file = e.target.result;
-     base64URLs.push(file);
+     if (base64URLs.length < 5) {
+       base64URLs.push(file);
+     } else {
+       alert('You can select a maximum of five images.');
+     }
    }
  }
+//this function takes all selected photos and sends them to cloudinary to get a readable URL in return
  let uploadClick = () => {
   let photoPromises = [];
   base64URLs.forEach((file) => {
@@ -41,7 +44,7 @@ const PhotoUpload = (props) => {
    if (!loading) {
    return(
     <div className="new-review-images">
-      {uploadedImages.map((imageURL, index) => {
+      {uploadedImages.map((imageURL, index) => { //maps all photos selected by the user into viewable thumbnails
         return (
           <div className= "new-review-image-thumbnail" key={`image${index}`}>
             <img src={imageURL} style={{"width" : `${60}px`, "height": `${60}px`, "zIndex" : 30, "objectFit": "cover"}} />
@@ -53,23 +56,15 @@ const PhotoUpload = (props) => {
  }
 }
 
-
-
-
 return (
 <div className="new-review-add-photo">
-
   <div className="new-review-choose-file">
     <input type="file" onChange= {e => handleFiles(e)}></input>
     <button className="upload-photo" onClick={uploadClick}>Upload </button>
   </div>
-
-  <ImageThumbnails class />
-
+  <ImageThumbnails />
 </div>
-
-
 )
 }
 
-export default PhotoUpload
+export default PhotoUpload;

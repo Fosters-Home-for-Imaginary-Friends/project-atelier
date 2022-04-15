@@ -1,11 +1,11 @@
 //this is the component for the review list that houses individual reviews
 import React, { useState, useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import {AppContext} from '../App.jsx';
-import { getReviews }  from '../../helpers.js';
-import NewReview from './NewReview.jsx';
+import {AppContext} from '../../App.jsx';
+import { getReviews }  from '../../../helpers.js';
+import NewReview from '../NewReviews/NewReview.jsx';
 import SortDropdown from './SortDropdown.jsx';
-import { RatingsContext } from './Ratings.jsx';
+import { RatingsContext } from '../Ratings.jsx';
 
 
 let ReviewList = () => {
@@ -13,9 +13,6 @@ let ReviewList = () => {
   const {reviews, setReviews, totalReviews, currentSort, setCurrentSort, loading, setStoredReviews, pageNum, setPageNum} = useContext(RatingsContext);
   const [showModal, setShowModal] = useState(false);
   const [moreReviews, setMoreReviews] = useState(true);
-
-  const[modalState, setModalState] = useState(false);
-
 
   //this function makes an api call and  grabs two more reviews from the db when the user clicks on "more reviews"
   let moreReviewsClick = () => {
@@ -87,7 +84,6 @@ return (
         <button className="info-button add-review" onClick={openModal}> ADD A REVIEW + </button>
         {showModal ? <NewReview setShowModal={setShowModal}/> : null}
       </div>
-
     </div>
   </div>
 );

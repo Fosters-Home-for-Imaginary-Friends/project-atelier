@@ -3004,6 +3004,14 @@
   dependencies:
     "mime-db" ">= 1.43.0 < 2"
 
+"compression-webpack-plugin@^9.2.0":
+  "integrity" "sha512-R/Oi+2+UHotGfu72fJiRoVpuRifZT0tTC6UqFD/DUo+mv8dbOow9rVOuTvDv5nPPm3GZhHL/fKkwxwIHnJ8Nyw=="
+  "resolved" "https://registry.npmjs.org/compression-webpack-plugin/-/compression-webpack-plugin-9.2.0.tgz"
+  "version" "9.2.0"
+  dependencies:
+    "schema-utils" "^4.0.0"
+    "serialize-javascript" "^6.0.0"
+
 "compression@^1.7.4":
   "integrity" "sha512-jaSIDzP9pZVS4ZfQ+TzvtiWhdpFhE2RDHz8QJkpX9SIpLq88VueF5jJw6t+6CUQcAoA6t+x89MLrWAqpfDE8iQ=="
   "resolved" "https://registry.npmjs.org/compression/-/compression-1.7.4.tgz"

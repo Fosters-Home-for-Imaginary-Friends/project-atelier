@@ -5,14 +5,7 @@ import {getQuestions} from '../../helpers.js';
 import { AddQuestionModal } from './AddQuestionModal.jsx';
 
 const QuestionsList = ({sortData}) => {
-  // let init = props.data.slice(0, 4);
-  const {question} = useContext(QnaContext);
-  const {qnaList} = useContext(QnaContext);
-  const {setQnaList} = useContext(QnaContext);
-  const {extra} = useContext(QnaContext);
-  const {setExtra} = useContext(QnaContext);
-  const {init} = useContext(QnaContext);
-  // const {setInit} = useContext(QnaContext);
+  const {question, qnaList, setQnaList, extra, setExtra, init} = useContext(QnaContext);
   const [showModal, setShowModal] = useState(false);
   const [listSize, setListSize] = useState(4);
 

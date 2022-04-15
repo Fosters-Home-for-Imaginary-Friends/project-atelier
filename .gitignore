@@ -107,7 +107,17 @@ dist
 config.js
 
 # PEM
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+fosterfec.pem
+=======
+>>>>>>> master
 fostersfec.pem
 
 # bundle
 bundle.js
+<<<<<<< HEAD
+=======
+>>>>>>> 9eb4c3429f05a5a794f0258280789f717c2c3682
+>>>>>>> master

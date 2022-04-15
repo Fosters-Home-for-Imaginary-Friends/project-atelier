@@ -7,7 +7,14 @@ const ImageModal = () => {
   const imageModalRef = useRef(null);
   const imageRef = useRef(null);
 
-  const { setShowModal, currentStyle, setPreviousPhoto, currentPhoto, setCurrentPhoto, loading } = useContext(OverviewContext);
+  const {
+    setShowModal,
+    currentStyle,
+    setPreviousPhoto,
+    currentPhoto,
+    setCurrentPhoto,
+    loading
+  } = useContext(OverviewContext);
 
   const [top, setTop] = useState(0);
   const [height, setHeight] = useState(0);
@@ -41,27 +48,34 @@ const ImageModal = () => {
   }
 
   return ReactDom.createPortal(
-    <div id="image-modal-container" className="image-modal-container" ref={imageModalRef}>
+    <div
+      ref={imageModalRef}
+      id="image-modal-container"
+      className="image-modal-container">
       <div className="image-modal">
         <div className="modal-buttons-container">
-          { currentPhoto === 0 ? null :
+          { currentPhoto === 0 ?
+            null :
             <button
               className="modal-image left"
               onClick={() => handleLeftButtonClick()}>
             </button>
           }
-          { currentPhoto === currentStyle.photos.length - 1 ? null :
+          { currentPhoto === currentStyle.photos.length - 1 ?
+            null :
             <button
               className="modal-image right"
               onClick={() => handleRightButtonClick()}>
             </button>
           }
         </div>
-        <img ref={imageRef}
+        <img
+          ref={imageRef}
           src={currentStyle.photos[currentPhoto].url}
-          onClick={() => handleModalClick()} className="image-modal-image"
-          onMouseMove={(e) => handlePosition(e)}
+          className="image-modal-image"
           style = {{top}}
+          onClick={() => handleModalClick()}
+          onMouseMove={(e) => handlePosition(e)}
         />
       </div>
     </div>,

@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
-import { RatingsContext } from './Ratings.jsx';
+import { RatingsContext } from '../Ratings.jsx';
 
 let BarGraph = (props) => {
-
-
   const {metaRating, totalReviews, filteredContent} = useContext(RatingsContext);
-
 
   //var declarations to set up % for colored bar graph portion.
   //total of all percents should equal 100
@@ -15,7 +12,6 @@ let BarGraph = (props) => {
   let threeStarsPercent = (ratingsObj[3] / totalReviews);
   let twoStarsPercent = (ratingsObj[2] / totalReviews);
   let oneStarsPercent = (ratingsObj[1] / totalReviews);
-
 
   let filterClick = (e) => {
     filteredContent(e.target.id);
@@ -63,7 +59,6 @@ let BarGraph = (props) => {
           <span className="helpful-answer" style={{"transform": `translateX(calc(${oneStarsPercent * 20}vw + 15px))`}}> {ratingsObj[1]} </span>
         </div>
       </div>
-
     </div>
   )
 }

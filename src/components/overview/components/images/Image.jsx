@@ -2,20 +2,25 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { OverviewContext } from '../../Overview.jsx';
 
-const Image = (props) => {
+const Image = ({ slide }) => {
 
-  const { slide } = props;
-
-  const { setShowModal } = useContext(OverviewContext);
+  const {
+    setShowModal
+  } = useContext(OverviewContext);
 
   const handleClick = () => {
+    window.scrollTo(0, 0);
     document.body.classList.add('modal-open');
     setShowModal(true);
   }
 
   return (
     <li>
-      <img src={slide.url} key={slide.image} className="image" onClick={() => handleClick()}/>
+      <img
+        src={slide.url}
+        key={slide.image}
+        className="image"
+        onClick={() => handleClick()}/>
     </li>
   )
 }

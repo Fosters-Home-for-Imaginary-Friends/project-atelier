@@ -33,10 +33,10 @@ const getAverageRating = (ratings) => {
 
   for (let score in ratings) {
     ratingTotal += (parseInt(score) * parseInt(ratings[score]));
-    ratingCount++;
+    ratingCount += parseInt(ratings[score]);
   }
 
-  return ratingCount > 0 ? ratingTotal / ratingCount : false;
+  return ratingCount > 0 ? ratingTotal / ratingCount : 0;
 };
 
 const getStarFill = (averageRating) => {
@@ -45,20 +45,20 @@ const getStarFill = (averageRating) => {
   let fullStars = averageRating - decimal;
   let percent = (Math.round(decimal * 4) / 4).toFixed(2) * 100;
   let lastStarFill = 0;
-  stars.fill(20, 0, fullStars);
+  stars.fill(16, 0, fullStars);
 
   switch (percent) {
     case 100:
-      lastStarFill = 20;
+      lastStarFill = 16;
       break;
     case 75:
-      lastStarFill = 13;
+      lastStarFill = 8;
       break;
     case 50:
-      lastStarFill = 11;
+      lastStarFill = 7;
       break;
     case 25:
-      lastStarFill = 9;
+      lastStarFill = 6;
       break;
   }
 
