@@ -1,9 +1,9 @@
 //this component will house the elements to build the new review modal
 import React, { useRef, useState, useContext } from 'react';
 import ReactDom from 'react-dom';
-import { RatingsContext } from './Ratings.jsx';
-import { postReview } from '../../helpers.js';
-import {AppContext} from '../App.jsx';
+import { RatingsContext } from '../Ratings.jsx';
+import { postReview } from '../../../helpers.js';
+import {AppContext} from '../../App.jsx';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
 import PhotoUpload from './PhotoUpload.jsx';
 import NewReviewCharacteristic from './NewReviewCharacteristic'

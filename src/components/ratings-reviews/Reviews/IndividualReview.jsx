@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 let moment = require('moment');
 import { AiOutlineCheck } from 'react-icons/ai';
 
-import { putReviewHelpful, postReview } from '../../helpers.js';
+import { putReviewHelpful, postReview } from '../../../helpers.js';
 import IndividualReviewStars from './IndividualReviewStars.jsx';
 import ImageModal from './ImageModal.jsx';
 

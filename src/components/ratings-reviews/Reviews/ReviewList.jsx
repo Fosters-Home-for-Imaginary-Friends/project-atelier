@@ -1,11 +1,11 @@
 //this is the component for the review list that houses individual reviews
 import React, { useState, useContext } from 'react';
 import IndividualReview from './IndividualReview.jsx';
-import {AppContext} from '../App.jsx';
-import { getReviews }  from '../../helpers.js';
-import NewReview from './NewReview.jsx';
+import {AppContext} from '../../App.jsx';
+import { getReviews }  from '../../../helpers.js';
+import NewReview from '../NewReviews/NewReview.jsx';
 import SortDropdown from './SortDropdown.jsx';
-import { RatingsContext } from './Ratings.jsx';
+import { RatingsContext } from '../Ratings.jsx';
 
 
 let ReviewList = () => {

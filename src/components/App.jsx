@@ -3,7 +3,7 @@ import Header from './header/Header.jsx';
 import Overview from "./overview/Overview.jsx";
 import ProductCardLists from "./related/ProductCardLists.jsx";
 import Qna from "./qna/Qna.jsx";
-import Ratings from "./ratings/Ratings.jsx";
+import Ratings from "./ratings-reviews/Ratings.jsx";
 import {getProduct} from '../helpers.js';
 
 export const AppContext = createContext({});

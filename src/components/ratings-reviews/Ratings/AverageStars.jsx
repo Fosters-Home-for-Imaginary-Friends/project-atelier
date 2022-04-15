@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {RatingsContext} from './Ratings.jsx';
+import {RatingsContext} from '../Ratings.jsx';
 
 let AverageStars = (props) => {
   const{averageRating} = useContext(RatingsContext)

@@ -3,7 +3,7 @@ import React, {useContext } from 'react';
 import AverageStars from './AverageStars.jsx';
 import BarGraph from './BarGraph.jsx';
 import Characteristics from './Characteristics.jsx';
-import { RatingsContext } from './Ratings.jsx';
+import { RatingsContext } from '../Ratings.jsx';
 
 let RatingsBreakdown = () => {
 
