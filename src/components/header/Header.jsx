@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import ToggleSwitch from "./ToggleSwitch.jsx";
+import Menu from "./Menu.jsx";
 
 const Header = () => {
+
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <header>
-      <AiOutlineMenu className="menu-icon"/>
+      <AiOutlineMenu className="menu-icon" onClick={() => setShowMenu(!showMenu)}/>
+      { showMenu ? <Menu setShowMenu={ setShowMenu }/> : null }
       <h1 id="logo">ATELIER</h1>
       <div className="header-links">
         <label className="header-search-label" htmlFor="search">SEARCH
