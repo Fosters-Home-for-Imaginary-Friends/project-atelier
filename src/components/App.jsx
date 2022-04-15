@@ -20,7 +20,6 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
-      {/* <ToggleSwitch /> */}
       <Header />
       <Overview />
       <ProductCardLists />

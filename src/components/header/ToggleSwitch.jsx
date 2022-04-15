@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const ToggleSwitch = () => {
 
@@ -18,10 +19,12 @@ const ToggleSwitch = () => {
 
   return (
     <div className="mode-switch-container">
+      <FaSun className="sun-toggle"/>
       <label className="switch">
         <input type="checkbox"></input>
         <span className={`slider round ${checked}`} onClick={() => handleCheckedClick()}></span>
       </label>
+      <FaMoon className="moon-toggle"/>
     </div>
   );
 }
