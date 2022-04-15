@@ -9,6 +9,7 @@ const Image = (props) => {
   const { setShowModal } = useContext(OverviewContext);
 
   const handleClick = () => {
+    window.scrollTo(0, 0);
     document.body.classList.add('modal-open');
     setShowModal(true);
   }

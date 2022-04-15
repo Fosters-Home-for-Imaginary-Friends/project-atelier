@@ -41,7 +41,7 @@ const Qna = (props) => {
 
   return (
     <QnaContext.Provider value={{question, setQuestion, qnaList, setQnaList, extra, setExtra, init, setInit}}>
-      <div className="qna-container">
+      <div id="qna-container" className="qna-container">
         <h3 className="qna-title">QUESTIONS AND ANSWERS</h3>
         {/* Search Bar */}
         <Search />
