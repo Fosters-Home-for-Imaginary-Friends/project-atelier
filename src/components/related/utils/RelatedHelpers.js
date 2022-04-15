@@ -33,10 +33,10 @@ const getAverageRating = (ratings) => {
 
   for (let score in ratings) {
     ratingTotal += (parseInt(score) * parseInt(ratings[score]));
-    ratingCount++;
+    ratingCount += parseInt(ratings[score]);
   }
 
-  return ratingCount > 0 ? ratingTotal / ratingCount : false;
+  return ratingCount > 0 ? ratingTotal / ratingCount : 0;
 };
 
 const getStarFill = (averageRating) => {
