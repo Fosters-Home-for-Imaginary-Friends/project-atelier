@@ -5,7 +5,7 @@ const Search = (props) => {
   const {setQuestion} = useContext(QnaContext);
 
   return (
-    <form>
+    <form className="search-form">
       <input
         className="search-bar"
         placeholder='Have a Question? Search for answers...'

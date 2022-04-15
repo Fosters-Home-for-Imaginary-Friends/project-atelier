@@ -5,14 +5,12 @@ let SortDropdown = (props) => {
     props.sortChange(e.target.value);
   }
   return (
-    <div>
-    <select name="relevance" onChange={listChange}>
-      <option value="relevant"> Relevance</option>
-      <option value="helpful"> Helpfulness</option>
-      <option value="newest"> Newest</option>
-    </select>
-
-
+    <div className="sort-dropdown-container">
+      <select className="sort-dropdown" name="relevance" onChange={listChange}>
+        <option value="relevant"> relevance</option>
+        <option value="helpful"> helpfulness</option>
+        <option value="newest"> newest</option>
+      </select>
     </div>
   )
 }

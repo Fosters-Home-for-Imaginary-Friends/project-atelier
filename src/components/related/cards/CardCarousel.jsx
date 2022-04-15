@@ -54,7 +54,7 @@ const LeftArrow = ({scroll}) => {
 
   return (
     <React.Fragment>
-      <AiOutlineDoubleLeft onClick={handleClick} size={40} />
+      <AiOutlineDoubleLeft onClick={handleClick} size={40} className="related-carousel-button left"/>
     </React.Fragment>
   );
 };
@@ -72,7 +72,7 @@ const RightArrow = ({scroll}) => {
 
   return (
     <React.Fragment>
-      <AiOutlineDoubleRight onClick={handleClick} size={40} />
+      <AiOutlineDoubleRight onClick={handleClick} size={40} className="related-carousel-button right"/>
     </React.Fragment>
   );
 };
