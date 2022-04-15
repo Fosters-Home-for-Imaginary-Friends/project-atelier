@@ -1710,6 +1710,12 @@ body.dark-mode .add-question-container .question-modal {
   font-family: 'Poppins', sans-serif;
   font-size: calc(14px + .2vw);
   font-weight: 400;
+  background-color: #fff;
+}
+
+body.dark-mode .sort-dropdown {
+  background-color: #1f1f1f;
+  color: #fff;
 }
 
 .total-reviews-sort-dropdown-container {
@@ -1717,10 +1723,6 @@ body.dark-mode .add-question-container .question-modal {
   flex-wrap: nowrap;
   height: auto;
   align-items: baseline;
-}
-
-#sort-dropdown {
-  border: none;
 }
 
 .more-review-and-add-reviews {
