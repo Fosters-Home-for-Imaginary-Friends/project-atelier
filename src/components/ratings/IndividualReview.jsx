@@ -93,7 +93,7 @@ let IndividualReview = (props) => {
         </div>
         {(recommend) && <div className= "review-recommend">
           <AiOutlineCheck />
-          <span> I recommend this product. </span>
+          <span className="review-recommend"> I recommend this product. </span>
         </div>}
         <div className="review-response-container">
           {(response) && <section className="body-text"> {response} </section>}

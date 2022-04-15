@@ -156,6 +156,30 @@ body.dark-mode span.helpful-answer {
   font-size: 17px;
 }
 
+.menu-list {
+  position: fixed;
+  top: 5vh;
+  left: 2vh;
+  animation: menu 0.3s;
+}
+
+.menu-list-item {
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 20px;
+  cursor: pointer;
+  scroll-behavior: smooth;
+}
+
+@keyframes menu {
+  0% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
 #logo {
   position: fixed;
   top: 2vh;
@@ -644,6 +668,7 @@ input:checked + .slider:before {
   justify-content: center;
   margin-top: 10vh;
   margin-bottom: 10vh;
+  scroll-margin: 10vh;
 }
 
 .overview-container {
@@ -1251,6 +1276,10 @@ button.add {
 /*-------------------- Related Products and Outfit List --------------------*/
 /*-------------------- Related Products and Outfit List --------------------*/
 
+#related-list {
+  scroll-margin: 5vh;
+}
+
 h3.related-title {
   position: relative;
 }
@@ -1504,6 +1533,10 @@ tbody {
 Start of Questions and Answers
 
 **/
+#qna-container {
+  scroll-margin: 5vh;
+}
+
 .qna-container {
   display: flex;
   flex-direction: column;
@@ -1677,6 +1710,10 @@ body.dark-mode .add-question-container .question-modal {
 
 
 /* Start of Ratings/Reviews *****************/
+#ratings-reviews-container {
+  scroll-margin: 5vh;
+}
+
 .ratings-reviews-container {
   display: flex;
   flex-direction: column;
@@ -1723,6 +1760,10 @@ body.dark-mode .sort-dropdown {
   flex-wrap: nowrap;
   height: auto;
   align-items: baseline;
+}
+
+.review-recommend {
+  font-size: 12px;
 }
 
 .more-review-and-add-reviews {
