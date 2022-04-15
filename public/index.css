@@ -302,24 +302,29 @@ input:checked + .slider:before {
     width: 54vh;
   }
   .overview-product-info {
-    min-width: 200px;
-    max-width: 12vw;
+    width: 210px;
     align-self: flex-end;
     padding-left: 20px;
   }
   .product-list {
-    max-width: calc(56.5vh + 12vw + 161px);
+    max-width: calc(56.5vh + 371px);
   }
   .carousel-viewport {
-    width: calc(56.5vh + 12vw + 81px);
+    width: calc(56.5vh + 291px);
   }
   .product-card {
-    height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
-    width: calc((56.5vh + 12vw + 21px) / 3);
+    height: calc((((56.5vh + 231px) / 3) * 1.5) + 12vh);
+    width: calc((56.5vh + 231px) / 3);
   }
   .related-image {
-    height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5));
-    width: calc((56.5vh + 12vw + 21px) / 3);
+    height: calc((((56.5vh + 231px) / 3) * 1.5));
+    width: calc((56.5vh + 231px) / 3);
+  }
+  .related-carousel-button {
+    height: 20px;
+  }
+  .arrow {
+    width: 40px;
   }
 }
 
@@ -345,24 +350,30 @@ input:checked + .slider:before {
     width: 54vh;
   }
   .overview-product-info {
-    min-width: 200px;
-    max-width: 12vw;
+    width: 210px;
     align-self: flex-end;
     padding-left: 20px;
   }
   .product-list {
-    max-width: calc(56.5vh + 12vw + 161px);
+    max-width: calc(56.5vh + 371px);
   }
   .carousel-viewport {
-    width: calc(56.5vh + 12vw + 81px);
+    width: calc(56.5vh + 291px);
   }
   .product-card {
-    height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5) + 12vh);
-    width: calc((56.5vh + 12vw + 21px) / 3);
+    height: calc((((56.5vh + 231px) / 3) * 1.5) + 12vh);
+    width: calc((56.5vh + 231px) / 3);
   }
   .related-image {
-    height: calc((((56.5vh + 12vw + 21px) / 3) * 1.5));
-    width: calc((56.5vh + 12vw + 21px) / 3);
+    height: calc((((56.5vh + 231px) / 3) * 1.5));
+    width: calc((56.5vh + 231px) / 3);
+  }
+  .related-carousel-button {
+    height: 20px;
+    width: 20px;
+  }
+  .arrow {
+    width: 20px;
   }
 }
 
@@ -388,24 +399,30 @@ input:checked + .slider:before {
     width: 36vh;
   }
   .overview-product-info {
-    min-width: 200px;
-    max-width: 12vw;
+    width: 210px;
     align-self: flex-end;
     padding-left: 20px;
   }
   .product-list {
-    max-width: calc(38.5vh + 361px);
+    max-width: calc(38.5vh + 331px);
   }
   .carousel-viewport {
-    width: calc(38.5vh + 281px);
+    width: calc(38.5vh + 291px);
   }
   .product-card {
-    height: calc((((38.5vh + 221px) / 3) * 1.5) + 10vh);
-    width: calc((38.5vh + 221px) / 3);
+    height: calc((((38.5vh + 231px) / 3) * 1.5) + 10vh);
+    width: calc((38.5vh + 231px) / 3);
   }
   .related-image {
-    height: calc((((38.5vh + 221px) / 3) * 1.5));
-    width: calc((38.5vh + 221px) / 3);
+    height: calc((((38.5vh + 231px) / 3) * 1.5));
+    width: calc((38.5vh + 231px) / 3);
+  }
+  .related-carousel-button {
+    height: 20px;
+    width: 20px;
+  }
+  .arrow {
+    width: 20px;
   }
 }
 
@@ -431,6 +448,27 @@ input:checked + .slider:before {
     align-self: flex-start;
     padding-left: 0px;
     margin-top: 20px;
+  }
+  .product-list {
+    max-width: calc(56.5vh + 101px);
+  }
+  .carousel-viewport {
+    width: calc(56.5vh + 61px);
+  }
+  .product-card {
+    height: calc((((56.5vh + 1px) / 3) * 1.5) + 10vh);
+    width: calc((56.5vh + 1px) / 3);
+  }
+  .related-image {
+    height: calc((((56.5vh + 1px) / 3) * 1.5));
+    width: calc((56.5vh + 1px) / 3);
+  }
+  .related-carousel-button {
+    height: 15px;
+    width: 15px;
+  }
+  .arrow {
+    width: 15px;
   }
 }
 
@@ -993,8 +1031,7 @@ body.dark-mode .size-button.true {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: .6vh;
-  min-width: 200px;
-  max-width: 12vw;
+  width: 210px;
 }
 
 .quantity-button {
@@ -1036,8 +1073,7 @@ body.dark-mode .quantity-button {
 /* ----- ADD TO BAG ----- */
 
 button.add {
-  min-width: 200px;
-  max-width: 12vw;
+  width: 210px;
 }
 
 
@@ -1073,7 +1109,6 @@ h3.related-title {
 }
 
 .arrow {
-  width: 40px;
   height: 100%;
   margin: auto;
   outline: 0;
@@ -1082,6 +1117,14 @@ h3.related-title {
   background: none;
   color: #1f1f1f;
   font-size: 12px;
+}
+
+.related-carousel-button {
+  color: #1f1f1f;
+}
+
+body.dark-mode .related-carousel-button {
+  color: #fff;
 }
 
 /*---------- Product Card ----------*/
