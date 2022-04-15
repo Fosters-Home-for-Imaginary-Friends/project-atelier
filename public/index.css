@@ -234,8 +234,31 @@ body.dark-mode .header-search {
 /* ----- LIGHT / DARK MODE ----- */
 
 .mode-switch-container {
+  display: flex;
   align-self: flex-end;
   margin-left: 20px;
+}
+
+.sun-toggle {
+  color: rgb(200, 200, 200);
+  align-self: center;
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+body.dark-mode .sun-toggle {
+  color: rgb(100, 100, 100);
+}
+
+.moon-toggle {
+  color: rgb(200, 200, 200);
+  align-self: center;
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+body.dark-mode .moon-toggle {
+  color: rgb(100, 100, 100);
 }
 
 .switch {
@@ -350,6 +373,12 @@ input:checked + .slider:before {
   h3.related-title {
     left: 50px;
   }
+  .questions-container {
+    width: calc(100vw - ((100vw - (56.5vh + 271px)) / 2) - 6vw);
+  }
+  .questions-list {
+    width: calc(100vw - ((100vw - (56.5vh + 271px)) / 2) - 6vw);
+  }
   .qna-container {
     margin-right: 6vw;
     margin-left: calc((100vw - (56.5vh + 271px)) / 2);
@@ -439,6 +468,12 @@ input:checked + .slider:before {
   }
   h3.related-title {
     left: 50px;
+  }
+  .questions-container {
+    width: calc(100vw - ((100vw - (56.5vh + 271px)) / 2) - 6vw);
+  }
+  .questions-list {
+    width: calc(100vw - ((100vw - (56.5vh + 271px)) / 2) - 6vw);
   }
   .qna-container {
     margin-right: 6vw;
@@ -530,6 +565,12 @@ input:checked + .slider:before {
   h3.related-title {
     left: 30px;
   }
+  .questions-container {
+    width: calc(100vw - ((100vw - (38.5vh + 271px)) / 2) - 6vw);
+  }
+  .questions-list {
+    width: calc(100vw - ((100vw - (38.5vh + 271px)) / 2) - 6vw);
+  }
   .qna-container {
     margin-right: 6vw;
     margin-left: calc((100vw - (38.5vh + 271px)) / 2);
@@ -616,6 +657,12 @@ input:checked + .slider:before {
   }
   h3.related-title {
     left: 30px;
+  }
+  .questions-container {
+    width: 88vw;
+  }
+  .questions-list {
+    width: 88vw;
   }
   .qna-container {
     margin-right: 6vw;
@@ -1662,6 +1709,7 @@ a.helpful:hover {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
 }
 
 .add-question-container .question-modal {
@@ -2081,6 +2129,7 @@ body.dark-mode .marker{
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
 }
 
 .new-review-container .modal {
