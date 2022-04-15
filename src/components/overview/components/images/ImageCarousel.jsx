@@ -7,19 +7,20 @@ const ImageCarousel = () => {
 
   const imageCarouselRef = useRef(null);
 
-  const { currentStyle, previousPhoto, currentPhoto, setCurrentPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    previousPhoto,
+    setPreviousPhoto,
+    currentPhoto,
+    setCurrentPhoto,
+    loading
+  } = useContext(OverviewContext);
 
   useLayoutEffect(() => {
     if (imageCarouselRef.current) {
-      if (currentPhoto > previousPhoto) {
-        imageCarouselRef.current.scrollBy({
-          top: (imageCarouselRef.current.offsetHeight * (currentPhoto - previousPhoto))
-        })
-      } else {
-        imageCarouselRef.current.scrollBy({
-          top: (imageCarouselRef.current.offsetHeight * (currentPhoto - previousPhoto))
-        })
-      }
+      imageCarouselRef.current.scrollBy({
+        top: (imageCarouselRef.current.offsetHeight * (currentPhoto - previousPhoto))
+      })
     }
   }, [loading, currentPhoto]);
 
@@ -47,16 +48,27 @@ const ImageCarousel = () => {
 
   return (
   <div className="overview-images">
-    {currentPhoto === 0 ? null :
-      <button className="carousel-button up" onClick={handleUpClick}></button>
+    { currentPhoto === 0 ?
+      null :
+      <button
+        className="carousel-button up"
+        onClick={handleUpClick}>
+      </button>
     }
-      <ul id="image-carousel" ref={imageCarouselRef} className="image-carousel">
-        {currentStyle.photos.map((image) =>
-          <Image key={image.url} slide={image}/>
-        )}
+      <ul
+        id="image-carousel"
+        ref={imageCarouselRef}
+        className="image-carousel">
+          {currentStyle.photos.map((image) =>
+            <Image key={image.url} slide={image}/>
+          )}
       </ul>
-    {currentPhoto === currentStyle.photos.length - 1 ? null :
-      <button className="carousel-button down" onClick={handleDownClick}></button>
+    { currentPhoto === currentStyle.photos.length - 1 ?
+      null :
+      <button
+        className="carousel-button down"
+        onClick={handleDownClick}>
+      </button>
     }
   </div>
   )

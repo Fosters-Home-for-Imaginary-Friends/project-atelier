@@ -4,7 +4,10 @@ import Size from './Size.jsx';
 
 const SizeSelector = () => {
 
-  const { currentStyle, loading } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    loading
+  } = useContext(OverviewContext);
 
   if (loading) {
     return <div className="size-selector loading"></div>
@@ -23,7 +26,11 @@ const SizeSelector = () => {
   return (
     <div className="size-selector">
       {Object.keys(inventory).map((key) =>
-        <Size key={key} sizes={inventory[key]} sku={key}/>
+        <Size
+          key={key}
+          sizes={inventory[key]}
+          sku={key}
+        />
       )}
     </div>
   )

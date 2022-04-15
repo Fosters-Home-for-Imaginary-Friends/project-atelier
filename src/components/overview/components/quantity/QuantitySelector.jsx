@@ -4,7 +4,12 @@ import { OverviewContext } from '../../Overview.jsx';
 
 const QuantitySelector = () => {
 
-  const { currentStyle, currentSize, quantity, setQuantity } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    currentSize,
+    quantity,
+    setQuantity
+  } = useContext(OverviewContext);
 
   const handleDecreaseClick = () => {
     if (quantity > 1) {

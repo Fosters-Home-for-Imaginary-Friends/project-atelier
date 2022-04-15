@@ -4,7 +4,13 @@ import { OverviewContext } from "../../Overview.jsx";
 
 const Thumbnail = ({thumbnail, index}) => {
 
-  const { currentStyle, currentPhoto, setCurrentPhoto, setPreviousPhoto, loading } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    currentPhoto,
+    setCurrentPhoto,
+    setPreviousPhoto,
+    loading
+  } = useContext(OverviewContext);
 
   if (loading) {
     return <div></div>;

@@ -6,7 +6,12 @@ const ImageBar = () => {
 
   const progressBarRef = useRef(null);
 
-  const { currentStyle, currentPhoto, previousPhoto, loading } = useContext(OverviewContext);
+  const {
+    currentStyle,
+    currentPhoto,
+    previousPhoto,
+    loading
+  } = useContext(OverviewContext);
 
   useLayoutEffect(() => {
     if (progressBarRef.current) {
