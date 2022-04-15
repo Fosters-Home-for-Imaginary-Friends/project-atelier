@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {getStarFill, generateKey} from '../utils/RelatedHelpers.js';
-import {Star} from '../../ratings/AverageStars.jsx';
+import {Star} from '../../ratings-reviews/Ratings/AverageStars.jsx';
 
 const StarRating = function StarRating({averageRating}) {
   const starFill = useMemo(() => getStarFill(averageRating), [averageRating]);

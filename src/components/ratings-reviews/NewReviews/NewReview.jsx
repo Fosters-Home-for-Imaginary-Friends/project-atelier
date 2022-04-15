@@ -6,7 +6,7 @@ import { postReview } from '../../../helpers.js';
 import {AppContext} from '../../App.jsx';
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go';
 import PhotoUpload from './PhotoUpload.jsx';
-import NewReviewCharacteristic from './NewReviewCharacteristic'
+import NewReviewCharacteristic from './NewReviewCharacteristic.jsx'
 
 let NewReview = ({ setShowModal }) => {
 
@@ -49,7 +49,7 @@ let NewReview = ({ setShowModal }) => {
   //this component displays the stars for the user to hover/click
   const Star = ({fill, value}) => {
     return (
-      <div className="star-container" onMouseEnter={starsHover} onClick={starsClick} >
+      <div className="star-container new-review-star-container" onMouseEnter={starsHover} onClick={starsClick} >
         <div className="empty-star"  onMouseLeave={starsOffHover} value={value} >☆</div>
         {(fill === 1) && <div className="full-star" style={{width: 20}}>★</div>}
       </div>
@@ -154,14 +154,14 @@ let NewReview = ({ setShowModal }) => {
             <h2>About the {productData.name} </h2>
           </div>
           <div className="new-review-overall-rating">
-            <h2> Overall Rating 5.0</h2>
+            <h2> Overall Rating</h2>
           </div>
           <div className="new-review-rating-text">
             <span> How would you rate this product? </span>
           </div>
           <div className="new-review-stars-container">
            {currStars.map((item, i) => {
-             return <Star value={i} key={i} fill={item} />
+             return <Star className="new-review-stars" value={i} key={i} fill={item} />
            })}
           </div>
           {(!rating) && (validate) && <label className="invalid-text">Please select a rating for this product.</label>}

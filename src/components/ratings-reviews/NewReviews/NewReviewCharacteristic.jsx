@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { RatingsContext } from './Ratings.jsx';
+import { RatingsContext } from '../Ratings.jsx';
 
 const NewReviewCharacteristic =  (props) => {
 

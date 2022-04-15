@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext }from 'react';
-import RatingsBreakdown from './RatingsBreakdown.jsx';
-import ReviewList from './ReviewList.jsx';
+import RatingsBreakdown from './Ratings/RatingsBreakdown.jsx';
+import ReviewList from './Reviews/ReviewList.jsx';
 import {AppContext} from '../App.jsx';
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
