@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import ToggleSwitch from './ToggleSwitch.jsx';
+import Header from './header/Header.jsx';
 import Overview from "./overview/Overview.jsx";
 import ProductCardLists from "./related/ProductCardLists.jsx";
 import Qna from "./qna/Qna.jsx";
@@ -20,7 +20,8 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
-      <ToggleSwitch />
+      {/* <ToggleSwitch /> */}
+      <Header />
       <Overview />
       <ProductCardLists />
       <Qna />
