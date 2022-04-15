@@ -35,7 +35,6 @@ const Question = (props) => {
     <div>
       <div className="question-head">
         <h2>{'Q: ' + props.data.question_body}</h2>
-        {/* Helpful Link */}
         <span className="helpful-answer">
           Helpful? <a className="helpful" onClick={handleQHelpfulClick}>Yes</a> ({ques_Helpfulness}) |
           {' '}<a className="helpful" onClick={handleQReportClick}>{reportClicked ? 'Reported' : 'Report'}</a> |
@@ -43,13 +42,9 @@ const Question = (props) => {
         </span>
         {showModal ? <AddAnswer setShowModal={setShowModal} question={props.data}/> : null}
       </div>
-      {/* Question */}
-      {/* Add Answer Link */}
-      {/* Answer List */}
       <div>
         <AnswersList data={props.data.answers} sortData={props.sortData}/>
       </div>
-      {/* More answers button */}
     </div>
   )
 }

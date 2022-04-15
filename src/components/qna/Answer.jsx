@@ -38,9 +38,6 @@ const Answer = (props) => {
         <h2 className="answer-heading">A: </h2>
         <section className="body-text">{body}</section>
       </div>
-      {/* Date */}
-      {/* Helpful Link */}
-      {/* report link */}
       <div className="answer-details">
         <span className="user-data">
         by {nickname}, {moment(date).format('MMMM Do YYYY')} | Helpful?
