@@ -2,16 +2,15 @@ import React, { useState, useEffect, useContext, createContext }from 'react';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 import {AppContext} from '../App.jsx';
-
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
+//export vars/funcs to all other ratings/review components that need them
 export const RatingsContext = createContext({});
 
 //primary component that will attach to App.jsx
 let Ratings = () => {
 
   const { productData } = useContext(AppContext);
-
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [metaRating, setMetaRating] = useState({});
@@ -42,14 +41,13 @@ let Ratings = () => {
         setRelevantCharacteristics(meta.characteristics)
         let totalRatingsObj = meta.ratings;
 
+        //temp var for totalratings and totalscore
         let r = 0;
         let s = 0;
         //loop through all ratings and get total number of ratings and total rating score, calculate average rating.
         for (let k in totalRatingsObj) {
           r += (parseInt(totalRatingsObj[k]));
           s += (parseInt(k) * parseInt(totalRatingsObj[k]));
-          // setTotalScore( totalScore += (parseInt(k) * parseInt(totalRatingsObj[k])))
-          // setTotalReviews((totalReviews += parseInt(totalRatingsObj[k])) -2 )
       }
         setTotalReviews(r);
         setTotalScore(s);
@@ -62,7 +60,8 @@ let Ratings = () => {
     })
   }
 
-
+  //this function allows the user to filter by a single star array
+  //*TODO* add functionality for multi star filtering in a way that makes sense for the user with limited reviews on screen.
   let filteredContent = (filter) => {
     let filteredObj = starFilters;
     for ( let k in starFilters) {
@@ -88,7 +87,7 @@ let Ratings = () => {
       dataFetch();
     }, [productData.id]);
 
-
+    //this helps get something painted on screen while API chains are finishing
    if ( loading ) {
     return (
       <div>
@@ -98,8 +97,10 @@ let Ratings = () => {
   }
 
   return (
+    //this context provider makes necessary vars/funcs available to children components
 <RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort,
-                                 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum, relevantCharacteristics}}>
+starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum, relevantCharacteristics}}>
+
   <div className="ratings-reviews-container">
     <h3 className="ratings-title">RATINGS AND REVIEWS</h3>
     <div className="breakdown-list-container">

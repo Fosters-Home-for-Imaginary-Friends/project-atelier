@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
-import { RatingsContext } from './Ratings.jsx';
-
+import React from 'react';
 
 let IndividualReviewStars = (props) => {
-
   let numOfStars = [];
   let rating = props.fill;
 
@@ -16,17 +13,14 @@ let IndividualReviewStars = (props) => {
     rating = rating -1;
   }
 
-
   return (
     <div className="average-star-container">
       {numOfStars.map((fill, i) => <Star fill={fill} key={i} />)}
     </div>
   )
-
   }
 
   const Star = ({fill}) => {
-
   return (
     <div className="star-container">
       <div className="empty-star">☆</div>

@@ -10,14 +10,9 @@ import ImageModal from './ImageModal.jsx';
 
 
 let IndividualReview = (props) => {
-  //variable for individual review to clean up code
-
-
   const {review_id, rating, reviewer_name, date, summary, body, response, recommend, helpfulness, photos} = props.review;
   const [helpfulChoiceMade, setHelpfulChoiceMade] = useState(false);
   const [helpfulChoice, setHelpfulChoice] = useState('');
-  const [imageEnlarged, setImageEnlarged] = useState(false);
-
   const [reviewImageModalState, setReviewImageModalState] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
 
@@ -51,21 +46,14 @@ let IndividualReview = (props) => {
   }
   //this function enlarges the thumbnail images on click, if the image is clicked again it returns to original scale
   let enlargeImg = (e) => {
-    if (imageEnlarged === false) {
+    if (reviewImageModalState === false) {
     e.preventDefault();
-    // e.target.style.transform = "scale(20.0)";
-    // e.target.style.transition = "transfrom 0.25s ease";
-    // setImageEnlarged(true);
     setReviewImageModalState(true);
     setImgSrc(e.target.src);
     } else {
-      // e.target.style.transform = "scale(1.0)";
-      // e.target.style.transition = "transfrom 0.25s ease";
       setReviewImageModalState(false);
     }
-
   }
-
 
   //returns individual review to the reviewlist.jsx
   return (
@@ -85,8 +73,7 @@ let IndividualReview = (props) => {
           <section className= "body-text"> {body} </section>
         </div>
         <div className="review-body-photos-container">
-
-          {photos.map((photo, i) => {
+          {photos.map((photo, i) => { //creates a thumbnail for each photo in the reviews photo array
             return (<img className="image-thumbs" id={`img${i}`} onClick={enlargeImg} key= {i} src={photo.url} alt="new" style={{"width" : `${30}px`, "height": `${30}px`, "zIndex" : 30, "objectFit": "cover"}}/>
             )
           })}
@@ -101,18 +88,11 @@ let IndividualReview = (props) => {
         <div className="review-helpful-container">
         <span className="helpful-answer" id="review-helpful-text"> Helpful? </span>
           {(helpfulChoice === 'yes' || helpfulChoice === '') && <span className="helpful-answer" id= "review-helpful-link" onClick={helpfulYesClick}> Yes </span>}
-
           {(helpfulChoice === 'no' || helpfulChoice === '') && <span className="helpful-answer" id= "review-helpful-link" onClick={helpfulNoClick}> No </span>}
           {(helpfulChoice === 'yes' || helpfulChoice === 'no') && <span className="helpful-answer" id="review-helpfulness-number">{`(${helpfulness})`}</span>}
           <span className="helpful-answer" id= "review-report" onClick={reportClick}> | Report </span>
-
           {reviewImageModalState ? <ImageModal imgSrc={imgSrc} setReviewImageModalState={setReviewImageModalState}/> : null}
         </div>
-
-
-
-        {/*this space is for the checkmark icon if it's a verified seller*/}
-
     </div>
   );
 };

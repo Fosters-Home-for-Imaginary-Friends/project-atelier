@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import ReactDom from 'react-dom';
 
 const ImageModal = ( {setReviewImageModalState, imgSrc} ) => {

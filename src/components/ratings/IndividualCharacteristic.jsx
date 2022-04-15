@@ -1,11 +1,7 @@
 import React from 'react';
 import { GoTriangleDown } from 'react-icons/go';
-import { GiRunningShoe } from 'react-icons/gi';
-
 
 let IndividualCharacteristic = (props) => {
-//transform: translateX(200px);
-//style={{"transform" : `translate(${char.Size.value * 80})` }}
   let char = props.char;
   return (
   <div className="individual-characterstic-container">
