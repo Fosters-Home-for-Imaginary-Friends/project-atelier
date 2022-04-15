@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import {getAverageRating, productCardComparison} from '../utils/RelatedHelpers.js';
 import StarRating from './StarRating.jsx';
 import {getProduct, getStyles, getReviewMetadata} from '../../../helpers.js';
@@ -13,7 +13,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setPro
       .then((productData) => getStyles(product_id)
         .then((styleData) => getReviewMetadata(product_id)
           .then((reviewData) => {
-            setCardData({productData, styleData, averageRating: getAverageRating(reviewData)});
+            setCardData({productData, styleData, reviewData: reviewData.ratings});
           })))
       .catch((err) => console.error(err));
   }, [product_id]);
@@ -23,6 +23,8 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setPro
       return prev.id === cardData.productData.id ? prev : cardData.productData;
     });
   };
+
+  const averageRating = useMemo(() => getAverageRating(cardData.reviewData), [cardData]);
 
   return (
     <div className="product-card" onClick={handleCardClick}>
@@ -43,7 +45,7 @@ const ProductCard = React.memo(function ProductCard({product_id, related, setPro
           (<section className="body-text price">{cardData.styleData[0].original_price} USD</section>)) : null
         }
         <div className="average-star-container product-stars">
-          {cardData.averageRating ? <StarRating averageRating={cardData.averageRating} /> : null}
+          {averageRating > 0 ? <StarRating averageRating={averageRating} /> : null}
         </div>
       </div>
     </div>
