@@ -1225,6 +1225,7 @@ a.helpful:hover {
   border-radius: 5px;
   position: relative;
   animation: animate 0.3s;
+  overflow: auto;
 }
 
 body.dark-mode .add-question-container .question-modal {
@@ -1237,6 +1238,7 @@ body.dark-mode .add-question-container .question-modal {
   column-gap: 20px;
   margin: 20px;
   gap: 10px;
+  width: 70%;
 }
 
 .question-modal button {
