@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
-import {RatingsContext} from './Ratings.jsx';
-
+import {RatingsContext} from '../Ratings.jsx';
 
 let AverageStars = (props) => {
   const{averageRating} = useContext(RatingsContext)
@@ -9,9 +7,6 @@ let AverageStars = (props) => {
   let avgRating = averageRating
 //create an array to store stars from average rating
 let numOfStars = [];
-
-//star outlines
-
 //push an element for each whole star in the rating
   while (numOfStars.length < 5 ) {
     if ( avgRating > 1) {
@@ -46,7 +41,6 @@ let numOfStars = [];
         console.log('How did this happen');
         numOfStars.push(0);
         break;
-
       }
     } else {
       numOfStars.push(0);
@@ -63,7 +57,6 @@ let numOfStars = [];
 }
 
 const Star = ({fill}) => {
-
   return (
     <div className="star-container">
       <div className="empty-star">☆</div>
@@ -71,8 +64,6 @@ const Star = ({fill}) => {
     </div>
   );
 };
-
-
 
 export default AverageStars;
 export {Star};

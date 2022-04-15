@@ -1990,6 +1990,7 @@ body.dark-mode .scored-bar {
 .star-container {
   display: flex;
   font-size: 15px;
+  margin-right: 2px;
 }
 
 .full-star {
