@@ -162,7 +162,7 @@ body.dark-mode span.helpful-answer {
 #logo {
   position: fixed;
   top: 2vh;
-  left: 10vw;
+  left: 7vw;
   font-size: 100px;
   font-weight: 100;
   letter-spacing: -4px;
@@ -188,8 +188,9 @@ body.dark-mode span.helpful-answer {
   background-color: #fff;
 }
 
-.header-search:focus {
-  background-color: #fff;
+body.dark-mode .header-search {
+  background-color: #1f1f1f;
+  border-bottom: 1px solid #fff;
 }
 
 .header-login {

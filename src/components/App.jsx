@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import ToggleSwitch from './header/ToggleSwitch.jsx';
 import Header from './header/Header.jsx';
 import Overview from "./overview/Overview.jsx";
 import ProductCardLists from "./related/ProductCardLists.jsx";
