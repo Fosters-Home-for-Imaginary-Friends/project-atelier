@@ -112,3 +112,5 @@ fostersfec.pem
 # bundle
 bundle.js
 
+# bundle
+bundle.js.gz
