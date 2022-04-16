@@ -41,7 +41,8 @@ let NewReview = ({ setShowModal }) => {
   //close this modal when clicking outside of the modal.
   const modalRef = useRef();
   const exitModal = (e) => {
-    if (e.target === modalRef.current) {
+    if (e.target === modalRef.current || e.target.id === 'x-button') {
+      document.body.classList.remove('modal-open');
       setShowModal(false);
     }
   };
@@ -54,7 +55,7 @@ let NewReview = ({ setShowModal }) => {
         {(fill === 1) && <div className="full-star" style={{width: 20}}>★</div>}
       </div>
     );
-    };
+  };
 
   //these functions handle the dynamic star selection system by the user
   const starsHover = (e) => {
@@ -137,6 +138,7 @@ let NewReview = ({ setShowModal }) => {
 
       let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
       postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
+      document.body.classList.remove('modal-open');
       setShowModal(false);
     }
     setValidate(true);
@@ -206,7 +208,7 @@ let NewReview = ({ setShowModal }) => {
         <div className="new-review-submit">
         <button onClick={submitClick} className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
-        <button id="x-button" onClick={() => setShowModal(false)}>X</button>
+        <button id="x-button" onClick={exitModal}>X</button>
         </div>
       </div>
     </div>,
