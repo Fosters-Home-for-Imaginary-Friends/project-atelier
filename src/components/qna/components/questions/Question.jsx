@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AnswersList from './AnswersList.jsx';
+import AnswersList from '../answers/AnswersList.jsx';
 import { AddAnswer } from '../answers/AddAnswer.jsx';
 import { putQuestionHelpful, putQuestionReport } from '../../../../helpers.js';
 

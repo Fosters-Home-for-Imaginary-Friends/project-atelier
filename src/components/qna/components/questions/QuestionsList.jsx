@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Question from './Question.jsx';
 import { QnaContext } from '../../Qna.jsx';
-import { AddQuestionModal } from '../answers/AddQuestionModal.jsx';
+import { AddQuestionModal } from './AddQuestionModal.jsx';
 
 const QuestionsList = ({ sortData }) => {
   const {question, qnaList, setQnaList, extra, setExtra, init} = useContext(QnaContext);
