@@ -41,7 +41,8 @@ let NewReview = ({ setShowModal }) => {
   //close this modal when clicking outside of the modal.
   const modalRef = useRef();
   const exitModal = (e) => {
-    if (e.target === modalRef.current) {
+    if (e.target === modalRef.current || e.target.id === 'x-button') {
+      document.body.classList.remove('modal-open');
       setShowModal(false);
     }
   };
@@ -54,7 +55,7 @@ let NewReview = ({ setShowModal }) => {
         {(fill === 1) && <div className="full-star" style={{width: 20}}>★</div>}
       </div>
     );
-    };
+  };
 
   //these functions handle the dynamic star selection system by the user
   const starsHover = (e) => {
@@ -137,6 +138,7 @@ let NewReview = ({ setShowModal }) => {
 
       let reviewObj = {product_id: productData.id, rating: parseInt(rating), summary: summary, body: body, recommend: recommended, name: nickname, email: email, photos: photos, characteristics: charObj};
       postReview(reviewObj).then(response => console.log(response)).catch(err => console.log(err));
+      document.body.classList.remove('modal-open');
       setShowModal(false);
     }
     setValidate(true);
@@ -181,7 +183,7 @@ let NewReview = ({ setShowModal }) => {
           {(summary.length < 1) && (validate) && <label className="invalid-text">Please enter a valid summary</label>}
           <span className="user-data"> Review Summary: </span>
           <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
-          <label> {remainingSummaryChars || 60} characters remaining</label>
+          <label className="new-review-summary label"> {remainingSummaryChars || 60} characters remaining</label>
         </div>
         <div className="new-review-body">
           {(body.length < 50) && (validate) && <label className="invalid-text">Please enter a valid review.</label>}
@@ -189,7 +191,7 @@ let NewReview = ({ setShowModal }) => {
           <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
           {requiredBodyChars > 0 && <label>Please type {(requiredBodyChars || 50)} more characters.</label>}
           {requiredBodyChars <= 0 && <label> You have met the minimum character requirement. </label>}
-          <label>You have {remainingBodyChars || 1000} characters remainging.</label>
+          <label className="new-review-body label">You have {remainingBodyChars || 1000} characters remainging.</label>
           {}
         </div>
         <PhotoUpload setPhotos={setPhotos}/>
@@ -206,7 +208,7 @@ let NewReview = ({ setShowModal }) => {
         <div className="new-review-submit">
         <button onClick={submitClick} className="info-button submit-review"> SUBMIT REVIEW</button>
         </div>
-        <button id="x-button" onClick={() => setShowModal(false)}>X</button>
+        <button id="x-button" onClick={exitModal}>X</button>
         </div>
       </div>
     </div>,

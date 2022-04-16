@@ -57,6 +57,7 @@ let ReviewList = () => {
   }
 
   const openModal = () => {
+    document.body.classList.add('modal-open');
     setShowModal(true);
   }
 
