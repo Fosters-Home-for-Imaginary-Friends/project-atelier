@@ -181,7 +181,7 @@ let NewReview = ({ setShowModal }) => {
           {(summary.length < 1) && (validate) && <label className="invalid-text">Please enter a valid summary</label>}
           <span className="user-data"> Review Summary: </span>
           <textarea  id="review-summary" cols="50" rows="2" placeholder="Example: Best purchase ever!" maxLength={60} wrap="wrap" onChange={handleSummaryChange}></textarea>
-          <label> {remainingSummaryChars || 60} characters remaining</label>
+          <label className="new-review-summary label"> {remainingSummaryChars || 60} characters remaining</label>
         </div>
         <div className="new-review-body">
           {(body.length < 50) && (validate) && <label className="invalid-text">Please enter a valid review.</label>}
@@ -189,7 +189,7 @@ let NewReview = ({ setShowModal }) => {
           <textarea id="review-body" className="new-review-body-text" rows="10" cols="50" maxLength={1000} wrap="wrap" onChange={handleBodyChange}></textarea>
           {requiredBodyChars > 0 && <label>Please type {(requiredBodyChars || 50)} more characters.</label>}
           {requiredBodyChars <= 0 && <label> You have met the minimum character requirement. </label>}
-          <label>You have {remainingBodyChars || 1000} characters remainging.</label>
+          <label className="new-review-body label">You have {remainingBodyChars || 1000} characters remainging.</label>
           {}
         </div>
         <PhotoUpload setPhotos={setPhotos}/>

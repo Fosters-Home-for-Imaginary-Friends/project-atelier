@@ -594,14 +594,14 @@ input:checked + .slider:before {
     width: 20vw;
   }
   .star-bar {
-    height: 9px;
+    height: 8px;
     width: 14vw;
   }
   .characteristic-container {
     margin-top: 15px;
   }
   .char-bar {
-    height: 9px;
+    height: 8px;
     width: calc((20vw - 20px) / 3);
   }
   .ratings-reviews-container {
@@ -718,7 +718,7 @@ input:checked + .slider:before {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   #logo {
     font-size: 60px;
   }
@@ -2371,7 +2371,7 @@ margin-top: 25px;
 margin-bottom: 10px;
 width: 60%;
 }
-.new-review-summary label{
+.new-review-summary.label{
   font-size: 10px;
   font-weight: 300;
   color: rgb(100, 100, 100)
@@ -2383,7 +2383,7 @@ margin-top: 10px;
 margin-bottom: 10px;
 width: 75%;
 }
-.new-review-body label{
+.new-review-body.label{
   font-size: 10px;
   font-weight: 300;
   color: rgb(100, 100, 100)
@@ -2411,23 +2411,23 @@ button.upload-photo {
   position: relative;
 }
 
-  .new-review-container button {
-    background-color: #333333;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    border-radius: 2px;
-    cursor: pointer;
-  }
+.new-review-container button {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
 
-  #x-button {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    padding: 8px, 11px;
-  }
-  .invalid-text {
-    size: 9px;
-    color: rgb(206, 41, 41);
-  }
+#x-button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 8px, 11px;
+}
+.invalid-text {
+  size: 9px;
+  color: rgb(206, 41, 41);
+}
