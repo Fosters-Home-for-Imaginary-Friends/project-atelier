@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
-import {QnaContext} from './Qna.jsx';
+import React, { useContext } from 'react';
+import { QnaContext } from '../../Qna.jsx';
 
 const Search = (props) => {
-  const {setQuestion} = useContext(QnaContext);
+  const { setQuestion } = useContext(QnaContext);
 
   return (
     <form className="search-form">

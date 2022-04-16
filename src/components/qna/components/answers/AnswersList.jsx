@@ -1,7 +1,7 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 
-const AnswersList = ({data, sortData}) => {
+const AnswersList = ({ data, sortData }) => {
   const [moreAnswers, setMoreAnswers] = useState(false);
   const [init, setInit] = useState([]);
   const [answersSize, setAnswersSize] = useState(2);

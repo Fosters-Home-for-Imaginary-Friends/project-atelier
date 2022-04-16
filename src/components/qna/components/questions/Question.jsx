@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AnswersList from './AnswersList.jsx';
-import { AddAnswer } from './AddAnswer.jsx';
-import { putQuestionHelpful, putQuestionReport } from '../../helpers.js';
+import { AddAnswer } from '../answers/AddAnswer.jsx';
+import { putQuestionHelpful, putQuestionReport } from '../../../../helpers.js';
 
 const Question = (props) => {
   const [showModal, setShowModal] = useState(false);

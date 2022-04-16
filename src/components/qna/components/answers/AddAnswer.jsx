@@ -1,11 +1,11 @@
 import React, { useRef, useState, useContext } from 'react';
 import ReactDom from 'react-dom';
-import { AppContext } from '../App.jsx';
-import { postAnswer } from '../../helpers.js';
+import { AppContext } from '../../../App.jsx';
+import { postAnswer } from '../../../../helpers.js';
 
 export const AddAnswer = ({ setShowModal, question }) => {
   const modalRef = useRef();
-  const {productData} = useContext(AppContext);
+  const { productData } = useContext(AppContext);
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
   const [answerValues, setValues] = useState({
