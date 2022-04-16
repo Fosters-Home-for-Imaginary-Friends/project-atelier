@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import { putAnswerHelpful, putAnswerReport } from '../../helpers.js';
+import { putAnswerHelpful, putAnswerReport } from '../../../../helpers.js';
 
 const Answer = (props) => {
-  const {id, answerer_name, body, helpfulness, date} = props.data;
+  const { id, answerer_name, body, helpfulness, date } = props.data;
   const [answerHelpfulness, setAnswerHelp] = useState(helpfulness);
   const [answerHelpClicked, setHelpClicked] = useState(false);
   const [reportClicked, setReportClick] = useState(false);

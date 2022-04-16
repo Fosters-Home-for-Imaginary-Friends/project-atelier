@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Question from './Question.jsx';
-import {QnaContext} from './Qna.jsx';
-import {getQuestions} from '../../helpers.js';
+import { QnaContext } from '../../Qna.jsx';
 import { AddQuestionModal } from './AddQuestionModal.jsx';
 
-const QuestionsList = ({sortData}) => {
+const QuestionsList = ({ sortData }) => {
   const {question, qnaList, setQnaList, extra, setExtra, init} = useContext(QnaContext);
   const [showModal, setShowModal] = useState(false);
   const [listSize, setListSize] = useState(4);
 
+  // This effect triggers when the user types a value into the searchbar
   useEffect(() => {
     if (question.length > 3) {
       let newList = [];
@@ -18,7 +18,7 @@ const QuestionsList = ({sortData}) => {
         }
       }
       setQnaList(sortData(newList))
-    } else {
+    } else { // Anything less than 3 characters and the list reverts to its original state
       setQnaList(init.slice(0, listSize));
     }
   }, [question])
