@@ -111,4 +111,9 @@ fostersfec.pem
 
 # bundle
 bundle.js
+<<<<<<< HEAD
+=======
+
+# bundle
+>>>>>>> 586f32f95c795df2d901de3c95d743251bb84ccb
 bundle.js.gz
