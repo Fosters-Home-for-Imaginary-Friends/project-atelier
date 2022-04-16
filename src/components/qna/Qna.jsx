@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
 import QuestionsList from './components/questions/QuestionsList.jsx';
-import Search from '.components/questions/Search.jsx';
+import Search from './components/questions/Search.jsx';
 import {getQuestions} from '../../helpers.js';
 import {AppContext} from '../App.jsx';
 
