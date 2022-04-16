@@ -101,7 +101,7 @@ let Ratings = () => {
 <RatingsContext.Provider value={{reviews, setReviews, metaRating, totalScore, totalReviews, averageRating, loading, currentSort, setCurrentSort,
 starFilters, setStarFilters, filteredContent, storedReviews, setStoredReviews, pageNum, setPageNum, relevantCharacteristics}}>
 
-  <div className="ratings-reviews-container">
+  <div id="ratings-reviews-container" className="ratings-reviews-container">
     <h3 className="ratings-title">RATINGS AND REVIEWS</h3>
     <div className="breakdown-list-container">
       <RatingsBreakdown />
