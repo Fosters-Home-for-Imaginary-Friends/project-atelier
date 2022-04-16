@@ -1,10 +1,7 @@
 # Project-Atelier
 
 ## Project Description
-Our team was given the task of creating a portal for an e-commerce product details website. The application utilizes React for the front-end to implement modular components. The back-end was built using nodejs and a database/server that was hosted outside of the project.
-<!-- Some of the challenges you faced and features you hope to implement in the future. -->
-
-<!-- Comment for code review -->
+Our team was given the task of creating a portal for an e-commerce product details website. The team's goal was to use the legacy api that powered the application and apply modern technologies. The project uses React and CSS3 for the front-end to implement modular components. The back-end was built using nodejs and express. 
 
 ## Setup
 * Begin by forking and cloning the repository down to your local machine
