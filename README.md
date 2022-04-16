@@ -38,7 +38,7 @@ The related products section displays a list of related products curated by the 
 ## Questions and Answers
 
 ### Contributor: Andy Tran
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://https://www.linkedin.com/in/andrew-tran-aa3994226/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrew-tran-aa3994226/)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/aTranster)
 
 The questions and answers component. This component displays all information regarding questions users have had about the product. This includes user-submitted questions and their answers. Questions and answers are sorted by a helpfulness rating that users can vote on. The list expands in an accordion style when the “Add more questions” button is clicked, however, the list will not expand past the height of the page. Instead, the list limits itself and allows users to scroll through. The search bar allows the user to filter the list, rendering any questions that match their query. If the question cannot be found, the add question button opens a modal which allows them to add any questions they may have to the current list.
