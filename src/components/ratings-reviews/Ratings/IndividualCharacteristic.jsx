@@ -1,25 +1,12 @@
-import React, { useRef, useContext } from 'react';
+import React from 'react';
 import { GoTriangleDown } from 'react-icons/go';
-import { RatingsContext } from '../Ratings.jsx';
 
 let IndividualCharacteristic = (props) => {
 
-  const charRef = useRef(null);
-
-  const { loading } = useContext(RatingsContext);
-
   let char = props.char;
 
-  if (char.Fit) {
-    console.log(char.Fit.value);
-  }
-
-  if (!loading) {
-    console.log(charRef.current);
-  }
-
   return (
-  <div ref={charRef} className="individual-characterstic-container">
+  <div className="individual-characterstic-container">
     {(char.Size) &&
     <div className="characteristic-container">
       <section className="body-text"> Size </section>
@@ -27,7 +14,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"></div>
         <div className="char-bar"></div>
         <div className="char-bar"></div>
-        <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Size.value * 4.8}vw)`}}/>
+        <div className="marker-container">
+          <div className="marker-spacer" style={{"width": `${((char.Size.value - 1) / 4) * 100}%`}}></div>
+        <GoTriangleDown className="marker"/>
+        </div>
       </div>
       <div className="qualities-container">
         <span className="char-qualities helpful-answer">Too Small</span>
@@ -43,7 +33,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"></div>
         <div className="char-bar"></div>
         <div className="char-bar"></div>
-        <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Fit.value * 4.8}vw)`}}/>
+        <div className="marker-container">
+          <div className="marker-spacer" style={{"width": `${((char.Fit.value - 1) / 4) * 100}%`}}></div>
+          <GoTriangleDown className="marker"/>
+        </div>
       </div>
       <div className="qualities-container">
         <span className="char-qualities helpful-answer">Too Tight</span>
@@ -59,7 +52,10 @@ let IndividualCharacteristic = (props) => {
         <div className="char-bar"></div>
         <div className="char-bar"></div>
         <div className="char-bar"></div>
-        <GoTriangleDown className="marker" style={{"transform" : `translate(${ char.Width.value * 4.8}vw)`}}/>
+        <div className="marker-container">
+          <div className="marker-spacer" style={{"width": `${((char.Width.value - 1) / 4) * 100}%`}}></div>
+          <GoTriangleDown className="marker"/>
+        </div>
       </div>
       <div className="qualities-container">
         <span className="char-qualities helpful-answer">Too Narrow</span>
@@ -78,7 +74,7 @@ let IndividualCharacteristic = (props) => {
         <div className="marker-container">
           <div className="marker-spacer" style={{"width": `${((char.Comfort.value - 1) / 4) * 100}%`}}></div>
           <GoTriangleDown className="marker"/>
-          </div>
+        </div>
       </div>
       <div className="qualities-container">
         <span className="char-qualities helpful-answer">Uncomfortable</span>
@@ -124,7 +120,6 @@ let IndividualCharacteristic = (props) => {
         <span className="char-qualities helpful-answer">Too Long</span>
       </div>
     </div>}
-
   </div>
   )
 }

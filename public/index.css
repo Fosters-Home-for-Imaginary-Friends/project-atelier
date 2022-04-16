@@ -2114,12 +2114,12 @@ body.dark-mode .char-bar {
 
 .marker {
   position: relative;
-  height: 20px;
-  width: 20px;
+  height: calc(10px + .5vw);
+  width: calc(10px + .5vw);
   color: #1f1f1f;
   align-self: flex-start;
   top: -10px;
-  left: -10px;
+  left: calc(-((10px + .5vw) / 2));
 }
 
 body.dark-mode .marker{
