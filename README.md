@@ -3,13 +3,6 @@
 ## Project Description
 Our team was given the task of creating a portal for an e-commerce product details website. The team's goal was to use the legacy api that powered the application and apply modern technologies. The project uses React and CSS3 for the front-end to implement modular components. The back-end was built using nodejs and express. 
 
-## Setup
-* Begin by forking and cloning the repository down to your local machine
-* Navigate to repo's root directory in terminal
-* Run 'npm install' to install all dependencies
-* Run 'npm build' and 'npm dev' in two seperate terminal tabs to initialize environment
-* Open http://localhost:3000 in browser
-
 ## Overview
 
 ### Contributor: Bradford Trevino
@@ -51,6 +44,32 @@ The questions and answers component. This component displays all information reg
 While navigating the Ratings and Reviews widget each user is able to view all reviews for a given product. These reviews contain reviewer specific information such as a review body, photos related to the review, a username and date of review submission as well as whether or not the user recommends the product. The ratings part of the component displays valid characteristics of the of product with dynamic sliders to show the user how people have felt about different aspects. The ratings also feature a dynamic star rating system that displays ratings in 1/4 star increments. Lastly, there is an option to create a new review for the product that handles form inputs, allows for the user to upload images and adds the review to the list of reviews for that product on the database.
 
 ![](https://media.giphy.com/media/3uXUths6hV2FnGqAyF/giphy.gif)
+
+## Setup
+
+1. Download depencies with npm install
+> `npm install`
+
+2. Set up config file in `client/src` and export.
+
+  
+``` 
+module.exports = {
+   TOKEN: 'YourTokenHere'
+}; 
+```
+
+
+3. Run webpack in development with:
+
+   > `npm run start`
+
+4. Run server with:
+
+   > `npm run dev`
+
+5. Visit local site at http://localhost:3000
+
 
 ## Technologies Used
 
