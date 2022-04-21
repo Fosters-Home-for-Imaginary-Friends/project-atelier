@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useContext, createContext,
+  useState, useEffect, useContext, createContext, useMemo,
 } from 'react';
 import ImageCarousel from './components/images/ImageCarousel.jsx';
 import ImageBar from './components/images/ImageBar.jsx';
@@ -34,7 +34,7 @@ function Overview() {
         return styleData;
       })
       .then((styleData) => {
-        for (let i = 0; i < styleData.length; i++) {
+        for (let i = 0; i < styleData.length; i += 1) {
           const style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
@@ -53,24 +53,25 @@ function Overview() {
     getProductInformation();
   }, [productData.id]);
 
+  const ContextValues = useMemo(() => ({
+    styles,
+    currentStyle,
+    setCurrentStyle,
+    currentSize,
+    setCurrentSize,
+    quantity,
+    setQuantity,
+    currentPhoto,
+    setCurrentPhoto,
+    previousPhoto,
+    setPreviousPhoto,
+    showModal,
+    setShowModal,
+    loading,
+  }));
+
   return (
-    <OverviewContext.Provider value={{
-      styles,
-      currentStyle,
-      setCurrentStyle,
-      currentSize,
-      setCurrentSize,
-      quantity,
-      setQuantity,
-      currentPhoto,
-      setCurrentPhoto,
-      previousPhoto,
-      setPreviousPhoto,
-      showModal,
-      setShowModal,
-      loading,
-    }}
-    >
+    <OverviewContext.Provider value={ContextValues}>
       <div id="overview" className="overview">
         {showModal ? <ImageModal /> : null}
         <div className="overview-container">
