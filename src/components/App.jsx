@@ -1,15 +1,14 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from 'react';
 import Header from './header/Header.jsx';
-import Overview from "./overview/Overview.jsx";
-import ProductCardLists from "./related/ProductCardLists.jsx";
-import Qna from "./qna/Qna.jsx";
-import Ratings from "./ratings-reviews/Ratings.jsx";
-import {getProduct} from '../helpers.js';
+import Overview from './overview/Overview.jsx';
+import ProductCardLists from './related/ProductCardLists.jsx';
+import Qna from './qna/Qna.jsx';
+import Ratings from './ratings-reviews/Ratings.jsx';
+import { getProduct } from '../helpers.js';
 
 export const AppContext = createContext({});
 
-const App = () => {
-
+function App() {
   const [productId, setProductId] = useState(40344);
   const [productData, setProductData] = useState({});
 
@@ -19,7 +18,10 @@ const App = () => {
   }, []);
 
   return (
-    <AppContext.Provider value={{productId, setProductId, productData, setProductData}}>
+    <AppContext.Provider value={{
+      productId, setProductId, productData, setProductData,
+    }}
+    >
       <Header />
       <Overview />
       <ProductCardLists />

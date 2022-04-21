@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, {
+  useState, useEffect, useContext, createContext,
+} from 'react';
 import ImageCarousel from './components/images/ImageCarousel.jsx';
-import ImageBar from "./components/images/ImageBar.jsx";
-import ImageModal from "./components/images/ImageModal.jsx";
+import ImageBar from './components/images/ImageBar.jsx';
+import ImageModal from './components/images/ImageModal.jsx';
 import ProductInformation from './components/information/ProductInformation.jsx';
-import { getStyles } from "../../helpers.js";
-import { AppContext } from "../App.jsx";
+import { getStyles } from '../../helpers.js';
+import { AppContext } from '../App.jsx';
 
 export const OverviewContext = createContext({});
 
-const Overview = () => {
-
+function Overview() {
   const {
-    productData
+    productData,
   } = useContext(AppContext);
 
   const [styles, setStyles] = useState([]);
@@ -29,25 +30,24 @@ const Overview = () => {
     }
     getStyles(productData.id)
       .then((styleData) => {
-        setStyles(styleData)
+        setStyles(styleData);
         return styleData;
       })
       .then((styleData) => {
         for (let i = 0; i < styleData.length; i++) {
-          let style = styleData[i];
+          const style = styleData[i];
           if (style['default?']) {
             setCurrentStyle(style);
           }
         }
-        return;
       })
       .then(() => {
         setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-      })
-  }
+      });
+  };
 
   useEffect(() => {
     getProductInformation();
@@ -68,8 +68,9 @@ const Overview = () => {
       setPreviousPhoto,
       showModal,
       setShowModal,
-      loading
-    }}>
+      loading,
+    }}
+    >
       <div id="overview" className="overview">
         {showModal ? <ImageModal /> : null}
         <div className="overview-container">
@@ -77,11 +78,11 @@ const Overview = () => {
             <ImageCarousel />
             <ImageBar />
           </section>
-            <ProductInformation />
+          <ProductInformation />
         </div>
       </div>
     </OverviewContext.Provider>
-  )
+  );
 }
 
 export default Overview;
