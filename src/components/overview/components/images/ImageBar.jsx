@@ -1,6 +1,6 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
 import Thumbnail from "./Thumbnail.jsx";
-import { OverviewContext } from "../../Overview.jsx";
+import { OverviewContext } from '../../context/OverviewContext.jsx';
 
 const ImageBar = () => {
 

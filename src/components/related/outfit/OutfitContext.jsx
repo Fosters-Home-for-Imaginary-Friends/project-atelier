@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect, useCallback, useContext} from 'react';
 import {getCookie, setCookie} from '../../../Cookies.js';
-import {AppContext} from '../../App.jsx';
+import { AppContext } from '../../context/AppContext.jsx';
 
 export const OutfitCardContext = createContext();
 

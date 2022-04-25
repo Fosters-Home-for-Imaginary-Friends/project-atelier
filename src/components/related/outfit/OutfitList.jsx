@@ -3,7 +3,7 @@ import CardCarousel from '../cards/CardCarousel.jsx';
 import {OutfitCardContext} from './OutfitContext.jsx';
 import AddProductCard from '../cards/AddProductCard.jsx';
 import ProductCard from '../cards/ProductCard.jsx';
-import {AppContext} from '../../App.jsx';
+import { AppContext } from '../../context/AppContext.jsx';
 
 const OutfitList = () => {
   const {outfitList, addProduct} = useContext(OutfitCardContext);

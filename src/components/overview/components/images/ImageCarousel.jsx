@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useLayoutEffect } from 'react';
 import Image from './Image.jsx';
-import { OverviewContext } from '../../Overview.jsx';
+import { OverviewContext } from '../../context/OverviewContext.jsx';
 
 function ImageCarousel() {
   const imageCarouselRef = useRef(null);

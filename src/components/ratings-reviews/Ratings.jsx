@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, createContext }from 'react';
 import RatingsBreakdown from './Ratings/RatingsBreakdown.jsx';
 import ReviewList from './Reviews/ReviewList.jsx';
-import {AppContext} from '../App.jsx';
+import {AppContext} from '../context/AppContext.jsx';
 import {getReviews, getReviewMetadata} from '../../helpers.js';
 
 //export vars/funcs to all other ratings/review components that need them

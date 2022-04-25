@@ -5,6 +5,7 @@
     "express": "^4.17.3",
     "jest": "^27.5.1",
     "moment": "^2.29.1",
+    "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",

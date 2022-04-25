@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import CardCarousel from '../cards/CardCarousel.jsx';
-import {AppContext} from '../../App.jsx';
+import { AppContext } from '../../context/AppContext.jsx';
 import ProductCard from '../cards/ProductCard.jsx';
 import {RelatedCardContext} from './RelatedContext.jsx';
 

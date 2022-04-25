@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useState } from 'react';
 import ReactDom from "react-dom";
-import { AppContext } from '../../../App.jsx';
+import { AppContext } from '../../../context/AppContext.jsx';
 import { postQuestion } from '../../../../helpers.js';
 
 export const AddQuestionModal = ({ setShowModal }) => {
