@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { OverviewContext } from '../../context/OverviewContext.jsx';
 
-const Size = ({ sizes, sku }) => {
-
+function Size({ sizes, sku }) {
   const {
     currentSize,
     setCurrentSize,
-    setQuantity
+    setQuantity,
   } = useContext(OverviewContext);
 
   const setCurrentSizing = () => {
@@ -17,20 +16,21 @@ const Size = ({ sizes, sku }) => {
     } else {
       setCurrentSize('');
     }
-  }
+  };
 
   return (
     <div
       className={`size-button ${currentSize === sku}`}
-      onClick={() => setCurrentSizing()}>
+      onClick={() => setCurrentSizing()}
+    >
       <span className="size-text">{sizes.size}</span>
     </div>
-  )
-};
+  );
+}
 
 Size.propTypes = {
   sizes: PropTypes.object.isRequired,
-  sku: PropTypes.string.isRequired
-}
+  sku: PropTypes.string.isRequired,
+};
 
 export default Size;

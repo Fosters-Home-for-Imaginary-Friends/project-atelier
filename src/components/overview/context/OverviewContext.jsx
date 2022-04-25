@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {
   createContext, useContext, useState, useEffect, useMemo,
 } from 'react';
@@ -7,7 +8,7 @@ import { getStyles } from '../../../helpers.js';
 
 export const OverviewContext = createContext({});
 
-export function OverviewContextProvider({children}) {
+export function OverviewContextProvider({ children }) {
   const {
     productData,
   } = useContext(AppContext);
@@ -73,3 +74,7 @@ export function OverviewContextProvider({children}) {
     </OverviewContext.Provider>
   );
 }
+
+OverviewContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

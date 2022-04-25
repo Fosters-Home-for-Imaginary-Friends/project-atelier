@@ -1,18 +1,20 @@
+/* eslint-disable no-console */
 import React, {
   createContext, useState, useEffect, useMemo,
 } from 'react';
+import PropTypes from 'prop-types';
 import { getProduct } from '../../helpers.js';
 
 export const AppContext = createContext({});
 
-export function AppContextProvider({children}) {
+export function AppContextProvider({ children }) {
   const [productId, setProductId] = useState(40344);
   const [productData, setProductData] = useState({ id: 40344 });
 
   useEffect(() => {
     getProduct(40344)
       .then((response) => setProductData(response))
-      .catch((error) => console.log('An error occured: ', error))
+      .catch((error) => console.log('An error occured: ', error));
   }, []);
 
   const AppContextValues = useMemo(() => ({
@@ -28,3 +30,7 @@ export function AppContextProvider({children}) {
     </AppContext.Provider>
   );
 }
+
+AppContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

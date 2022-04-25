@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    es6: true,
   },
   extends: [
     'eslint:recommended',
@@ -24,5 +25,6 @@ module.exports = {
       'ignorePackages',
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/function-component-definition': [2, { namedComponents: 'function-declaration' }],
   },
 };
