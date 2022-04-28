@@ -1,11 +1,13 @@
 import React, { useRef, useContext, useLayoutEffect } from 'react';
 import Image from './Image.jsx';
+import ImageModal from './ImageModal.jsx';
 import { OverviewContext } from '../../context/OverviewContext.jsx';
 
 function ImageCarousel() {
   const imageCarouselRef = useRef(null);
 
   const {
+    showModal,
     currentStyle,
     previousPhoto,
     setPreviousPhoto,
@@ -46,6 +48,7 @@ function ImageCarousel() {
 
   return (
     <div className="overview-images">
+      {showModal ? <ImageModal /> : null}
       { currentPhoto === 0
         ? null
         : (

@@ -1,9 +1,10 @@
-import React, { useRef, useContext, useState, useLayoutEffect } from "react";
+import React, {
+  useRef, useContext, useState, useLayoutEffect
+} from "react";
 import ReactDom from "react-dom";
 import { OverviewContext } from '../../context/OverviewContext.jsx';
 
 const ImageModal = () => {
-
   const imageModalRef = useRef(null);
   const imageRef = useRef(null);
 
@@ -13,7 +14,7 @@ const ImageModal = () => {
     setPreviousPhoto,
     currentPhoto,
     setCurrentPhoto,
-    loading
+    loading,
   } = useContext(OverviewContext);
 
   const [top, setTop] = useState(0);
@@ -79,7 +80,7 @@ const ImageModal = () => {
         />
       </div>
     </div>,
-    document.getElementById("imageModal")
+    document.getElementById('imageModal')
   )
 }
 

@@ -1965,12 +1965,6 @@ button.upload-photo {
 /* ----- RESPONSIVE ----- */
 /* ---------------------- */
 
-@media screen and (min-width: 1920px) {
-  .review-list-individual-review-container {
-    width: calc(100vw - ((100vw - (56.5vh + 271px)) / 2) - 6vw);
-  }
-}
-
 @media screen and (min-width: 1080px) and (max-width: 1919px) {
   #logo {
     font-size: 80px;
