@@ -17,7 +17,7 @@ The main display for the current product. This component displays all informatio
 ## Related Products
 
 ### Contributor: Calvin See
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/calvin-see-835213159/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/calvinfsee)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/calvinfsee)
 
 The related products section displays a list of related products curated by the database. Underneath related products is the outfit list, which is a persistent list of products curated to the user. Product cards display product information and the product’s default photo. While a product card is in the related products list, it has a star button which compares that product’s features to the currently viewed product in the overview section. The outfit list has an add to outfit button and outfit list product cards have a remove button that allows the user to modify the list.
